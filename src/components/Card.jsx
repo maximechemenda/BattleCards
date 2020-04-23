@@ -1,8 +1,12 @@
 import React from 'react';
 
-export default ({text}) => (
-    <div style={{borderStyle: 'ridge', borderWidth: '10px 5000px 10px 10px'}}>
-    {text}
+export default ({text, onDelete}) => (
+
+    <div style={{borderStyle: 'ridge'}}>
+        {text}
+        <button onClick={onDelete}>x</button>
     </div>
+        
+
 )
 
