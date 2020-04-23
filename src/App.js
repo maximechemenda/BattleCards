@@ -7,7 +7,10 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      cards: []
+      cards: [
+        {id: uuid.v4(),
+        text: "New Card"}
+      ]
     };
   }
 
@@ -56,12 +59,12 @@ export default class App extends React.Component {
       })
     });
   }
-  editCard = (id, task) => {
+  editCard = (id, text) => {
     this.setState({
       cards: this.state.cards.map(card => {
         if(card.id === id) {
           card.editing = false;
-          card.task = task;
+          card.text = text;
         }
 
         return card;

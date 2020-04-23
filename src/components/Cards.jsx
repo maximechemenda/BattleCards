@@ -10,7 +10,7 @@ export default ({
     <div>
         {cards.map(({id,editing,text}) => 
         <div key={id}>
-            <Card onClick={onCardClick.bind(null, id)}> 
+            <Card style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px'}} onClick={onCardClick.bind(null, id)}> 
                 <Editable
                     editing={editing}
                     value={text}
