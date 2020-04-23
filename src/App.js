@@ -16,9 +16,12 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Cards 
-          cards = {cards}
-          onDelete = {this.deleteNote} />
+        <Cards
+          cards={cards}
+          onCardClick={this.activateCardEdit}
+          onEdit={this.editCard}
+          onDelete={this.deleteCard}
+          />
         <button onClick = {this.addCard}>+</button>
       </div>
     );
@@ -33,7 +36,7 @@ export default class App extends React.Component {
     });
   }
 
-  deleteNote = (id, e) => {
+  deleteCard = (id, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
 
@@ -41,4 +44,30 @@ export default class App extends React.Component {
       cards: this.state.cards.filter(card => card.id !== id)
     });
   }
+
+  activateCardEdit = (id) => {
+    this.setState({
+      cards: this.state.cards.map(card => {
+        if(card.id === id) {
+          card.editing = true;
+        }
+
+        return card;
+      })
+    });
+  }
+  editCard = (id, task) => {
+    this.setState({
+      cards: this.state.cards.map(card => {
+        if(card.id === id) {
+          card.editing = false;
+          card.task = task;
+        }
+
+        return card;
+      })
+    });
+  }
+
+
 }

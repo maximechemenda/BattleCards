@@ -1,17 +1,23 @@
 import React from 'react';
 import Card from './Card';
+import Editable from './Editable';
 
-export default ({cards,onDelete=() => {}}) => (
 
-
+export default ({
+    cards,
+    onCardClick=() => {}, onEdit=() => {}, onDelete=() => {}
+  }) => (
     <div>
-        {cards.map(({id,text}) => 
+        {cards.map(({id,editing,text}) => 
         <div key={id}>
-            <Card 
-                text={text} 
-                onDelete={onDelete.bind(null,id)} />
+            <Card onClick={onCardClick.bind(null, id)}> 
+                <Editable
+                    editing={editing}
+                    value={text}
+                    onEdit={onEdit.bind(null, id)} />
+                <button onClick={onDelete.bind(null, id)}>x</button>
+            </Card>
         </div>
-        )}
-   </div>
+    )}</div>
 
 )
