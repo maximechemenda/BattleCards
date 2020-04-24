@@ -37,6 +37,18 @@
   }
 }
 
-.card {
-  border: '100 px solid black';
+.add-note {
+  background-color: #fdfdfd;
+
+  border: 1px solid #ccc;
+}
+
+.battleCard {
+  background-color: lightblue;
+  padding-right: 800px;
+}
+
+.cards {
+  background-color: pink;
+  padding-right: inherit;
 }

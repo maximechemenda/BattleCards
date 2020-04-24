@@ -21,11 +21,13 @@ class Edit extends React.Component {
       onKeyPress={this.checkEnter}
       {...props} />;
   }
+  
   checkEnter = (e) => {
     if(e.key === 'Enter') {
       this.finishEdit(e);
     }
   }
+  
   finishEdit = (e) => {
     const value = e.target.value;
 

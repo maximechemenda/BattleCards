@@ -1,8 +1,6 @@
 import React from 'react';
 import uuid from 'uuid';
-import Cards from './components/Cards';
-import AddCardButton from './components/AddCardButton';
-import NewCardMenu from './components/NewCardMenu';
+import BattleCard from './components/BattleCard';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,36 +8,31 @@ export default class App extends React.Component {
 
     this.state = {
       cards: [],
-      isEmptyState: true,
+      isEmptyAddButtonState: true,
       isAddCardState: false
     };
   }
 
   render() {
-    const {cards} = this.state;
+    const {cards, isEmptyAddButtonState, isAddCardState} = this.state;
 
     return (
-      <div>
-        <Cards
+      
+        <BattleCard 
           cards={cards}
           onCardClick={this.activateCardEdit}
           onEdit={this.editCard}
           onDelete={this.deleteCard}
-          />
+          isEmptyAddButtonState={isEmptyAddButtonState}
+          triggerAddCardState={this.triggerAddCardState}
+          isAddCardState={isAddCardState}
+          addBasicCard={this.addBasicCard}
+          addWarningCard={this.addWarningCard}
+          addDealOfferCard={this.addDealOfferCard}
+          addCommonAnswerCard={this.addCommonAnswerCard} /> 
 
-          <div>
-              {this.state.isEmptyState && <AddCardButton addCard={this.triggerAddCardState} />}
-
-              {this.state.isAddCardState && 
-              <NewCardMenu 
-                addBasicCard = {this.addBasicCard}
-                addWarningCard = {this.addWarningCard}
-                addDealOfferCard = {this.addDealOfferCard}
-                addCommonAnswerCard = {this.addCommonAnswerCard}
-              />}
-
-          </div>
-      </div>
+        
+    
     );
   } //<button onClick = {this.addCard}>+</button>
 
@@ -47,7 +40,7 @@ export default class App extends React.Component {
   triggerAddCardState = () => {
     this.setState({
       ...this.state,
-      isEmptyState: false,
+      isEmptyAddButtonState: false,
       isAddCardState: true
     })
   }
@@ -60,7 +53,7 @@ export default class App extends React.Component {
         text: '',
         type: 'basic'
       }]),
-      isEmptyState: true,
+      isEmptyAddButtonState: true,
       isAddCardState: false
     });
   }
@@ -71,7 +64,7 @@ export default class App extends React.Component {
         id: uuid.v4(),
         type: 'warning'
       }]),
-      isEmptyState: true,
+      isEmptyAddButtonState: true,
       isAddCardState: false
     });
   }
@@ -82,7 +75,7 @@ export default class App extends React.Component {
         id: uuid.v4(),
         type: 'dealOffer'
       }]),
-      isEmptyState: true,
+      isEmptyAddButtonState: true,
       isAddCardState: false
     });
   }
@@ -93,7 +86,7 @@ export default class App extends React.Component {
         id: uuid.v4(),
         type: 'commonAnswer'
       }]),
-      isEmptyState: true,
+      isEmptyAddButtonState: true,
       isAddCardState: false
     });
   }
