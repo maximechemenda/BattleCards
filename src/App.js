@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import Cards from './components/Cards';
+import CardType from './components/CardType';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,8 +10,9 @@ export default class App extends React.Component {
     this.state = {
       cards: [
         {id: uuid.v4(),
-        text: "New Card"}
-      ]
+        text: "New Card",
+        type: 'warning'
+      }]
     };
   }
 
@@ -34,7 +36,8 @@ export default class App extends React.Component {
     this.setState({
       cards: this.state.cards.concat([{
         id: uuid.v4(),
-        text: 'New card'
+        text: 'New card',
+        type: 'warning'
       }])
     });
   }
@@ -71,6 +74,4 @@ export default class App extends React.Component {
       })
     });
   }
-
-
 }
