@@ -1,6 +1,4 @@
 import React from 'react';
-import Card from './Card';
-import Editable from './Editable';
 import CardType from './CardType';
 
 export default ({
@@ -10,14 +8,20 @@ export default ({
     <div>
         {cards.map(({id,editing,text,type}) => 
         <div key={id}>
-                <CardType type={type} onClick={onCardClick.bind(null, id)}>
-                    <Editable
-                        editing={editing}
-                        value={text}
-                        onEdit={onEdit.bind(null, id)} />
-                        <button onClick={onDelete.bind(null, id)}>x</button> 
-                </CardType>
-        </div>
+                <CardType 
+                    type={type} 
+                    text={text} 
+                    onClick={onCardClick.bind(null, id)}
+                    editing={editing}
+                    //value={text}
+                    //onEdit={onEdit.bind(null, id)}
+                    onEdit={onEdit}
+                    id = {id}
+                    //onDelete = {onDelete.bind(null,id)} />
+                    onDelete = {onDelete} />
+                     
+                
+        </div> //</CardType> --was going above
     )}</div>
 )
 

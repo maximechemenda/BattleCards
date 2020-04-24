@@ -1,7 +1,6 @@
 import React from 'react';
 import uuid from 'uuid';
 import Cards from './components/Cards';
-import CardType from './components/CardType';
 import AddCardButton from './components/AddCardButton';
 import NewCardMenu from './components/NewCardMenu';
 
@@ -10,10 +9,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      cards: [
-        {id: uuid.v4(),
-        type: 'warning'
-      }],
+      cards: [],
       isEmptyState: true,
       isAddCardState: false
     };
@@ -21,7 +17,6 @@ export default class App extends React.Component {
 
   render() {
     const {cards} = this.state;
-    const {isEmptyState} = this.state;
 
     return (
       <div>
@@ -48,6 +43,7 @@ export default class App extends React.Component {
     );
   } //<button onClick = {this.addCard}>+</button>
 
+  //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   triggerAddCardState = () => {
     this.setState({
       ...this.state,
@@ -60,6 +56,8 @@ export default class App extends React.Component {
     this.setState({
       cards: this.state.cards.concat([{
         id: uuid.v4(),
+        editing: false,
+        text: '',
         type: 'basic'
       }]),
       isEmptyState: true,
@@ -100,6 +98,7 @@ export default class App extends React.Component {
     });
   }
 
+   //////////////////////////////  TO DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   deleteCard = (id, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
@@ -109,6 +108,7 @@ export default class App extends React.Component {
     });
   }
 
+   //////////////////////////////  TO EDIT ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   activateCardEdit = (id) => {
     this.setState({
       cards: this.state.cards.map(card => {

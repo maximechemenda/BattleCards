@@ -1,29 +1,35 @@
 import React from 'react';
+import Editable from './Editable';
 
-export default ({type, children, ...props}) => {
+export default ({type, text, editing, value, onEdit, children, id, onDelete, ...props}) => {
 
     if (type === 'basic') {
         return  <div>
                     <div>{children}</div>
-                    <BasicCard {...props} />
+                    <BasicCard text={text} editing={editing} onEdit={onEdit} id={id} onDelete={onDelete} {...props} />
+                    <br></br>
+                    
                 </div>
     }
     if (type === 'warning') {
         return  <div>
                     <div>{children}</div>
-                    <WarningCard {...props} />
+                    <WarningCard text={text} editing={editing} onEdit={onEdit} id={id} onDelete={onDelete} {...props} />
+                    <br></br>
                 </div>
     }
     if (type === 'dealOffer') {
         return  <div>
                     <div>{children}</div>
-                    <DealOfferCard {...props} />
+                    <DealOfferCard text={text} editing={editing} onEdit={onEdit} id={id} onDelete={onDelete} {...props} />
+                    <br></br>
                 </div>
     }
     if (type === 'commonAnswer') {
         return  <div>
                     <div>{children}</div>
-                    <CommonAnswerCard {...props} />
+                    <CommonAnswerCard text={text} editing={editing} onEdit={onEdit} id={id} onDelete={onDelete} {...props} />
+                    <br></br>
                 </div>
     }
 }
@@ -31,40 +37,65 @@ export default ({type, children, ...props}) => {
 
 class BasicCard extends React.Component {
     render () {
-        const {...props} = this.props;
+        
+        const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
         return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px'}} {...props}>
-                    <h2>Basic Card</h2>
-               </div>
+                        <button onClick={onDelete.bind(null, id)}>x</button>
+                        <h2>Basic Card</h2>
+                        <Editable
+                            editing={editing}
+                            value={text}
+                            onEdit={onEdit.bind(null, id)} />
+                        
+                </div>   
     }
 }
 
 class WarningCard extends React.Component {
     render () {
-        const {...props} = this.props;
+
+        const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
         return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'red'}} {...props}>
-                    <h2>Warning</h2>
-               </div>
+                        <button onClick={onDelete.bind(null, id)}>x</button>
+                        <h2>Warning</h2>
+                        <Editable
+                                editing={editing}
+                                value={text}
+                                onEdit={onEdit.bind(null, id)} />
+                </div>
     }
 }
 
 class DealOfferCard extends React.Component {
     render () {
-        const {...props} = this.props;
+
+        const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
         return  <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'blue'}} {...props}>
-                    <h1>Deal Offer</h1>
+                    <button onClick={onDelete.bind(null, id)}>x</button>
+                    <h2>Deal Offer</h2>
+                    <Editable
+                            editing={editing}
+                            value={text}
+                            onEdit={onEdit.bind(null, id)} />
                 </div>
     }
 }
 
 class CommonAnswerCard extends React.Component {
     render () {
-        const {...props} = this.props;
+
+        const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
         return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'green'}} {...props}>
-                    <h1>Common Answer</h1>
+                    <button onClick={onDelete.bind(null, id)}>x</button>
+                    <h2>Common Answer</h2>
+                    <Editable
+                            editing={editing}
+                            value={text}
+                            onEdit={onEdit.bind(null, id)} />
                 </div>
     }
 }
