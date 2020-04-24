@@ -3,8 +3,6 @@ import Card from './Card';
 import Editable from './Editable';
 import CardType from './CardType';
 
-
-
 export default ({
     cards,
     onCardClick=() => {}, onEdit=() => {}, onDelete=() => {}

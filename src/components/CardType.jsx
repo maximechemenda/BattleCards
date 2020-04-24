@@ -2,8 +2,12 @@ import React from 'react';
 
 export default ({type, children, ...props}) => {
 
-        
-        
+    if (type === 'basic') {
+        return  <div>
+                    <div>{children}</div>
+                    <BasicCard {...props} />
+                </div>
+    }
     if (type === 'warning') {
         return  <div>
                     <div>{children}</div>
@@ -24,13 +28,24 @@ export default ({type, children, ...props}) => {
     }
 }
 
+
+class BasicCard extends React.Component {
+    render () {
+        const {...props} = this.props;
+
+        return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px'}} {...props}>
+                    <h2>Basic Card</h2>
+               </div>
+    }
+}
+
 class WarningCard extends React.Component {
     render () {
         const {...props} = this.props;
 
         return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'red'}} {...props}>
-                    <h1>Warning!</h1>
-                </div>
+                    <h2>Warning</h2>
+               </div>
     }
 }
 
@@ -39,7 +54,7 @@ class DealOfferCard extends React.Component {
         const {...props} = this.props;
 
         return  <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'blue'}} {...props}>
-                    <h1>Warning!</h1>
+                    <h1>Deal Offer</h1>
                 </div>
     }
 }
@@ -49,7 +64,7 @@ class CommonAnswerCard extends React.Component {
         const {...props} = this.props;
 
         return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'green'}} {...props}>
-                    <h1>Warning!</h1>
+                    <h1>Common Answer</h1>
                 </div>
     }
 }
