@@ -1,5 +1,6 @@
 import React from 'react';
 import CardType from './CardType';
+import '../App.css';
 
 export default ({
     cards,
@@ -8,7 +9,7 @@ export default ({
     <div>
         {cards.map(({id,editing,text,type}) => 
         <div key={id}>
-                <CardType 
+                <CardType className="cards"
                     type={type} 
                     text={text} 
                     onClick={onCardClick.bind(null, id)}

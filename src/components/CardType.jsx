@@ -1,5 +1,6 @@
 import React from 'react';
 import Editable from './Editable';
+import '../App.css';
 
 export default ({type, text, editing, value, onEdit, children, id, onDelete, ...props}) => {
 
@@ -40,14 +41,14 @@ class BasicCard extends React.Component {
         
         const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
-        return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px'}} {...props}>
+        return <div className="cards" {...props}>
+               
                         <button onClick={onDelete.bind(null, id)}>x</button>
                         <h2>Basic Card</h2>
                         <Editable
                             editing={editing}
                             value={text}
-                            onEdit={onEdit.bind(null, id)} />
-                        
+                            onEdit={onEdit.bind(null, id)} />      
                 </div>   
     }
 }

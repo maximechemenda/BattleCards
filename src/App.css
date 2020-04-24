@@ -37,18 +37,17 @@
   }
 }
 
-.add-note {
-  background-color: #fdfdfd;
-
-  border: 1px solid #ccc;
-}
-
 .battleCard {
+  max-height: 700px;
   background-color: lightblue;
-  padding-right: 800px;
+  width: 600px;
+  overflow: auto;
 }
 
 .cards {
-  background-color: pink;
+  background-color: rgb(204, 185, 185);
+  border-color: red;
   padding-right: inherit;
+  border-style: ridge;
+  border-width: '10px 10px 10px 10px';
 }

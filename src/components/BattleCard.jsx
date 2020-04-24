@@ -10,7 +10,7 @@ export default ({cards, onCardClick, onEdit, onDelete,
                 addDealOfferCard, addCommonAnswerCard}) => (
 
         <div className="battleCard">           
-            <Cards className="cards"
+            <Cards
             cards={cards}
             onCardClick={onCardClick}
             onEdit={onEdit}
