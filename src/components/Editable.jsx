@@ -1,3 +1,4 @@
+/* THIS COMPONENET IS NEVER USED BUT I KEEP IT JUST IN CASE I'LL NEED IT LATER
 import React from 'react';
 
 export default ({editing, value, onEdit, ...props}) => {
@@ -36,3 +37,4 @@ class Edit extends React.Component {
     }
   }
 }
+*/

@@ -39,16 +39,16 @@
 }
 
 .battleCard {
-  position:absolute;
-  left: 1px;
   max-height: 700px;
   width: 600px;
   overflow: auto;
-  background-color: rgb(87, 171, 240);
+  border-style: ridge;
+  border-width: '10px 10px 10px 10px';
+  background-color:rgb(228, 222, 222);
 }
 
 .cards {
-  background-color: rgb(204, 185, 185);
+  background-color: white;
   padding-right: inherit;
   border-style: ridge;
   border-width: '10px 10px 10px 10px';

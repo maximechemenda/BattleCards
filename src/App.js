@@ -44,6 +44,7 @@ export default class App extends React.Component {
   //////////////////////////////  TO ADD A BATTLE CARD //////////////////////////
 
   triggerAddBattleCardState = () => {
+    console.log('hey');
     this.setState({
       ...this.state,
       isEmptyAddBattleCardButtonState: !this.isEmptyAddBattleCardButtonState,
