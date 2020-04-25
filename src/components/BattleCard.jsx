@@ -8,9 +8,11 @@ export default ({cards, onCardClick, onEdit, onDelete,
                 isEmptyAddButtonState, triggerAddCardState, 
                 isAddCardState, addBasicCard, addWarningCard,
                 addDealOfferCard, addCommonAnswerCard,
+                deleteBattleCard, id
                 }) => (
 
-        <div className="battleCard">           
+        <div className="battleCard">   
+            <button onClick={deleteBattleCard.bind(null,id)}>Delete BattleCard</button>        
             <Cards
             cards={cards}
             onCardClick={onCardClick}

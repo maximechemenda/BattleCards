@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import BattleCard from './components/BattleCard';
 import AddBattleCardButton from './components/AddBattleCardButton';
+import BattleCards from './components/BattleCards';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class App extends React.Component {
 
     this.state = {
       cards: [],
+      battleCards: [],
       isEmptyAddButtonState: true,
       isAddCardState: false,
       isEmptyBattleCardButtonState: true,
@@ -17,12 +19,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {cards, isEmptyAddButtonState, isAddCardState, 
+    const {cards, battleCards, isEmptyAddButtonState, isAddCardState, 
       isEmptyBattleCardButtonState, isAddBattleCardState} = this.state;
 
     return (
       <div>
-        {isEmptyBattleCardButtonState && <AddBattleCardButton addBattleCard={this.triggerAddBattleCardState} />} 
+        {isEmptyBattleCardButtonState && <AddBattleCardButton addBattleCard={this.addBattleCard} />} 
         {isAddBattleCardState && 
         <BattleCard onClick={this.triggerAddBattleCardState}
             cards={cards}
@@ -36,20 +38,47 @@ export default class App extends React.Component {
             addWarningCard={this.addWarningCard}
             addDealOfferCard={this.addDealOfferCard}
             addCommonAnswerCard={this.addCommonAnswerCard}
+            deleteBattleCard={this.deleteBattleCard}
       />}
+      <div>
+        <BattleCards 
+          battleCards={battleCards}
+          cards= {cards}
+          onCardClick={this.activateCardEdit}
+          onEdit={this.editCard}
+          onDelete={this.deleteCard}
+          isEmptyAddButtonState={isEmptyAddButtonState}
+          triggerAddCardState={this.triggerAddCardState}
+          isAddCardState={isAddCardState}
+          addBasicCard={this.addBasicCard}
+          addWarningCard={this.addWarningCard}
+          addDealOfferCard={this.addDealOfferCard}
+          addCommonAnswerCard={this.addCommonAnswerCard}
+          deleteBattleCard={this.deleteBattleCard}
+          />
+      </div>
       </div>  
     );
   } 
 
-  //////////////////////////////  TO ADD A BATTLE CARD //////////////////////////
+  //////////////////////////////  TO ADD OR DELETE A BATTLE CARD //////////////////////////
 
-  triggerAddBattleCardState = () => {
-    console.log('hey');
+  addBattleCard =() => {
     this.setState({
-      ...this.state,
-      isEmptyAddBattleCardButtonState: !this.isEmptyAddBattleCardButtonState,
-      isAddBattleCardState: !this.isAddBattleCardState
+      battleCards: this.state.battleCards.concat([{
+        id: uuid.v4(),
+      }
+      ])
     })
+  }
+
+  deleteBattleCard = (id, e) => {
+    // Avoid bubbling to edit
+    e.stopPropagation();
+
+    this.setState({
+      battleCards: this.state.battleCards.filter(battleCard => battleCard.id !== id)
+    });
   }
 
   //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
@@ -65,7 +94,7 @@ export default class App extends React.Component {
     this.setState({
       cards: this.state.cards.concat([{
         id: uuid.v4(),
-        editing: false,
+        //editing: false,
         text: '',
         type: 'basic'
       }]),
