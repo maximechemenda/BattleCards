@@ -7,7 +7,8 @@ import '../App.css';
 export default ({cards, onCardClick, onEdit, onDelete, 
                 isEmptyAddButtonState, triggerAddCardState, 
                 isAddCardState, addBasicCard, addWarningCard,
-                addDealOfferCard, addCommonAnswerCard}) => (
+                addDealOfferCard, addCommonAnswerCard,
+                }) => (
 
         <div className="battleCard">           
             <Cards

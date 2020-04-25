@@ -58,7 +58,7 @@ class WarningCard extends React.Component {
 
         const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
-        return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'red'}} {...props}>
+        return <div className="cards" {...props}>
                         <button onClick={onDelete.bind(null, id)}>x</button>
                         <h2>Warning</h2>
                         <Editable
@@ -74,7 +74,7 @@ class DealOfferCard extends React.Component {
 
         const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
-        return  <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'blue'}} {...props}>
+        return  <div className="cards" {...props}>
                     <button onClick={onDelete.bind(null, id)}>x</button>
                     <h2>Deal Offer</h2>
                     <Editable
@@ -90,7 +90,7 @@ class CommonAnswerCard extends React.Component {
 
         const {text, editing, onEdit, id, onDelete, ...props} = this.props;
 
-        return <div style={{borderStyle: 'ridge', borderWidth: '10px 10px 10px 10px', borderColor: 'green'}} {...props}>
+        return <div className="cards" {...props}>
                     <button onClick={onDelete.bind(null, id)}>x</button>
                     <h2>Common Answer</h2>
                     <Editable

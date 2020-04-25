@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,15 +39,16 @@
 }
 
 .battleCard {
+  position:absolute;
+  left: 1px;
   max-height: 700px;
-  background-color: lightblue;
   width: 600px;
   overflow: auto;
+  background-color: rgb(87, 171, 240);
 }
 
 .cards {
   background-color: rgb(204, 185, 185);
-  border-color: red;
   padding-right: inherit;
   border-style: ridge;
   border-width: '10px 10px 10px 10px';

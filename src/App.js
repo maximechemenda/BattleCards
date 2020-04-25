@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import BattleCard from './components/BattleCard';
+import AddBattleCardButton from './components/AddBattleCardButton';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,32 +10,46 @@ export default class App extends React.Component {
     this.state = {
       cards: [],
       isEmptyAddButtonState: true,
-      isAddCardState: false
+      isAddCardState: false,
+      isEmptyBattleCardButtonState: true,
+      isAddBattleCardState: false
     };
   }
 
   render() {
-    const {cards, isEmptyAddButtonState, isAddCardState} = this.state;
+    const {cards, isEmptyAddButtonState, isAddCardState, 
+      isEmptyBattleCardButtonState, isAddBattleCardState} = this.state;
 
     return (
-      
-        <BattleCard 
-          cards={cards}
-          onCardClick={this.activateCardEdit}
-          onEdit={this.editCard}
-          onDelete={this.deleteCard}
-          isEmptyAddButtonState={isEmptyAddButtonState}
-          triggerAddCardState={this.triggerAddCardState}
-          isAddCardState={isAddCardState}
-          addBasicCard={this.addBasicCard}
-          addWarningCard={this.addWarningCard}
-          addDealOfferCard={this.addDealOfferCard}
-          addCommonAnswerCard={this.addCommonAnswerCard} /> 
-
-        
-    
+      <div>
+        {isEmptyBattleCardButtonState && <AddBattleCardButton addBattleCard={this.triggerAddBattleCardState} />} 
+        {isAddBattleCardState && 
+        <BattleCard onClick={this.triggerAddBattleCardState}
+            cards={cards}
+            onCardClick={this.activateCardEdit}
+            onEdit={this.editCard}
+            onDelete={this.deleteCard}
+            isEmptyAddButtonState={isEmptyAddButtonState}
+            triggerAddCardState={this.triggerAddCardState}
+            isAddCardState={isAddCardState}
+            addBasicCard={this.addBasicCard}
+            addWarningCard={this.addWarningCard}
+            addDealOfferCard={this.addDealOfferCard}
+            addCommonAnswerCard={this.addCommonAnswerCard}
+      />}
+      </div>  
     );
-  } //<button onClick = {this.addCard}>+</button>
+  } 
+
+  //////////////////////////////  TO ADD A BATTLE CARD //////////////////////////
+
+  triggerAddBattleCardState = () => {
+    this.setState({
+      ...this.state,
+      isEmptyAddBattleCardButtonState: !this.isEmptyAddBattleCardButtonState,
+      isAddBattleCardState: !this.isAddBattleCardState
+    })
+  }
 
   //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   triggerAddCardState = () => {
