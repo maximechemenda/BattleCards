@@ -3,7 +3,7 @@ import '../App.css';
 
 
 const AddCardButton = props => {
-    return <button className="add-card" onClick={props.addCard}>+</button>
+    return <button className="addCardButton" onClick={props.addCard}>+</button>
   }
 
   export default AddCardButton

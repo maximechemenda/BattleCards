@@ -44,7 +44,7 @@ class BasicCard extends React.Component {
 
         return <div className="cards" {...props}>
                
-                        <button onClick={onDelete.bind(null, id)}>x</button>
+                        <button className="deleteCardButton" onClick={onDelete.bind(null, id)}>x</button>
                         <h2>Basic Card</h2>
                         { /*<Editable
                             editing={editing}
@@ -61,7 +61,7 @@ class WarningCard extends React.Component {
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return <div className="cards" {...props}>
-                        <button onClick={onDelete.bind(null, id)}>x</button>
+                        <button className="deleteCardButton" onClick={onDelete.bind(null, id)}>x</button>
                         <h2>Warning</h2>
                         { /*<Editable
                             editing={editing}
@@ -78,7 +78,7 @@ class DealOfferCard extends React.Component {
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return  <div className="cards" {...props}>
-                    <button onClick={onDelete.bind(null, id)}>x</button>
+                    <button className="deleteCardButton" onClick={onDelete.bind(null, id)}>x</button>
                     <h2>Deal Offer</h2>
                     { /*<Editable
                             editing={editing}
@@ -95,7 +95,7 @@ class CommonAnswerCard extends React.Component {
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return <div className="cards" {...props}>
-                    <button onClick={onDelete.bind(null, id)}>x</button>
+                    <button className="deleteCardButton" onClick={onDelete.bind(null, id)}>x</button>
                     <h2>Common Answer</h2>
                     { /*<Editable
                             editing={editing}

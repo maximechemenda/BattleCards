@@ -53,3 +53,13 @@
   border-style: ridge;
   border-width: '10px 10px 10px 10px';
 }
+
+.deleteCardButton {
+  background-color: rgb(230, 111, 111);
+  float: right;
+}
+
+.addCardButton {
+  background-color: rgb(93, 151, 240);
+  float: center;
+}
