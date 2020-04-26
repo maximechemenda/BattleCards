@@ -12,11 +12,11 @@ export default ({
                 <CardType className="cards"
                     type={type} 
                     text={text} 
-                    onClick={onCardClick.bind(null, cardId)}
-                    editing={editing}
+                    //onClick={onCardClick.bind(null, cardId)}
+                    //editing={editing}
                     //value={text}
                     //onEdit={onEdit.bind(null, id)}
-                    onEdit={onEdit}
+                    //onEdit={onEdit}
                     cardId = {cardId}
                     battleCardId = {battleCardId}
                     //onDelete = {onDelete.bind(null,id)} />

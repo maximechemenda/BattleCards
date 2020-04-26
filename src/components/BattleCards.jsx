@@ -1,9 +1,8 @@
 import React from 'react';
 import BattleCard from './BattleCard';
 
-export default ({battleCards, cards, triggerAddBattleCardState, activateCardEdit, editCard,
-                onDelete, isEmptyAddButtonState, triggerAddCardState, isAddCardState, addBasicCard,
-                addWarningCard, addDealOfferCard, addCommonAnswerCard, deleteBattleCard}) => (
+export default ({battleCards, addCard, triggerAddBattleCardState, activateCardEdit, editCard,
+                onDelete, triggerAddCardState, deleteBattleCard}) => (
     <div>
         
         {battleCards.map((battleCard) => 
@@ -11,16 +10,13 @@ export default ({battleCards, cards, triggerAddBattleCardState, activateCardEdit
                 <BattleCard 
                     onClick={triggerAddBattleCardState}
                     cards={battleCard.cards}
-                    onCardClick={activateCardEdit}
-                    onEdit={editCard}
+                    addCard={addCard}
+                    //onCardClick={activateCardEdit}
+                    //onEdit={editCard}
                     onDelete={onDelete}
                     isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                     triggerAddCardState={triggerAddCardState}
                     isAddCardState={battleCard.isAddCardState}
-                    addBasicCard={addBasicCard}
-                    addWarningCard={addWarningCard}
-                    addDealOfferCard={addDealOfferCard}
-                    addCommonAnswerCard={addCommonAnswerCard}
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}/>
         </div> 

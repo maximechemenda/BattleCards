@@ -16,7 +16,7 @@ export default ({type, text, editing, value, onEdit, children, cardId,battleCard
     if (type === 'warning') {
         return  <div>
                     <div>{children}</div>
-                    <WarningCard contentEditable="true" text={text} editing={editing} cardId={cardId} onDelete={onDelete} {...props} 
+                    <WarningCard contentEditable="true" text={text} editing={editing} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
                     /* if I want to re-use the Editable component, don't forget to add the onEdit={onEdit} in the line above*//>
                     <br></br>
                 </div>
@@ -24,7 +24,7 @@ export default ({type, text, editing, value, onEdit, children, cardId,battleCard
     if (type === 'dealOffer') {
         return  <div>
                     <div>{children}</div>
-                    <DealOfferCard contentEditable="true" text={text} editing={editing} cardId={cardId} onDelete={onDelete} {...props} 
+                    <DealOfferCard contentEditable="true" text={text} editing={editing} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
                     /* if I want to re-use the Editable component, don't forget to add the onEdit={onEdit} in the line above*//>
                     <br></br>
                 </div>
@@ -32,7 +32,7 @@ export default ({type, text, editing, value, onEdit, children, cardId,battleCard
     if (type === 'commonAnswer') {
         return  <div>
                     <div>{children}</div>
-                    <CommonAnswerCard contentEditable="true" text={text} editing={editing} cardId={cardId} onDelete={onDelete} {...props} 
+                    <CommonAnswerCard contentEditable="true" text={text} editing={editing} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
                     /* if I want to re-use the Editable component, don't forget to add the onEdit={onEdit} in the line above*//>
                     <br></br>
                 </div>
@@ -62,11 +62,11 @@ class BasicCard extends React.Component {
 class WarningCard extends React.Component {
     render () {
 
-        const {text, cardId, onDelete, ...props} = this.props;
+        const {text, cardId, battleCardId, onDelete, ...props} = this.props;
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return <div className="cards" {...props}>
-                        <button className="deleteCardButton" onClick={onDelete.bind(null, cardId)}>x</button>
+                        <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId)}>x</button>
                         <h2>Warning</h2>
                         { /*<Editable
                             editing={editing}
@@ -79,11 +79,11 @@ class WarningCard extends React.Component {
 class DealOfferCard extends React.Component {
     render () {
 
-        const {text, cardId, onDelete, ...props} = this.props;
+        const {text, cardId, battleCardId, onDelete, ...props} = this.props;
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return  <div className="cards" {...props}>
-                    <button className="deleteCardButton" onClick={onDelete.bind(null, cardId)}>x</button>
+                    <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId)}>x</button>
                     <h2>Deal Offer</h2>
                     { /*<Editable
                             editing={editing}
@@ -96,11 +96,11 @@ class DealOfferCard extends React.Component {
 class CommonAnswerCard extends React.Component {
     render () {
 
-        const {text, cardId, onDelete, ...props} = this.props;
+        const {text, cardId, battleCardId, onDelete, ...props} = this.props;
         //const {editing, onEdit} = this.props;   this line was going in the line above
 
         return <div className="cards" {...props}>
-                    <button className="deleteCardButton" onClick={onDelete.bind(null, cardId)}>x</button>
+                    <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId)}>x</button>
                     <h2>Common Answer</h2>
                     { /*<Editable
                             editing={editing}

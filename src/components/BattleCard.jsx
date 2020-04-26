@@ -6,17 +6,16 @@ import '../App.css';
 
 export default ({cards, onCardClick, onEdit, onDelete, 
                 isEmptyAddButtonState, triggerAddCardState, 
-                isAddCardState, addBasicCard, addWarningCard,
-                addDealOfferCard, addCommonAnswerCard,
-                deleteBattleCard, battleCardId //id refers to battleCardId
+                isAddCardState, deleteBattleCard, battleCardId, 
+                addCard 
                 }) => (
 
         <div className="battleCard">   
             <button onClick={deleteBattleCard.bind(null,battleCardId)}>Delete BattleCard</button>        
             <Cards
             cards={cards}
-            onCardClick={onCardClick}
-            onEdit={onEdit}
+            //onCardClick={onCardClick}
+            //onEdit={onEdit}
             onDelete={onDelete}
             battleCardId = {battleCardId}
             />
@@ -26,11 +25,8 @@ export default ({cards, onCardClick, onEdit, onDelete,
 
             {isAddCardState && 
             <NewCardMenu 
-                addBasicCard = {addBasicCard}
-                addWarningCard = {addWarningCard}
-                addDealOfferCard = {addDealOfferCard}
-                addCommonAnswerCard = {addCommonAnswerCard}
-                battleCardId={battleCardId} //id of battlecard
+                addCard = {addCard}
+                battleCardId={battleCardId} 
             />}
 
             </div>
