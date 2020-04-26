@@ -238,7 +238,7 @@ export default class App extends React.Component {
             battleCard.cards = battleCard.cards.concat([{
               cardId: uuid.v4(),
               type: type,
-              text: 'hello',
+              text: '',
               editing: false
             }])
           }

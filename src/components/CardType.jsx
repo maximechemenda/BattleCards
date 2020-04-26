@@ -8,7 +8,7 @@ export default ({editCard, activateCardEdit, type, text, editing, children, card
         return  <div>
                     <div>{children}</div>
                     <BasicCard activateCardEdit={activateCardEdit} editCard={editCard} text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
-                    /* if I want to re-use the Editable component, don't forget to add the editCard={editCard} in the line above*//>
+                    />
                     <br></br>
                     
                 </div>
@@ -16,24 +16,24 @@ export default ({editCard, activateCardEdit, type, text, editing, children, card
     if (type === 'warning') {
         return  <div>
                     <div>{children}</div>
-                    <WarningCard contentEditable="true" text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
-                    /* if I want to re-use the Editable component, don't forget to add the editCard={editCard} in the line above*//>
+                    <WarningCard activateCardEdit={activateCardEdit} editCard={editCard} text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
+                    />
                     <br></br>
                 </div>
     }
     if (type === 'dealOffer') {
         return  <div>
                     <div>{children}</div>
-                    <DealOfferCard contentEditable="true" text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
-                    /* if I want to re-use the Editable component, don't forget to add the editCard={editCard} in the line above*//>
+                    <DealOfferCard activateCardEdit={activateCardEdit} editCard={editCard} text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
+                    />
                     <br></br>
                 </div>
     }
     if (type === 'commonAnswer') {
         return  <div>
                     <div>{children}</div>
-                    <CommonAnswerCard contentEditable="true" text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
-                    /* if I want to re-use the Editable component, don't forget to add the editCard={editCard} in the line above*//>
+                    <CommonAnswerCard activateCardEdit={activateCardEdit} editCard={editCard} text={text} editing={editing} section={section} cardId={cardId} battleCardId={battleCardId} onDelete={onDelete} {...props} 
+                    />
                     <br></br>
                 </div>
     }
@@ -44,14 +44,11 @@ class BasicCard extends React.Component {
     render () {
         
         const {editing, activateCardEdit, editCard, text, cardId, battleCardId, onDelete, section, ...props} = this.props;
-        //const {editing, editCard} = this.props;     this was going in the line above
 
         return <div className="cards" onClick={activateCardEdit.bind(null, battleCardId, cardId, section)} {...props}>
-                        <div>
                         <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId,cardId, section)}>x</button>
                         <h2>Basic Card</h2>
                         
-                        </div>
                         <Editable
                             battleCardId={battleCardId}
                             editing={editing}
@@ -59,8 +56,7 @@ class BasicCard extends React.Component {
                             editCard={editCard}
                             cardId={cardId}
                             section={section}
-                            //editCard={editCard.bind(null, cardId)} 
-                            />   
+                        />   
                 </div>   
     }
 }
@@ -68,16 +64,20 @@ class BasicCard extends React.Component {
 class WarningCard extends React.Component {
     render () {
 
-        const {text, cardId, battleCardId, onDelete, section, ...props} = this.props;
-        //const {editing, editCard} = this.props;   this line was going in the line above
+        const {editing, activateCardEdit, editCard, text, cardId, battleCardId, onDelete, section, ...props} = this.props;
 
-        return <div className="cards" {...props}>
+        return <div className="cards" onClick={activateCardEdit.bind(null, battleCardId, cardId, section)} {...props}>
                         <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId, section)}>x</button>
                         <h2>Warning</h2>
-                        { /*<Editable
+
+                        <Editable
+                            battleCardId={battleCardId}
                             editing={editing}
                             value={text}
-                            editCard={editCard.bind(null, cardId)} /> */}
+                            editCard={editCard}
+                            cardId={cardId}
+                            section={section}
+                        />
                 </div>
     }
 }
@@ -85,16 +85,19 @@ class WarningCard extends React.Component {
 class DealOfferCard extends React.Component {
     render () {
 
-        const {text, cardId, battleCardId, onDelete, section, ...props} = this.props;
-        //const {editing, editCard} = this.props;   this line was going in the line above
+        const {editing, activateCardEdit, editCard, text, cardId, battleCardId, onDelete, section, ...props} = this.props;
 
-        return  <div className="cards" {...props}>
+        return  <div className="cards" onClick={activateCardEdit.bind(null, battleCardId, cardId, section)} {...props}>
                     <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId, section)}>x</button>
                     <h2>Deal Offer</h2>
-                    { /*<Editable
+                    <Editable
+                            battleCardId={battleCardId}
                             editing={editing}
                             value={text}
-                            editCard={editCard.bind(null, cardId)} /> */}
+                            editCard={editCard}
+                            cardId={cardId}
+                            section={section}
+                        />
                 </div>
     }
 }
@@ -102,16 +105,19 @@ class DealOfferCard extends React.Component {
 class CommonAnswerCard extends React.Component {
     render () {
 
-        const {text, cardId, battleCardId, onDelete, section, ...props} = this.props;
-        //const {editing, editCard} = this.props;   this line was going in the line above
+        const {editing, activateCardEdit, editCard, text, cardId, battleCardId, onDelete, section, ...props} = this.props;
 
-        return <div className="cards" {...props}>
+        return <div className="cards" onClick={activateCardEdit.bind(null, battleCardId, cardId, section)} {...props}>
                     <button className="deleteCardButton" onClick={onDelete.bind(null, battleCardId, cardId, section)}>x</button>
                     <h2>Common Answer</h2>
-                    { /*<Editable
+                    <Editable
+                            battleCardId={battleCardId}
                             editing={editing}
                             value={text}
-                            editCard={editCard.bind(null, cardId)} /> */}
+                            editCard={editCard}
+                            cardId={cardId}
+                            section={section}
+                        />
                 </div>
     }
 }
