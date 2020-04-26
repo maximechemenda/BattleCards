@@ -3,21 +3,22 @@ import CardType from './CardType';
 import '../App.css';
 
 export default ({
-    cards,
+    cards, battleCardId,
     onCardClick=() => {}, onEdit=() => {}, onDelete=() => {}
   }) => (
     <div>
-        {cards.map(({id,editing,text,type}) => 
-        <div key={id}>
+        {cards.map(({cardId,editing,text,type}) => 
+        <div key={cardId}>
                 <CardType className="cards"
                     type={type} 
                     text={text} 
-                    onClick={onCardClick.bind(null, id)}
+                    onClick={onCardClick.bind(null, cardId)}
                     editing={editing}
                     //value={text}
                     //onEdit={onEdit.bind(null, id)}
                     onEdit={onEdit}
-                    id = {id}
+                    cardId = {cardId}
+                    battleCardId = {battleCardId}
                     //onDelete = {onDelete.bind(null,id)} />
                     onDelete = {onDelete} />
                      

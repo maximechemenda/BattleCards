@@ -8,20 +8,21 @@ export default ({cards, onCardClick, onEdit, onDelete,
                 isEmptyAddButtonState, triggerAddCardState, 
                 isAddCardState, addBasicCard, addWarningCard,
                 addDealOfferCard, addCommonAnswerCard,
-                deleteBattleCard, id
+                deleteBattleCard, battleCardId //id refers to battleCardId
                 }) => (
 
         <div className="battleCard">   
-            <button onClick={deleteBattleCard.bind(null,id)}>Delete BattleCard</button>        
+            <button onClick={deleteBattleCard.bind(null,battleCardId)}>Delete BattleCard</button>        
             <Cards
             cards={cards}
             onCardClick={onCardClick}
             onEdit={onEdit}
             onDelete={onDelete}
+            battleCardId = {battleCardId}
             />
 
             <div>
-            {isEmptyAddButtonState && <AddCardButton addCard={triggerAddCardState} />}
+            {isEmptyAddButtonState && <AddCardButton addCard={triggerAddCardState} battleCardId={battleCardId}/>}
 
             {isAddCardState && 
             <NewCardMenu 
@@ -29,6 +30,7 @@ export default ({cards, onCardClick, onEdit, onDelete,
                 addWarningCard = {addWarningCard}
                 addDealOfferCard = {addDealOfferCard}
                 addCommonAnswerCard = {addCommonAnswerCard}
+                battleCardId={battleCardId} //id of battlecard
             />}
 
             </div>

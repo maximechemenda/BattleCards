@@ -5,23 +5,24 @@ export default ({battleCards, cards, triggerAddBattleCardState, activateCardEdit
                 onDelete, isEmptyAddButtonState, triggerAddCardState, isAddCardState, addBasicCard,
                 addWarningCard, addDealOfferCard, addCommonAnswerCard, deleteBattleCard}) => (
     <div>
-        {battleCards.map(({id}) => 
-        <div key={id}>
+        
+        {battleCards.map((battleCard) => 
+        <div key={battleCard.battleCardId}>
                 <BattleCard 
                     onClick={triggerAddBattleCardState}
-                    cards={cards}
+                    cards={battleCard.cards}
                     onCardClick={activateCardEdit}
                     onEdit={editCard}
                     onDelete={onDelete}
-                    isEmptyAddButtonState={isEmptyAddButtonState}
+                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                     triggerAddCardState={triggerAddCardState}
-                    isAddCardState={isAddCardState}
+                    isAddCardState={battleCard.isAddCardState}
                     addBasicCard={addBasicCard}
                     addWarningCard={addWarningCard}
                     addDealOfferCard={addDealOfferCard}
                     addCommonAnswerCard={addCommonAnswerCard}
                     deleteBattleCard={deleteBattleCard}
-                    id={id}/>
+                    battleCardId={battleCard.battleCardId}/>
         </div> 
     )}</div>
 )

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default ({addBasicCard, addWarningCard, addDealOfferCard, addCommonAnswerCard}) => (
+export default ({addBasicCard, addWarningCard, addDealOfferCard, addCommonAnswerCard,battleCardId}) => (
     <div>
-        <button onClick = {addBasicCard}>Basic Card</button>
+        <button onClick = {addBasicCard.bind(null,battleCardId)}>Basic Card</button>
         <button onClick = {addWarningCard}>Warning Card</button>
         <button onClick = {addDealOfferCard}>Deal Offer Card</button>
         <button onClick = {addCommonAnswerCard}>Common Answer Card</button>
