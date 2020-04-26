@@ -54,7 +54,7 @@ class BasicCard extends React.Component {
                         {/*<Editable
                             editing={editing}
                             value={text}
-                        onEdit={onEdit.bind(null, cardId)} />*/   }   
+                        onEdit={onEdit.bind(null, cardId)} />*/}   
                 </div>   
     }
 }
