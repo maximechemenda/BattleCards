@@ -4,29 +4,31 @@ import AddCardButton from './AddCardButton';
 import NewCardMenu from './NewCardMenu';
 import '../App.css';
 
-export default ({cards, onCardClick, onEdit, onDelete, 
+export default ({cards, activateCardEdit, editCard, onDelete, 
                 isEmptyAddButtonState, triggerAddCardState, 
                 isAddCardState, deleteBattleCard, battleCardId, 
-                addCard 
+                addCard, section
                 }) => (
 
         <div className="battleCard">   
-            <button onClick={deleteBattleCard.bind(null,battleCardId)}>Delete BattleCard</button>        
+            <button onClick={deleteBattleCard.bind(null,battleCardId, section)}>Delete BattleCard</button>        
             <Cards
             cards={cards}
-            //onCardClick={onCardClick}
-            //onEdit={onEdit}
+            activateCardEdit={activateCardEdit} //activeCardEdit
+            editCard={editCard} //editCard
             onDelete={onDelete}
             battleCardId = {battleCardId}
+            section = {section}
             />
 
             <div>
-            {isEmptyAddButtonState && <AddCardButton addCard={triggerAddCardState} battleCardId={battleCardId}/>}
+            {isEmptyAddButtonState && <AddCardButton section={section} addCard={triggerAddCardState} battleCardId={battleCardId}/>}
 
             {isAddCardState && 
             <NewCardMenu 
                 addCard = {addCard}
                 battleCardId={battleCardId} 
+                section = {section}
             />}
 
             </div>

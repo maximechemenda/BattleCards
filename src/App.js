@@ -3,54 +3,346 @@ import uuid from 'uuid';
 import BattleCards from './components/BattleCards';
 import BattleCardsMenu from './components/BattleCardsMenu';
 import ObjectionsBattleCards from './components/ObjectionsBattleCards';
+import CompetitorsBattleCards from './components/CompetitorsBattleCards';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      objectionBattleCards: [],
-      isEmptyObjectionState: true
-      
+      objectionsBattleCards: [],
+      isEmptyObjectionsState: true,
+      competitorsBattleCards: [],
+      isEmptyCompetitorsState: true
     };
-
-    /*
-    this.state = {
-      battleCards: [],
-      isEmptyBattleCardButtonState: true,
-      isAddBattleCardState: false
-    };
-    */
   }
 
   render() {
-    //const {battleCards} = this.state;
-    const {objectionBattleCards, isEmptyObjectionState} = this.state;
+    const {objectionsBattleCards, isEmptyObjectionsState,
+          competitorsBattleCards, isEmptyCompetitorsState} = this.state;
 
     return (
       
       <div>
-        <BattleCardsMenu triggerObjectionState={this.triggerObjectionState}/>
+        <BattleCardsMenu triggerSectionState={this.triggerSectionState}/>
         
-        {!isEmptyObjectionState && 
+        {!isEmptyObjectionsState && 
         <ObjectionsBattleCards 
-          battleCards={objectionBattleCards}
+          battleCards={objectionsBattleCards}
           addCard={this.addCard}
           onDelete={this.deleteCard}
           deleteBattleCard={this.deleteBattleCard}
           triggerAddCardState={this.triggerAddCardState}
-          addObjectionBattleCard={this.addObjectionBattleCard}
+          addBattleCard={this.addBattleCard}
+          activateCardEdit={this.activateCardEdit}
+          editCard={this.editCard}
+          />}
+
+        {!isEmptyCompetitorsState && 
+        <CompetitorsBattleCards 
+          battleCards={competitorsBattleCards}
+          addCard={this.addCard}
+          onDelete={this.deleteCard}
+          deleteBattleCard={this.deleteBattleCard}
+          triggerAddCardState={this.triggerAddCardState}
+          addBattleCard={this.addBattleCard}
+          activateCardEdit={this.activateCardEdit}
+          editCard={this.editCard}
           />}
       </div>  
     );
   }
 
+
+  ////////////////////////////  FUNCTIONS ///////////////////////////
+
+  //I only did this for objections, fon't forget to do it for the others
+  /* activateCardEdit = (battleCardId, cardId) => {
+    this.setState({
+      objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+        if (battleCard.battleCardId === battleCardId) {
+          battleCard.cards.map(card => {
+            if(card.cardId === cardId) {
+              card.editing = true;
+            }
+            return card;
+          })
+        }
+      })
+    });
+  } */
+
+  activateCardEdit = (battleCardId, cardId, section) => {
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+          if (battleCard.battleCardId === battleCardId) {
+              battleCard.cards = battleCard.cards.map(card => { 
+              if(card.cardId === cardId) {
+                card.editing = true;
+              }
+              return card;
+            })
+          }
+          return battleCard;
+        })
+      });
+    }
+    if (section === 'competitors') {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.map(battleCard => {
+          if (battleCard.battleCardId === battleCardId) {
+              battleCard.cards = battleCard.cards.map(card => { 
+              if(card.cardId === cardId) {
+                card.editing = true;
+              }
+              return card;
+            })
+          }
+          return battleCard;
+        })
+      });
+    }
+
+    
+  }
+
+  editCard = (text, cardId, battleCardId, section) => {
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+          if (battleCard.battleCardId === battleCardId) {
+            battleCard.cards.map(card => {
+              if(card.cardId === cardId) {
+                card.editing = false;
+                card.text = text;
+              }
+              return card;
+            })
+          }
+          return battleCard;
+        })
+      });
+    }
+    if (section === 'competitors') {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.map(battleCard => {
+          if (battleCard.battleCardId === battleCardId) {
+            battleCard.cards.map(card => {
+              if(card.cardId === cardId) {
+                card.editing = false;
+                card.text = text;
+              }
+              return card;
+            })
+          }
+          return battleCard;
+        })
+      });
+    }
+  }
+
+  triggerSectionState = (section) => {
+    if (section === 'objections') {
+      this.setState({
+        isEmptyObjectionsState: false,
+        isEmptyCompetitorsState: true
+      })
+    }
+    if (section === 'competitors') {
+      this.setState({
+        isEmptyObjectionsState: true,
+        isEmptyCompetitorsState: false
+      })
+    }
+  }
+
+  addBattleCard = (section) => {
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.concat([{
+          battleCardId: uuid.v4(),
+          cards: [],
+          isEmptyAddButtonState: true,
+          isAddCardState: false
+        }]),
+      })
+    }
+    if (section === 'competitors') {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.concat([{
+          battleCardId: uuid.v4(),
+          cards: [],
+          isEmptyAddButtonState: true,
+          isAddCardState: false
+        }]),
+      })
+    }
+  }
+
+  deleteBattleCard = (battleCardId, section, e) => {
+    // Avoid bubbling to edit
+    e.stopPropagation();
+
+    if (section === ('objections')) {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.filter(battleCard => battleCard.battleCardId !== battleCardId)
+      });
+    }
+    if (section === ('competitors')) {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.filter(battleCard => battleCard.battleCardId !== battleCardId)
+      });
+    }
+    
+  }
+  
+  //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
+
+  triggerAddCardState = (battleCardId, section) => { 
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) {// finds the battleCard where we want to add a card
+            battleCard.isEmptyAddButtonState = false;
+            battleCard.isAddCardState= true;
+            
+          }
+          return battleCard;
+        })
+      });
+    }
+
+    if (section === 'competitors') {
+      this.setState({
+         competitorsBattleCards: this.state.competitorsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) {// finds the battleCard where we want to add a card
+            battleCard.isEmptyAddButtonState = false;
+            battleCard.isAddCardState= true;
+            
+          }
+          return battleCard;
+        })
+      });
+    }
+    
+  }
+
+  addCard = (battleCardId, type, section) => { 
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) { // finds the battleCard where we want to add a card
+            battleCard.isEmptyAddButtonState = true;
+            battleCard.isAddCardState = false;
+            battleCard.cards = battleCard.cards.concat([{
+              cardId: uuid.v4(),
+              type: type,
+              text: 'hello',
+              editing: false
+            }])
+          }
+          return battleCard;
+        })
+      });
+    }
+    if (section === 'competitors') {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) { // finds the battleCard where we want to add a card
+            battleCard.isEmptyAddButtonState = true;
+            battleCard.isAddCardState= false;
+            battleCard.cards = battleCard.cards.concat([{
+              cardId: uuid.v4(),
+              type: type,
+              text: '',
+              editing: false
+            }])
+          }
+          return battleCard;
+        })
+      });
+    }
+    
+  }
+
+   //////////////////////////////  TO DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
+  deleteCard = (battleCardId, cardId, section, e) => {
+    // Avoid bubbling to edit
+    e.stopPropagation();
+
+    if (section === 'objections') {
+      this.setState({
+        objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) {
+            battleCard.cards = battleCard.cards.filter(card => card.cardId !== cardId)
+          }
+          return battleCard;
+        })
+      });
+    }
+    if (section === 'competitors') {
+      this.setState({
+        competitorsBattleCards: this.state.competitorsBattleCards.map(battleCard => {
+          if(battleCard.battleCardId === battleCardId) {
+            battleCard.cards = battleCard.cards.filter(card => card.cardId !== cardId)
+          }
+          return battleCard;
+        })
+      });
+    }
+    
+  }
+
+   //////////////////////////////  TO EDIT ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
+   
+   
+
+
+   /*
+   activateCardEdit = (id) => {
+    this.setState({
+      cards: this.state.cards.map(card => {
+        if(card.id === id) {
+          card.editing = true;
+        }
+
+        return card;
+      })
+    });
+  }
+
+  editCard = (id, text) => {
+    this.setState({
+      cards: this.state.cards.map(card => {
+        if(card.id === id) {
+          card.editing = false;
+          card.text = text;
+        }
+
+        return card;
+      })
+    });
+  }
+  */
+  
+}
+
+/*
   triggerObjectionState = () => {
     console.log('entering triggerObjectionState');
     this.setState({
-      isEmptyObjectionState: false
+      isEmptyObjectionsState: false
     })
   }
+
+  triggerCompetitorsState = () => {
+    console.log('entering triggerObjectionState');
+    this.setState({
+      isEmptyCompetitorsState: false
+    })
+  }
+  */
 
 /*
 export default class App extends React.Component {
@@ -90,9 +382,10 @@ export default class App extends React.Component {
 
   //////////////////////////////  TO ADD OR DELETE A BATTLE CARD //////////////////////////
 
-  addObjectionBattleCard = () => {
+  /*
+  addObjectionsBattleCard = () => {
     this.setState({
-      objectionBattleCards: this.state.objectionBattleCards.concat([{
+      objectionsBattleCards: this.state.objectionsBattleCards.concat([{
         battleCardId: uuid.v4(),
         cards: [],
         isEmptyAddButtonState: true,
@@ -101,7 +394,18 @@ export default class App extends React.Component {
     })
   }
 
+  addCompetitorsBattleCard = () => {
+    this.setState({
+      competitorssBattleCards: this.state.competitorsBattleCards.concat([{
+        battleCardId: uuid.v4(),
+        cards: [],
+        isEmptyAddButtonState: true,
+        isAddCardState: false
+      }]),
+    })
+  }
 
+  /*
   addBattleCard = () => {
     this.setState({
       battleCards: this.state.battleCards.concat([{
@@ -114,17 +418,6 @@ export default class App extends React.Component {
     })
   }
 
-
-  deleteBattleCard = (battleCardId, e) => {
-    // Avoid bubbling to edit
-    e.stopPropagation();
-
-    this.setState({
-      objectionBattleCards: this.state.objectionBattleCards.filter(battleCard => battleCard.battleCardId !== battleCardId)
-    });
-  }
-
-  /*
   deleteBattleCard = (battleCardId, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
@@ -135,82 +428,3 @@ export default class App extends React.Component {
   }
   */
 
-  //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
-
-  triggerAddCardState = (battleCardId) => { 
-    this.setState({
-      objectionBattleCards: this.state.objectionBattleCards.map(battleCard => {
-        if(battleCard.battleCardId === battleCardId) {// finds the battleCard where we want to add a card
-          battleCard.isEmptyAddButtonState = false;
-          battleCard.isAddCardState= true;
-          
-        }
-        return battleCard;
-      })
-    });
-  }
-
-  addCard = (battleCardId, type) => { 
-    this.setState({
-      objectionBattleCards: this.state.objectionBattleCards.map(battleCard => {
-        if(battleCard.battleCardId === battleCardId) { // finds the battleCard where we want to add a card
-          battleCard.isEmptyAddButtonState = true;
-          battleCard.isAddCardState= false;
-          battleCard.cards = battleCard.cards.concat([{
-            cardId: uuid.v4(),
-            type: type
-          }])
-        }
-        return battleCard;
-      })
-    });
-  }
-
-  
-
-   //////////////////////////////  TO DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
-  deleteCard = (battleCardId, cardId, e) => {
-    // Avoid bubbling to edit
-    e.stopPropagation();
-
-    this.setState({
-      objectionBattleCards: this.state.objectionBattleCards.map(battleCard => {
-        if(battleCard.battleCardId === battleCardId) {
-          battleCard.cards = battleCard.cards.filter(card => card.cardId !== cardId)
-        }
-        return battleCard;
-      })
-      //cards: this.state.cards.filter(card => card.id !== id)
-    });
-  }
-
-   //////////////////////////////  TO EDIT ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
-
-   /* THESE ARE NOT USED BUT I KEEP THEM JUST IN CASE I WANT TO USE THE COMPONENT "EDITABLE" AGAIN
-   
-   activateCardEdit = (id) => {
-    this.setState({
-      cards: this.state.cards.map(card => {
-        if(card.id === id) {
-          card.editing = true;
-        }
-
-        return card;
-      })
-    });
-  }
-
-  editCard = (id, text) => {
-    this.setState({
-      cards: this.state.cards.map(card => {
-        if(card.id === id) {
-          card.editing = false;
-          card.text = text;
-        }
-
-        return card;
-      })
-    });
-  }
-  */
-}

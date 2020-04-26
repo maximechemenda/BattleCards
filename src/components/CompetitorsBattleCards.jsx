@@ -4,13 +4,13 @@ import BattleCard from './BattleCard';
 export default ({activateCardEdit, editCard, battleCards, addCard, triggerAddBattleCardState, 
                 onDelete, triggerAddCardState, deleteBattleCard, addBattleCard}) => (
     <div>
-        <button onClick={addBattleCard.bind(null, 'objections')}>+</button>
+        <button onClick={addBattleCard.bind(null, 'competitors')}>+</button>
         {battleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
-                <BattleCard 
+                <BattleCard
                     activateCardEdit={activateCardEdit}
                     editCard={editCard}
-                    section = {'objections'}
+                    section = {'competitors'}
                     onClick={triggerAddBattleCardState}
                     cards={battleCard.cards}
                     addCard={addCard}
