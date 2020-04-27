@@ -261,7 +261,7 @@ export default class App extends React.Component {
   }
 
 
-  /* addBattleCard = (section) => {
+   addBattleCard = (section) => {
     if (section === 'objections') {
       this.setState({
         objectionsBattleCards: this.state.objectionsBattleCards.concat([{
@@ -302,9 +302,9 @@ export default class App extends React.Component {
         }]),
       })
     }
-  } */
+  } 
 
-  /* deleteBattleCard = (battleCardId, section, e) => {
+   deleteBattleCard = (battleCardId, section, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
 
@@ -329,11 +329,11 @@ export default class App extends React.Component {
       });
     }
     
-  } */
+  } 
   
   //////////////////////////////  TO ADD OR DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
 
-  /* triggerAddCardState = (battleCardId, section) => { 
+   triggerAddCardState = (battleCardId, section) => { 
     if (section === 'objections') {
       this.setState({
         objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
@@ -382,10 +382,10 @@ export default class App extends React.Component {
         })
       });
     }
-  } */
+  } 
 
 
-  /* addCard = (battleCardId, type, section) => { 
+   addCard = (battleCardId, type, section) => { 
     if (section === 'objections') {
       this.setState({
         objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
@@ -455,9 +455,9 @@ export default class App extends React.Component {
       });
     }
     
-  } */
+  } 
 
-  /* deleteCard = (battleCardId, cardId, section, e) => {
+   deleteCard = (battleCardId, cardId, section, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
 
@@ -501,5 +501,5 @@ export default class App extends React.Component {
         })
       });
     }
-  } */
+  } 
 }

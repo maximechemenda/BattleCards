@@ -3,7 +3,7 @@ import uuid from 'uuid';
 
 
 export const addBattleCard = () => ({
-  type: 'ADD_BATTLE_CARD',
+  type: 'ADD_BATTLECARD',
   battleCardId: uuid.v4(),
   cards: [],
   isEmptyAddButtonState: true,
@@ -11,7 +11,7 @@ export const addBattleCard = () => ({
 })
 
 export const deleteBattleCard = battleCardId => ({
-  type: 'DELETE_BATTLE_CARD',
+  type: 'DELETE_BATTLECARD',
   battleCardId
 })
 
