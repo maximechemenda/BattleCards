@@ -38,13 +38,29 @@
   }
 }
 
+/*
+  
+  */
+
 .battleCard {
+
+  background-color:rgb(228, 222, 222);  
+
   max-height: 700px;
   width: 500px;
   overflow: auto;
   border-style: ridge;
   border-width: '10px 10px 10px 10px';
-  background-color:rgb(228, 222, 222);
+  
+
+  min-height: 100px;
+  float: left;
+  position: relative;
+  padding: 15px;
+  padding-top: 8px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
 }
 
 .cards {
@@ -62,4 +78,22 @@
 .addCardButton {
   background-color: rgb(93, 151, 240);
   float: center;
+}
+
+.leftMenu {
+  width: 160px;
+  min-height: 400px;
+  background: white;
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 0px 10px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: 0.5s;
+  border-style: solid;
+  border-color: black;
+  font-size: 20px;
+  text-align: center;
+
 }

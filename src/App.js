@@ -1,6 +1,5 @@
 import React from 'react';
 import uuid from 'uuid';
-import BattleCards from './components/BattleCards';
 import BattleCardsMenu from './components/BattleCardsMenu';
 import ObjectionsBattleCards from './components/ObjectionsBattleCards';
 import CompetitorsBattleCards from './components/CompetitorsBattleCards';
@@ -22,6 +21,7 @@ export default class App extends React.Component {
       isEmptyDiscoveriesState: true
     };
   }
+
 
   render() {
     const {objectionsBattleCards, isEmptyObjectionsState,
@@ -86,25 +86,7 @@ export default class App extends React.Component {
     );
   }
 
-
-  ////////////////////////////  FUNCTIONS ///////////////////////////
-
-  //I only did this for objections, fon't forget to do it for the others
-  /* activateCardEdit = (battleCardId, cardId) => {
-    this.setState({
-      objectionsBattleCards: this.state.objectionsBattleCards.map(battleCard => {
-        if (battleCard.battleCardId === battleCardId) {
-          battleCard.cards.map(card => {
-            if(card.cardId === cardId) {
-              card.editing = true;
-            }
-            return card;
-          })
-        }
-      })
-    });
-  } */
-
+ //////////////////////////////  TO EDIT ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   activateCardEdit = (battleCardId, cardId, section) => {
     if (section === 'objections') {
       this.setState({
@@ -235,7 +217,14 @@ export default class App extends React.Component {
     }
   }
 
-  triggerSectionState = (section) => {
+
+
+
+
+  
+   //////////////////////////////  TO ADD OR DELETE DIFFERENT KINDS OF BATTLECARDS //////////////////////////
+
+   triggerSectionState = (section) => {
     if (section === 'objections') {
       this.setState({
         isEmptyObjectionsState: false,
@@ -340,7 +329,7 @@ export default class App extends React.Component {
     
   }
   
-  //////////////////////////////  TO ADD ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
+  //////////////////////////////  TO ADD OR DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
 
   triggerAddCardState = (battleCardId, section) => { 
     if (section === 'objections') {
@@ -466,7 +455,6 @@ export default class App extends React.Component {
     
   }
 
-   //////////////////////////////  TO DELETE ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
   deleteCard = (battleCardId, cardId, section, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
@@ -513,138 +501,4 @@ export default class App extends React.Component {
     }
     
   }
-
-
-
-
-   //////////////////////////////  TO EDIT ONE OF THE DIFFERENT KIND OF CARDS //////////////////////////
-
-   /*
-   activateCardEdit = (id) => {
-    this.setState({
-      cards: this.state.cards.map(card => {
-        if(card.id === id) {
-          card.editing = true;
-        }
-
-        return card;
-      })
-    });
-  }
-
-  editCard = (id, text) => {
-    this.setState({
-      cards: this.state.cards.map(card => {
-        if(card.id === id) {
-          card.editing = false;
-          card.text = text;
-        }
-
-        return card;
-      })
-    });
-  }
-  */
-  
 }
-
-/*
-  triggerObjectionState = () => {
-    console.log('entering triggerObjectionState');
-    this.setState({
-      isEmptyObjectionsState: false
-    })
-  }
-
-  triggerCompetitorsState = () => {
-    console.log('entering triggerObjectionState');
-    this.setState({
-      isEmptyCompetitorsState: false
-    })
-  }
-  */
-
-/*
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      battleCards: [],
-      isEmptyBattleCardButtonState: true,
-      isAddBattleCardState: false
-    };
-  }
-
-  render() {
-    const {battleCards} = this.state;
-
-    return (
-      
-      <div>
-        <BattleCardsMenu />
-        <button onClick={this.addBattleCard}>+</button>
-      <div>
-        <BattleCards 
-          battleCards={battleCards}
-          addCard={this.addCard}
-          onCardClick={this.activateCardEdit}
-          onEdit={this.editCard}
-          onDelete={this.deleteCard}
-          deleteBattleCard={this.deleteBattleCard}
-          triggerAddCardState={this.triggerAddCardState}
-          />
-      </div>
-      </div>  
-    );
-  } 
-  */
-
-  //////////////////////////////  TO ADD OR DELETE A BATTLE CARD //////////////////////////
-
-  /*
-  addObjectionsBattleCard = () => {
-    this.setState({
-      objectionsBattleCards: this.state.objectionsBattleCards.concat([{
-        battleCardId: uuid.v4(),
-        cards: [],
-        isEmptyAddButtonState: true,
-        isAddCardState: false
-      }]),
-    })
-  }
-
-  addCompetitorsBattleCard = () => {
-    this.setState({
-      competitorssBattleCards: this.state.competitorsBattleCards.concat([{
-        battleCardId: uuid.v4(),
-        cards: [],
-        isEmptyAddButtonState: true,
-        isAddCardState: false
-      }]),
-    })
-  }
-
-  /*
-  addBattleCard = () => {
-    this.setState({
-      battleCards: this.state.battleCards.concat([{
-        battleCardId: uuid.v4(),
-        cards: [],
-        isEmptyAddButtonState: true,
-        isAddCardState: false
-
-      }])
-    })
-  }
-
-  deleteBattleCard = (battleCardId, e) => {
-    // Avoid bubbling to edit
-    e.stopPropagation();
-
-    this.setState({
-      battleCards: this.state.battleCards.filter(battleCard => battleCard.battleCardId !== battleCardId)
-    });
-  }
-  */
-

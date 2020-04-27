@@ -12,9 +12,9 @@ export default ({cards, activateCardEdit, editCard, onDelete,
 
         <div className="battleCard">   
             <button onClick={deleteBattleCard.bind(null,battleCardId, section)}>Delete BattleCard</button>        
-            <div>
-            <h1>Objection</h1>
-            </div>
+            <ObjectionsBattleCardHeader />
+
+
             <Cards
             cards={cards}
             activateCardEdit={activateCardEdit} //activeCardEdit
@@ -37,3 +37,17 @@ export default ({cards, activateCardEdit, editCard, onDelete,
             </div>
         </div> 
 )
+
+class ObjectionsBattleCardHeader extends React.Component {
+    render () {
+        
+        const {} = this.props;
+
+        return <div>
+                <textarea placeholder="Title of Battelcard"></textarea>
+                
+                <h4>Good arguments/bad arguments</h4>
+                        
+              </div>   
+    }
+}
