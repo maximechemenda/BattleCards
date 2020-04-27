@@ -1,3 +1,4 @@
+/* 
 import React from 'react';
 import uuid from 'uuid';
 import BattleCardsMenu from './components/BattleCardsMenu';
@@ -499,6 +500,6 @@ export default class App extends React.Component {
         })
       });
     }
-    
   }
 }
+ */

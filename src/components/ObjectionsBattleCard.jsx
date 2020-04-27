@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import Cards from './Cards';
 import AddCardButton from './AddCardButton';
 import NewCardMenu from './NewCardMenu';
@@ -45,9 +45,9 @@ class ObjectionsBattleCardHeader extends React.Component {
 
         return <div>
                 <textarea placeholder="Title of Battelcard"></textarea>
-                
+
                 <h4>Good arguments/bad arguments</h4>
                         
               </div>   
     }
-}
+} */

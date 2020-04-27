@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import CardType from './CardType';
 import '../App.css';
 
@@ -11,21 +11,15 @@ export default ({activateCardEdit, editCard, cards, battleCardId, section, onDel
                     text={text} 
                     activateCardEdit={activateCardEdit}
                     editCard={editCard}
-                    //onClick={onCardClick.bind(null, cardId)} //activeCardEdit
                     editing={editing}
-                    //onEdit={onEdit.bind(null, id)}    //editCard
-                    //onEdit={onEdit} //editCard
+                   
                     cardId = {cardId}
                     battleCardId = {battleCardId}
-                    //onDelete = {onDelete.bind(null,id)} />
                     onDelete = {onDelete}
                     section = {section} />
                      
                 
-        </div> //</CardType> --was going above
+        </div> 
     )}</div>
 )
-
-/*
-<Card onClick={onCardClick.bind(null, id)}>
-</Card> */
+ */

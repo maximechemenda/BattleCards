@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import Editable from './Editable';
 import '../App.css';
 
@@ -120,4 +120,4 @@ class CommonAnswerCard extends React.Component {
                         />
                 </div>
     }
-}
+} */

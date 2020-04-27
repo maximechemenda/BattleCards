@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import '../App.css';
 import ObjectionsBattleCard from './ObjectionsBattleCard';
 
@@ -30,3 +30,4 @@ export default ({activateCardEdit, editCard, battleCards, addCard, triggerAddBat
         </div> 
     )}</div>
 )
+ */
