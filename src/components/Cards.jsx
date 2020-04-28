@@ -8,16 +8,26 @@ import _ from 'lodash'
 import { deleteCard } from '../redux/actions'
 import { addCard } from '../redux/actions'
 import { triggerAddCardState } from '../redux/actions'
+import { activateCardEdit } from '../redux/actions'
+import { editCard} from '../redux/actions'
 import '../App.css'  
 import CardType from './CardType'
 
 
-const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard}) => (
+const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard}) => (
     <div>
         <div>
             {cards.map(card => 
-                <div key={card.id}>
-                    <CardType text={card.text} deleteCard={deleteCard} id={card.id} cardType={card.cardType}/>
+                <div key={card.cardId}>
+                    <CardType 
+                    editing={card.editing} 
+                    text={card.text} 
+                    deleteCard={deleteCard} 
+                    cardId={card.cardId} 
+                    cardType={card.cardType}
+                    activateCardEdit={activateCardEdit}
+                    editCard={editCard}
+                    />
                 </div>   
             )}
         </div> 
@@ -55,21 +65,21 @@ const mapState = (state) => {
     })
 }
 
-export default connect(mapState, { deleteCard, addCard, triggerAddCardState })(Cards);
+export default connect(mapState, { deleteCard, addCard, triggerAddCardState, activateCardEdit, editCard })(Cards);
 
 
 
 
 
 
-/* const card = ({ card, id, toggleTodo }) => (
-    <li className={card.completed ? 'completed' : ''} onClick={() => toggleTodo(id)}>{card.content}</li>
+/* const card = ({ card, cardId, toggleTodo }) => (
+    <li className={card.completed ? 'completed' : ''} onClick={() => toggleTodo(cardId)}>{card.content}</li>
 ) */
 
 /* function Cards({ cards, toggleTodo }) {
     return (
-        _.keys(cards).map((id) => (
-            <card key={id} id={id} toggleTodo={toggleTodo} card={cards[id]} />
+        _.keys(cards).map((cardId) => (
+            <card key={cardId} cardId={cardId} toggleTodo={toggleTodo} card={cards[cardId]} />
         ))
     )
 } */
