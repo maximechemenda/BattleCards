@@ -1,8 +1,7 @@
-import React from 'react';
 import uuid from 'uuid';
-import {FILTER_ALL} from './actionTypes'
-import { ADD_CARD, TOGGLE_TODO, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
-        EDIT_CARD, SET_FILTER } from './actionTypes'
+//import {FILTER_ALL} from './actionTypes'
+import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
+        EDIT_CARD} from './actionTypes'
 
 
 const initialCardState = {
