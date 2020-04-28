@@ -24,6 +24,7 @@ export default ({cards, activateCardEdit, editCard, onDelete,
             section = {section}
             />
 
+            
             <div>
             {isEmptyAddButtonState && <AddCardButton section={section} addCard={triggerAddCardState} battleCardId={battleCardId}/>}
 
@@ -32,7 +33,8 @@ export default ({cards, activateCardEdit, editCard, onDelete,
                 addCard = {addCard}
                 battleCardId={battleCardId} 
                 section = {section}
-            />}
+            />} 
+            
 
             </div>
         </div> 

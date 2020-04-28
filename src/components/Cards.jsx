@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import CardType from './CardType';
 import '../App.css';
 
@@ -22,4 +22,3 @@ export default ({activateCardEdit, editCard, cards, battleCardId, section, onDel
         </div> 
     )}</div>
 )
- */

@@ -1,3 +1,19 @@
+import React from 'react';
+import AddBattleCardButton from './components/AddBattleCardButton';
+
+
+const App = () => (
+  <div>
+    <AddBattleCardButton />
+  </div>
+)
+
+export default App
+
+
+
+
+/* 
 
 import React from 'react';
 import uuid from 'uuid';
@@ -503,3 +519,4 @@ export default class App extends React.Component {
     }
   } 
 }
+ */

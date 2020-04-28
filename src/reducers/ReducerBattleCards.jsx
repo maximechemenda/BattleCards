@@ -1,6 +1,9 @@
+import uuid from 'uuid';
+
 const battleCards = (state = [], action) => {
   switch (action.type) {
     case 'ADD_BATTLECARD':
+    console.log('entering addBattleCard');
       return [
         ...state,
         {
@@ -10,8 +13,10 @@ const battleCards = (state = [], action) => {
           isAddCardState: action.isAddCardState
         }
       ]
+      
     case 'DELETE_BATTLECARD':
       state.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+      break;
     case 'ADD_CARD':
       return state.map(battleCard => {
         if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card

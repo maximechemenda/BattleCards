@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import Cards from './Cards';
 import AddCardButton from './AddCardButton';
 import NewCardMenu from './NewCardMenu';
@@ -50,4 +50,4 @@ class ObjectionsBattleCardHeader extends React.Component {
                         
               </div>   
     }
-} */
+} 
