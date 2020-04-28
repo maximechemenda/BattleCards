@@ -1,56 +1,64 @@
 import React from 'react';
 import uuid from 'uuid';
 import {FILTER_ALL} from './actionTypes'
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SET_FILTER } from './actionTypes'
+import { ADD_CARD, TOGGLE_TODO, DELETE_CARD, TRIGGER_ADD_CARD_STATE, SET_FILTER } from './actionTypes'
 
 
-const initialTodoState = {
-    todos: [
+const initialCardState = {
+    cards: [
         {
             id: uuid.v4(),
             text: 'Content 1',
-            completed: false
+            cardType: 'basic'
         }
-    ]
+    ],
+    isEmptyAddButtonState: true
 }
 
-export const todos = (state = initialTodoState, action) => {
+export const cards = (state = initialCardState, action) => {
     switch (action.type) {
-        case ADD_TODO: {
+        case ADD_CARD: {
             return ({
-                    todos: state.todos.concat([{
+                    cards: state.cards.concat([{
                         id: action.id,
-                        text: 'NEWWW TASK',
-                        completed: false
-                    }])
+                        text: 'NEW TASK',
+                        cardType: action.cardType
+                    }]),
+                    isEmptyAddButtonState: true
             })
         }    
-        case DELETE_TODO:{
+        case DELETE_CARD:{
             return ({
-                todos: state.todos.filter(todo => todo.id !== action.id)
+                
+                cards: state.cards.filter(card => card.id !== action.id)
             })
-            
         }
+        case TRIGGER_ADD_CARD_STATE:{
+            return ({
+                ...state,
+                isEmptyAddButtonState: !state.isEmptyAddButtonState
+               
+            })
+        } 
         default: {
             return state
         }
     }
 }
+  
 
-
-export const visibilityFilter = (state = {activeFilter: FILTER_ALL}, action) => {
+/* export const visibilityFilter = (state = {activeFilter: FILTER_ALL}, action) => {
     switch (action.type) {
         case SET_FILTER: {
             return ({
                 activeFilter: action.filter
             })
         }
-
         default: {
             return state;
         }
     }
-}
+} */
 
 
 
@@ -59,7 +67,7 @@ export const visibilityFilter = (state = {activeFilter: FILTER_ALL}, action) => 
 
 /* const initialTodoState = {
     nextId: 2,
-    todos:
+    cards:
     {
         1: {
             content: 'Content 111',
@@ -68,14 +76,14 @@ export const visibilityFilter = (state = {activeFilter: FILTER_ALL}, action) => 
     }
 }
 
-export const todos = (state = initialTodoState, action) => {
+export const cards = (state = initialTodoState, action) => {
     switch (action.type) {
-        case ADD_TODO: {
+        case ADD_CARD: {
             return (
                 {
                     ...state,
-                    todos: {
-                        ...state.todos,
+                    cards: {
+                        ...state.cards,
                         [state.nextId]: {
                             completed: false,
                             content: action.content
@@ -91,11 +99,11 @@ export const todos = (state = initialTodoState, action) => {
             return(
                 {
                     ...state,
-                    todos:{
-                        ...state.todos,
+                    cards:{
+                        ...state.cards,
                         [action.payload.id]:{
-                            ...state.todos[action.payload.id],
-                            completed: !(state.todos[action.payload.id].completed)
+                            ...state.cards[action.payload.id],
+                            completed: !(state.cards[action.payload.id].completed)
                         }
                     }
                 }
