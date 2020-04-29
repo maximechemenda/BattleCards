@@ -26,7 +26,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         return  <div>
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
-                        <button className="deleteCardButton" onClick={() => deleteCard(cardId)}>x</button>
+                        <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId)}>x</button>
                         <h2>Warning Card</h2>
                         
                         <Editable
@@ -44,7 +44,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         return  <div>
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
-                        <button className="deleteCardButton" onClick={() => deleteCard(cardId)}>x</button>
+                        <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId)}>x</button>
                         <h2>Deal Offer Card</h2>
                         
                         <Editable
@@ -62,7 +62,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         return  <div>
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
-                        <button className="deleteCardButton" onClick={() => deleteCard(cardId)}>x</button>
+                        <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId)}>x</button>
                         <h2>Common Answer Card</h2>
                         
                         <Editable
