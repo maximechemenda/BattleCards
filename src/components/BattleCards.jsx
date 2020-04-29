@@ -6,7 +6,7 @@ import '../App.css'
 import Cards from './Cards'
 
 
-const BattleCards = ({battleCards, triggerAddBattleCardState, deleteBattleCard}) => (
+const BattleCards = ({addBattleCard, battleCards, triggerAddBattleCardState, deleteBattleCard}) => (
     
     <div>
         <button onClick={() => addBattleCard()}>add BattleCard</button>

@@ -20,6 +20,7 @@ const initialCardState = {
 export const battleCards = (state = initialCardState, action) => {
     switch (action.type) {
         case ADD_BATTLECARD:
+            console.log('entering addbattlecard')
             return ({
                 ...state,
                 battleCards: state.battleCards.concat([{
