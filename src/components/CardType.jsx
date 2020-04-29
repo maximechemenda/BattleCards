@@ -3,12 +3,12 @@ import Editable from './Editable';
 import '../App.css';
 import Edit from './Edit'
 
-export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, editCard}) => {
+export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, editCard, battleCardId}) => {
     if (cardType === 'basic') {
         return  <div>
         
-                    <div className="cards" onClick={() => activateCardEdit(cardId)}>
-                        <button className="deleteCardButton" onClick={() => deleteCard(cardId)}>x</button>
+                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
+                        <button className="deleteCardButton" onClick={() => deleteCard(battleCardId, cardId)}>x</button>
                         <h2>Basic Card</h2>
                         
                         <Editable

@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {cards} from './reducers'
+import {battleCards} from './reducers'
 
-export default createStore(combineReducers({cards}), 
+export default createStore(combineReducers({battleCards}), 
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

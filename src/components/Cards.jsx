@@ -12,7 +12,7 @@ import '../App.css'
 import CardType from './CardType'
 
 
-const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard}) => (
+const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard, battleCardId}) => (
     <div>
         <div>
             {cards.map(card => 
@@ -25,6 +25,7 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
                     cardType={card.cardType}
                     activateCardEdit={activateCardEdit}
                     editCard={editCard}
+                    battleCardId={battleCardId}
                     />
                 </div>   
             )}
@@ -36,19 +37,20 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
             <NewCardMenu 
                 addCard = {addCard}
                 triggerAddCardState={triggerAddCardState}
+                battleCardId={battleCardId}
             />} 
         </div>
     </div>
 )
 
 
-const NewCardMenu = ({addCard, triggerAddCardState}) => (
+const NewCardMenu = ({addCard, triggerAddCardState, battleCardId}) => (
     <div>
         
-        <button onClick = {() => addCard('basic')}>Basic Card</button>
-        <button onClick = {() => addCard('warning')}>Warning Card</button>
-        <button onClick = {() => addCard('dealOffer')}>Deal Offer Card</button>
-        <button onClick = {() => addCard('commonAnswer')}>Common Answer Card</button>
+        <button onClick = {() => addCard(battleCardId, 'basic')}>Basic Card</button>
+        <button onClick = {() => addCard(battleCardId, 'warning')}>Warning Card</button>
+        <button onClick = {() => addCard(battleCardId, 'dealOffer')}>Deal Offer Card</button>
+        <button onClick = {() => addCard(battleCardId, 'commonAnswer')}>Common Answer Card</button>
     </div>
 )
 
@@ -56,14 +58,19 @@ const AddCardButton = ({triggerAddCardState}) => (
     <button className="addCardButton" onClick={() => triggerAddCardState()}>+</button>
 )           
 
-const mapState = (state) => {
+/* const mapState = (state) => {
     return ({
         cards: state.cards.cards,
         isEmptyAddButtonState: state.cards.isEmptyAddButtonState
     })
-}
+} */
 
-export default connect(mapState, { deleteCard, addCard, triggerAddCardState, activateCardEdit, editCard })(Cards);
+export default connect(null, { deleteCard, addCard, triggerAddCardState, activateCardEdit, editCard })(Cards);
+
+
+
+
+
 
 
 
