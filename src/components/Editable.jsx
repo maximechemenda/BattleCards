@@ -1,10 +1,9 @@
 import React from 'react';
-import { editCard } from '../redux/actions'
 import Edit from './Edit'
 
-export default ({editing, cardId, value, editCard, battleCardId}) => {
+export default ({editing, cardId, value, editCard, battleCardId, section}) => {
   if(editing) {
-    return <Edit cardId={cardId} value={value} editCard={editCard} battleCardId={battleCardId}/>
+    return <Edit cardId={cardId} value={value} editCard={editCard} battleCardId={battleCardId} section={section}/>
   }
 
   return <span>{value}</span>;

@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 //import { _ } from 'underscore'
-import _ from 'lodash'
+//import _ from 'lodash'
 import { deleteCard } from '../redux/actions'
 import { addCard } from '../redux/actions'
 import { triggerAddCardState } from '../redux/actions'
@@ -12,7 +12,7 @@ import '../App.css'
 import CardType from './CardType'
 
 
-const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard, battleCardId}) => (
+const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard, battleCardId, section}) => (
     <div>
         <div>
             {cards.map(card => 
@@ -26,36 +26,38 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
                     activateCardEdit={activateCardEdit}
                     editCard={editCard}
                     battleCardId={battleCardId}
+                    section = {section}
                     />
                 </div>   
             )}
         </div> 
         <div>
-            {isEmptyAddButtonState && <AddCardButton battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
+            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
 
             {!isEmptyAddButtonState &&
             <NewCardMenu 
                 addCard = {addCard}
                 triggerAddCardState={triggerAddCardState}
                 battleCardId={battleCardId}
+                section={section}
             />} 
         </div>
     </div>
 )
 
 
-const NewCardMenu = ({addCard, triggerAddCardState, battleCardId}) => (
+const NewCardMenu = ({addCard, triggerAddCardState, battleCardId, section}) => (
     <div>
         
-        <button onClick = {() => addCard(battleCardId, 'basic')}>Basic Card</button>
-        <button onClick = {() => addCard(battleCardId, 'warning')}>Warning Card</button>
-        <button onClick = {() => addCard(battleCardId, 'dealOffer')}>Deal Offer Card</button>
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer')}>Common Answer Card</button>
+        <button onClick = {() => addCard(battleCardId, 'basic', section)}>Basic Card</button>
+        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning Card</button>
+        <button onClick = {() => addCard(battleCardId, 'dealOffer', section)}>Deal Offer Card</button>
+        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer Card</button>
     </div>
 )
 
-const AddCardButton = ({triggerAddCardState, battleCardId}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId)}>+</button>
+const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
+    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
 )           
 
 /* const mapState = (state) => {
