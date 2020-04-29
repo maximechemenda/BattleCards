@@ -117,23 +117,6 @@ const DiscoveriesBattleCards = ({addBattleCard, battleCards, deleteBattleCard}) 
     )}</div>
 )
 
-
-/* const BattleCards = ({addBattleCard, battleCards, deleteBattleCard}) => (
-    
-    <div>
-        <button onClick={() => addBattleCard()}>add BattleCard</button>
-        {battleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <BattleCard
-                    cards={battleCard.cards}
-                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                    deleteBattleCard={deleteBattleCard}
-                    battleCardId={battleCard.battleCardId}/>
-        </div> 
-    )}</div>
-) */
-
-
 const BattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section}) => (
 
         <div className="battleCard">   

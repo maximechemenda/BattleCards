@@ -1,5 +1,4 @@
 import React from 'react';
-import Edit from './Edit'
 
 export default ({editing, cardId, value, editCard, battleCardId, section}) => {
   if(editing) {
@@ -10,36 +9,13 @@ export default ({editing, cardId, value, editCard, battleCardId, section}) => {
 
 } 
 
-/* const Edit = ({value, cardId, editCard}) => {
+const Edit = ({value, cardId, editCard, battleCardId, section}) => (
 
-  return 
-  <input
-    type="text"
-    autoFocus={true}
-    defaultValue={value}
-    onBlur={(e) => editCard(e.target.value, cardId)}
-    //onKeyPress={checkEnter}
-    /> 
-} */
+    <input 
+        type="text" 
+        autoFocus={true} 
+        defaultValue={value} 
+        onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+    />
+)
 
-/* <input
-    type="text"
-    autoFocus={true}
-    defaultValue={value}
-    onBlur={finishEdit}
-    onKeyPress={checkEnter}
-    /> */
-
-/* checkEnter = (e) => {
-  if(e.key === 'Enter') {
-    finishEdit(e);
-  }
-}
-    
-  finishEdit = (e) => {
-    const value = e.target.value;
-
-    if(editCard) {
-      editCard(value, cardId);
-    }
-  } */

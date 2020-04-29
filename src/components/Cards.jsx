@@ -1,8 +1,6 @@
   
 import React from 'react'
 import { connect } from 'react-redux'
-//import { _ } from 'underscore'
-//import _ from 'lodash'
 import { deleteCard } from '../redux/actions'
 import { addCard } from '../redux/actions'
 import { triggerAddCardState } from '../redux/actions'
@@ -59,13 +57,6 @@ const NewCardMenu = ({addCard, triggerAddCardState, battleCardId, section}) => (
 const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
     <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
 )           
-
-/* const mapState = (state) => {
-    return ({
-        cards: state.cards.cards,
-        isEmptyAddButtonState: state.cards.isEmptyAddButtonState
-    })
-} */
 
 export default connect(null, { deleteCard, addCard, triggerAddCardState, activateCardEdit, editCard })(Cards);
 
