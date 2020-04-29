@@ -31,7 +31,7 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
             )}
         </div> 
         <div>
-            {isEmptyAddButtonState && <AddCardButton triggerAddCardState={triggerAddCardState}/>}
+            {isEmptyAddButtonState && <AddCardButton battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
 
             {!isEmptyAddButtonState &&
             <NewCardMenu 
@@ -54,8 +54,8 @@ const NewCardMenu = ({addCard, triggerAddCardState, battleCardId}) => (
     </div>
 )
 
-const AddCardButton = ({triggerAddCardState}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState()}>+</button>
+const AddCardButton = ({triggerAddCardState, battleCardId}) => (
+    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId)}>+</button>
 )           
 
 /* const mapState = (state) => {

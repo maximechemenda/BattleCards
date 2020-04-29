@@ -60,14 +60,16 @@ export const battleCards = (state = initialCardState, action) => {
                       }
                       return battleCard;
                 })
-                
-                
-            
             })
         case TRIGGER_ADD_CARD_STATE:
             return ({
                 ...state,
-                isEmptyAddButtonState: !state.isEmptyAddButtonState
+                battleCards: state.battleCards.map(battleCard => {
+                    if (battleCard.battleCardId === action.battleCardId) {
+                        battleCard.isEmptyAddButtonState = false;
+                    }
+                    return battleCard
+                })
                
             })
         case ACTIVATE_CARD_EDIT: 

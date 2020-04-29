@@ -11,9 +11,10 @@ export const addCard = (battleCardId, cardType) => (
     }
 )
 
-export const triggerAddCardState = () => (
+export const triggerAddCardState = (battleCardId) => (
     {
-        type: TRIGGER_ADD_CARD_STATE
+        type: TRIGGER_ADD_CARD_STATE,
+        battleCardId
     } 
 )
 

@@ -23,13 +23,14 @@ const BattleCards = ({addBattleCard, battleCards, triggerAddBattleCardState, del
 )
 
 
-const BattleCard = ({cards, deleteBattleCard, battleCardId}) => (
+const BattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState}) => (
 
         <div className="battleCard">   
             <button onClick={() => deleteBattleCard(battleCardId)}>Delete BattleCard</button>        
             <Cards
             cards={cards}
             battleCardId = {battleCardId}
+            isEmptyAddButtonState={isEmptyAddButtonState}
             />
 
             {/* <div>
