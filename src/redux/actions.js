@@ -18,26 +18,30 @@ export const triggerAddCardState = () => (
 )
 
 
-export const deleteCard = (battleCardId, cardId) => (
+export const deleteCard = (e, battleCardId, cardId) => (
     {
         type: DELETE_CARD,
         battleCardId,
-        cardId
+        cardId,
+        e
     }
 )
 
 export const activateCardEdit = (battleCardId, cardId) => (
     {
         type: ACTIVATE_CARD_EDIT,
+        battleCardId,
         cardId
     }
 )
 
-export const editCard = (text, cardId) => (
+export const editCard = (text, battleCardId, cardId) => (
     {
         type: EDIT_CARD,
-        text,
-        cardId
+        battleCardId,
+        cardId,
+        text
+        
     }
 )
 

@@ -20,7 +20,6 @@ const initialCardState = {
 export const battleCards = (state = initialCardState, action) => {
     switch (action.type) {
         case ADD_BATTLECARD:
-            console.log('entering addbattlecard')
             return ({
                 ...state,
                 battleCards: state.battleCards.concat([{
@@ -52,6 +51,7 @@ export const battleCards = (state = initialCardState, action) => {
                         })
                     })
         case DELETE_CARD:
+            (action.e).stopPropagation()
             return ({
                 ...state,
                 battleCards: state.battleCards.map(battleCard => {
@@ -72,9 +72,9 @@ export const battleCards = (state = initialCardState, action) => {
             })
         case ACTIVATE_CARD_EDIT: 
             return ({
-                ...state,
                 battleCards: state.battleCards.map(battleCard => {
                     if (battleCard.battleCardId === action.battleCardId) {
+                        
                         battleCard.cards = battleCard.cards.map(card => { 
                         if(card.cardId === action.cardId) {
                           card.editing = true;
@@ -87,15 +87,19 @@ export const battleCards = (state = initialCardState, action) => {
                 })
         case EDIT_CARD:
             return ({
-                ...state,
-                cards: state.cards.map(card => {
-                    if (card.cardId === action.cardId) {
-                        card.editing = false;
-                        card.text = action.text;
+                battleCards: state.battleCards.map(battleCard => {
+                    if (battleCard.battleCardId === action.battleCardId) {
+                        battleCard.cards = battleCard.cards.map(card => {
+                          if(card.cardId === action.cardId) {
+                            card.editing = false;
+                            card.text = action.text;
+                          }
+                          return card;
+                        })
                       }
-                    return card;
-                })
-            })    
+                      return battleCard;
+                    })
+                })    
         default: {
             return state
         }
