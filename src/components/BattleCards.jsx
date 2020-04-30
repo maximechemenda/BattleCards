@@ -140,7 +140,13 @@ const BattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonStat
 
         <div className="battleCard">   
             <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+            <div className="cards">
+                <h2>Objection</h2>
+                <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+                <h3>Bad arguments/good arguments</h3>
+            </div>
+            <br></br>
+
             <Cards
             cards={cards}
             battleCardId = {battleCardId}
