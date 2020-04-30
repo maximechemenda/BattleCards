@@ -3,11 +3,12 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE} from './actionTypes';
 
 
-export const modifyBattleCardTitle = (newValue, battleCardId) => (
+export const modifyBattleCardTitle = (newValue, battleCardId, section) => (
     {
         type: MODIFY_BATTLECARD_TITLE,
         newValue,
-        battleCardId
+        battleCardId,
+        section
     }
 )
 

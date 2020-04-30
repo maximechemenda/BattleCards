@@ -64,15 +64,49 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
         case MODIFY_BATTLECARD_TITLE:
-            return ({
-                ...state,
-                objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                    if (battleCard.battleCardId === action.battleCardId) {
-                        battleCard.titleValue = action.newValue;
-                    }
-                    return battleCard
-                })
-            })
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                battleCard.titleValue = action.newValue;
+                            }
+                            return battleCard
+                        })
+                    })
+                case 'competitors':
+                    return ({
+                        ...state,
+                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                battleCard.titleValue = action.newValue;
+                            }
+                            return battleCard
+                        })
+                    })
+                case 'profiles':
+                    return ({
+                        ...state,
+                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                battleCard.titleValue = action.newValue;
+                            }
+                            return battleCard
+                        })
+                    })
+                case 'discoveries':
+                    return ({
+                        ...state,
+                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                battleCard.titleValue = action.newValue;
+                            }
+                            return battleCard
+                        })
+                    })
+            }
+            
         case ADD_BATTLECARD:
             switch (action.section) {
                 case 'objections':
@@ -91,7 +125,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         competitorsBattleCards: state.competitorsBattleCards.concat([{
                             cards: [],
                             battleCardId: uuid.v4(),
-                            isEmptyAddButtonState: true
+                            isEmptyAddButtonState: true,
+                            titleValue: ''
 
                         }])
                     })
@@ -101,7 +136,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         profilesBattleCards: state.profilesBattleCards.concat([{
                             cards: [],
                             battleCardId: uuid.v4(),
-                            isEmptyAddButtonState: true
+                            isEmptyAddButtonState: true,
+                            titleValue: ''
 
                         }])
                     })
@@ -111,7 +147,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         discoveriesBattleCards: state.discoveriesBattleCards.concat([{
                             cards: [],
                             battleCardId: uuid.v4(),
-                            isEmptyAddButtonState: true
+                            isEmptyAddButtonState: true,
+                            titleValue: ''
 
                         }])
                     })
