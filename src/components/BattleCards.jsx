@@ -2,6 +2,7 @@ import React from 'react'
 import { addBattleCard } from '../redux/actions'
 import { deleteBattleCard } from '../redux/actions'
 import { triggerSectionState } from '../redux/actions'
+import { modifyBattleCardTitle } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
 import Cards from './Cards'
@@ -12,7 +13,9 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         objectionsBattleCards, isEmptyObjectionsState,
         competitorsBattleCards, isEmptyCompetitorsState,
         profilesBattleCards, isEmptyProfilesState,
-        discoveriesBattleCards, isEmptyDiscoveriesState}) => (
+        discoveriesBattleCards, isEmptyDiscoveriesState,
+        modifyBattleCardTitle}) => (
+
     <div>
         <button onClick={() => triggerSectionState('objections')}>Objections</button>
         <button onClick={() => triggerSectionState('competitors')}>Competitors</button>
@@ -20,11 +23,15 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         <button onClick={() => triggerSectionState('discoveries')}>Discoveries</button>
 
 
+
+
+
         {!isEmptyObjectionsState &&
         <ObjectionsBattleCards 
         addBattleCard={addBattleCard}
-        battleCards={objectionsBattleCards}
+        objectionsBattleCards={objectionsBattleCards}
         deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
         />}
 
         {!isEmptyCompetitorsState && 
@@ -53,18 +60,30 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
      
 )    
 
-const ObjectionsBattleCards = ({addBattleCard, battleCards, deleteBattleCard}) => (
+const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
+        <div className='leftMenu'>
+            <h3>Objections</h3>
+            <ul>
+                {console.log(objectionsBattleCards[0])}
+                {objectionsBattleCards.map((battleCard) => 
+                    <li key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                )} 
+            </ul>
+            
+            
+        </div>
         <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
-        {battleCards.map((battleCard) => 
+        {objectionsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <BattleCard
                     cards={battleCard.cards}
                     isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}
-                    section={'objections'}/>
+                    section={'objections'}
+                    modifyBattleCardTitle={modifyBattleCardTitle}/>
         </div> 
     )}</div>
 )
@@ -117,10 +136,11 @@ const DiscoveriesBattleCards = ({addBattleCard, battleCards, deleteBattleCard}) 
     )}</div>
 )
 
-const BattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section}) => (
+const BattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle}) => (
 
         <div className="battleCard">   
-            <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>        
+            <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId)} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
             <Cards
             cards={cards}
             battleCardId = {battleCardId}
@@ -144,9 +164,9 @@ const mapState = (state) => {
         isEmptyProfilesState: state.sectionStates.isEmptyProfilesState,
 
         discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
-        isEmptyDiscoveriesState: state.sectionStates.isEmptyDiscoveriesState
-        
+        isEmptyDiscoveriesState: state.sectionStates.isEmptyDiscoveriesState        
     })
 }
 
-export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState})(BattleCardsMenu);
+export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
+                        modifyBattleCardTitle})(BattleCardsMenu);
