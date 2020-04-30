@@ -7,7 +7,7 @@ import BattleCardsMenu from './components/BattleCards'
 function App() {
   return (
     <Provider store={store}>
-    <div className="App">
+    <div >
       <BattleCardsMenu />
     </div>
     </Provider>
