@@ -44,7 +44,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
     if (cardType === 'dealOffer') {
         return  <div>
         
-                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
+                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
                         <h2>Deal Offer Card</h2>
                         
@@ -63,7 +63,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
     if (cardType === 'commonAnswer') {
         return  <div>
         
-                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId)}>
+                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
                         <h2>Common Answer Card</h2>
                         
