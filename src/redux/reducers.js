@@ -70,50 +70,46 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat([
+                        selectedBattleCards: state.selectedBattleCards.concat(
                             state.objectionsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     return battleCard;
                                 }
                             })
-                        ]) 
-
-                        /* selectedBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                state.selectedBattleCards.concat([battleCard])
-                            }
-                            return state.selectedBattleCards
-                        }) */
+                        ) 
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        selectedBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                state.selectedBattleCards.concat([battleCard])
-                            }
-                            return state.selectedBattleCards
-                        })
+                        selectedBattleCards: state.selectedBattleCards.concat(
+                            state.competitorsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    return battleCard;
+                                }
+                            })
+                        ) 
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        selectedBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                state.selectedBattleCards.concat([battleCard])
-                            }
-                            return state.selectedBattleCards
-                        })
+                        selectedBattleCards: state.selectedBattleCards.concat(
+                            state.profilesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    return battleCard;
+                                }
+                            })
+                        ) 
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        selectedBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                state.selectedBattleCards.concat([battleCard])
-                            }
-                            return state.selectedBattleCards
-                        })
+                        selectedBattleCards: state.selectedBattleCards.concat(
+                            state.discoveriesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    return battleCard;
+                                }
+                            })
+                        ) 
                     })
             }
         case MODIFY_BATTLECARD_TITLE:
