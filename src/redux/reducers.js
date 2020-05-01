@@ -70,15 +70,13 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat(
+                        selectedBattleCards: state.selectedBattleCards.concat([
                             state.objectionsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
-                                    console.log('hellooooo')
-                                    console.log(battleCard)
                                     return battleCard;
                                 }
                             })
-                        ) 
+                        ]) 
 
                         /* selectedBattleCards: state.objectionsBattleCards.map(battleCard => {
                             if (battleCard.battleCardId === action.battleCardId) {
