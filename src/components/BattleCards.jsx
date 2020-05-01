@@ -73,10 +73,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
         </div>
 
-        {console.log('selected')}
+        {console.log('selectedbattlecards')}
         {console.log(selectedBattleCards)}
-        {console.log('objections')}
-        {console.log(objectionsBattleCards)}
 
         {(selectedBattleCards.length === 0) && 
         <IndependentBattleCards
@@ -357,6 +355,9 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 
 const mapState = (state) => {
+    console.log('mapstate')
+    console.log(state.battleCards.selectedBattleCards)
+    console.log(state.battleCards.objectionsBattleCards)
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
         isEmptyObjectionsState: state.sectionStates.isEmptyObjectionsState,

@@ -68,16 +68,30 @@ export const battleCards = (state = initialBattleCardsState, action) => {
         case ADD_TO_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':
-                    return ({
-                        ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat(
-                            state.objectionsBattleCards.map(battleCard => {
-                                if (battleCard.battleCardId === action.battleCardId) {
-                                    return battleCard;
-                                }
-                            })
-                        ) 
-                    })
+                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                        })
+                    } else {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.concat(
+                                state.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                            ) 
+                        })
+                        /* return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.concat(
+                                state.objectionsBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        return battleCard;
+                                    }
+                                    
+                                })
+                            ) 
+                        }) */
+                    }
                 case 'competitors':
                     return ({
                         ...state,
@@ -202,7 +216,6 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'discoveries'
-
                         }])
                     })
             }
