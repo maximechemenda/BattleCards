@@ -2,7 +2,7 @@ import uuid from 'uuid';
 //import {FILTER_ALL} from './actionTypes'
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
-        ADD_TO_SELECTED_BATTLECARDS} from './actionTypes'
+        CHANGE_SELECTED_BATTLECARDS} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -65,7 +65,7 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
-        case ADD_TO_SELECTED_BATTLECARDS:
+        case CHANGE_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':
                     if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {

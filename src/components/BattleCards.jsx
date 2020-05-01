@@ -3,7 +3,7 @@ import { addBattleCard } from '../redux/actions'
 import { deleteBattleCard } from '../redux/actions'
 import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
-import { addToSelectedBattleCards } from '../redux/actions'
+import { changeSelectedBattleCards } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
 import Cards from './Cards'
@@ -16,7 +16,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         profilesBattleCards, isEmptyProfilesState,
         discoveriesBattleCards, isEmptyDiscoveriesState,
         modifyBattleCardTitle,
-        addToSelectedBattleCards, selectedBattleCards}) => (
+        changeSelectedBattleCards, selectedBattleCards}) => (
 
     <div>
 
@@ -29,45 +29,81 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         </div>
 
         <div>   
-
+            
             {!isEmptyObjectionsState &&
-            <div className='leftMenu'>
-                <h3>Objections</h3>
-                <ul>
-                    {objectionsBattleCards.map((battleCard) => 
-                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                    )} 
-                </ul> 
+            <div>
+                
+                <div className='leftMenu'>
+                    <h3>Objections</h3>
+                    <ul>
+                        {objectionsBattleCards.map((battleCard) => 
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                        )} 
+                    </ul> 
+                </div>
+
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
+                </div>
+
             </div>
             }
+
+
             {!isEmptyCompetitorsState &&
-            <div className='leftMenu'>
-                <h3>Competitors</h3>
-                <ul>
-                    {competitorsBattleCards.map((battleCard) => 
-                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                    )} 
-                </ul> 
+            <div>
+                
+                <div className='leftMenu'>
+                    <h3>Competitors</h3>
+                    <ul>
+                        {competitorsBattleCards.map((battleCard) => 
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                        )} 
+                    </ul> 
+                </div>
+
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
+                </div>
+
             </div>
             }
+
             {!isEmptyProfilesState &&
-            <div className='leftMenu'>
-                <h3>Profiles</h3>
-                <ul>
-                    {profilesBattleCards.map((battleCard) => 
-                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                    )} 
-                </ul> 
+            <div>
+                
+                <div className='leftMenu'>
+                    <h3>Profiles</h3>
+                    <ul>
+                        {profilesBattleCards.map((battleCard) => 
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                        )} 
+                    </ul> 
+                </div>
+
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
+                </div>
+
             </div>
             }
+
             {!isEmptyDiscoveriesState &&
-            <div className='leftMenu'>
-                <h3>Discoveries</h3>
-                <ul>
-                    {discoveriesBattleCards.map((battleCard) => 
-                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'discoveries')}q key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                    )} 
-                </ul> 
+            <div>
+                
+                <div className='leftMenu'>
+                    <h3>Discoveries</h3>
+                    <ul>
+                        {discoveriesBattleCards.map((battleCard) => 
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                        )} 
+                    </ul> 
+                </div>
+
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
+                </div>
+
             </div>
             }
 
@@ -101,6 +137,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
 const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     <div>
+        
         {selectedBattleCards.map(battleCard => {
             if (battleCard.section === 'objections') {
                 return <ObjectionsBattleCard 
@@ -197,7 +234,7 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
+        {/* <button onClick={() => addBattleCard('objections')}>add BattleCard</button> */}
         {objectionsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <ObjectionsBattleCard
@@ -240,8 +277,8 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
-        {competitorsBattleCards.map((battleCard) => 
+{/*         <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
+ */}        {competitorsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <CompetitorsBattleCard
                     cards={battleCard.cards}
@@ -283,8 +320,8 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
-        {profilesBattleCards.map((battleCard) => 
+{/*         <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
+ */}        {profilesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <ProfilesBattleCard
                     cards={battleCard.cards}
@@ -325,8 +362,8 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
-        {discoveriesBattleCards.map((battleCard) => 
+{/*         <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
+ */}        {discoveriesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <DiscoveriesBattleCard
                     cards={battleCard.cards}
@@ -381,4 +418,4 @@ const mapState = (state) => {
 }
 
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
-                        modifyBattleCardTitle, addToSelectedBattleCards})(BattleCardsMenu);
+                        modifyBattleCardTitle, changeSelectedBattleCards})(BattleCardsMenu);

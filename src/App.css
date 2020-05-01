@@ -125,3 +125,10 @@
   border-radius: 5px;
   transition: 0.1s;
 }
+
+.addBattleCard {
+  width: 60px;
+  margin: 5px 20px 0px 10px;
+  height: 100%;
+  float: left;
+}
