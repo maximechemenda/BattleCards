@@ -2,7 +2,8 @@ import uuid from 'uuid';
 //import {FILTER_ALL} from './actionTypes'
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
-        CHANGE_SELECTED_BATTLECARDS} from './actionTypes'
+        CHANGE_SELECTED_BATTLECARDS,
+        CLEAR_SELECTED_BATTLECARDS} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -65,6 +66,11 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        case CLEAR_SELECTED_BATTLECARDS:
+            return ({
+                ...state,
+                selectedBattleCards: []
+            })
         case CHANGE_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':

@@ -4,6 +4,7 @@ import { deleteBattleCard } from '../redux/actions'
 import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
 import { changeSelectedBattleCards } from '../redux/actions'
+import { clearSelectedBattleCards } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
 import Cards from './Cards'
@@ -16,7 +17,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         profilesBattleCards, isEmptyProfilesState,
         discoveriesBattleCards, isEmptyDiscoveriesState,
         modifyBattleCardTitle,
-        changeSelectedBattleCards, selectedBattleCards}) => (
+        changeSelectedBattleCards, selectedBattleCards, clearSelectedBattleCards}) => (
 
     <div>
 
@@ -32,15 +33,22 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
             
             {!isEmptyObjectionsState &&
             <div>
+
                 
                 <div className='leftMenu'>
                     <h3>Objections</h3>
-                    <ul>
+                    <ol>
                         {objectionsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
                         )} 
-                    </ul> 
+                    </ol> 
+
+                    {selectedBattleCards.length !== 0 &&
+                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all those fuckers</button>
+                    }
                 </div>
+
+
 
                 <div className='addBattleCard'>
                     <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
@@ -55,11 +63,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Competitors</h3>
-                    <ul>
+                    <ol>
                         {competitorsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
                         )} 
-                    </ul> 
+                    </ol> 
+                    {selectedBattleCards.length !== 0 &&
+                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all those fuckers</button>
+                    }
                 </div>
 
                 <div className='addBattleCard'>
@@ -74,11 +85,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Profiles</h3>
-                    <ul>
+                    <ol>
                         {profilesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
                         )} 
-                    </ul> 
+                    </ol> 
+                    {selectedBattleCards.length !== 0 &&
+                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all those fuckers</button>
+                    }
                 </div>
 
                 <div className='addBattleCard'>
@@ -93,11 +107,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Discoveries</h3>
-                    <ul>
+                    <ol>
                         {discoveriesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
                         )} 
-                    </ul> 
+                    </ol> 
+                    {selectedBattleCards.length !== 0 &&
+                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all those fuckers</button>
+                    }
                 </div>
 
                 <div className='addBattleCard'>
@@ -418,4 +435,4 @@ const mapState = (state) => {
 }
 
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
-                        modifyBattleCardTitle, changeSelectedBattleCards})(BattleCardsMenu);
+                        modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards})(BattleCardsMenu);
