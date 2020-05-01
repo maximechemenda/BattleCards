@@ -10,7 +10,7 @@ import '../App.css'
 import CardType from './CardType'
 
 
-const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, addCard, activateCardEdit, editCard, battleCardId, section}) => (
+const Cards = ({cards, deleteCard, activateCardEdit, editCard, battleCardId, section}) => (
     <div>
         <div>
             {cards.map(card => 
@@ -29,34 +29,9 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
                 </div>   
             )}
         </div> 
-        <div>
-            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
-
-            {!isEmptyAddButtonState &&
-            <NewCardMenu 
-                addCard = {addCard}
-                triggerAddCardState={triggerAddCardState}
-                battleCardId={battleCardId}
-                section={section}
-            />} 
-        </div>
-    </div>
-)
-
-
-const NewCardMenu = ({addCard, triggerAddCardState, battleCardId, section}) => (
-    <div className="addCardMenu">
         
-        <button onClick = {() => addCard(battleCardId, 'basic', section)}>Basic Card</button>
-        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning Card</button>
-        <button onClick = {() => addCard(battleCardId, 'dealOffer', section)}>Deal Offer Card</button>
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer Card</button>
     </div>
-)
-
-const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
-)           
+)          
 
 export default connect(null, { deleteCard, addCard, triggerAddCardState, activateCardEdit, editCard })(Cards);
 
