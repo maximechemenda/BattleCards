@@ -10,7 +10,6 @@ import { triggerAddCardState } from '../redux/actions'
 import { addCard } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
-import Cards from './Cards'
 import ObjectionsBattleCards from './Objections'
 import ObjectionsBattleCard from './Objections'
 import CompetitorsBattleCards from './Competitors'
@@ -169,15 +168,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
         {(selectedBattleCards.length === 0) && 
         <IndependentBattleCards
-        addBattleCard={addBattleCard} 
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
         isEmptyObjectionsState={isEmptyObjectionsState}
         isEmptyCompetitorsState={isEmptyCompetitorsState}
         isEmptyProfilesState={isEmptyProfilesState}
         isEmptyDiscoveriesState={isEmptyDiscoveriesState}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
         />}
 
         {(selectedBattleCards.length !== 0) &&
@@ -254,46 +248,20 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
     
 )
 
-const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
-                                isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
-                                triggerAddCardState, addCard}) => (
+const IndependentBattleCards = ({isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState}) => (
     <div>
 
         {!isEmptyObjectionsState &&
-        <ObjectionsBattleCards 
-        addBattleCard={addBattleCard}
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+        <ObjectionsBattleCards />}
 
         {!isEmptyCompetitorsState && 
-        <CompetitorsBattleCards 
-        addBattleCard={addBattleCard}
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+        <CompetitorsBattleCards />}
 
         {!isEmptyProfilesState && 
-        <ProfilesBattleCards 
-        addBattleCard={addBattleCard}
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+        <ProfilesBattleCards />}
 
         {!isEmptyDiscoveriesState && 
-        <DiscoveriesBattleCards 
-        addBattleCard={addBattleCard}
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+        <DiscoveriesBattleCards />}
 
     </div>
 )
