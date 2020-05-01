@@ -86,8 +86,6 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
     })
 }
 
-
-
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(ObjectionsBattleCards); 
 

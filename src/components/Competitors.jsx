@@ -67,13 +67,9 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        
-        <button onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
-        <button onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
+        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
         <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
+        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
     </div>
 )
 
@@ -85,8 +81,6 @@ const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
         competitorsBattleCards: state.battleCards.competitorsBattleCards,
     })
 }
-
-
 
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(CompetitorsBattleCards); 

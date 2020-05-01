@@ -67,16 +67,11 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        
-        <button onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
-        <button onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
-        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
         <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
+        <button onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
+        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
     </div>
 )
-
 
 
 
@@ -85,8 +80,6 @@ const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
         discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
     })
 }
-
-
 
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(DiscoveriesBattleCards); 

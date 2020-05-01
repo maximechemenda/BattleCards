@@ -67,13 +67,9 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        
-        <button onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
-        <button onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
-        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
+        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
+        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
         <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
     </div>
 )
 
@@ -85,8 +81,6 @@ const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
         profilesBattleCards: state.battleCards.profilesBattleCards,
     })
 }
-
-
 
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(ProfilesBattleCards); 
