@@ -65,16 +65,13 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 <h3>Discoveries</h3>
                 <ul>
                     {discoveriesBattleCards.map((battleCard) => 
-                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'discoveries')}q key={battleCard.battleCardId}>{battleCard.titleValue}</li>
                     )} 
                 </ul> 
             </div>
             }
 
         </div>
-
-        {console.log('selectedbattlecards')}
-        {console.log(selectedBattleCards)}
 
         {(selectedBattleCards.length === 0) && 
         <IndependentBattleCards
@@ -105,7 +102,6 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     <div>
         {selectedBattleCards.map(battleCard => {
-            console.log(battleCard)
             if (battleCard.section === 'objections') {
                 return <ObjectionsBattleCard 
                 cards={battleCard.cards}
@@ -206,18 +202,20 @@ const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBatt
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}
                     section={'objections'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}/>
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    />
         </div> 
     )}</div>
 )
 
-const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle}) => (
+const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue}) => (
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
             <h2>Objection</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -355,9 +353,6 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 
 const mapState = (state) => {
-    console.log('mapstate')
-    console.log(state.battleCards.selectedBattleCards)
-    console.log(state.battleCards.objectionsBattleCards)
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
         isEmptyObjectionsState: state.sectionStates.isEmptyObjectionsState,
