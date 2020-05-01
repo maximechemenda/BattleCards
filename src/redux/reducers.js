@@ -73,58 +73,60 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             ...state,
                             selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
                         })
-                    } else {
+                    } 
+                    else {
                         return ({
                             ...state,
                             selectedBattleCards: state.selectedBattleCards.concat(
                                 state.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
                             ) 
                         })
-                        /* return ({
-                            ...state,
-                            selectedBattleCards: state.selectedBattleCards.concat(
-                                state.objectionsBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        return battleCard;
-                                    }
-                                    
-                                })
-                            ) 
-                        }) */
                     }
                 case 'competitors':
-                    return ({
-                        ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat(
-                            state.competitorsBattleCards.map(battleCard => {
-                                if (battleCard.battleCardId === action.battleCardId) {
-                                    return battleCard;
-                                }
-                            })
-                        ) 
-                    })
+                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                        })
+                    } 
+                    else {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.concat(
+                                state.competitorsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                            ) 
+                        })
+                    }
                 case 'profiles':
-                    return ({
-                        ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat(
-                            state.profilesBattleCards.map(battleCard => {
-                                if (battleCard.battleCardId === action.battleCardId) {
-                                    return battleCard;
-                                }
-                            })
-                        ) 
-                    })
+                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                        })
+                    } 
+                    else {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.concat(
+                                state.profilesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                            ) 
+                        })
+                    }
                 case 'discoveries':
-                    return ({
-                        ...state,
-                        selectedBattleCards: state.selectedBattleCards.concat(
-                            state.discoveriesBattleCards.map(battleCard => {
-                                if (battleCard.battleCardId === action.battleCardId) {
-                                    return battleCard;
-                                }
-                            })
-                        ) 
-                    })
+                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                        })
+                    } 
+                    else {
+                        return ({
+                            ...state,
+                            selectedBattleCards: state.selectedBattleCards.concat(
+                                state.discoveriesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                            ) 
+                        })
+                    }
             }
         case MODIFY_BATTLECARD_TITLE:
             switch (action.section) {
