@@ -87,6 +87,63 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         
                         }])
                     })
+                case 'competitors':
+                    return ({
+                        ...state,
+                        competitorsBattleCards: state.competitorsBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'competitors'
+                        }]),
+                        selectedBattleCards: state.selectedBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'competitors'
+                        
+                        }])
+                    })
+                case 'profiles':
+                    return ({
+                        ...state,
+                        profilesBattleCards: state.profilesBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'profiles'
+                        }]),
+                        selectedBattleCards: state.selectedBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'profiles'
+                        
+                        }])
+                    })
+                case 'discoveries':
+                    return ({
+                        ...state,
+                        discoveriesBattleCards: state.discoveriesBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'discoveries'
+                        }]),
+                        selectedBattleCards: state.selectedBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'discoveries'
+                        
+                        }])
+                    })
             }
         case CLEAR_SELECTED_BATTLECARDS:
             return ({
