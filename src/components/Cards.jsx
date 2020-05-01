@@ -45,7 +45,7 @@ const Cards = ({cards, triggerAddCardState, isEmptyAddButtonState, deleteCard, a
 
 
 const NewCardMenu = ({addCard, triggerAddCardState, battleCardId, section}) => (
-    <div>
+    <div className="addCardMenu">
         
         <button onClick = {() => addCard(battleCardId, 'basic', section)}>Basic Card</button>
         <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning Card</button>

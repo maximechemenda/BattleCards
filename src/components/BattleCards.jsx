@@ -5,6 +5,7 @@ import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
 import { changeSelectedBattleCards } from '../redux/actions'
 import { clearSelectedBattleCards } from '../redux/actions'
+import { addBattleCardToSectionAndSelectedBattleCards } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
 import Cards from './Cards'
@@ -17,7 +18,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         profilesBattleCards, isEmptyProfilesState,
         discoveriesBattleCards, isEmptyDiscoveriesState,
         modifyBattleCardTitle,
-        changeSelectedBattleCards, selectedBattleCards, clearSelectedBattleCards}) => (
+        changeSelectedBattleCards, selectedBattleCards, clearSelectedBattleCards,
+        addBattleCardToSectionAndSelectedBattleCards}) => (
 
     <div>
 
@@ -33,8 +35,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
             
             {!isEmptyObjectionsState &&
             <div>
-
-                
+ 
                 <div className='leftMenu'>
                     <h3>Objections</h3>
                     <ol>
@@ -48,15 +49,21 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     }
                 </div>
 
+                {selectedBattleCards.length !== 0 && 
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}>add BattleCard</button>
+                </div>
+                }
 
-
+                {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard'>
                     <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
                 </div>
+                }
+
 
             </div>
             }
-
 
             {!isEmptyCompetitorsState &&
             <div>
@@ -73,9 +80,17 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     }
                 </div>
 
+                {selectedBattleCards.length !== 0 && 
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')}>add BattleCard</button>
+                </div>
+                }
+                
+                {selectedBattleCards === 0 &&
                 <div className='addBattleCard'>
                     <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
                 </div>
+                }
 
             </div>
             }
@@ -95,9 +110,17 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     }
                 </div>
 
+                {selectedBattleCards.length !== 0 && 
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')}>add BattleCard</button>
+                </div>
+                }
+                
+                {selectedBattleCards === 0 &&
                 <div className='addBattleCard'>
                     <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
                 </div>
+                }
 
             </div>
             }
@@ -117,9 +140,17 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     }
                 </div>
 
+                {selectedBattleCards.length !== 0 && 
+                <div className='addBattleCard'>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')}>add BattleCard</button>
+                </div>
+                }
+                
+                {selectedBattleCards === 0 &&
                 <div className='addBattleCard'>
                     <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
                 </div>
+                }
 
             </div>
             }
@@ -435,4 +466,5 @@ const mapState = (state) => {
 }
 
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
-                        modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards})(BattleCardsMenu);
+                        modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards,
+                        addBattleCardToSectionAndSelectedBattleCards})(BattleCardsMenu);

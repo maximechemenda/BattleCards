@@ -153,3 +153,12 @@
   cursor: pointer;
   user-select: none;
 }
+.addCardMenu {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: white;
+  padding: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+}

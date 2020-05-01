@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
-        CLEAR_SELECTED_BATTLECARDS} from './actionTypes'
+        CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -66,6 +66,28 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        case ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        objectionsBattleCards: state.objectionsBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'objections'
+                        }]),
+                        selectedBattleCards: state.selectedBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'objections'
+                        
+                        }])
+                    })
+            }
         case CLEAR_SELECTED_BATTLECARDS:
             return ({
                 ...state,
