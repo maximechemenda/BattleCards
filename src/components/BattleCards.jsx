@@ -3,6 +3,7 @@ import { addBattleCard } from '../redux/actions'
 import { deleteBattleCard } from '../redux/actions'
 import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
+import { addToSelectedBattleCards } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
 import Cards from './Cards'
@@ -14,7 +15,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         competitorsBattleCards, isEmptyCompetitorsState,
         profilesBattleCards, isEmptyProfilesState,
         discoveriesBattleCards, isEmptyDiscoveriesState,
-        modifyBattleCardTitle}) => (
+        modifyBattleCardTitle,
+        addToSelectedBattleCards, selectedBattleCards}) => (
 
     <div>
 
@@ -26,61 +28,177 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
             <button className="smallIndexButton" onClick={() => triggerSectionState('discoveries')}>Discoveries</button>
         </div>
 
-        <div>
+        <div>   
 
             {!isEmptyObjectionsState &&
-            <ObjectionsBattleCards 
-            addBattleCard={addBattleCard}
-            objectionsBattleCards={objectionsBattleCards}
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            />}
-
-            {!isEmptyCompetitorsState && 
-            <CompetitorsBattleCards 
-            addBattleCard={addBattleCard}
-            competitorsBattleCards={competitorsBattleCards}
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            />}
-
-            {!isEmptyProfilesState && 
-            <ProfilesBattleCards 
-            addBattleCard={addBattleCard}
-            profilesBattleCards={profilesBattleCards}
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            />}
-
-            {!isEmptyDiscoveriesState && 
-            <DiscoveriesBattleCards 
-            addBattleCard={addBattleCard}
-            discoveriesBattleCards={discoveriesBattleCards}
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            />}
-
+            <div className='leftMenu'>
+                <h3>Objections</h3>
+                <ul>
+                    {objectionsBattleCards.map((battleCard) => 
+                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                    )} 
+                </ul> 
+            </div>
+            }
+            {!isEmptyCompetitorsState &&
+            <div className='leftMenu'>
+                <h3>Competitors</h3>
+                <ul>
+                    {competitorsBattleCards.map((battleCard) => 
+                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                    )} 
+                </ul> 
+            </div>
+            }
+            {!isEmptyProfilesState &&
+            <div className='leftMenu'>
+                <h3>Profiles</h3>
+                <ul>
+                    {profilesBattleCards.map((battleCard) => 
+                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                    )} 
+                </ul> 
+            </div>
+            }
+            {!isEmptyDiscoveriesState &&
+            <div className='leftMenu'>
+                <h3>Discoveries</h3>
+                <ul>
+                    {discoveriesBattleCards.map((battleCard) => 
+                        <li onClick={() => addToSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId}>{battleCard.titleValue}</li>
+                    )} 
+                </ul> 
+            </div>
+            }
 
         </div>
+
+        {console.log('selected')}
+        {console.log(selectedBattleCards)}
+        {console.log('objections')}
+        {console.log(objectionsBattleCards)}
+
+        {(selectedBattleCards.length === 0) && 
+        <IndependentBattleCards
+        addBattleCard={addBattleCard} 
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        isEmptyObjectionsState={isEmptyObjectionsState}
+        isEmptyCompetitorsState={isEmptyCompetitorsState}
+        isEmptyProfilesState={isEmptyProfilesState}
+        isEmptyDiscoveriesState={isEmptyDiscoveriesState}
+        objectionsBattleCards={objectionsBattleCards}
+        competitorsBattleCards={competitorsBattleCards}
+        profilesBattleCards={profilesBattleCards}
+        discoveriesBattleCards={discoveriesBattleCards}
+        />}
+
+        {(selectedBattleCards.length !== 0) &&
+        <SelectedBattleCards 
+        selectedBattleCards={selectedBattleCards}
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        />}
+        
     </div>
-     
 )    
+
+
+const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
+    <div>
+        {selectedBattleCards.map(battleCard => {
+            console.log(battleCard)
+            if (battleCard.section === 'objections') {
+                return <ObjectionsBattleCard 
+                cards={battleCard.cards}
+                isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                deleteBattleCard={deleteBattleCard}
+                battleCardId={battleCard.battleCardId}
+                section={battleCard.section}
+                modifyBattleCardTitle={modifyBattleCardTitle}
+                />
+            }
+            if (battleCard.section === 'competitors') {
+                return <CompetitorsBattleCard 
+                cards={battleCard.cards}
+                isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                deleteBattleCard={deleteBattleCard}
+                battleCardId={battleCard.battleCardId}
+                section={battleCard.section}
+                modifyBattleCardTitle={modifyBattleCardTitle}
+                />
+            }
+            if (battleCard.section === 'profiles') {
+                return <ProfilesBattleCard 
+                cards={battleCard.cards}
+                isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                deleteBattleCard={deleteBattleCard}
+                battleCardId={battleCard.battleCardId}
+                section={battleCard.section}
+                modifyBattleCardTitle={modifyBattleCardTitle}
+                />
+            }
+            if (battleCard.section === 'discoveries') {
+                return <DiscoveriesBattleCard 
+                cards={battleCard.cards}
+                isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                deleteBattleCard={deleteBattleCard}
+                battleCardId={battleCard.battleCardId}
+                section={battleCard.section}
+                modifyBattleCardTitle={modifyBattleCardTitle}
+                />
+            }
+        })}
+    </div>
+    
+)
+
+const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
+                                isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
+                                objectionsBattleCards, competitorsBattleCards, profilesBattleCards, discoveriesBattleCards}) => (
+    <div>
+
+        {!isEmptyObjectionsState &&
+        <ObjectionsBattleCards 
+        addBattleCard={addBattleCard}
+        objectionsBattleCards={objectionsBattleCards}
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        />}
+
+        {!isEmptyCompetitorsState && 
+        <CompetitorsBattleCards 
+        addBattleCard={addBattleCard}
+        competitorsBattleCards={competitorsBattleCards}
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        />}
+
+        {!isEmptyProfilesState && 
+        <ProfilesBattleCards 
+        addBattleCard={addBattleCard}
+        profilesBattleCards={profilesBattleCards}
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        />}
+
+        {!isEmptyDiscoveriesState && 
+        <DiscoveriesBattleCards 
+        addBattleCard={addBattleCard}
+        discoveriesBattleCards={discoveriesBattleCards}
+        deleteBattleCard={deleteBattleCard}
+        modifyBattleCardTitle={modifyBattleCardTitle}
+        />}
+
+    </div>
+)
+
 
 //////////////////////  OBJECTIONS /////////////////////
 
 const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <div className='leftMenu'>
-            <h3>Objections</h3>
-            <ul>
-                {objectionsBattleCards.map((battleCard) => 
-                    <li key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                )} 
-            </ul>
-            
-            
-        </div>
         <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
         {objectionsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
@@ -122,16 +240,6 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <div className='leftMenu'>
-            <h3>Competitors</h3>
-            <ul>
-                {competitorsBattleCards.map((battleCard) => 
-                    <li key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                )} 
-            </ul>
-            
-            
-        </div>
         <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
         {competitorsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
@@ -173,16 +281,6 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <div className='leftMenu'>
-            <h3>Profiles</h3>
-            <ul>
-                {profilesBattleCards.map((battleCard) => 
-                    <li key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                )} 
-            </ul>
-            
-            
-        </div>
         <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
         {profilesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
@@ -223,16 +321,6 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBattleCard, modifyBattleCardTitle}) => (
     
     <div>
-        <div className='leftMenu'>
-            <h3>Discoveries</h3>
-            <ul>
-                {discoveriesBattleCards.map((battleCard) => 
-                    <li key={battleCard.battleCardId}>{battleCard.titleValue}</li>
-                )} 
-            </ul>
-            
-            
-        </div>
         <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
         {discoveriesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
@@ -280,9 +368,11 @@ const mapState = (state) => {
         isEmptyProfilesState: state.sectionStates.isEmptyProfilesState,
 
         discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
-        isEmptyDiscoveriesState: state.sectionStates.isEmptyDiscoveriesState        
+        isEmptyDiscoveriesState: state.sectionStates.isEmptyDiscoveriesState,
+        
+        selectedBattleCards: state.battleCards.selectedBattleCards
     })
 }
 
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
-                        modifyBattleCardTitle})(BattleCardsMenu);
+                        modifyBattleCardTitle, addToSelectedBattleCards})(BattleCardsMenu);

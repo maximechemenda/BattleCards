@@ -1,14 +1,16 @@
 import uuid from 'uuid';
 //import {FILTER_ALL} from './actionTypes'
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
-        EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE} from './actionTypes'
+        EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
+        ADD_TO_SELECTED_BATTLECARDS} from './actionTypes'
 
 
 const initialBattleCardsState = {
     objectionsBattleCards: [],
     competitorsBattleCards: [], 
     profilesBattleCards: [],
-    discoveriesBattleCards: []
+    discoveriesBattleCards: [],
+    selectedBattleCards: []
 }
 
 const initialSectionsStates = {
@@ -63,6 +65,59 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        case ADD_TO_SELECTED_BATTLECARDS:
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        selectedBattleCards: state.selectedBattleCards.concat(
+                            state.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    console.log('hellooooo')
+                                    console.log(battleCard)
+                                    return battleCard;
+                                }
+                            })
+                        ) 
+
+                        /* selectedBattleCards: state.objectionsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                state.selectedBattleCards.concat([battleCard])
+                            }
+                            return state.selectedBattleCards
+                        }) */
+                    })
+                case 'competitors':
+                    return ({
+                        ...state,
+                        selectedBattleCards: state.competitorsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                state.selectedBattleCards.concat([battleCard])
+                            }
+                            return state.selectedBattleCards
+                        })
+                    })
+                case 'profiles':
+                    return ({
+                        ...state,
+                        selectedBattleCards: state.profilesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                state.selectedBattleCards.concat([battleCard])
+                            }
+                            return state.selectedBattleCards
+                        })
+                    })
+                case 'discoveries':
+                    return ({
+                        ...state,
+                        selectedBattleCards: state.discoveriesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                state.selectedBattleCards.concat([battleCard])
+                            }
+                            return state.selectedBattleCards
+                        })
+                    })
+            }
         case MODIFY_BATTLECARD_TITLE:
             switch (action.section) {
                 case 'objections':
@@ -116,7 +171,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             cards: [],
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
-                            titleValue: ''
+                            titleValue: '',
+                            section: 'objections'
                         }])
                     })
                 case 'competitors':
@@ -126,7 +182,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             cards: [],
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
-                            titleValue: ''
+                            titleValue: '',
+                            section: 'competitors'
 
                         }])
                     })
@@ -137,7 +194,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             cards: [],
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
-                            titleValue: ''
+                            titleValue: '',
+                            section: 'profiles'
 
                         }])
                     })
@@ -148,7 +206,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             cards: [],
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
-                            titleValue: ''
+                            titleValue: '',
+                            section: 'discoveries'
 
                         }])
                     })

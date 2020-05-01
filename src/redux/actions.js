@@ -1,7 +1,16 @@
 import uuid from 'uuid';
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT_CARD,
-    ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE} from './actionTypes';
+    ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
+    ADD_TO_SELECTED_BATTLECARDS} from './actionTypes';
 
+
+export const addToSelectedBattleCards = (battleCardId, section) => (
+    {
+        type: ADD_TO_SELECTED_BATTLECARDS,
+        battleCardId,
+        section
+    }
+)
 
 export const modifyBattleCardTitle = (newValue, battleCardId, section) => (
     {
