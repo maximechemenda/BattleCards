@@ -13,6 +13,12 @@ import '../App.css'
 import Cards from './Cards'
 import ObjectionsBattleCards from './Objections'
 import ObjectionsBattleCard from './Objections'
+import CompetitorsBattleCards from './Competitors'
+import CompetitorsBattleCard from './Competitors'
+import ProfilesBattleCards from './Profiles'
+import ProfilesBattleCard from './Profiles'
+import DiscoveriesBattleCards from './Discoveries'
+import DiscoveriesBattleCard from './Discoveries'
 
 
 
@@ -170,10 +176,6 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         isEmptyCompetitorsState={isEmptyCompetitorsState}
         isEmptyProfilesState={isEmptyProfilesState}
         isEmptyDiscoveriesState={isEmptyDiscoveriesState}
-        objectionsBattleCards={objectionsBattleCards}
-        competitorsBattleCards={competitorsBattleCards}
-        profilesBattleCards={profilesBattleCards}
-        discoveriesBattleCards={discoveriesBattleCards}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
         />}
@@ -254,14 +256,12 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
 
 const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
                                 isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
-                                objectionsBattleCards, competitorsBattleCards, profilesBattleCards, discoveriesBattleCards,
                                 triggerAddCardState, addCard}) => (
     <div>
 
         {!isEmptyObjectionsState &&
         <ObjectionsBattleCards 
         addBattleCard={addBattleCard}
-        objectionsBattleCards={objectionsBattleCards}
         deleteBattleCard={deleteBattleCard}
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
@@ -271,7 +271,6 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         {!isEmptyCompetitorsState && 
         <CompetitorsBattleCards 
         addBattleCard={addBattleCard}
-        competitorsBattleCards={competitorsBattleCards}
         deleteBattleCard={deleteBattleCard}
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
@@ -281,7 +280,6 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         {!isEmptyProfilesState && 
         <ProfilesBattleCards 
         addBattleCard={addBattleCard}
-        profilesBattleCards={profilesBattleCards}
         deleteBattleCard={deleteBattleCard}
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
@@ -291,7 +289,6 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         {!isEmptyDiscoveriesState && 
         <DiscoveriesBattleCards 
         addBattleCard={addBattleCard}
-        discoveriesBattleCards={discoveriesBattleCards}
         deleteBattleCard={deleteBattleCard}
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
@@ -300,202 +297,6 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 
     </div>
 )
-
-
-
-//////////////////////  COMPETITORS /////////////////////
-
-const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
-    
-    <div>
-{/*         <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
- */}        {competitorsBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <CompetitorsBattleCard
-                    cards={battleCard.cards}
-                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                    deleteBattleCard={deleteBattleCard}
-                    battleCardId={battleCard.battleCardId}
-                    section={'competitors'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}
-                    titleValue={battleCard.titleValue}
-                    triggerAddCardState={triggerAddCardState}
-                    addCard={addCard}
-                    />
-        </div> 
-    )}</div>
-)
-
-const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
-
-    <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
-        <div className="cards">
-            <h2>Competitor</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <h3>Bad arguments/good arguments</h3>
-        </div>
-        <br></br>
-
-        <Cards
-        cards={cards}
-        battleCardId = {battleCardId}
-        isEmptyAddButtonState={isEmptyAddButtonState}
-        section = {section}
-        />
-        
-        <div>
-            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
-
-            {!isEmptyAddButtonState &&
-            <NewCompetitorsCardMenu 
-                addCard = {addCard}
-                battleCardId={battleCardId}
-                section={section}
-            />} 
-        </div>
-    </div>
-)
-
-const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
-    <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
-        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
-    </div>
-)
-
-
-
-//////////////////////  PROFILES /////////////////////
-
-const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
-    
-    <div>
-{/*         <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
- */}        {profilesBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <ProfilesBattleCard
-                    cards={battleCard.cards}
-                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                    deleteBattleCard={deleteBattleCard}
-                    battleCardId={battleCard.battleCardId}
-                    section={'profiles'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}
-                    titleValue={battleCard.titleValue}
-                    triggerAddCardState={triggerAddCardState}
-                    addCard={addCard}
-                    />
-        </div> 
-    )}</div>
-)
-
-const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
-
-    <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
-        <div className="cards">
-            <h2>Profiles</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <h3>Bad arguments/good arguments</h3>
-        </div>
-        <br></br>
-
-        <Cards
-        cards={cards}
-        battleCardId = {battleCardId}
-        isEmptyAddButtonState={isEmptyAddButtonState}
-        section = {section}
-        />
-
-        <div>
-            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
-
-            {!isEmptyAddButtonState &&
-            <NewProfilesCardMenu 
-                addCard = {addCard}
-                battleCardId={battleCardId}
-                section={section}
-            />} 
-        </div>
-    </div>
-)
-
-const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
-    <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
-        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-    </div>
-)
-
-//////////////////////  DISCOVERIES /////////////////////
-
-const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
-    
-    <div>
-{/*         <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
- */}        {discoveriesBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <DiscoveriesBattleCard
-                    cards={battleCard.cards}
-                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                    deleteBattleCard={deleteBattleCard}
-                    battleCardId={battleCard.battleCardId}
-                    section={'discoveries'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}
-                    titleValue={battleCard.titleValue}
-                    triggerAddCardState={triggerAddCardState}
-                    addCard={addCard}
-                    />
-        </div> 
-    )}</div>
-)
-
-const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
-
-    <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
-        <div className="cards">
-            <h2>Discoveries</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <h3>Bad arguments/good arguments</h3>
-        </div>
-        <br></br>
-
-        <Cards
-        cards={cards}
-        battleCardId = {battleCardId}
-        isEmptyAddButtonState={isEmptyAddButtonState}
-        section = {section}
-        />
-
-        <div>
-            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
-
-            {!isEmptyAddButtonState &&
-            <NewDiscoveriesCardMenu 
-                addCard = {addCard}
-                battleCardId={battleCardId}
-                section={section}
-            />} 
-        </div>
-    </div>
-)
-
-const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
-    <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-    </div>
-)
-
-
-/////////////////// ADD CARD BUTTON ////////////////
-const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
-) 
 
 
 const mapState = (state) => {
