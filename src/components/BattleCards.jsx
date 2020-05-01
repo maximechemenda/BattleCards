@@ -110,6 +110,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 battleCardId={battleCard.battleCardId}
                 section={battleCard.section}
                 modifyBattleCardTitle={modifyBattleCardTitle}
+                titleValue={battleCard.titleValue}
                 />
             }
             if (battleCard.section === 'competitors') {
@@ -120,6 +121,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 battleCardId={battleCard.battleCardId}
                 section={battleCard.section}
                 modifyBattleCardTitle={modifyBattleCardTitle}
+                titleValue={battleCard.titleValue}
                 />
             }
             if (battleCard.section === 'profiles') {
@@ -130,6 +132,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 battleCardId={battleCard.battleCardId}
                 section={battleCard.section}
                 modifyBattleCardTitle={modifyBattleCardTitle}
+                titleValue={battleCard.titleValue}
                 />
             }
             if (battleCard.section === 'discoveries') {
@@ -140,6 +143,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 battleCardId={battleCard.battleCardId}
                 section={battleCard.section}
                 modifyBattleCardTitle={modifyBattleCardTitle}
+                titleValue={battleCard.titleValue}
                 />
             }
         })}
@@ -245,18 +249,20 @@ const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBa
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}
                     section={'competitors'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}/>
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    />
         </div> 
     )}</div>
 )
 
-const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle}) => (
+const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue}) => (
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
             <h2>Competitor</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -286,18 +292,20 @@ const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCa
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}
                     section={'profiles'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}/>
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    />
         </div> 
     )}</div>
 )
 
-const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle}) => (
+const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue}) => (
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
             <h2>Profiles</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -326,18 +334,20 @@ const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBa
                     deleteBattleCard={deleteBattleCard}
                     battleCardId={battleCard.battleCardId}
                     section={'discoveries'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}/>
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    />
         </div> 
     )}</div>
 )
 
-const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle}) => (
+const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue}) => (
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
             <h2>Discoveries</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard"></textarea>        
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
