@@ -215,3 +215,29 @@
   box-sizing: border-box;
   border-style:ridge;
 }
+
+.unfilledAddButton {
+  width: 45%;
+  margin: 2.5%;
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  background-color: white;
+  height: 40px;
+  color: var(--secondary);
+  padding-top: 7px;
+  cursor: pointer;
+}
+
+.redAddButton {
+  width: 45%;
+  margin: 2.5%;
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  background-color: white;
+  height: 40px;
+  color: var(--red);
+  padding-top: 7px;
+  cursor: pointer;
+}

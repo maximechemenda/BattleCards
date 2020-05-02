@@ -357,12 +357,12 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
         
-        <button onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
-        <button onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
-        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
     </div>
 )
 
@@ -421,11 +421,11 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     </div>
 )
 
-const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
+const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => ( 
     <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
-        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
     </div>
 )
 
@@ -436,8 +436,7 @@ const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
 const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-{/*         <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
- */}        {profilesBattleCards.map((battleCard) => 
+       {profilesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <ProfilesBattleCard
                     cards={battleCard.cards}
@@ -487,9 +486,9 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 
 const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
-        <button onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
     </div>
 )
 
@@ -549,9 +548,9 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
-        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
     </div>
 )
 

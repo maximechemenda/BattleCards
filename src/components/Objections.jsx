@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { connect } from 'react-redux'
 import Cards from './Cards'
 import { deleteBattleCard } from '../redux/actions'
@@ -87,7 +87,7 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
 
 
 
- const mapState = (state) => {
+const mapState = (state) => {
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
     })
@@ -96,3 +96,4 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(ObjectionsBattleCards); 
 
+ */

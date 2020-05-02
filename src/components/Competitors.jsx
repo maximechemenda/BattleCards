@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { connect } from 'react-redux'
 import Cards from './Cards'
 import { deleteBattleCard } from '../redux/actions'
@@ -87,3 +87,4 @@ const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
 export default connect(mapState, {deleteBattleCard, 
                         modifyBattleCardTitle, triggerAddCardState, addCard})(CompetitorsBattleCards); 
 
+ */
