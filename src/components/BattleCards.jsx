@@ -27,10 +27,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
     
         <div className="smallIndex">
-            <button className="smallIndexButton" onClick={() => triggerSectionState('objections')}>Objections</button>
-            <button className="smallIndexButton" onClick={() => triggerSectionState('competitors')}>Competitors</button>
-            <button className="smallIndexButton" onClick={() => triggerSectionState('profiles')}>Profiles</button>
-            <button className="smallIndexButton" onClick={() => triggerSectionState('discoveries')}>Discoveries</button>
+            <button className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</button>
+            <button className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</button>
+            <button className={isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('profiles')}>Profiles</button>
+            <button className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</button>
         </div>
 
         <div>   
@@ -328,8 +328,8 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Objection</h2>
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <span className="battleCardNameHeader">Objection</span>
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -395,8 +395,8 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Competitor</h2>
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <span className="battleCardNameHeader">Competitor</span>
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -458,8 +458,8 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Profiles</h2>
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <span className="battleCardNameHeader">Profile</span>
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -520,8 +520,8 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Discoveries</h2>
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <span className="battleCardNameHeader">Discovery</span>
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
