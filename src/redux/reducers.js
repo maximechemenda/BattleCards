@@ -151,7 +151,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 selectedBattleCards: []
             })
         case CHANGE_SELECTED_BATTLECARDS:
+                console.log('yolo')
             switch (action.section) {
+                
                 case 'objections':
                     if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
@@ -160,6 +162,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         })
                     } 
                     else {
+                        console.log('its me')
                         return ({
                             ...state,
                             selectedBattleCards: state.selectedBattleCards.concat(

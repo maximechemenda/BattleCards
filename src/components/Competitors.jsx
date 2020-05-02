@@ -35,8 +35,8 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Competitor</h2>
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <h2>Competitor</h2>
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -62,7 +62,9 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 )
 
 const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
+    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>
+        <span style={{fontSize: '20px'}}>+</span>
+    </button>
 )
 
 const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (

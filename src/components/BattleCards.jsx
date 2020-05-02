@@ -41,9 +41,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         </div>
 
         <div>   
-            
+            {console.log(selectedBattleCards)}
             {!isEmptyObjectionsState &&
             <div>
+
  
                 <div className='leftMenu'>
                     <h3>Objections</h3>
@@ -166,7 +167,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
         </div>
 
-        {(selectedBattleCards.length === 0) && 
+
+        {(selectedBattleCards.length === 0) &&
         <IndependentBattleCards
         isEmptyObjectionsState={isEmptyObjectionsState}
         isEmptyCompetitorsState={isEmptyCompetitorsState}
@@ -174,7 +176,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         isEmptyDiscoveriesState={isEmptyDiscoveriesState}
         />}
 
-        {(selectedBattleCards.length !== 0) &&
+        {(selectedBattleCards.length !== 0) && 
         <SelectedBattleCards 
         selectedBattleCards={selectedBattleCards}
         deleteBattleCard={deleteBattleCard}
@@ -182,6 +184,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
         />}
+
+        
         
     </div>
 )    
@@ -191,6 +195,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
     <div>
         
         {selectedBattleCards.map(battleCard => {
+            console.log('inspector gadget')
             if (battleCard.section === 'objections') {
                 return <ObjectionsBattleCard 
                 cards={battleCard.cards}
@@ -250,6 +255,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
 
 const IndependentBattleCards = ({isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState}) => (
     <div>
+        {console.log('whyyyyyyyy')}
 
         {!isEmptyObjectionsState &&
         <ObjectionsBattleCards />}
@@ -265,6 +271,86 @@ const IndependentBattleCards = ({isEmptyObjectionsState, isEmptyCompetitorsState
 
     </div>
 )
+
+
+const ObjectionsBattleCards = ({objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+
+    
+    <div>
+        {console.log('are you kidding me')}
+        {objectionsBattleCards.map((battleCard) => 
+        
+        <div key={battleCard.battleCardId}>
+                <ObjectionsBattleCard
+                    cards={battleCard.cards}
+                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                    deleteBattleCard={deleteBattleCard}
+                    battleCardId={battleCard.battleCardId}
+                    section={'objections'}
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    triggerAddCardState={triggerAddCardState}
+                    addCard={addCard}
+                    />
+        </div> 
+    )}</div>
+)
+
+/////////////::test/////////
+const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard, addBattleCardToSectionAndSelectedBattleCards}) => (
+
+
+    <div className="battleCard">   
+        {console.log('himalaya')}
+        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+        <div className="cards">
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>  
+            <h2>Objection</h2>      
+            <h3>Bad arguments/good arguments</h3>
+        </div>
+        <br></br>
+
+        <Cards
+        cards={cards}
+        battleCardId = {battleCardId}
+        section = {section}
+        />
+
+        <div>
+            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
+
+            {!isEmptyAddButtonState &&
+            <NewObjectionsCardMenu 
+                addCard = {addCard}
+                battleCardId={battleCardId}
+                section={section}
+            />} 
+        </div>
+
+    </div>
+)
+
+const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
+    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>
+        <span style={{fontSize: '20px'}}>+</span>
+    </button>
+)
+
+const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
+    <div className="addCardMenu">
+        
+        <button onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
+        <button onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
+        <button onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
+        <button onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
+        <button onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
+    </div>
+)
+////////////////
+
+
+
 
 
 const mapState = (state) => {

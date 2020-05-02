@@ -1,6 +1,19 @@
 /* .App {
   background-color: rgb(156, 149, 149);
 } */
+:root {
+  --primary: #FBB03B;
+  --dark: #1A1A1A;
+  --secondary: #577ce5;
+  --light: #f3f5ff;
+  --color-on-light: #2a4284;
+  --tertiary: #a1b9fc;
+  --red: #ff6060;
+  --secondary-light: #ecf1ff;
+}
+
+
+
 
 .App-logo {
   height: 40vmin;
@@ -37,13 +50,28 @@
   }
 }
 
-/*
-  
-  */
+
+
+
 
 .battleCard {
 
-  background-color:rgb(228, 222, 222);  
+  width: 600px;
+  min-height: 100px;
+  background-color: rgb(224, 224, 224);
+  float: left;
+  position: relative;
+  padding: 15px;
+  padding-top: 8px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-style: ridge;
+  border-width: '10px 10px 10px 10px';
+  overflow-x: visible;
+  overflow-y: scroll;
+/*   background-color:rgb(228, 222, 222);  
 
   max-height: 700px;
   width: 500px;
@@ -59,28 +87,51 @@
   padding-top: 8px;
   padding-right: 10px;
   box-sizing: border-box;
-  margin-bottom: 30px;
+  margin-bottom: 30px; */
+
+
 }
 
 .cards {
+  width: calc(100% - 30px);
+  min-height: 80px;
   background-color: white;
+  float: left;
+  position: relative;
+  padding: 15px;
+  padding-top: 8px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+   
   padding-right: inherit;
   border-style: ridge;
-  border-width: '10px 10px 10px 10px';
+  border-width: '10px 10px 10px 10px'; 
 }
 
 .deleteCardButton {
   background-color: rgb(230, 111, 111);
-  float: right;
+  float: right; 
 }
 
 .addCardButton {
-  background-color: rgb(93, 151, 240);
-  float: center;
+  /* background-color: rgb(93, 151, 240);
+  float: center; */
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 35px;
+  height: 35px; 
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 1px;
+  text-align: center;
 }
 
 .leftMenu {
-  width: 160px;
+  width: 190px;
   min-height: 400px;
   background: white;
   float: left;
@@ -90,16 +141,16 @@
   overflow-x: hidden;
   white-space: nowrap;
   transition: 0.5s;
-  border-style: solid;
-  border-color: black;
+  border-style: ridge;
   font-size: 10px;
   text-align: left;
+  margin-top: 20px;
+
 }
 
 .titleBattleCard {
   font-size: 18px;
-  /* color: var(--secondary); */
-  color: rgb(62, 113, 207);
+  color: var(--secondary);
   border: none;
   outline: none;
   font-weight: 500;
@@ -113,6 +164,7 @@
   width: 100%;
   overflow: auto;
   border-style: ridge;
+  background-color: white;
 }
 
 .smallIndexButton {
@@ -129,7 +181,7 @@
 
 .addBattleCard {
   width: 60px;
-  margin: 5px 20px 0px 10px;
+  margin: 20px 20px 0px 10px;
   height: 100%;
   float: left;
 }
@@ -161,4 +213,5 @@
   padding: 10px;
   display: inline-block;
   box-sizing: border-box;
+  border-style:ridge;
 }

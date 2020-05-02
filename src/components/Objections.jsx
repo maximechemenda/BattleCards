@@ -10,9 +10,12 @@ import '../App.css'
 
 
 const ObjectionsBattleCards = ({objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+
     
     <div>
+        {console.log('are you kidding me')}
         {objectionsBattleCards.map((battleCard) => 
+        
         <div key={battleCard.battleCardId}>
                 <ObjectionsBattleCard
                     cards={battleCard.cards}
@@ -30,13 +33,15 @@ const ObjectionsBattleCards = ({objectionsBattleCards, deleteBattleCard, modifyB
 )
 
 
-const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard, addBattleCardToSectionAndSelectedBattleCards}) => (
+
 
     <div className="battleCard">   
+        {console.log('himalaya')}
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
-            <h2>Objection</h2>
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>  
+            <h2>Objection</h2>      
             <h3>Bad arguments/good arguments</h3>
         </div>
         <br></br>
@@ -62,7 +67,9 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 )
 
 const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>+</button>
+    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>
+        <span style={{fontSize: '20px'}}>+</span>
+    </button>
 )
 
 const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
