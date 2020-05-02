@@ -352,7 +352,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
                                   cardId: uuid.v4(),
-                                  text: 'New task',
+                                  text: '',
                                   cardType: action.cardType,
                                   editing: false
                                 }])
@@ -368,7 +368,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
                                   cardId: uuid.v4(),
-                                  text: 'New task',
+                                  text: '',
                                   cardType: action.cardType,
                                   editing: false
                                 }])
@@ -384,7 +384,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
                                   cardId: uuid.v4(),
-                                  text: 'New task',
+                                  text: '',
                                   cardType: action.cardType,
                                   editing: false
                                 }])
@@ -400,7 +400,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
                                   cardId: uuid.v4(),
-                                  text: 'New task',
+                                  text: '',
                                   cardType: action.cardType,
                                   editing: false
                                 }])

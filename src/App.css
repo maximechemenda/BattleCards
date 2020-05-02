@@ -259,7 +259,7 @@
 
 .battleCardNameHeader {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 900;
   margin-left: 5px;
   float: right;
   padding: 0px 3px;
@@ -268,3 +268,19 @@
   line-height: 27px;
 }
 
+.blueCardHeader {
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.blueCardText {
+  color: var(--secondary);
+  font-size: 15px;
+  width: 100%;
+  margin-top: 10px;
+  resize: none;
+  outline: none;
+  background: transparent;
+  border: none;
+}

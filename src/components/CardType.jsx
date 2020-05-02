@@ -12,16 +12,20 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Text</h2>
+                        <span className="blueCardHeader">Text</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>        
 
-                        <Editable
+
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -31,16 +35,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Offer a Deal</h2>
+                        <span className="blueCardHeader">Offer a Deal</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -50,16 +57,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Common Answer</h2>
+                        <span className="blueCardHeader">Common Answer</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        />  */}   
                     </div> 
                     <br></br>
                 </div>
@@ -69,16 +79,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Good Counter question</h2>
+                        <span className="blueCardHeader">Good Counter Question</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        />  */}   
                     </div> 
                     <br></br>
                 </div>
@@ -88,16 +101,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Bad Counter question</h2>
+                        <span className="redCardHeader">Bad Counter Question</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -107,16 +123,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Checklist</h2>
+                        <span className="blueCardHeader">Checklist</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                       {/*  <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -126,16 +145,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Warning</h2>
+                        <span className="redCardHeader">Watch Out!</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -145,16 +167,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Quick Battle Pitch</h2>
+                        <span className="blueCardHeader">Quick Battle Pitch</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                       {/*  <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
@@ -164,16 +189,19 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
         
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>x</button>
-                        <h2>Good Phrasing</h2>
+                        <span className="blueCardHeader">Good Phrasing</span>
+                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
                         
-                        <Editable
+                        {/* <Editable
                             editing={editing}
                             value={text}
                             cardId={cardId}
                             editCard={editCard}
                             battleCardId={battleCardId}
                             section={section}
-                        />    
+                        /> */}    
                     </div> 
                     <br></br>
                 </div>
