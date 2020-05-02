@@ -145,6 +145,7 @@
   font-size: 10px;
   text-align: left;
   margin-top: 20px;
+  font-size: 14px;
 
 }
 
@@ -200,8 +201,8 @@
 }
 
 .leftMenuItems {
-  color: #888;
-  font-size: 12px;
+  color: rgb(80, 80, 80);
+  font-size: 16px;
   margin: 5px 0px;
   cursor: pointer;
 }
@@ -274,8 +275,25 @@
   font-weight: 900;
 }
 
+.redCardHeader {
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 900;
+}
+
 .blueCardText {
   color: var(--secondary);
+  font-size: 15px;
+  width: 100%;
+  margin-top: 10px;
+  resize: none;
+  outline: none;
+  background: transparent;
+  border: none;
+}
+
+.redCardText {
+  color: var(--red);
   font-size: 15px;
   width: 100%;
   margin-top: 10px;

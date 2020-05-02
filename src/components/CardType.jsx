@@ -104,7 +104,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                         <span className="redCardHeader">Bad Counter Question</span>
                         <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
                                     onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
-                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
+                                    placeholder="Content for this tile goes here" className="redCardText">{text}</textarea>
                         
                         {/* <Editable
                             editing={editing}
@@ -148,7 +148,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                         <span className="redCardHeader">Watch Out!</span>
                         <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
                                     onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
-                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>
+                                    placeholder="Content for this tile goes here" className="redCardText">{text}</textarea>
                         
                         {/* <Editable
                             editing={editing}
