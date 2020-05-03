@@ -3,8 +3,15 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
     ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE} from './actionTypes';
+    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ} from './actionTypes';
 
+
+
+
+//dispatched when all the items stored in redux store needs to be read
+export const readItems = () => ({
+    type: READ 
+  })
 
 
 export const changeblueHeaderValues = (newValue, charCode, battleCardId, headerId, section) => (
@@ -30,13 +37,6 @@ export const changeRedHeaderValue = (newValue, charCode, battleCardId, headerId,
 
     }
 )
-
-
-
-
-
-
-
 
 export const addBattleCardToSectionAndSelectedBattleCards = (section) => (
     {

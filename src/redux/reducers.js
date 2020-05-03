@@ -4,7 +4,7 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE} from './actionTypes'
+        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -12,15 +12,19 @@ const initialBattleCardsState = {
     competitorsBattleCards: [], 
     profilesBattleCards: [],
     discoveriesBattleCards: [],
-    selectedBattleCards: []
-}
-
-const initialSectionsStates = {
+    selectedBattleCards: [],
     isEmptyObjectionsState: true,
     isEmptyCompetitorsState: true,
     isEmptyProfilesState: true,
     isEmptyDiscoveriesState: true,
 }
+
+/* const initialSectionsStates = {
+    isEmptyObjectionsState: true,
+    isEmptyCompetitorsState: true,
+    isEmptyProfilesState: true,
+    isEmptyDiscoveriesState: true,
+} 
 
 export const sectionStates = (state = initialSectionsStates, action) => {
     switch (action.type) {
@@ -64,9 +68,13 @@ export const sectionStates = (state = initialSectionsStates, action) => {
             return state    
     }
 }
+*/
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        //reads all the data from the store
+        case READ: return state;
+        
         case CHANGE_BLUE_HEADER_VALUE:
             switch (action.section) {
                 case 'objections':
@@ -105,6 +113,42 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                     }
                     
             }
+        case TRIGGER_SECTION_STATE:
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        isEmptyObjectionsState: false,
+                        isEmptyCompetitorsState: true,
+                        isEmptyProfilesState: true,
+                        isEmptyDiscoveriesState: true,    
+                    })
+                case 'competitors':
+                    return ({
+                        ...state,
+                        isEmptyObjectionsState: true,
+                        isEmptyCompetitorsState: false,
+                        isEmptyProfilesState: true,
+                        isEmptyDiscoveriesState: true,    
+                    })
+                case 'profiles':
+                    return ({
+                        ...state,
+                        isEmptyObjectionsState: true,
+                        isEmptyCompetitorsState: true,
+                        isEmptyProfilesState: false,
+                        isEmptyDiscoveriesState: true,    
+                    })
+                case 'discoveries':
+                    return ({
+                        ...state,
+                        isEmptyObjectionsState: true,
+                        isEmptyCompetitorsState: true,
+                        isEmptyProfilesState: true,
+                        isEmptyDiscoveriesState: false,    
+                    })        
+            }
+        break;
         case ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':

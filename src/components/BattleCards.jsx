@@ -599,16 +599,16 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 const mapState = (state) => {
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
-        isEmptyObjectionsState: state.sectionStates.isEmptyObjectionsState,
+        isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
 
         competitorsBattleCards: state.battleCards.competitorsBattleCards,
-        isEmptyCompetitorsState: state.sectionStates.isEmptyCompetitorsState,
+        isEmptyCompetitorsState: state.battleCards.isEmptyCompetitorsState,
 
         profilesBattleCards: state.battleCards.profilesBattleCards,
-        isEmptyProfilesState: state.sectionStates.isEmptyProfilesState,
+        isEmptyProfilesState: state.battleCards.isEmptyProfilesState,
 
         discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
-        isEmptyDiscoveriesState: state.sectionStates.isEmptyDiscoveriesState,
+        isEmptyDiscoveriesState: state.battleCards.isEmptyDiscoveriesState,
         
         selectedBattleCards: state.battleCards.selectedBattleCards
     })
