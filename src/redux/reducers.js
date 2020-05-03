@@ -68,21 +68,42 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
         case CHANGE_BLUE_HEADER_VALUE:
-            console.log('entering the maaaain function')
             switch (action.section) {
                 case 'objections':
-                    console.log('entering function')
-                    return ({
-                        ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.blueHeaderValue = action.newValue;
-                                console.log('header')
-                                console.log(battleCard.blueHeaderValue)
-                            }
-                            return battleCard;
+                    if (action.charCode === 13) {
+                        console.log('entering 13')
+                        return ({
+                            ...state,
+                            objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    console.log('entering other condition')
+                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                        headerId: uuid.v4(),
+                                        headerValue: ''
+                                    }])
+                                    console.log(battleCard.blueHeaderValues)
+                                    return battleCard;
+                                }
+                            })
                         })
-                    })
+                    }
+                    else {
+                        return ({
+                            ...state,
+                            objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.blueHeaderValues.map(header => {
+                                        if (header.headerId === action.headerId) {
+                                            header.headerValue = action.newValue;
+                                        }
+                                        return header;
+                                    })
+                                }
+                                return battleCard;
+                            })
+                        })
+                    }
+                    
             }
         case ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
             switch (action.section) {
@@ -169,9 +190,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 selectedBattleCards: []
             })
         case CHANGE_SELECTED_BATTLECARDS:
-                console.log('yolo')
             switch (action.section) {
-                
                 case 'objections':
                     if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
@@ -180,7 +199,6 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         })
                     } 
                     else {
-                        console.log('its me')
                         return ({
                             ...state,
                             selectedBattleCards: state.selectedBattleCards.concat(
@@ -289,8 +307,11 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'objections',
-                            blueHeaderValue: '',
-                            redHeaderValue: ''
+                            blueHeaderValues: [{
+                                headerId: uuid.v4(),
+                                headerValue: ''
+                            }],
+                            redHeaderValues: []
                         }])
                     })
                 case 'competitors':
@@ -302,8 +323,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'competitors',
-                            blueHeaderValue: '',
-                            redHeaderValue: ''
+                            blueHeaderValues: [],
+                            redHeaderValues: []
 
                         }])
                     })
@@ -316,8 +337,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'profiles',
-                            blueHeaderValue: '',
-                            redHeaderValue: ''
+                            blueHeaderValues: [],
+                            redHeaderValues: []
 
                         }])
                     })
@@ -330,8 +351,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'discoveries',
-                            blueHeaderValue: '',
-                            redHeaderValue: ''
+                            blueHeaderValues: [],
+                            redHeaderValues: []
                         }])
                     })
             }

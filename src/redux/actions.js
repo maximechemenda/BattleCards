@@ -7,21 +7,25 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
 
 
 
-export const changeBlueHeaderValue = (newValue, battleCardId, section) => (
+export const changeblueHeaderValues = (newValue, charCode, battleCardId, headerId, section) => (
     {
         type: CHANGE_BLUE_HEADER_VALUE,
         newValue,
+        charCode,
         battleCardId,
+        headerId,
         section
 
     }
 )
 
-export const changeRedHeaderValue = (newValue, battleCardId, section) => (
+export const changeRedHeaderValue = (newValue, charCode, battleCardId, headerId, section) => (
     {
         type: CHANGE_RED_HEADER_VALUE,
         newValue,
+        charCode,
         battleCardId,
+        headerId,
         section
 
     }
