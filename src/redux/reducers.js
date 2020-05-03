@@ -3,7 +3,8 @@ import uuid from 'uuid';
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
-        CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS} from './actionTypes'
+        CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
+        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -66,6 +67,23 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        case CHANGE_BLUE_HEADER_VALUE:
+            console.log('entering the maaaain function')
+            switch (action.section) {
+                case 'objections':
+                    console.log('entering function')
+                    return ({
+                        ...state,
+                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                                battleCard.blueHeaderValue = action.newValue;
+                                console.log('header')
+                                console.log(battleCard.blueHeaderValue)
+                            }
+                            return battleCard;
+                        })
+                    })
+            }
         case ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':
@@ -270,7 +288,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'objections'
+                            section: 'objections',
+                            blueHeaderValue: '',
+                            redHeaderValue: ''
                         }])
                     })
                 case 'competitors':
@@ -281,7 +301,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'competitors'
+                            section: 'competitors',
+                            blueHeaderValue: '',
+                            redHeaderValue: ''
 
                         }])
                     })
@@ -293,7 +315,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'profiles'
+                            section: 'profiles',
+                            blueHeaderValue: '',
+                            redHeaderValue: ''
 
                         }])
                     })
@@ -305,7 +329,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid.v4(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'discoveries'
+                            section: 'discoveries',
+                            blueHeaderValue: '',
+                            redHeaderValue: ''
                         }])
                     })
             }

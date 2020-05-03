@@ -4,9 +4,6 @@ import '../App.css';
 
 export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, editCard, battleCardId, section}) => {
 
-
-
-
     if (cardType === 'text') {
          return <div>
         

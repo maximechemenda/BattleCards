@@ -58,7 +58,8 @@
 
   width: 600px;
   min-height: 100px;
-  background-color: rgb(224, 224, 224);
+  /* background-color: rgb(224, 224, 224); */
+  background-color: #f6f8f9;
   float: left;
   position: relative;
   padding: 15px;

@@ -5,6 +5,8 @@ import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
 import { changeSelectedBattleCards } from '../redux/actions'
 import { clearSelectedBattleCards } from '../redux/actions'
+import { changeBlueHeaderValue } from '../redux/actions'
+import { changeRedHeaderValue } from '../redux/actions'
 import { addBattleCardToSectionAndSelectedBattleCards } from '../redux/actions'
 import { triggerAddCardState } from '../redux/actions'
 import { addCard } from '../redux/actions'
@@ -21,7 +23,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         discoveriesBattleCards, isEmptyDiscoveriesState,
         modifyBattleCardTitle,
         changeSelectedBattleCards, selectedBattleCards, clearSelectedBattleCards,
-        addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard}) => (
+        addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard, changeBlueHeaderValue, changeRedHeaderValue}) => (
 
     <div>
 
@@ -174,6 +176,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         discoveriesBattleCards={discoveriesBattleCards}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeBlueHeaderValue={changeBlueHeaderValue}
+        changeRedHeaderValue={changeRedHeaderValue}
         />}
 
         {(selectedBattleCards.length !== 0) &&
@@ -253,7 +257,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
 const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
                                 isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
                                 objectionsBattleCards, competitorsBattleCards, profilesBattleCards, discoveriesBattleCards,
-                                triggerAddCardState, addCard}) => (
+                                triggerAddCardState, addCard, changeBlueHeaderValue, changeRedHeaderValue}) => (
     <div>
 
         {!isEmptyObjectionsState &&
@@ -264,6 +268,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeBlueHeaderValue={changeBlueHeaderValue}
+        changeRedHeaderValue={changeRedHeaderValue}
         />}
 
         {!isEmptyCompetitorsState && 
@@ -274,6 +280,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeBlueHeaderValue={changeBlueHeaderValue}
+        changeRedHeaderValue={changeRedHeaderValue}
         />}
 
         {!isEmptyProfilesState && 
@@ -284,6 +292,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeBlueHeaderValue={changeBlueHeaderValue}
+        changeRedHeaderValue={changeRedHeaderValue}
         />}
 
         {!isEmptyDiscoveriesState && 
@@ -294,6 +304,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeBlueHeaderValue={changeBlueHeaderValue}
+        changeRedHeaderValue={changeRedHeaderValue}
         />}
 
     </div>
@@ -302,10 +314,9 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 
 //////////////////////  OBJECTIONS /////////////////////
 
-const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard, changeBlueHeaderValue, changeRedHeaderValue}) => (
     
     <div>
-        {/* <button onClick={() => addBattleCard('objections')}>add BattleCard</button> */}
         {objectionsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <ObjectionsBattleCard
@@ -318,19 +329,30 @@ const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBatt
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValue={battleCard.blueHeaderValue}
+                    changeBlueHeaderValue={changeBlueHeaderValue}
+                    changeRedHeaderValue={changeRedHeaderValue}
                     />
         </div> 
     )}</div>
 )
 
-const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard, blueHeaderValue, changeBlueHeaderValue, changeRedHeaderValue}) => (
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Objection</span>
+
+
+
             <h3>Bad arguments/good arguments</h3>
+
+            <textarea onKeyPress={(e) => changeBlueHeaderValue(e.target.value, battleCardId, 'objections')}
+                        onBlur={(e) => changeBlueHeaderValue(e.target.value, battleCardId, 'objections')}>{blueHeaderValue}</textarea>
+
+
         </div>
         <br></br>
 
@@ -372,8 +394,7 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
 const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-{/*         <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
- */}        {competitorsBattleCards.map((battleCard) => 
+        {competitorsBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <CompetitorsBattleCard
                     cards={battleCard.cards}
@@ -497,8 +518,7 @@ const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
 const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-{/*         <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
- */}        {discoveriesBattleCards.map((battleCard) => 
+        {discoveriesBattleCards.map((battleCard) => 
         <div key={battleCard.battleCardId}>
                 <DiscoveriesBattleCard
                     cards={battleCard.cards}
@@ -582,4 +602,5 @@ const mapState = (state) => {
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
                         modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards,
                         addBattleCardToSectionAndSelectedBattleCards, 
-                        triggerAddCardState, addCard})(BattleCardsMenu);
+                        triggerAddCardState, addCard,
+                        changeBlueHeaderValue, changeRedHeaderValue})(BattleCardsMenu);

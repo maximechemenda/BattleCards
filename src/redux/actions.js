@@ -2,7 +2,37 @@ import uuid from 'uuid';
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT_CARD,
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
-    ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS} from './actionTypes';
+    ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
+    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE} from './actionTypes';
+
+
+
+export const changeBlueHeaderValue = (newValue, battleCardId, section) => (
+    {
+        type: CHANGE_BLUE_HEADER_VALUE,
+        newValue,
+        battleCardId,
+        section
+
+    }
+)
+
+export const changeRedHeaderValue = (newValue, battleCardId, section) => (
+    {
+        type: CHANGE_RED_HEADER_VALUE,
+        newValue,
+        battleCardId,
+        section
+
+    }
+)
+
+
+
+
+
+
+
 
 export const addBattleCardToSectionAndSelectedBattleCards = (section) => (
     {
