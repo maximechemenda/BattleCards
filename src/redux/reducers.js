@@ -1,4 +1,8 @@
-import uuid from 'uuid';
+//import uuid from 'uuid';
+import {v4 as uuid} from 'uuid'
+
+
+
 //import {FILTER_ALL} from './actionTypes'
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
@@ -86,7 +90,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     console.log('entering other condition')
                                     battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                        headerId: uuid.v4(),
+                                        headerId: uuid(),
                                         headerValue: ''
                                     }])
                                     console.log(battleCard.blueHeaderValues)
@@ -347,12 +351,12 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         ...state,
                         objectionsBattleCards: state.objectionsBattleCards.concat([{
                             cards: [],
-                            battleCardId: uuid.v4(),
+                            battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'objections',
                             blueHeaderValues: [{
-                                headerId: uuid.v4(),
+                                headerId: uuid(),
                                 headerValue: ''
                             }],
                             redHeaderValues: []
@@ -363,7 +367,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         ...state,
                         competitorsBattleCards: state.competitorsBattleCards.concat([{
                             cards: [],
-                            battleCardId: uuid.v4(),
+                            battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'competitors',
@@ -377,7 +381,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         ...state,
                         profilesBattleCards: state.profilesBattleCards.concat([{
                             cards: [],
-                            battleCardId: uuid.v4(),
+                            battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'profiles',
@@ -391,7 +395,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         ...state,
                         discoveriesBattleCards: state.discoveriesBattleCards.concat([{
                             cards: [],
-                            battleCardId: uuid.v4(),
+                            battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'discoveries',
@@ -442,7 +446,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid.v4(),
+                                  cardId: uuid(),
                                   text: '',
                                   cardType: action.cardType,
                                   editing: false
@@ -458,7 +462,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid.v4(),
+                                  cardId: uuid(),
                                   text: '',
                                   cardType: action.cardType,
                                   editing: false
@@ -474,7 +478,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid.v4(),
+                                  cardId: uuid(),
                                   text: '',
                                   cardType: action.cardType,
                                   editing: false
@@ -490,7 +494,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
                                 battleCard.isEmptyAddButtonState = true;
                                 battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid.v4(),
+                                  cardId: uuid(),
                                   text: '',
                                   cardType: action.cardType,
                                   editing: false
