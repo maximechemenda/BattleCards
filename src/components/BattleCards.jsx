@@ -598,21 +598,22 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const mapState = (state) => {
 
-    console.log(state)
+    console.log('state')
+    console.log(state.battleCards)
     return ({
-        objectionsBattleCards: state.objectionsBattleCards,
-        isEmptyObjectionsState: state.isEmptyObjectionsState,
+        objectionsBattleCards: state.battleCards.objectionsBattleCards,
+        isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
 
-        competitorsBattleCards: state.competitorsBattleCards,
-        isEmptyCompetitorsState: state.isEmptyCompetitorsState,
+        competitorsBattleCards: state.battleCards.competitorsBattleCards,
+        isEmptyCompetitorsState: state.battleCards.isEmptyCompetitorsState,
 
-        profilesBattleCards: state.profilesBattleCards,
-        isEmptyProfilesState: state.isEmptyProfilesState,
+        profilesBattleCards: state.battleCards.profilesBattleCards,
+        isEmptyProfilesState: state.battleCards.isEmptyProfilesState,
 
-        discoveriesBattleCards: state.discoveriesBattleCards,
-        isEmptyDiscoveriesState: state.isEmptyDiscoveriesState,
+        discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
+        isEmptyDiscoveriesState: state.battleCards.isEmptyDiscoveriesState,
         
-        selectedBattleCards: state.selectedBattleCards
+        selectedBattleCards: state.battleCards.selectedBattleCards
     })
 }
 

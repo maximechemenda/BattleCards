@@ -8,8 +8,21 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
         CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ} from './actionTypes'
 
-
 const initialBattleCardsState = {
+    battleCards: {
+        objectionsBattleCards: [],
+        competitorsBattleCards: [], 
+        profilesBattleCards: [],
+        discoveriesBattleCards: [],
+        selectedBattleCards: [],
+        isEmptyObjectionsState: true,
+        isEmptyCompetitorsState: true,
+        isEmptyProfilesState: true,
+        isEmptyDiscoveriesState: true
+    }
+}
+
+/* const initialBattleCardsState = {
     objectionsBattleCards: [],
     competitorsBattleCards: [], 
     profilesBattleCards: [],
@@ -18,16 +31,10 @@ const initialBattleCardsState = {
     isEmptyObjectionsState: true,
     isEmptyCompetitorsState: true,
     isEmptyProfilesState: true,
-    isEmptyDiscoveriesState: true,
-}
+    isEmptyDiscoveriesState: true
+} */
 
-/* const initialSectionsStates = {
-    isEmptyObjectionsState: true,
-    isEmptyCompetitorsState: true,
-    isEmptyProfilesState: true,
-    isEmptyDiscoveriesState: true,
-} 
-
+/*
 export const sectionStates = (state = initialSectionsStates, action) => {
     switch (action.type) {
         case TRIGGER_SECTION_STATE:
@@ -84,7 +91,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         console.log('entering 13')
                         return ({
                             ...state,
-                            objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                            battleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     console.log('entering other condition')
                                     battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
@@ -100,7 +107,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                     else {
                         return ({
                             ...state,
-                            objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
+                            battleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     battleCard.blueHeaderValues.map(header => {
                                         if (header.headerId === action.headerId) {
@@ -115,40 +122,52 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                     }
                     
             }
-        case TRIGGER_SECTION_STATE:
+        case TRIGGER_SECTION_STATE: 
             switch (action.section) {
                 case 'objections':
                     return ({
                         ...state,
+                        battleCards: {
+                        ...state.battleCards,
                         isEmptyObjectionsState: false,
                         isEmptyCompetitorsState: true,
                         isEmptyProfilesState: true,
-                        isEmptyDiscoveriesState: true,    
+                        isEmptyDiscoveriesState: true,
+                        }
                     })
                 case 'competitors':
                     return ({
                         ...state,
+                        battleCards: {
+                        ...state.battleCards,
                         isEmptyObjectionsState: true,
                         isEmptyCompetitorsState: false,
                         isEmptyProfilesState: true,
-                        isEmptyDiscoveriesState: true,    
+                        isEmptyDiscoveriesState: true,
+                        }
                     })
                 case 'profiles':
                     return ({
                         ...state,
+                        battleCards: {
+                        ...state.battleCards,
                         isEmptyObjectionsState: true,
                         isEmptyCompetitorsState: true,
                         isEmptyProfilesState: false,
-                        isEmptyDiscoveriesState: true,    
+                        isEmptyDiscoveriesState: true,
+                        }
                     })
                 case 'discoveries':
                     return ({
                         ...state,
+                        battleCards: {
+                        ...state.battleCards,
                         isEmptyObjectionsState: true,
                         isEmptyCompetitorsState: true,
                         isEmptyProfilesState: true,
-                        isEmptyDiscoveriesState: false,    
-                    })        
+                        isEmptyDiscoveriesState: false,
+                        }
+                    })       
             }
         break;
         case ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
@@ -156,145 +175,184 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'objections'
-                        }]),
-                        selectedBattleCards: state.selectedBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'objections'
-                        
-                        }])
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'objections'
+                            }]),
+                            selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'objections'
+                            
+                            }])
+                        }
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'competitors'
-                        }]),
-                        selectedBattleCards: state.selectedBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'competitors'
-                        
-                        }])
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'competitors'
+                            }]),
+                            selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'competitors'
+                            
+                            }])
+                        }
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'profiles'
-                        }]),
-                        selectedBattleCards: state.selectedBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'profiles'
-                        
-                        }])
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'profiles'
+                            }]),
+                            selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'profiles'
+                            
+                            }])
+                        }
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'discoveries'
-                        }]),
-                        selectedBattleCards: state.selectedBattleCards.concat([{
-                            cards: [],
-                            battleCardId: action.id,
-                            isEmptyAddButtonState: true,
-                            titleValue: '',
-                            section: 'discoveries'
-                        
-                        }])
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'discoveries'
+                            }]),
+                            selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+                                cards: [],
+                                battleCardId: action.id,
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'discoveries'
+                            
+                            }])
+                        }
                     })
             }
-        case CLEAR_SELECTED_BATTLECARDS:
+        case CLEAR_SELECTED_BATTLECARDS: 
             return ({
                 ...state,
-                selectedBattleCards: []
+                battleCards: {
+                    ...state.battleCards,
+                    selectedBattleCards: []
+                }
             })
         case CHANGE_SELECTED_BATTLECARDS:
             switch (action.section) {
                 case 'objections':
-                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                    if ((state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            }
                         })
                     } 
                     else {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.concat(
-                                state.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
-                            ) 
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.concat(
+                                    state.battleCards.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                )
+                            }
                         })
                     }
                 case 'competitors':
-                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                    if ((state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            }
                         })
                     } 
                     else {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.concat(
-                                state.competitorsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
-                            ) 
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.concat(
+                                    state.battleCards.competitorsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                )
+                            }
                         })
                     }
                 case 'profiles':
-                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                    if ((state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            }
                         })
                     } 
                     else {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.concat(
-                                state.profilesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
-                            ) 
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.concat(
+                                    state.battleCards.profilesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                )
+                            }
                         })
                     }
                 case 'discoveries':
-                    if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                    if ((state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            }
                         })
                     } 
                     else {
                         return ({
                             ...state,
-                            selectedBattleCards: state.selectedBattleCards.concat(
-                                state.discoveriesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
-                            ) 
+                            battleCards: {
+                                ...state.battleCards,
+                                selectedBattleCards: state.battleCards.selectedBattleCards.concat(
+                                    state.battleCards.discoveriesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                )
+                            }
                         })
                     }
             }
@@ -303,42 +361,54 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.titleValue = action.newValue;
-                            }
-                            return battleCard
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.titleValue = action.newValue;
+                                }
+                                return battleCard
+                            })
+                        } 
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.titleValue = action.newValue;
-                            }
-                            return battleCard
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.titleValue = action.newValue;
+                                }
+                                return battleCard
+                            })
+                        } 
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.titleValue = action.newValue;
-                            }
-                            return battleCard
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.titleValue = action.newValue;
+                                }
+                                return battleCard
+                            })
+                        } 
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.titleValue = action.newValue;
-                            }
-                            return battleCard
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.titleValue = action.newValue;
+                                }
+                                return battleCard
+                            })
+                        } 
                     })
             }
             
@@ -347,7 +417,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.concat([{
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards:  state.battleCards.objectionsBattleCards.concat([{  
                             cards: [],
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
@@ -358,48 +430,61 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 headerValue: ''
                             }],
                             redHeaderValues: []
-                        }])
+                        }])}
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.concat([{
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards:  state.battleCards.competitorsBattleCards.concat([{ 
                             cards: [],
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'competitors',
-                            blueHeaderValues: [],
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerValue: ''
+                            }],
                             redHeaderValues: []
-
-                        }])
+                        }])}
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.concat([{
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards:  state.battleCards.profilesBattleCards.concat([{
                             cards: [],
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'profiles',
-                            blueHeaderValues: [],
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerValue: ''
+                            }],
                             redHeaderValues: []
-
-                        }])
+                        }])}
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.concat([{
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards:  state.battleCards.discoveriesBattleCards.concat([{ //TODO: this is the right way (almost sure)
                             cards: [],
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
                             section: 'discoveries',
-                            blueHeaderValues: [],
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerValue: ''
+                            }],
                             redHeaderValues: []
-                        }])
+                        }])}
                     })
             }
             break;
@@ -408,30 +493,42 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.filter(
-                            battleCard => battleCard.battleCardId !== action.battleCardId
-                        )
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.filter(
+                                battleCard => battleCard.battleCardId !== action.battleCardId
+                            )
+                        }
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.filter(
-                            battleCard => battleCard.battleCardId !== action.battleCardId
-                        )
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.filter(
+                                battleCard => battleCard.battleCardId !== action.battleCardId
+                            )
+                        }
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.filter(
-                            battleCard => battleCard.battleCardId !== action.battleCardId
-                        )
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.filter(
+                                battleCard => battleCard.battleCardId !== action.battleCardId
+                            )
+                        }
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.filter(
-                            battleCard => battleCard.battleCardId !== action.battleCardId
-                        )
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.filter(
+                                battleCard => battleCard.battleCardId !== action.battleCardId
+                            )
+                        }
                     })
             }
             break;
@@ -440,67 +537,80 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
-                                battleCard.isEmptyAddButtonState = true;
-                                battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid(),
-                                  text: '',
-                                  cardType: action.cardType,
-                                  editing: false
-                                }])
-                              }
-                              return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
+                                    battleCard.isEmptyAddButtonState = true;
+                                    battleCard.cards = battleCard.cards.concat([{
+                                      cardId: uuid(),
+                                      text: '',
+                                      cardType: action.cardType,
+                                      editing: false
+                                    }])
+                                  }
+                                  return battleCard;
+                            })
+                        }
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
-                                battleCard.isEmptyAddButtonState = true;
-                                battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid(),
-                                  text: '',
-                                  cardType: action.cardType,
-                                  editing: false
-                                }])
-                              }
-                              return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
+                                    battleCard.isEmptyAddButtonState = true;
+                                    battleCard.cards = battleCard.cards.concat([{
+                                      cardId: uuid(),
+                                      text: '',
+                                      cardType: action.cardType,
+                                      editing: false
+                                    }])
+                                  }
+                                  return battleCard;
+                            })
+                        }
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
-                                battleCard.isEmptyAddButtonState = true;
-                                battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid(),
-                                  text: '',
-                                  cardType: action.cardType,
-                                  editing: false
-                                }])
-                              }
-                              return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
+                                    battleCard.isEmptyAddButtonState = true;
+                                    battleCard.cards = battleCard.cards.concat([{
+                                      cardId: uuid(),
+                                      text: '',
+                                      cardType: action.cardType,
+                                      editing: false
+                                    }])
+                                  }
+                                  return battleCard;
+                            })
+                        }
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
-                                battleCard.isEmptyAddButtonState = true;
-                                battleCard.cards = battleCard.cards.concat([{
-                                  cardId: uuid(),
-                                  text: '',
-                                  cardType: action.cardType,
-                                  editing: false
-                                }])
-                              }
-                              return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
+                                    battleCard.isEmptyAddButtonState = true;
+                                    battleCard.cards = battleCard.cards.concat([{
+                                      cardId: uuid(),
+                                      text: '',
+                                      cardType: action.cardType,
+                                      editing: false
+                                    }])
+                                  }
+                                  return battleCard;
+                            })
+                        }
                     })
+                    
             }
             break;
         case DELETE_CARD:
@@ -509,43 +619,55 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
-                            }
-                            return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
+                                }
+                                return battleCard;
+                            })
+                        }  
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
-                            }
-                            return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
+                                }
+                                return battleCard;
+                            })
+                        }  
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
-                            }
-                            return battleCard;
-                        })
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
+                                }
+                                return battleCard;
+                            })
+                        }  
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if(battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
-                            }
-                            return battleCard;
-                        })
-                    })                  
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                if(battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
+                                }
+                                return battleCard;
+                            })
+                        }  
+                    })              
             }
             break;
         case TRIGGER_ADD_CARD_STATE:
@@ -553,46 +675,54 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.isEmptyAddButtonState = false;
-                            }
-                            return battleCard
-                        })
-                    
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.isEmptyAddButtonState = false;
+                                }
+                                return battleCard
+                            })
+                        }
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.isEmptyAddButtonState = false;
-                            }
-                            return battleCard
-                        })
-                    
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.isEmptyAddButtonState = false;
+                                }
+                                return battleCard
+                            })
+                        }
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.isEmptyAddButtonState = false;
-                            }
-                            return battleCard
-                        })
-                    
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.isEmptyAddButtonState = false;
+                                }
+                                return battleCard
+                            })
+                        }
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.isEmptyAddButtonState = false;
-                            }
-                            return battleCard
-                        })
-                    
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.isEmptyAddButtonState = false;
+                                }
+                                return battleCard
+                            })
+                        }
                     })
             }
             break;
@@ -601,66 +731,78 @@ export const battleCards = (state = initialBattleCardsState, action) => {
             case 'objections':
                 return ({
                     ...state,
-                    objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                        if (battleCard.battleCardId === action.battleCardId) {
-                        
-                            battleCard.cards = battleCard.cards.map(card => { 
-                            if(card.cardId === action.cardId) {
-                              card.editing = true;
+                    battleCards: {
+                        ...state.battleCards,
+                        objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                            
+                                battleCard.cards = battleCard.cards.map(card => { 
+                                if(card.cardId === action.cardId) {
+                                  card.editing = true;
+                                }
+                                return card;
+                              })
                             }
-                            return card;
-                          })
-                        }
-                        return battleCard;
-                    })
+                            return battleCard;
+                        })
+                    }
                 })
             case 'competitors':
                 return ({
                     ...state,
-                    competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                        if (battleCard.battleCardId === action.battleCardId) {
-                        
-                            battleCard.cards = battleCard.cards.map(card => { 
-                            if(card.cardId === action.cardId) {
-                              card.editing = true;
+                    battleCards: {
+                        ...state.battleCards,
+                        competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                            
+                                battleCard.cards = battleCard.cards.map(card => { 
+                                if(card.cardId === action.cardId) {
+                                  card.editing = true;
+                                }
+                                return card;
+                              })
                             }
-                            return card;
-                          })
-                        }
-                        return battleCard;
-                    })
+                            return battleCard;
+                        })
+                    }
                 })
             case 'profiles':
                 return ({
                     ...state,
-                    profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                        if (battleCard.battleCardId === action.battleCardId) {
-                        
-                            battleCard.cards = battleCard.cards.map(card => { 
-                            if(card.cardId === action.cardId) {
-                              card.editing = true;
+                    battleCards: {
+                        ...state.battleCards,
+                        profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                            
+                                battleCard.cards = battleCard.cards.map(card => { 
+                                if(card.cardId === action.cardId) {
+                                  card.editing = true;
+                                }
+                                return card;
+                              })
                             }
-                            return card;
-                          })
-                        }
-                        return battleCard;
-                    })
+                            return battleCard;
+                        })
+                    }
                 })
             case 'discoveries':
                 return ({
                     ...state,
-                    discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                        if (battleCard.battleCardId === action.battleCardId) {
-                        
-                            battleCard.cards = battleCard.cards.map(card => { 
-                            if(card.cardId === action.cardId) {
-                              card.editing = true;
+                    battleCards: {
+                        ...state.battleCards,
+                        discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                            if (battleCard.battleCardId === action.battleCardId) {
+                            
+                                battleCard.cards = battleCard.cards.map(card => { 
+                                if(card.cardId === action.cardId) {
+                                  card.editing = true;
+                                }
+                                return card;
+                              })
                             }
-                            return card;
-                          })
-                        }
-                        return battleCard;
-                    })
+                            return battleCard;
+                        })
+                    }
                 })
         }
         break;
@@ -669,66 +811,78 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 case 'objections':
                     return ({
                         ...state,
-                        objectionsBattleCards: state.objectionsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.map(card => {
-                                  if(card.cardId === action.cardId) {
-                                    card.editing = false;
-                                    card.text = action.text;
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.map(card => {
+                                      if(card.cardId === action.cardId) {
+                                        card.editing = false;
+                                        card.text = action.text;
+                                      }
+                                      return card;
+                                    })
                                   }
-                                  return card;
-                                })
-                              }
-                              return battleCard;
-                        })
+                                  return battleCard;
+                            })
+                        }  
                     })
                 case 'competitors':
                     return ({
                         ...state,
-                        competitorsBattleCards: state.competitorsBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.map(card => {
-                                  if(card.cardId === action.cardId) {
-                                    card.editing = false;
-                                    card.text = action.text;
+                        battleCards: {
+                            ...state.battleCards,
+                            competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.map(card => {
+                                      if(card.cardId === action.cardId) {
+                                        card.editing = false;
+                                        card.text = action.text;
+                                      }
+                                      return card;
+                                    })
                                   }
-                                  return card;
-                                })
-                              }
-                              return battleCard;
-                        })
+                                  return battleCard;
+                            })
+                        }  
                     })
                 case 'profiles':
                     return ({
                         ...state,
-                        profilesBattleCards: state.profilesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.map(card => {
-                                  if(card.cardId === action.cardId) {
-                                    card.editing = false;
-                                    card.text = action.text;
+                        battleCards: {
+                            ...state.battleCards,
+                            profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.map(card => {
+                                      if(card.cardId === action.cardId) {
+                                        card.editing = false;
+                                        card.text = action.text;
+                                      }
+                                      return card;
+                                    })
                                   }
-                                  return card;
-                                })
-                              }
-                              return battleCard;
-                        })
+                                  return battleCard;
+                            })
+                        }  
                     })
                 case 'discoveries':
                     return ({
                         ...state,
-                        discoveriesBattleCards: state.discoveriesBattleCards.map(battleCard => {
-                            if (battleCard.battleCardId === action.battleCardId) {
-                                battleCard.cards = battleCard.cards.map(card => {
-                                  if(card.cardId === action.cardId) {
-                                    card.editing = false;
-                                    card.text = action.text;
+                        battleCards: {
+                            ...state.battleCards,
+                            discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.cards = battleCard.cards.map(card => {
+                                      if(card.cardId === action.cardId) {
+                                        card.editing = false;
+                                        card.text = action.text;
+                                      }
+                                      return card;
+                                    })
                                   }
-                                  return card;
-                                })
-                              }
-                              return battleCard;
-                        })
+                                  return battleCard;
+                            })
+                        }  
                     })
             }    
             break;
