@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const battleCardsSchema = new mongoose.Schema({
   battleCards: {
+      id: String,
       objectionsBattleCards: {
           cards: {
               cardId: String,

@@ -13,6 +13,9 @@ export const ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = 'ADD_BATTLECAR
 export const CHANGE_BLUE_HEADER_VALUE = 'CHANGE_BLUE_HEADER_VALUE'
 export const CHANGE_RED_HEADER_VALUE = 'CHANGE_RED_HEADER_VALUE'
 export const READ = 'fetch all items'
+export const FETCH_ITEMS_BEGIN = "begin fetching items";
+export const FETCH_ITEMS_SUCCESS = "Items fetched successfully";
+export const FETCH_ITEMS_FAILURE = "Failed to fetch items";
 
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'

@@ -6,10 +6,13 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ} from './actionTypes'
+        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ,
+        FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE} from './actionTypes'
+
 
 const initialBattleCardsState = {
     battleCards: {
+        id: uuid(),
         objectionsBattleCards: [],
         competitorsBattleCards: [], 
         profilesBattleCards: [],
@@ -81,8 +84,27 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 export const battleCards = (state = initialBattleCardsState, action) => {
     switch (action.type) {
+        case FETCH_ITEMS_BEGIN: return {
+            ...state,
+            loading: true,
+            errors: null
+          }
+          case FETCH_ITEMS_SUCCESS: return {
+            ...state,
+            loading: false,
+            menuItems: action.payload.items
+          }
+          case FETCH_ITEMS_FAILURE: return {
+            ...state,
+            loading: false,
+            errors: action.payload.errors,
+            menuItems : []
+          }
         //reads all the data from the store
         case READ: return state;
+        
+
+
         
         case CHANGE_BLUE_HEADER_VALUE:
             switch (action.section) {

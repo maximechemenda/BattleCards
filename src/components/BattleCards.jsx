@@ -599,7 +599,6 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 const mapState = (state) => {
 
     console.log('state')
-    console.log(state.battleCards)
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
         isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,

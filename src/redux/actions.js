@@ -7,15 +7,37 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
     ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ} from './actionTypes';
+    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ,
+    FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE} from './actionTypes';
 
 
+export const fetchItemsBegin = () => ({
+    type: FETCH_ITEMS_BEGIN
+})
 
+export const fetchItemsSuccess = items => ({
+    type: FETCH_ITEMS_SUCCESS,
+    payload: { items }
+})
+
+export const fetchItemsFailure = errors => ({
+    type: FETCH_ITEMS_FAILURE,
+    payload: { errors }
+})
 
 //dispatched when all the items stored in redux store needs to be read
-export const readItems = () => ({
-    type: READ 
-  })
+export const readItems = () => {
+    return (dispatch) => {                     // function starts
+      dispatch(fetchItemsBegin());             // fetching begins
+      return axios.get('/api/menuItems')       // req data from server
+        .then(({data}) => {                    // if data is found
+          dispatch(fetchItemsSuccess(data));   // success 
+        })
+        .catch(error => dispatch(fetchItemsFailure(error))); //errors
+    }
+  }
+
+
 
 
 export const changeblueHeaderValues = (newValue, charCode, battleCardId, headerId, section) => (
