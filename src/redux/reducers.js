@@ -83,6 +83,8 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 */
 
 export const battleCards = (state = initialBattleCardsState, action) => {
+    console.log('entering main reducer')
+
     switch (action.type) {
         case FETCH_ITEMS_BEGIN: return {
             ...state,
@@ -92,20 +94,20 @@ export const battleCards = (state = initialBattleCardsState, action) => {
           case FETCH_ITEMS_SUCCESS: return {
             ...state,
             loading: false,
-            menuItems: action.payload.items
+            battleCards: action.payload.items
           }
           case FETCH_ITEMS_FAILURE: return {
             ...state,
             loading: false,
             errors: action.payload.errors,
-            menuItems : []
+            battleCards : initialBattleCardsState.battleCards
           }
         //reads all the data from the store
         case READ: return state;
         
 
 
-        
+
         case CHANGE_BLUE_HEADER_VALUE:
             switch (action.section) {
                 case 'objections':

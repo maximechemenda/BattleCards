@@ -32460,7 +32460,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.READ = exports.CHANGE_RED_HEADER_VALUE = exports.CHANGE_BLUE_HEADER_VALUE = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
+exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.CHANGE_RED_HEADER_VALUE = exports.CHANGE_BLUE_HEADER_VALUE = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
 const ADD_CARD = 'ADD_CARD';
 exports.ADD_CARD = ADD_CARD;
 const DELETE_CARD = 'DELETE_CARD';
@@ -32490,6 +32490,12 @@ exports.CHANGE_BLUE_HEADER_VALUE = CHANGE_BLUE_HEADER_VALUE;
 const CHANGE_RED_HEADER_VALUE = 'CHANGE_RED_HEADER_VALUE';
 exports.CHANGE_RED_HEADER_VALUE = CHANGE_RED_HEADER_VALUE;
 const READ = 'fetch all items';
+exports.READ = READ;
+const FETCH_ITEMS_BEGIN = "begin fetching items";
+exports.FETCH_ITEMS_BEGIN = FETCH_ITEMS_BEGIN;
+const FETCH_ITEMS_SUCCESS = "Items fetched successfully";
+exports.FETCH_ITEMS_SUCCESS = FETCH_ITEMS_SUCCESS;
+const FETCH_ITEMS_FAILURE = "Failed to fetch items";
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'
 export const FILTER_ALL = 'all'
@@ -32497,7 +32503,7 @@ export const FILTER_COMPLETED = 'completed'
 export const FILTER_INCOMPLETE = 'incomplete'
 export const Filters = [FILTER_ALL, FILTER_COMPLETED, FILTER_INCOMPLETE] */
 
-exports.READ = READ;
+exports.FETCH_ITEMS_FAILURE = FETCH_ITEMS_FAILURE;
 },{}],"redux/reducers.js":[function(require,module,exports) {
 "use strict";
 
@@ -32585,7 +32591,26 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 
 const battleCards = (state = initialBattleCardsState, action) => {
   switch (action.type) {
+    case _actionTypes.FETCH_ITEMS_BEGIN:
+      return { ...state,
+        loading: true,
+        errors: null
+      };
+
+    case _actionTypes.FETCH_ITEMS_SUCCESS:
+      return { ...state,
+        loading: false,
+        battleCards: action.payload.items
+      };
+
+    case _actionTypes.FETCH_ITEMS_FAILURE:
+      return { ...state,
+        loading: false,
+        errors: action.payload.errors,
+        battleCards: initialBattleCardsState.battleCards
+      };
     //reads all the data from the store
+
     case _actionTypes.READ:
       return state;
 
@@ -33488,17 +33513,52 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.changeRedHeaderValue = exports.changeblueHeaderValues = exports.readItems = void 0;
+exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.changeRedHeaderValue = exports.changeblueHeaderValues = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = void 0;
 
 var _uuid = require("uuid");
 
 var _actionTypes = require("./actionTypes");
 
 //import uuid from 'uuid';
-//dispatched when all the items stored in redux store needs to be read
-const readItems = () => ({
-  type: _actionTypes.READ
+const fetchItemsBegin = () => ({
+  type: _actionTypes.FETCH_ITEMS_BEGIN
 });
+
+exports.fetchItemsBegin = fetchItemsBegin;
+
+const fetchItemsSuccess = items => ({
+  type: _actionTypes.FETCH_ITEMS_SUCCESS,
+  payload: {
+    items
+  }
+});
+
+exports.fetchItemsSuccess = fetchItemsSuccess;
+
+const fetchItemsFailure = errors => ({
+  type: _actionTypes.FETCH_ITEMS_FAILURE,
+  payload: {
+    errors
+  }
+}); //dispatched when all the items stored in redux store needs to be read
+
+
+exports.fetchItemsFailure = fetchItemsFailure;
+
+const readItems = () => {
+  return dispatch => {
+    // function starts
+    dispatch(fetchItemsBegin()); // fetching begins
+
+    return axios.get('/api/menuItems') // req data from server
+    .then(({
+      data
+    }) => {
+      // if data is found
+      dispatch(fetchItemsSuccess(data)); // success 
+    }).catch(error => dispatch(fetchItemsFailure(error))); //errors
+  };
+};
 
 exports.readItems = readItems;
 
@@ -34678,7 +34738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61968" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53158" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
