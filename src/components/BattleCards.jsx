@@ -349,7 +349,7 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
             <h3>Bad arguments/good arguments</h3>
             {console.log(blueHeaderValues)}
-            <div>
+            {/* <div>
                 {blueHeaderValues.map(headerValue => (
                     
                     <ul>
@@ -363,7 +363,7 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
                         </li>
                     </ul>
                 ))}
-            </div>
+            </div> */}
 
             
 
@@ -598,7 +598,6 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const mapState = (state) => {
 
-    console.log('state')
     return ({
         objectionsBattleCards: state.battleCards.objectionsBattleCards,
         isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,

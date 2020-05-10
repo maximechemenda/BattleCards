@@ -32634,26 +32634,20 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 */
 
 const battleCards = (state = initialBattleCardsState, action) => {
-  console.log('entering main reducer');
-
   switch (action.type) {
     case _actionTypes.FETCH_ITEMS_BEGIN:
-      console.log('beginning fetching');
       return { ...state,
         loading: true,
         errors: null
       };
 
     case _actionTypes.FETCH_ITEMS_SUCCESS:
-      console.log('success fetching');
       return { ...state,
         loading: false,
         battleCards: action.payload.items
       };
 
     case _actionTypes.FETCH_ITEMS_FAILURE:
-      console.log('failure fetching');
-      console.log(action.payload.errors);
       return { ...state,
         loading: false,
         errors: action.payload.errors,
@@ -36138,11 +36132,7 @@ const ObjectionsBattleCard = ({
   className: "titleBattleCard"
 }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
   className: "battleCardNameHeader"
-}, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments"), console.log(blueHeaderValues), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(headerValue => /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("textarea", {
-  onKeyPress: e => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections'),
-  onBlur: e => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections'),
-  className: "blueHeaderValues"
-}, headerValue.headerValue)))))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+}, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments"), console.log(blueHeaderValues)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
   cards: cards,
   battleCardId: battleCardId,
   section: section
@@ -36424,7 +36414,6 @@ const AddCardButton = ({
 }, "+");
 
 const mapState = state => {
-  console.log('state');
   return {
     objectionsBattleCards: state.battleCards.objectionsBattleCards,
     isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
@@ -36507,6 +36496,9 @@ class App extends _react.Component {
 }
 
 const mapState = state => {
+  console.log('this is the state');
+  console.log(state.battleCards);
+
   _axios.default.put(`/api/battleCards/${state.battleCards.id}`, state.battleCards).then(({
     data
   }) => {
@@ -36607,7 +36599,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55143" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

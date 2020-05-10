@@ -136,26 +136,21 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 */
 
 export const battleCards = (state = initialBattleCardsState, action) => {
-    console.log('entering main reducer')
 
     switch (action.type) {
         case FETCH_ITEMS_BEGIN: 
-            console.log('beginning fetching')
             return { 
                 ...state,
                 loading: true,
                 errors: null
             }
           case FETCH_ITEMS_SUCCESS: 
-            console.log('success fetching')
             return {
                 ...state,
                 loading: false,
                 battleCards: action.payload.items
           }
           case FETCH_ITEMS_FAILURE: 
-          console.log('failure fetching')
-          console.log(action.payload.errors)
           return {
                 ...state,
                 loading: false,
