@@ -1,14 +1,19 @@
-const { fetchItems, updateItem } = require('./controller');
+const { fetchItems, addItem, updateItem } = require('./controller');
 
 const routes = [
     {
       method: 'GET',
-      url: '/api/menuItems',
+      url: '/api/battleCards',
       handler: fetchItems
     },
     {
+        method: 'POST',
+        url: '/api/battleCards',
+        handler: addItem,
+    },
+    {
       method: 'PUT',
-      url: '/api/menuItems/:id',
+      url: '/api/battleCards/:id',
       handler: updateItem
     },
   ]

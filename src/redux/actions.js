@@ -2,9 +2,6 @@
 import {v4 as uuid} from 'uuid'
 import axios from 'axios';
 
-
-
-
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT_CARD,
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
@@ -32,8 +29,10 @@ export const readItems = () => {
     return (dispatch) => {                     // function starts
       dispatch(fetchItemsBegin());             // fetching begins
       return axios.get('/api/battleCards')       // req data from server
-        .then(({data}) => {                    // if data is found
-          dispatch(fetchItemsSuccess(data));   // success 
+        .then(({data}) => {   
+        console.log('here is the data bro')
+        console.log(data[0])                 // if data is found
+          dispatch(fetchItemsSuccess(data[0]));   // success 
         })
         .catch(error => dispatch(fetchItemsFailure(error))); //errors
     }

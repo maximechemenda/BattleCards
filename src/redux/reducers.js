@@ -13,10 +13,62 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
 const initialBattleCardsState = {
     battleCards: {
         id: uuid(),
-        objectionsBattleCards: [],
-        competitorsBattleCards: [], 
-        profilesBattleCards: [],
-        discoveriesBattleCards: [],
+        objectionsBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'objections'
+            }
+        ],
+        competitorsBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'competitors'
+            }
+        ],
+        profilesBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'profiles'
+            }
+        ],
+        discoveriesBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'discoveries'
+            }
+        ],
         selectedBattleCards: [],
         isEmptyObjectionsState: true,
         isEmptyCompetitorsState: true,
@@ -24,6 +76,7 @@ const initialBattleCardsState = {
         isEmptyDiscoveriesState: true
     }
 }
+
 
 /* const initialBattleCardsState = {
     objectionsBattleCards: [],
@@ -86,21 +139,28 @@ export const battleCards = (state = initialBattleCardsState, action) => {
     console.log('entering main reducer')
 
     switch (action.type) {
-        case FETCH_ITEMS_BEGIN: return {
-            ...state,
-            loading: true,
-            errors: null
+        case FETCH_ITEMS_BEGIN: 
+            console.log('beginning fetching')
+            return { 
+                ...state,
+                loading: true,
+                errors: null
+            }
+          case FETCH_ITEMS_SUCCESS: 
+            console.log('success fetching')
+            return {
+                ...state,
+                loading: false,
+                battleCards: action.payload.items
           }
-          case FETCH_ITEMS_SUCCESS: return {
-            ...state,
-            loading: false,
-            battleCards: action.payload.items
-          }
-          case FETCH_ITEMS_FAILURE: return {
-            ...state,
-            loading: false,
-            errors: action.payload.errors,
-            battleCards : initialBattleCardsState.battleCards
+          case FETCH_ITEMS_FAILURE: 
+          console.log('failure fetching')
+          console.log(action.payload.errors)
+          return {
+                ...state,
+                loading: false,
+                errors: action.payload.errors,
+                battleCards : initialBattleCardsState.battleCards
           }
         //reads all the data from the store
         case READ: return state;
