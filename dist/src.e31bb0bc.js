@@ -35365,9 +35365,7 @@ const readItems = () => {
     .then(({
       data
     }) => {
-      console.log('here is the data bro');
-      console.log(data[0]); // if data is found
-
+      // if data is found
       dispatch(fetchItemsSuccess(data[0])); // success 
     }).catch(error => dispatch(fetchItemsFailure(error))); //errors
   };
@@ -36476,9 +36474,6 @@ class App extends _react.Component {
   }
 
   componentDidMount() {
-    console.log('initial state');
-    console.log(this.props.battleCards);
-
     _axios.default.get('./api/battleCards').then(response => {
       if (response.data.length === 0) {
         _axios.default.post('/api/battleCards', { ...this.props.battleCards
@@ -36496,9 +36491,6 @@ class App extends _react.Component {
 }
 
 const mapState = state => {
-  console.log('this is the state');
-  console.log(state.battleCards);
-
   _axios.default.put(`/api/battleCards/${state.battleCards.id}`, state.battleCards).then(({
     data
   }) => {
@@ -36599,7 +36591,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55813" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
