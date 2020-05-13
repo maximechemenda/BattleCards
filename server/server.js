@@ -20,9 +20,11 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
+    console.log('everything is good 1')
     reply.sendFile('index.html')
+    console.log('everything is good 2')
   }
-  catch (e) { console.log(e) }
+  catch (e) { console.log('I am writing this error to you baby', e) }
 });
 
 //iterating over all the routes and registering them with fastify

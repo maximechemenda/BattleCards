@@ -348,7 +348,6 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
 
             <h3>Bad arguments/good arguments</h3>
-            {console.log(blueHeaderValues)}
             {/* <div>
                 {blueHeaderValues.map(headerValue => (
                     
