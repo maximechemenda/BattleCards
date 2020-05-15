@@ -15,7 +15,7 @@ fastify.register(require('fastify-static'), {
 //connect to mongodb atlas
 mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority/authSource=admin`, { useFindAndModify: false, useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
-  .catch(e => console.log('MongoDB could not be connected dueeeeeeeeeeeee to ', e));
+  .catch(e => console.log('MongoDB could not be connected duooooo to ', e));
 
 //handles GET / request
 fastify.get('/', async (request, reply) => {
