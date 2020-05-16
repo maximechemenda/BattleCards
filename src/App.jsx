@@ -14,10 +14,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('./api/BattleCards')
+    console.log('this is the mode')
+    console.log(process.env.NODE_ENV)
+    axios.get('./api/battleCards')
     .then(response => {
       if (response.data.length === 0) {
-        axios.post('/api/BattleCards',{...this.props.battleCards})
+        axios.post('/api/battleCards',{...this.props.battleCards})
         .then(this.props.readItems())
         .catch(e => console.log("Addition failed , Error ", e));
       } else {
@@ -42,7 +44,7 @@ const mapState = (state) => {
 
 
 
-  axios.put(`/api/BattleCards/${state.battleCards.id}`,state.battleCards).then(({data})=>{
+  axios.put(`/api/battleCards/${state.battleCards.id}`,state.battleCards).then(({data})=>{
     console.log(`Item - ${data.id} updated successfully`);
   }).catch(e => console.log('Updation failed, Error ',e));
 

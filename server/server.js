@@ -14,20 +14,21 @@ fastify.register(require('fastify-static'), {
 
 //connect to mongodb atlas
 
-//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority/authSource=admin`, { useFindAndModify: false, useNewUrlParser: true })
-mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+//PRODUCTION MODE
+//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+//DEVELOPMENT MODE
+mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
 
   .then(() => console.log('MongoDB connected'))
-  .catch(e => console.log('bro, MongoDB could not be connected duooooo to ', e)); 
+  .catch(e => console.log('MongoDB could not be connected due to ', e)); 
 
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
-    console.log('everything is good 1')
     reply.sendFile('index.html')
-    console.log('everything is good 2')
   }
-  catch (e) { console.log('I am writing this error to you baby', e) }
+  catch (e) { console.log('The following error occured: ', e) }
 });
 
 //iterating over all the routes and registering them with fastify

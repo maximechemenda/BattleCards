@@ -28,7 +28,7 @@ export const fetchItemsFailure = errors => ({
 export const readItems = () => {
     return (dispatch) => {                     // function starts
       dispatch(fetchItemsBegin());             // fetching begins
-      return axios.get('/api/BattleCards')       // req data from server
+      return axios.get('/api/battleCards')       // req data from server
         .then(({data}) => {                    // if data is found
           dispatch(fetchItemsSuccess(data[0]));   // success 
         })
