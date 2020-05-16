@@ -32461,41 +32461,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.CHANGE_RED_HEADER_VALUE = exports.CHANGE_BLUE_HEADER_VALUE = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
-const ADD_CARD = 'ADD_CARD';
+var ADD_CARD = 'ADD_CARD';
 exports.ADD_CARD = ADD_CARD;
-const DELETE_CARD = 'DELETE_CARD';
+var DELETE_CARD = 'DELETE_CARD';
 exports.DELETE_CARD = DELETE_CARD;
-const ACTIVATE_CARD_EDIT = 'ACTIVATE_CARD_EDIT';
+var ACTIVATE_CARD_EDIT = 'ACTIVATE_CARD_EDIT';
 exports.ACTIVATE_CARD_EDIT = ACTIVATE_CARD_EDIT;
-const EDIT_CARD = 'EDIT_CARD';
+var EDIT_CARD = 'EDIT_CARD';
 exports.EDIT_CARD = EDIT_CARD;
-const TRIGGER_ADD_CARD_STATE = 'TRIGGER_ADD_CARD_STATE';
+var TRIGGER_ADD_CARD_STATE = 'TRIGGER_ADD_CARD_STATE';
 exports.TRIGGER_ADD_CARD_STATE = TRIGGER_ADD_CARD_STATE;
-const ADD_BATTLECARD = 'ADD_BATTLECARD';
+var ADD_BATTLECARD = 'ADD_BATTLECARD';
 exports.ADD_BATTLECARD = ADD_BATTLECARD;
-const DELETE_BATTLECARD = 'DELETE_BATTLECARD';
+var DELETE_BATTLECARD = 'DELETE_BATTLECARD';
 exports.DELETE_BATTLECARD = DELETE_BATTLECARD;
-const TRIGGER_SECTION_STATE = 'TRIGGER_SECTION_STATE';
+var TRIGGER_SECTION_STATE = 'TRIGGER_SECTION_STATE';
 exports.TRIGGER_SECTION_STATE = TRIGGER_SECTION_STATE;
-const MODIFY_BATTLECARD_TITLE = 'MODIFY_BATTLECARD_TITLE';
+var MODIFY_BATTLECARD_TITLE = 'MODIFY_BATTLECARD_TITLE';
 exports.MODIFY_BATTLECARD_TITLE = MODIFY_BATTLECARD_TITLE;
-const CHANGE_SELECTED_BATTLECARDS = 'CHANGE_SELECTED_BATTLECARDS';
+var CHANGE_SELECTED_BATTLECARDS = 'CHANGE_SELECTED_BATTLECARDS';
 exports.CHANGE_SELECTED_BATTLECARDS = CHANGE_SELECTED_BATTLECARDS;
-const CLEAR_SELECTED_BATTLECARDS = 'CLEAR_SELECTED_BATTLECARDS';
+var CLEAR_SELECTED_BATTLECARDS = 'CLEAR_SELECTED_BATTLECARDS';
 exports.CLEAR_SELECTED_BATTLECARDS = CLEAR_SELECTED_BATTLECARDS;
-const ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = 'ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS';
+var ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = 'ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS';
 exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS;
-const CHANGE_BLUE_HEADER_VALUE = 'CHANGE_BLUE_HEADER_VALUE';
+var CHANGE_BLUE_HEADER_VALUE = 'CHANGE_BLUE_HEADER_VALUE';
 exports.CHANGE_BLUE_HEADER_VALUE = CHANGE_BLUE_HEADER_VALUE;
-const CHANGE_RED_HEADER_VALUE = 'CHANGE_RED_HEADER_VALUE';
+var CHANGE_RED_HEADER_VALUE = 'CHANGE_RED_HEADER_VALUE';
 exports.CHANGE_RED_HEADER_VALUE = CHANGE_RED_HEADER_VALUE;
-const READ = 'fetch all items';
+var READ = 'fetch all items';
 exports.READ = READ;
-const FETCH_ITEMS_BEGIN = "begin fetching items";
+var FETCH_ITEMS_BEGIN = "begin fetching items";
 exports.FETCH_ITEMS_BEGIN = FETCH_ITEMS_BEGIN;
-const FETCH_ITEMS_SUCCESS = "Items fetched successfully";
+var FETCH_ITEMS_SUCCESS = "Items fetched successfully";
 exports.FETCH_ITEMS_SUCCESS = FETCH_ITEMS_SUCCESS;
-const FETCH_ITEMS_FAILURE = "Failed to fetch items";
+var FETCH_ITEMS_FAILURE = "Failed to fetch items";
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'
 export const FILTER_ALL = 'all'
@@ -32516,9 +32516,13 @@ var _uuid = require("uuid");
 
 var _actionTypes = require("./actionTypes");
 
-//import uuid from 'uuid';
-//import {FILTER_ALL} from './actionTypes'
-const initialBattleCardsState = {
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var initialBattleCardsState = {
   battleCards: {
     id: (0, _uuid.v4)(),
     objectionsBattleCards: [{
@@ -32633,26 +32637,29 @@ export const sectionStates = (state = initialSectionsStates, action) => {
 }
 */
 
-const battleCards = (state = initialBattleCardsState, action) => {
+var battleCards = function battleCards() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialBattleCardsState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
   switch (action.type) {
     case _actionTypes.FETCH_ITEMS_BEGIN:
-      return { ...state,
+      return _objectSpread(_objectSpread({}, state), {}, {
         loading: true,
         errors: null
-      };
+      });
 
     case _actionTypes.FETCH_ITEMS_SUCCESS:
-      return { ...state,
+      return _objectSpread(_objectSpread({}, state), {}, {
         loading: false,
         battleCards: action.payload.items
-      };
+      });
 
     case _actionTypes.FETCH_ITEMS_FAILURE:
-      return { ...state,
+      return _objectSpread(_objectSpread({}, state), {}, {
         loading: false,
         errors: action.payload.errors,
         battleCards: initialBattleCardsState.battleCards
-      };
+      });
     //reads all the data from the store
 
     case _actionTypes.READ:
@@ -32663,8 +32670,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
         case 'objections':
           if (action.charCode === 13) {
             console.log('entering 13');
-            return { ...state,
-              battleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   console.log('entering other condition');
                   battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
@@ -32675,12 +32682,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                   return battleCard;
                 }
               })
-            };
+            });
           } else {
-            return { ...state,
-              battleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.blueHeaderValues.map(header => {
+                  battleCard.blueHeaderValues.map(function (header) {
                     if (header.headerId === action.headerId) {
                       header.headerValue = action.newValue;
                     }
@@ -32691,7 +32698,7 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            };
+            });
           }
 
       }
@@ -32699,44 +32706,44 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.TRIGGER_SECTION_STATE:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               isEmptyObjectionsState: false,
               isEmptyCompetitorsState: true,
               isEmptyProfilesState: true,
               isEmptyDiscoveriesState: true
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               isEmptyObjectionsState: true,
               isEmptyCompetitorsState: false,
               isEmptyProfilesState: true,
               isEmptyDiscoveriesState: true
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               isEmptyObjectionsState: true,
               isEmptyCompetitorsState: true,
               isEmptyProfilesState: false,
               isEmptyDiscoveriesState: true
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               isEmptyObjectionsState: true,
               isEmptyCompetitorsState: true,
               isEmptyProfilesState: true,
               isEmptyDiscoveriesState: false
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -32744,8 +32751,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               objectionsBattleCards: state.battleCards.objectionsBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
@@ -32760,12 +32767,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 titleValue: '',
                 section: 'objections'
               }])
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               competitorsBattleCards: state.battleCards.competitorsBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
@@ -32780,12 +32787,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 titleValue: '',
                 section: 'competitors'
               }])
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               profilesBattleCards: state.battleCards.profilesBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
@@ -32800,12 +32807,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 titleValue: '',
                 section: 'profiles'
               }])
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               discoveriesBattleCards: state.battleCards.discoveriesBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
@@ -32820,77 +32827,101 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 titleValue: '',
                 section: 'discoveries'
               }])
-            }
-          };
+            })
+          });
       }
 
     case _actionTypes.CLEAR_SELECTED_BATTLECARDS:
-      return { ...state,
-        battleCards: { ...state.battleCards,
+      return _objectSpread(_objectSpread({}, state), {}, {
+        battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
           selectedBattleCards: []
-        }
-      };
+        })
+      });
 
     case _actionTypes.CHANGE_SELECTED_BATTLECARDS:
       switch (action.section) {
         case 'objections':
-          if (state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId).includes(action.battleCardId)) {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-              }
-            };
+          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+            return battleCard.battleCardId;
+          }).includes(action.battleCardId)) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
+              })
+            });
           } else {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId))
-              }
-            };
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.objectionsBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId === action.battleCardId;
+                }))
+              })
+            });
           }
 
         case 'competitors':
-          if (state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId).includes(action.battleCardId)) {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-              }
-            };
+          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+            return battleCard.battleCardId;
+          }).includes(action.battleCardId)) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
+              })
+            });
           } else {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.competitorsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId))
-              }
-            };
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.competitorsBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId === action.battleCardId;
+                }))
+              })
+            });
           }
 
         case 'profiles':
-          if (state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId).includes(action.battleCardId)) {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-              }
-            };
+          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+            return battleCard.battleCardId;
+          }).includes(action.battleCardId)) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
+              })
+            });
           } else {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.profilesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId))
-              }
-            };
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.profilesBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId === action.battleCardId;
+                }))
+              })
+            });
           }
 
         case 'discoveries':
-          if (state.battleCards.selectedBattleCards.map(battleCard => battleCard.battleCardId).includes(action.battleCardId)) {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-              }
-            };
+          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+            return battleCard.battleCardId;
+          }).includes(action.battleCardId)) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
+              })
+            });
           } else {
-            return { ...state,
-              battleCards: { ...state.battleCards,
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.discoveriesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId))
-              }
-            };
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.discoveriesBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId === action.battleCardId;
+                }))
+              })
+            });
           }
 
       }
@@ -32898,63 +32929,63 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.MODIFY_BATTLECARD_TITLE:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
     case _actionTypes.ADD_BATTLECARD:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               objectionsBattleCards: state.battleCards.objectionsBattleCards.concat([{
                 cards: [],
                 battleCardId: (0, _uuid.v4)(),
@@ -32967,12 +32998,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 }],
                 redHeaderValues: []
               }])
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               competitorsBattleCards: state.battleCards.competitorsBattleCards.concat([{
                 cards: [],
                 battleCardId: (0, _uuid.v4)(),
@@ -32985,12 +33016,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 }],
                 redHeaderValues: []
               }])
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               profilesBattleCards: state.battleCards.profilesBattleCards.concat([{
                 cards: [],
                 battleCardId: (0, _uuid.v4)(),
@@ -33003,12 +33034,12 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 }],
                 redHeaderValues: []
               }])
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               discoveriesBattleCards: state.battleCards.discoveriesBattleCards.concat([{
                 //TODO: this is the right way (almost sure)
                 cards: [],
@@ -33022,8 +33053,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
                 }],
                 redHeaderValues: []
               }])
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33031,32 +33062,40 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.DELETE_BATTLECARD:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-            }
-          };
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
+              })
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-            }
-          };
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
+              })
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-            }
-          };
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
+              })
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
-            }
-          };
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
+              })
+            })
+          });
       }
 
       break;
@@ -33064,9 +33103,9 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.ADD_CARD:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33080,13 +33119,13 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33100,13 +33139,13 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33120,13 +33159,13 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33140,8 +33179,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33151,56 +33190,64 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId);
+                  battleCard.cards = battleCard.cards.filter(function (card) {
+                    return card.cardId !== action.cardId;
+                  });
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId);
+                  battleCard.cards = battleCard.cards.filter(function (card) {
+                    return card.cardId !== action.cardId;
+                  });
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId);
+                  battleCard.cards = battleCard.cards.filter(function (card) {
+                    return card.cardId !== action.cardId;
+                  });
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId);
+                  battleCard.cards = battleCard.cards.filter(function (card) {
+                    return card.cardId !== action.cardId;
+                  });
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33208,56 +33255,56 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.TRIGGER_ADD_CARD_STATE:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33265,11 +33312,11 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.ACTIVATE_CARD_EDIT:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = true;
                     }
@@ -33280,15 +33327,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = true;
                     }
@@ -33299,15 +33346,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = true;
                     }
@@ -33318,15 +33365,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = true;
                     }
@@ -33337,8 +33384,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33346,11 +33393,11 @@ const battleCards = (state = initialBattleCardsState, action) => {
     case _actionTypes.EDIT_CARD:
       switch (action.section) {
         case 'objections':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
@@ -33362,15 +33409,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'competitors':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
@@ -33382,15 +33429,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'profiles':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
@@ -33402,15 +33449,15 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
 
         case 'discoveries':
-          return { ...state,
-            battleCards: { ...state.battleCards,
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(card => {
+                  battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
@@ -33422,8 +33469,8 @@ const battleCards = (state = initialBattleCardsState, action) => {
 
                 return battleCard;
               })
-            }
-          };
+            })
+          });
       }
 
       break;
@@ -33475,8 +33522,8 @@ import {battleCards} from './reducers'
 
 export default createStore(combineReducers({battleCards}), 
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) */
-const middlewares = [_reduxThunk.default];
-const store = (0, _redux.createStore)(_reducers.battleCards, (0, _logOnlyInProduction.composeWithDevTools)((0, _redux.applyMiddleware)(...middlewares)));
+var middlewares = [_reduxThunk.default];
+var store = (0, _redux.createStore)(_reducers.battleCards, (0, _logOnlyInProduction.composeWithDevTools)(_redux.applyMiddleware.apply(void 0, middlewares)));
 var _default = store;
 exports.default = _default;
 },{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","redux-devtools-extension/logOnlyInProduction":"../node_modules/redux-devtools-extension/logOnlyInProduction.js","./reducers":"redux/reducers.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
@@ -35331,167 +35378,202 @@ var _actionTypes = require("./actionTypes");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import uuid from 'uuid';
-const fetchItemsBegin = () => ({
-  type: _actionTypes.FETCH_ITEMS_BEGIN
-});
+var fetchItemsBegin = function fetchItemsBegin() {
+  return {
+    type: _actionTypes.FETCH_ITEMS_BEGIN
+  };
+};
 
 exports.fetchItemsBegin = fetchItemsBegin;
 
-const fetchItemsSuccess = items => ({
-  type: _actionTypes.FETCH_ITEMS_SUCCESS,
-  payload: {
-    items
-  }
-});
+var fetchItemsSuccess = function fetchItemsSuccess(items) {
+  return {
+    type: _actionTypes.FETCH_ITEMS_SUCCESS,
+    payload: {
+      items: items
+    }
+  };
+};
 
 exports.fetchItemsSuccess = fetchItemsSuccess;
 
-const fetchItemsFailure = errors => ({
-  type: _actionTypes.FETCH_ITEMS_FAILURE,
-  payload: {
-    errors
-  }
-}); //dispatched when all the items stored in redux store needs to be read
+var fetchItemsFailure = function fetchItemsFailure(errors) {
+  return {
+    type: _actionTypes.FETCH_ITEMS_FAILURE,
+    payload: {
+      errors: errors
+    }
+  };
+}; //dispatched when all the items stored in redux store needs to be read
 
 
 exports.fetchItemsFailure = fetchItemsFailure;
 
-const readItems = () => {
-  return dispatch => {
+var readItems = function readItems() {
+  return function (dispatch) {
     // function starts
     dispatch(fetchItemsBegin()); // fetching begins
 
-    return _axios.default.get('/api/battleCards') // req data from server
-    .then(({
-      data
-    }) => {
+    return _axios.default.get('/api/BattleCards') // req data from server
+    .then(function (_ref) {
+      var data = _ref.data;
       // if data is found
       dispatch(fetchItemsSuccess(data[0])); // success 
-    }).catch(error => dispatch(fetchItemsFailure(error))); //errors
+    }).catch(function (error) {
+      return dispatch(fetchItemsFailure(error));
+    }); //errors
   };
 };
 
 exports.readItems = readItems;
 
-const changeblueHeaderValues = (newValue, charCode, battleCardId, headerId, section) => ({
-  type: _actionTypes.CHANGE_BLUE_HEADER_VALUE,
-  newValue,
-  charCode,
-  battleCardId,
-  headerId,
-  section
-});
+var changeblueHeaderValues = function changeblueHeaderValues(newValue, charCode, battleCardId, headerId, section) {
+  return {
+    type: _actionTypes.CHANGE_BLUE_HEADER_VALUE,
+    newValue: newValue,
+    charCode: charCode,
+    battleCardId: battleCardId,
+    headerId: headerId,
+    section: section
+  };
+};
 
 exports.changeblueHeaderValues = changeblueHeaderValues;
 
-const changeRedHeaderValue = (newValue, charCode, battleCardId, headerId, section) => ({
-  type: _actionTypes.CHANGE_RED_HEADER_VALUE,
-  newValue,
-  charCode,
-  battleCardId,
-  headerId,
-  section
-});
+var changeRedHeaderValue = function changeRedHeaderValue(newValue, charCode, battleCardId, headerId, section) {
+  return {
+    type: _actionTypes.CHANGE_RED_HEADER_VALUE,
+    newValue: newValue,
+    charCode: charCode,
+    battleCardId: battleCardId,
+    headerId: headerId,
+    section: section
+  };
+};
 
 exports.changeRedHeaderValue = changeRedHeaderValue;
 
-const addBattleCardToSectionAndSelectedBattleCards = section => ({
-  type: _actionTypes.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-  id: (0, _uuid.v4)(),
-  section
-});
+var addBattleCardToSectionAndSelectedBattleCards = function addBattleCardToSectionAndSelectedBattleCards(section) {
+  return {
+    type: _actionTypes.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
+    id: (0, _uuid.v4)(),
+    section: section
+  };
+};
 
 exports.addBattleCardToSectionAndSelectedBattleCards = addBattleCardToSectionAndSelectedBattleCards;
 
-const clearSelectedBattleCards = () => ({
-  type: _actionTypes.CLEAR_SELECTED_BATTLECARDS
-});
+var clearSelectedBattleCards = function clearSelectedBattleCards() {
+  return {
+    type: _actionTypes.CLEAR_SELECTED_BATTLECARDS
+  };
+};
 
 exports.clearSelectedBattleCards = clearSelectedBattleCards;
 
-const changeSelectedBattleCards = (battleCardId, section) => ({
-  type: _actionTypes.CHANGE_SELECTED_BATTLECARDS,
-  battleCardId,
-  section
-});
+var changeSelectedBattleCards = function changeSelectedBattleCards(battleCardId, section) {
+  return {
+    type: _actionTypes.CHANGE_SELECTED_BATTLECARDS,
+    battleCardId: battleCardId,
+    section: section
+  };
+};
 
 exports.changeSelectedBattleCards = changeSelectedBattleCards;
 
-const modifyBattleCardTitle = (newValue, battleCardId, section) => ({
-  type: _actionTypes.MODIFY_BATTLECARD_TITLE,
-  newValue,
-  battleCardId,
-  section
-});
+var modifyBattleCardTitle = function modifyBattleCardTitle(newValue, battleCardId, section) {
+  return {
+    type: _actionTypes.MODIFY_BATTLECARD_TITLE,
+    newValue: newValue,
+    battleCardId: battleCardId,
+    section: section
+  };
+};
 
 exports.modifyBattleCardTitle = modifyBattleCardTitle;
 
-const triggerSectionState = section => ({
-  type: _actionTypes.TRIGGER_SECTION_STATE,
-  section
-});
+var triggerSectionState = function triggerSectionState(section) {
+  return {
+    type: _actionTypes.TRIGGER_SECTION_STATE,
+    section: section
+  };
+};
 
 exports.triggerSectionState = triggerSectionState;
 
-const addCard = (battleCardId, cardType, section) => ({
-  type: _actionTypes.ADD_CARD,
-  cardId: (0, _uuid.v4)(),
-  battleCardId,
-  cardType,
-  section
-});
+var addCard = function addCard(battleCardId, cardType, section) {
+  return {
+    type: _actionTypes.ADD_CARD,
+    cardId: (0, _uuid.v4)(),
+    battleCardId: battleCardId,
+    cardType: cardType,
+    section: section
+  };
+};
 
 exports.addCard = addCard;
 
-const triggerAddCardState = (battleCardId, section) => ({
-  type: _actionTypes.TRIGGER_ADD_CARD_STATE,
-  battleCardId,
-  section
-});
+var triggerAddCardState = function triggerAddCardState(battleCardId, section) {
+  return {
+    type: _actionTypes.TRIGGER_ADD_CARD_STATE,
+    battleCardId: battleCardId,
+    section: section
+  };
+};
 
 exports.triggerAddCardState = triggerAddCardState;
 
-const deleteCard = (e, battleCardId, cardId, section) => ({
-  type: _actionTypes.DELETE_CARD,
-  battleCardId,
-  cardId,
-  e,
-  section
-});
+var deleteCard = function deleteCard(e, battleCardId, cardId, section) {
+  return {
+    type: _actionTypes.DELETE_CARD,
+    battleCardId: battleCardId,
+    cardId: cardId,
+    e: e,
+    section: section
+  };
+};
 
 exports.deleteCard = deleteCard;
 
-const activateCardEdit = (battleCardId, cardId, section) => ({
-  type: _actionTypes.ACTIVATE_CARD_EDIT,
-  battleCardId,
-  cardId,
-  section
-});
+var activateCardEdit = function activateCardEdit(battleCardId, cardId, section) {
+  return {
+    type: _actionTypes.ACTIVATE_CARD_EDIT,
+    battleCardId: battleCardId,
+    cardId: cardId,
+    section: section
+  };
+};
 
 exports.activateCardEdit = activateCardEdit;
 
-const editCard = (text, battleCardId, cardId, section) => ({
-  type: _actionTypes.EDIT_CARD,
-  battleCardId,
-  cardId,
-  text,
-  section
-});
+var editCard = function editCard(text, battleCardId, cardId, section) {
+  return {
+    type: _actionTypes.EDIT_CARD,
+    battleCardId: battleCardId,
+    cardId: cardId,
+    text: text,
+    section: section
+  };
+};
 
 exports.editCard = editCard;
 
-const addBattleCard = section => ({
-  type: _actionTypes.ADD_BATTLECARD,
-  section
-});
+var addBattleCard = function addBattleCard(section) {
+  return {
+    type: _actionTypes.ADD_BATTLECARD,
+    section: section
+  };
+};
 
 exports.addBattleCard = addBattleCard;
 
-const deleteBattleCard = (battleCardId, section) => ({
-  type: _actionTypes.DELETE_BATTLECARD,
-  battleCardId,
-  section
-});
+var deleteBattleCard = function deleteBattleCard(battleCardId, section) {
+  return {
+    type: _actionTypes.DELETE_BATTLECARD,
+    battleCardId: battleCardId,
+    section: section
+  };
+};
 /* export const setFilter = (filter) => (
     {
         type: SET_FILTER,
@@ -35520,14 +35602,14 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = ({
-  editing,
-  cardId,
-  value,
-  editCard,
-  battleCardId,
-  section
-}) => {
+var _default = function _default(_ref) {
+  var editing = _ref.editing,
+      cardId = _ref.cardId,
+      value = _ref.value,
+      editCard = _ref.editCard,
+      battleCardId = _ref.battleCardId,
+      section = _ref.section;
+
   if (editing) {
     return /*#__PURE__*/_react.default.createElement(Edit, {
       cardId: cardId,
@@ -35543,18 +35625,21 @@ var _default = ({
 
 exports.default = _default;
 
-const Edit = ({
-  value,
-  cardId,
-  editCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("input", {
-  type: "text",
-  autoFocus: true,
-  defaultValue: value,
-  onBlur: e => editCard(e.target.value, battleCardId, cardId, section)
-});
+var Edit = function Edit(_ref2) {
+  var value = _ref2.value,
+      cardId = _ref2.cardId,
+      editCard = _ref2.editCard,
+      battleCardId = _ref2.battleCardId,
+      section = _ref2.section;
+  return /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    autoFocus: true,
+    defaultValue: value,
+    onBlur: function onBlur(e) {
+      return editCard(e.target.value, battleCardId, cardId, section);
+    }
+  });
+};
 },{"react":"../node_modules/react/index.js"}],"components/CardType.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -35571,29 +35656,37 @@ require("../App.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = ({
-  editing,
-  text,
-  deleteCard,
-  cardId,
-  cardType,
-  activateCardEdit,
-  editCard,
-  battleCardId,
-  section
-}) => {
+var _default = function _default(_ref) {
+  var editing = _ref.editing,
+      text = _ref.text,
+      deleteCard = _ref.deleteCard,
+      cardId = _ref.cardId,
+      cardType = _ref.cardType,
+      activateCardEdit = _ref.activateCardEdit,
+      editCard = _ref.editCard,
+      battleCardId = _ref.battleCardId,
+      section = _ref.section;
+
   if (cardType === 'text') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Text"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35602,15 +35695,23 @@ var _default = ({
   if (cardType === 'offerDeal') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Offer a Deal"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35619,15 +35720,23 @@ var _default = ({
   if (cardType === 'commonAnswer') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Common Answer"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35636,15 +35745,23 @@ var _default = ({
   if (cardType === 'goodQuestion') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35653,15 +35770,23 @@ var _default = ({
   if (cardType === 'badQuestion') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "redCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35670,15 +35795,23 @@ var _default = ({
   if (cardType === 'checklist') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Checklist"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35687,15 +35820,23 @@ var _default = ({
   if (cardType === 'warning') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Watch Out!"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "redCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35704,15 +35845,23 @@ var _default = ({
   if (cardType === 'battlePitch') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Quick Battle Pitch"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35721,15 +35870,23 @@ var _default = ({
   if (cardType === 'goodPhrasing') {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
-      onClick: () => activateCardEdit(battleCardId, cardId, section)
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "deleteCardButton",
-      onClick: e => deleteCard(e, battleCardId, cardId, section)
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
     }, "x"), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("textarea", {
-      onBlur: e => editCard(e.target.value, battleCardId, cardId, section),
-      onKeyPress: e => editCard(e.target.value, battleCardId, cardId, section),
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
@@ -35757,26 +35914,29 @@ var _CardType = _interopRequireDefault(require("./CardType"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Cards = ({
-  cards,
-  deleteCard,
-  activateCardEdit,
-  editCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, cards.map(card => /*#__PURE__*/_react.default.createElement("div", {
-  key: card.cardId
-}, /*#__PURE__*/_react.default.createElement(_CardType.default, {
-  editing: card.editing,
-  text: card.text,
-  deleteCard: deleteCard,
-  cardId: card.cardId,
-  cardType: card.cardType,
-  activateCardEdit: activateCardEdit,
-  editCard: editCard,
-  battleCardId: battleCardId,
-  section: section
-})))));
+var Cards = function Cards(_ref) {
+  var cards = _ref.cards,
+      deleteCard = _ref.deleteCard,
+      activateCardEdit = _ref.activateCardEdit,
+      editCard = _ref.editCard,
+      battleCardId = _ref.battleCardId,
+      section = _ref.section;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, cards.map(function (card) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: card.cardId
+    }, /*#__PURE__*/_react.default.createElement(_CardType.default, {
+      editing: card.editing,
+      text: card.text,
+      deleteCard: deleteCard,
+      cardId: card.cardId,
+      cardType: card.cardType,
+      activateCardEdit: activateCardEdit,
+      editCard: editCard,
+      battleCardId: battleCardId,
+      section: section
+    }));
+  })));
+};
 
 var _default = (0, _reactRedux.connect)(null, {
   deleteCard: _actions.deleteCard,
@@ -35833,585 +35993,713 @@ var _Cards = _interopRequireDefault(require("./Cards"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const BattleCardsMenu = ({
-  triggerSectionState,
-  addBattleCard,
-  deleteBattleCard,
-  objectionsBattleCards,
-  isEmptyObjectionsState,
-  competitorsBattleCards,
-  isEmptyCompetitorsState,
-  profilesBattleCards,
-  isEmptyProfilesState,
-  discoveriesBattleCards,
-  isEmptyDiscoveriesState,
-  modifyBattleCardTitle,
-  changeSelectedBattleCards,
-  selectedBattleCards,
-  clearSelectedBattleCards,
-  addBattleCardToSectionAndSelectedBattleCards,
-  triggerAddCardState,
-  addCard,
-  changeblueHeaderValues,
-  changeRedHeaderValue
-}) => /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-  className: "smallIndex"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  className: isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-  onClick: () => triggerSectionState('objections')
-}, "Objections"), /*#__PURE__*/_react.default.createElement("button", {
-  className: isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-  onClick: () => triggerSectionState('competitors')
-}, "Competitors"), /*#__PURE__*/_react.default.createElement("button", {
-  className: isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-  onClick: () => triggerSectionState('profiles')
-}, "Profiles"), /*#__PURE__*/_react.default.createElement("button", {
-  className: isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-  onClick: () => triggerSectionState('discoveries')
-}, "Discoveries")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-  className: "leftMenu"
-}, /*#__PURE__*/_react.default.createElement("h3", null, "Objections"), /*#__PURE__*/_react.default.createElement("ol", null, objectionsBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("li", {
-  onClick: () => changeSelectedBattleCards(battleCard.battleCardId, 'objections'),
-  key: battleCard.battleCardId,
-  className: "leftMenuItems"
-}, battleCard.titleValue))), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
-  className: "closeAllOpenedBattleCardsButton",
-  onClick: () => clearSelectedBattleCards()
-}, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCardToSectionAndSelectedBattleCards('objections')
-}, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCard('objections')
-}, "add BattleCard"))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-  className: "leftMenu"
-}, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", null, competitorsBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("li", {
-  onClick: () => changeSelectedBattleCards(battleCard.battleCardId, 'competitors'),
-  key: battleCard.battleCardId,
-  className: "leftMenuItems"
-}, battleCard.titleValue))), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
-  className: "closeAllOpenedBattleCardsButton",
-  onClick: () => clearSelectedBattleCards()
-}, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCardToSectionAndSelectedBattleCards('competitors')
-}, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCard('competitors')
-}, "add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-  className: "leftMenu"
-}, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", null, profilesBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("li", {
-  onClick: () => changeSelectedBattleCards(battleCard.battleCardId, 'profiles'),
-  key: battleCard.battleCardId,
-  className: "leftMenuItems"
-}, battleCard.titleValue))), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
-  className: "closeAllOpenedBattleCardsButton",
-  onClick: () => clearSelectedBattleCards()
-}, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCardToSectionAndSelectedBattleCards('profiles')
-}, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCard('profiles')
-}, "add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-  className: "leftMenu"
-}, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", null, discoveriesBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("li", {
-  onClick: () => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries'),
-  key: battleCard.battleCardId,
-  className: "leftMenuItems"
-}, battleCard.titleValue))), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
-  className: "closeAllOpenedBattleCardsButton",
-  onClick: () => clearSelectedBattleCards()
-}, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCardToSectionAndSelectedBattleCards('discoveries')
-}, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-  className: "addBattleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => addBattleCard('discoveries')
-}, "add BattleCard")))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
-  addBattleCard: addBattleCard,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  isEmptyObjectionsState: isEmptyObjectionsState,
-  isEmptyCompetitorsState: isEmptyCompetitorsState,
-  isEmptyProfilesState: isEmptyProfilesState,
-  isEmptyDiscoveriesState: isEmptyDiscoveriesState,
-  objectionsBattleCards: objectionsBattleCards,
-  competitorsBattleCards: competitorsBattleCards,
-  profilesBattleCards: profilesBattleCards,
-  discoveriesBattleCards: discoveriesBattleCards,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-}), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement(SelectedBattleCards, {
-  selectedBattleCards: selectedBattleCards,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard
-}));
+var BattleCardsMenu = function BattleCardsMenu(_ref) {
+  var triggerSectionState = _ref.triggerSectionState,
+      addBattleCard = _ref.addBattleCard,
+      deleteBattleCard = _ref.deleteBattleCard,
+      objectionsBattleCards = _ref.objectionsBattleCards,
+      isEmptyObjectionsState = _ref.isEmptyObjectionsState,
+      competitorsBattleCards = _ref.competitorsBattleCards,
+      isEmptyCompetitorsState = _ref.isEmptyCompetitorsState,
+      profilesBattleCards = _ref.profilesBattleCards,
+      isEmptyProfilesState = _ref.isEmptyProfilesState,
+      discoveriesBattleCards = _ref.discoveriesBattleCards,
+      isEmptyDiscoveriesState = _ref.isEmptyDiscoveriesState,
+      modifyBattleCardTitle = _ref.modifyBattleCardTitle,
+      changeSelectedBattleCards = _ref.changeSelectedBattleCards,
+      selectedBattleCards = _ref.selectedBattleCards,
+      clearSelectedBattleCards = _ref.clearSelectedBattleCards,
+      addBattleCardToSectionAndSelectedBattleCards = _ref.addBattleCardToSectionAndSelectedBattleCards,
+      triggerAddCardState = _ref.triggerAddCardState,
+      addCard = _ref.addCard,
+      changeblueHeaderValues = _ref.changeblueHeaderValues,
+      changeRedHeaderValue = _ref.changeRedHeaderValue;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "smallIndex"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
+    onClick: function onClick() {
+      return triggerSectionState('objections');
+    }
+  }, "Objections"), /*#__PURE__*/_react.default.createElement("button", {
+    className: isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
+    onClick: function onClick() {
+      return triggerSectionState('competitors');
+    }
+  }, "Competitors"), /*#__PURE__*/_react.default.createElement("button", {
+    className: isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
+    onClick: function onClick() {
+      return triggerSectionState('profiles');
+    }
+  }, "Profiles"), /*#__PURE__*/_react.default.createElement("button", {
+    className: isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
+    onClick: function onClick() {
+      return triggerSectionState('discoveries');
+    }
+  }, "Discoveries")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "leftMenu"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Objections"), /*#__PURE__*/_react.default.createElement("ol", null, objectionsBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      onClick: function onClick() {
+        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
+      },
+      key: battleCard.battleCardId,
+      className: "leftMenuItems"
+    }, battleCard.titleValue);
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+    className: "closeAllOpenedBattleCardsButton",
+    onClick: function onClick() {
+      return clearSelectedBattleCards();
+    }
+  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCardToSectionAndSelectedBattleCards('objections');
+    }
+  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCard('objections');
+    }
+  }, "add BattleCard"))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "leftMenu"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", null, competitorsBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      onClick: function onClick() {
+        return changeSelectedBattleCards(battleCard.battleCardId, 'competitors');
+      },
+      key: battleCard.battleCardId,
+      className: "leftMenuItems"
+    }, battleCard.titleValue);
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+    className: "closeAllOpenedBattleCardsButton",
+    onClick: function onClick() {
+      return clearSelectedBattleCards();
+    }
+  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCardToSectionAndSelectedBattleCards('competitors');
+    }
+  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCard('competitors');
+    }
+  }, "add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "leftMenu"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", null, profilesBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      onClick: function onClick() {
+        return changeSelectedBattleCards(battleCard.battleCardId, 'profiles');
+      },
+      key: battleCard.battleCardId,
+      className: "leftMenuItems"
+    }, battleCard.titleValue);
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+    className: "closeAllOpenedBattleCardsButton",
+    onClick: function onClick() {
+      return clearSelectedBattleCards();
+    }
+  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCardToSectionAndSelectedBattleCards('profiles');
+    }
+  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCard('profiles');
+    }
+  }, "add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "leftMenu"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", null, discoveriesBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      onClick: function onClick() {
+        return changeSelectedBattleCards(battleCard.battleCardId, 'discoveries');
+      },
+      key: battleCard.battleCardId,
+      className: "leftMenuItems"
+    }, battleCard.titleValue);
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+    className: "closeAllOpenedBattleCardsButton",
+    onClick: function onClick() {
+      return clearSelectedBattleCards();
+    }
+  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCardToSectionAndSelectedBattleCards('discoveries');
+    }
+  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return addBattleCard('discoveries');
+    }
+  }, "add BattleCard")))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
+    addBattleCard: addBattleCard,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    isEmptyObjectionsState: isEmptyObjectionsState,
+    isEmptyCompetitorsState: isEmptyCompetitorsState,
+    isEmptyProfilesState: isEmptyProfilesState,
+    isEmptyDiscoveriesState: isEmptyDiscoveriesState,
+    objectionsBattleCards: objectionsBattleCards,
+    competitorsBattleCards: competitorsBattleCards,
+    profilesBattleCards: profilesBattleCards,
+    discoveriesBattleCards: discoveriesBattleCards,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues,
+    changeRedHeaderValue: changeRedHeaderValue
+  }), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement(SelectedBattleCards, {
+    selectedBattleCards: selectedBattleCards,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard
+  }));
+};
 
-const SelectedBattleCards = ({
-  selectedBattleCards,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", null, selectedBattleCards.map(battleCard => {
-  if (battleCard.section === 'objections') {
-    return /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
+var SelectedBattleCards = function SelectedBattleCards(_ref2) {
+  var selectedBattleCards = _ref2.selectedBattleCards,
+      deleteBattleCard = _ref2.deleteBattleCard,
+      modifyBattleCardTitle = _ref2.modifyBattleCardTitle,
+      addCard = _ref2.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", null, selectedBattleCards.map(function (battleCard) {
+    if (battleCard.section === 'objections') {
+      return /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: battleCard.section,
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: _actions.triggerAddCardState,
+        addCard: addCard
+      });
+    }
+
+    if (battleCard.section === 'competitors') {
+      return /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: battleCard.section,
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: _actions.triggerAddCardState,
+        addCard: addCard
+      });
+    }
+
+    if (battleCard.section === 'profiles') {
+      return /*#__PURE__*/_react.default.createElement(ProfilesBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: battleCard.section,
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: _actions.triggerAddCardState,
+        addCard: addCard
+      });
+    }
+
+    if (battleCard.section === 'discoveries') {
+      return /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: battleCard.section,
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: _actions.triggerAddCardState,
+        addCard: addCard
+      });
+    }
+  }));
+};
+
+var IndependentBattleCards = function IndependentBattleCards(_ref3) {
+  var addBattleCard = _ref3.addBattleCard,
+      deleteBattleCard = _ref3.deleteBattleCard,
+      modifyBattleCardTitle = _ref3.modifyBattleCardTitle,
+      isEmptyObjectionsState = _ref3.isEmptyObjectionsState,
+      isEmptyCompetitorsState = _ref3.isEmptyCompetitorsState,
+      isEmptyProfilesState = _ref3.isEmptyProfilesState,
+      isEmptyDiscoveriesState = _ref3.isEmptyDiscoveriesState,
+      objectionsBattleCards = _ref3.objectionsBattleCards,
+      competitorsBattleCards = _ref3.competitorsBattleCards,
+      profilesBattleCards = _ref3.profilesBattleCards,
+      discoveriesBattleCards = _ref3.discoveriesBattleCards,
+      triggerAddCardState = _ref3.triggerAddCardState,
+      addCard = _ref3.addCard,
+      changeblueHeaderValues = _ref3.changeblueHeaderValues,
+      changeRedHeaderValue = _ref3.changeRedHeaderValue;
+  return /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement(ObjectionsBattleCards, {
+    addBattleCard: addBattleCard,
+    objectionsBattleCards: objectionsBattleCards,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues,
+    changeRedHeaderValue: changeRedHeaderValue
+  }), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement(CompetitorsBattleCards, {
+    addBattleCard: addBattleCard,
+    competitorsBattleCards: competitorsBattleCards,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues,
+    changeRedHeaderValue: changeRedHeaderValue
+  }), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement(ProfilesBattleCards, {
+    addBattleCard: addBattleCard,
+    profilesBattleCards: profilesBattleCards,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues,
+    changeRedHeaderValue: changeRedHeaderValue
+  }), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCards, {
+    addBattleCard: addBattleCard,
+    discoveriesBattleCards: discoveriesBattleCards,
+    deleteBattleCard: deleteBattleCard,
+    modifyBattleCardTitle: modifyBattleCardTitle,
+    triggerAddCardState: triggerAddCardState,
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues,
+    changeRedHeaderValue: changeRedHeaderValue
+  }));
+}; //////////////////////  OBJECTIONS /////////////////////
+
+
+var ObjectionsBattleCards = function ObjectionsBattleCards(_ref4) {
+  var addBattleCard = _ref4.addBattleCard,
+      objectionsBattleCards = _ref4.objectionsBattleCards,
+      deleteBattleCard = _ref4.deleteBattleCard,
+      modifyBattleCardTitle = _ref4.modifyBattleCardTitle,
+      triggerAddCardState = _ref4.triggerAddCardState,
+      addCard = _ref4.addCard,
+      changeblueHeaderValues = _ref4.changeblueHeaderValues,
+      changeRedHeaderValue = _ref4.changeRedHeaderValue;
+  return /*#__PURE__*/_react.default.createElement("div", null, objectionsBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: battleCard.battleCardId
+    }, /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
       deleteBattleCard: deleteBattleCard,
       battleCardId: battleCard.battleCardId,
-      section: battleCard.section,
+      section: 'objections',
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
-      triggerAddCardState: _actions.triggerAddCardState,
-      addCard: addCard
-    });
-  }
+      triggerAddCardState: triggerAddCardState,
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      changeblueHeaderValues: changeblueHeaderValues,
+      changeRedHeaderValue: changeRedHeaderValue
+    }));
+  }));
+};
 
-  if (battleCard.section === 'competitors') {
-    return /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
+var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
+  var cards = _ref5.cards,
+      deleteBattleCard = _ref5.deleteBattleCard,
+      battleCardId = _ref5.battleCardId,
+      isEmptyAddButtonState = _ref5.isEmptyAddButtonState,
+      section = _ref5.section,
+      modifyBattleCardTitle = _ref5.modifyBattleCardTitle,
+      titleValue = _ref5.titleValue,
+      triggerAddCardState = _ref5.triggerAddCardState,
+      addCard = _ref5.addCard,
+      blueHeaderValues = _ref5.blueHeaderValues,
+      changeblueHeaderValues = _ref5.changeblueHeaderValues,
+      changeRedHeaderValue = _ref5.changeRedHeaderValue;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "battleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return deleteBattleCard(battleCardId, section);
+    }
+  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "cards"
+  }, /*#__PURE__*/_react.default.createElement("textarea", {
+    onBlur: function onBlur(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'objections');
+    },
+    onKeyPress: function onKeyPress(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'objections');
+    },
+    placeholder: "Title of Battle Card",
+    className: "titleBattleCard"
+  }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardNameHeader"
+  }, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+    cards: cards,
+    battleCardId: battleCardId,
+    section: section
+  }), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
+    section: section,
+    battleCardId: battleCardId,
+    triggerAddCardState: triggerAddCardState
+  }), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewObjectionsCardMenu, {
+    addCard: addCard,
+    battleCardId: battleCardId,
+    section: section
+  })));
+};
+
+var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref6) {
+  var addCard = _ref6.addCard,
+      battleCardId = _ref6.battleCardId,
+      section = _ref6.section;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "addCardMenu"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'goodQuestion', section);
+    }
+  }, "Good Question"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'badQuestion', section);
+    }
+  }, "Bad Question"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'offerDeal', section);
+    }
+  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'checklist', section);
+    }
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'commonAnswer', section);
+    }
+  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'text', section);
+    }
+  }, "Text"));
+}; //////////////////////  COMPETITORS /////////////////////
+
+
+var CompetitorsBattleCards = function CompetitorsBattleCards(_ref7) {
+  var addBattleCard = _ref7.addBattleCard,
+      competitorsBattleCards = _ref7.competitorsBattleCards,
+      deleteBattleCard = _ref7.deleteBattleCard,
+      modifyBattleCardTitle = _ref7.modifyBattleCardTitle,
+      triggerAddCardState = _ref7.triggerAddCardState,
+      addCard = _ref7.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: battleCard.battleCardId
+    }, /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
       deleteBattleCard: deleteBattleCard,
       battleCardId: battleCard.battleCardId,
-      section: battleCard.section,
+      section: 'competitors',
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
-      triggerAddCardState: _actions.triggerAddCardState,
+      triggerAddCardState: triggerAddCardState,
       addCard: addCard
-    });
-  }
+    }));
+  }));
+};
 
-  if (battleCard.section === 'profiles') {
-    return /*#__PURE__*/_react.default.createElement(ProfilesBattleCard, {
+var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
+  var cards = _ref8.cards,
+      deleteBattleCard = _ref8.deleteBattleCard,
+      battleCardId = _ref8.battleCardId,
+      isEmptyAddButtonState = _ref8.isEmptyAddButtonState,
+      section = _ref8.section,
+      modifyBattleCardTitle = _ref8.modifyBattleCardTitle,
+      titleValue = _ref8.titleValue,
+      triggerAddCardState = _ref8.triggerAddCardState,
+      addCard = _ref8.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "battleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return deleteBattleCard(battleCardId, section);
+    }
+  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "cards"
+  }, /*#__PURE__*/_react.default.createElement("textarea", {
+    onBlur: function onBlur(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'competitors');
+    },
+    onKeyPress: function onKeyPress(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'competitors');
+    },
+    placeholder: "Title of Battle Card",
+    className: "titleBattleCard"
+  }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardNameHeader"
+  }, "Competitor"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+    cards: cards,
+    battleCardId: battleCardId,
+    isEmptyAddButtonState: isEmptyAddButtonState,
+    section: section
+  }), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
+    section: section,
+    battleCardId: battleCardId,
+    triggerAddCardState: triggerAddCardState
+  }), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewCompetitorsCardMenu, {
+    addCard: addCard,
+    battleCardId: battleCardId,
+    section: section
+  })));
+};
+
+var NewCompetitorsCardMenu = function NewCompetitorsCardMenu(_ref9) {
+  var addCard = _ref9.addCard,
+      battleCardId = _ref9.battleCardId,
+      section = _ref9.section;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "addCardMenu"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'battlePitch', section);
+    }
+  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'offerDeal', section);
+    }
+  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'warning', section);
+    }
+  }, "Warning"));
+}; //////////////////////  PROFILES /////////////////////
+
+
+var ProfilesBattleCards = function ProfilesBattleCards(_ref10) {
+  var addBattleCard = _ref10.addBattleCard,
+      profilesBattleCards = _ref10.profilesBattleCards,
+      deleteBattleCard = _ref10.deleteBattleCard,
+      modifyBattleCardTitle = _ref10.modifyBattleCardTitle,
+      triggerAddCardState = _ref10.triggerAddCardState,
+      addCard = _ref10.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", null, profilesBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: battleCard.battleCardId
+    }, /*#__PURE__*/_react.default.createElement(ProfilesBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
       deleteBattleCard: deleteBattleCard,
       battleCardId: battleCard.battleCardId,
-      section: battleCard.section,
+      section: 'profiles',
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
-      triggerAddCardState: _actions.triggerAddCardState,
+      triggerAddCardState: triggerAddCardState,
       addCard: addCard
-    });
-  }
+    }));
+  }));
+};
 
-  if (battleCard.section === 'discoveries') {
-    return /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCard, {
+var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
+  var cards = _ref11.cards,
+      deleteBattleCard = _ref11.deleteBattleCard,
+      battleCardId = _ref11.battleCardId,
+      isEmptyAddButtonState = _ref11.isEmptyAddButtonState,
+      section = _ref11.section,
+      modifyBattleCardTitle = _ref11.modifyBattleCardTitle,
+      titleValue = _ref11.titleValue,
+      triggerAddCardState = _ref11.triggerAddCardState,
+      addCard = _ref11.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "battleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return deleteBattleCard(battleCardId, section);
+    }
+  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "cards"
+  }, /*#__PURE__*/_react.default.createElement("textarea", {
+    onBlur: function onBlur(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'profiles');
+    },
+    onKeyPress: function onKeyPress(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'profiles');
+    },
+    placeholder: "Title of Battle Card",
+    className: "titleBattleCard"
+  }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardNameHeader"
+  }, "Profile"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+    cards: cards,
+    battleCardId: battleCardId,
+    isEmptyAddButtonState: isEmptyAddButtonState,
+    section: section
+  }), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
+    section: section,
+    battleCardId: battleCardId,
+    triggerAddCardState: triggerAddCardState
+  }), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewProfilesCardMenu, {
+    addCard: addCard,
+    battleCardId: battleCardId,
+    section: section
+  })));
+};
+
+var NewProfilesCardMenu = function NewProfilesCardMenu(_ref12) {
+  var addCard = _ref12.addCard,
+      battleCardId = _ref12.battleCardId,
+      section = _ref12.section;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "addCardMenu"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'battlePitch', section);
+    }
+  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'warning', section);
+    }
+  }, "Warning"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'checklist', section);
+    }
+  }, "Checklist"));
+}; //////////////////////  DISCOVERIES /////////////////////
+
+
+var DiscoveriesBattleCards = function DiscoveriesBattleCards(_ref13) {
+  var addBattleCard = _ref13.addBattleCard,
+      discoveriesBattleCards = _ref13.discoveriesBattleCards,
+      deleteBattleCard = _ref13.deleteBattleCard,
+      modifyBattleCardTitle = _ref13.modifyBattleCardTitle,
+      triggerAddCardState = _ref13.triggerAddCardState,
+      addCard = _ref13.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", null, discoveriesBattleCards.map(function (battleCard) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: battleCard.battleCardId
+    }, /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
       deleteBattleCard: deleteBattleCard,
       battleCardId: battleCard.battleCardId,
-      section: battleCard.section,
+      section: 'discoveries',
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
-      triggerAddCardState: _actions.triggerAddCardState,
+      triggerAddCardState: triggerAddCardState,
       addCard: addCard
-    });
-  }
-}));
+    }));
+  }));
+};
 
-const IndependentBattleCards = ({
-  addBattleCard,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  isEmptyObjectionsState,
-  isEmptyCompetitorsState,
-  isEmptyProfilesState,
-  isEmptyDiscoveriesState,
-  objectionsBattleCards,
-  competitorsBattleCards,
-  profilesBattleCards,
-  discoveriesBattleCards,
-  triggerAddCardState,
-  addCard,
-  changeblueHeaderValues,
-  changeRedHeaderValue
-}) => /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement(ObjectionsBattleCards, {
-  addBattleCard: addBattleCard,
-  objectionsBattleCards: objectionsBattleCards,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-}), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement(CompetitorsBattleCards, {
-  addBattleCard: addBattleCard,
-  competitorsBattleCards: competitorsBattleCards,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-}), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement(ProfilesBattleCards, {
-  addBattleCard: addBattleCard,
-  profilesBattleCards: profilesBattleCards,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-}), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCards, {
-  addBattleCard: addBattleCard,
-  discoveriesBattleCards: discoveriesBattleCards,
-  deleteBattleCard: deleteBattleCard,
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-})); //////////////////////  OBJECTIONS /////////////////////
+var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
+  var cards = _ref14.cards,
+      deleteBattleCard = _ref14.deleteBattleCard,
+      battleCardId = _ref14.battleCardId,
+      isEmptyAddButtonState = _ref14.isEmptyAddButtonState,
+      section = _ref14.section,
+      modifyBattleCardTitle = _ref14.modifyBattleCardTitle,
+      titleValue = _ref14.titleValue,
+      triggerAddCardState = _ref14.triggerAddCardState,
+      addCard = _ref14.addCard;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "battleCard"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      return deleteBattleCard(battleCardId, section);
+    }
+  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "cards"
+  }, /*#__PURE__*/_react.default.createElement("textarea", {
+    onBlur: function onBlur(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries');
+    },
+    onKeyPress: function onKeyPress(e) {
+      return modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries');
+    },
+    placeholder: "Title of Battle Card",
+    className: "titleBattleCard"
+  }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardNameHeader"
+  }, "Discovery"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+    cards: cards,
+    battleCardId: battleCardId,
+    isEmptyAddButtonState: isEmptyAddButtonState,
+    section: section
+  }), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
+    section: section,
+    battleCardId: battleCardId,
+    triggerAddCardState: triggerAddCardState
+  }), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewDiscoveriesCardMenu, {
+    addCard: addCard,
+    battleCardId: battleCardId,
+    section: section
+  })));
+};
 
-
-const ObjectionsBattleCards = ({
-  addBattleCard,
-  objectionsBattleCards,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  triggerAddCardState,
-  addCard,
-  changeblueHeaderValues,
-  changeRedHeaderValue
-}) => /*#__PURE__*/_react.default.createElement("div", null, objectionsBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("div", {
-  key: battleCard.battleCardId
-}, /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
-  cards: battleCard.cards,
-  isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-  deleteBattleCard: deleteBattleCard,
-  battleCardId: battleCard.battleCardId,
-  section: 'objections',
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  titleValue: battleCard.titleValue,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard,
-  blueHeaderValues: battleCard.blueHeaderValues,
-  changeblueHeaderValues: changeblueHeaderValues,
-  changeRedHeaderValue: changeRedHeaderValue
-}))));
-
-const ObjectionsBattleCard = ({
-  cards,
-  deleteBattleCard,
-  battleCardId,
-  isEmptyAddButtonState,
-  section,
-  modifyBattleCardTitle,
-  titleValue,
-  triggerAddCardState,
-  addCard,
-  blueHeaderValues,
-  changeblueHeaderValues,
-  changeRedHeaderValue
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "battleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => deleteBattleCard(battleCardId, section)
-}, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
-  className: "cards"
-}, /*#__PURE__*/_react.default.createElement("textarea", {
-  onBlur: e => modifyBattleCardTitle(e.target.value, battleCardId, 'objections'),
-  onKeyPress: e => modifyBattleCardTitle(e.target.value, battleCardId, 'objections'),
-  placeholder: "Title of Battle Card",
-  className: "titleBattleCard"
-}, titleValue), /*#__PURE__*/_react.default.createElement("span", {
-  className: "battleCardNameHeader"
-}, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments"), console.log(blueHeaderValues)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
-  cards: cards,
-  battleCardId: battleCardId,
-  section: section
-}), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
-  section: section,
-  battleCardId: battleCardId,
-  triggerAddCardState: triggerAddCardState
-}), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewObjectionsCardMenu, {
-  addCard: addCard,
-  battleCardId: battleCardId,
-  section: section
-})));
-
-const NewObjectionsCardMenu = ({
-  addCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "addCardMenu"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'goodQuestion', section)
-}, "Good Question"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "redAddButton",
-  onClick: () => addCard(battleCardId, 'badQuestion', section)
-}, "Bad Question"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'offerDeal', section)
-}, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'checklist', section)
-}, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'commonAnswer', section)
-}, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'text', section)
-}, "Text")); //////////////////////  COMPETITORS /////////////////////
+var NewDiscoveriesCardMenu = function NewDiscoveriesCardMenu(_ref15) {
+  var addCard = _ref15.addCard,
+      battleCardId = _ref15.battleCardId,
+      section = _ref15.section;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "addCardMenu"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'commonAnswer', section);
+    }
+  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'goodPhrasing', section);
+    }
+  }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'checklist', section);
+    }
+  }, "Checklist"));
+}; /////////////////// ADD CARD BUTTON ////////////////
 
 
-const CompetitorsBattleCards = ({
-  addBattleCard,
-  competitorsBattleCards,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("div", {
-  key: battleCard.battleCardId
-}, /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
-  cards: battleCard.cards,
-  isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-  deleteBattleCard: deleteBattleCard,
-  battleCardId: battleCard.battleCardId,
-  section: 'competitors',
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  titleValue: battleCard.titleValue,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard
-}))));
+var AddCardButton = function AddCardButton(_ref16) {
+  var triggerAddCardState = _ref16.triggerAddCardState,
+      battleCardId = _ref16.battleCardId,
+      section = _ref16.section;
+  return /*#__PURE__*/_react.default.createElement("button", {
+    className: "addCardButton",
+    onClick: function onClick() {
+      return triggerAddCardState(battleCardId, section);
+    }
+  }, "+");
+};
 
-const CompetitorsBattleCard = ({
-  cards,
-  deleteBattleCard,
-  battleCardId,
-  isEmptyAddButtonState,
-  section,
-  modifyBattleCardTitle,
-  titleValue,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "battleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => deleteBattleCard(battleCardId, section)
-}, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
-  className: "cards"
-}, /*#__PURE__*/_react.default.createElement("textarea", {
-  onBlur: e => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors'),
-  onKeyPress: e => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors'),
-  placeholder: "Title of Battle Card",
-  className: "titleBattleCard"
-}, titleValue), /*#__PURE__*/_react.default.createElement("span", {
-  className: "battleCardNameHeader"
-}, "Competitor"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
-  cards: cards,
-  battleCardId: battleCardId,
-  isEmptyAddButtonState: isEmptyAddButtonState,
-  section: section
-}), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
-  section: section,
-  battleCardId: battleCardId,
-  triggerAddCardState: triggerAddCardState
-}), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewCompetitorsCardMenu, {
-  addCard: addCard,
-  battleCardId: battleCardId,
-  section: section
-})));
-
-const NewCompetitorsCardMenu = ({
-  addCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "addCardMenu"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'battlePitch', section)
-}, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'offerDeal', section)
-}, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "redAddButton",
-  onClick: () => addCard(battleCardId, 'warning', section)
-}, "Warning")); //////////////////////  PROFILES /////////////////////
-
-
-const ProfilesBattleCards = ({
-  addBattleCard,
-  profilesBattleCards,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", null, profilesBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("div", {
-  key: battleCard.battleCardId
-}, /*#__PURE__*/_react.default.createElement(ProfilesBattleCard, {
-  cards: battleCard.cards,
-  isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-  deleteBattleCard: deleteBattleCard,
-  battleCardId: battleCard.battleCardId,
-  section: 'profiles',
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  titleValue: battleCard.titleValue,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard
-}))));
-
-const ProfilesBattleCard = ({
-  cards,
-  deleteBattleCard,
-  battleCardId,
-  isEmptyAddButtonState,
-  section,
-  modifyBattleCardTitle,
-  titleValue,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "battleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => deleteBattleCard(battleCardId, section)
-}, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
-  className: "cards"
-}, /*#__PURE__*/_react.default.createElement("textarea", {
-  onBlur: e => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles'),
-  onKeyPress: e => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles'),
-  placeholder: "Title of Battle Card",
-  className: "titleBattleCard"
-}, titleValue), /*#__PURE__*/_react.default.createElement("span", {
-  className: "battleCardNameHeader"
-}, "Profile"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
-  cards: cards,
-  battleCardId: battleCardId,
-  isEmptyAddButtonState: isEmptyAddButtonState,
-  section: section
-}), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
-  section: section,
-  battleCardId: battleCardId,
-  triggerAddCardState: triggerAddCardState
-}), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewProfilesCardMenu, {
-  addCard: addCard,
-  battleCardId: battleCardId,
-  section: section
-})));
-
-const NewProfilesCardMenu = ({
-  addCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "addCardMenu"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'battlePitch', section)
-}, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "redAddButton",
-  onClick: () => addCard(battleCardId, 'warning', section)
-}, "Warning"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'checklist', section)
-}, "Checklist")); //////////////////////  DISCOVERIES /////////////////////
-
-
-const DiscoveriesBattleCards = ({
-  addBattleCard,
-  discoveriesBattleCards,
-  deleteBattleCard,
-  modifyBattleCardTitle,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", null, discoveriesBattleCards.map(battleCard => /*#__PURE__*/_react.default.createElement("div", {
-  key: battleCard.battleCardId
-}, /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCard, {
-  cards: battleCard.cards,
-  isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-  deleteBattleCard: deleteBattleCard,
-  battleCardId: battleCard.battleCardId,
-  section: 'discoveries',
-  modifyBattleCardTitle: modifyBattleCardTitle,
-  titleValue: battleCard.titleValue,
-  triggerAddCardState: triggerAddCardState,
-  addCard: addCard
-}))));
-
-const DiscoveriesBattleCard = ({
-  cards,
-  deleteBattleCard,
-  battleCardId,
-  isEmptyAddButtonState,
-  section,
-  modifyBattleCardTitle,
-  titleValue,
-  triggerAddCardState,
-  addCard
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "battleCard"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  onClick: () => deleteBattleCard(battleCardId, section)
-}, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
-  className: "cards"
-}, /*#__PURE__*/_react.default.createElement("textarea", {
-  onBlur: e => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries'),
-  onKeyPress: e => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries'),
-  placeholder: "Title of Battle Card",
-  className: "titleBattleCard"
-}, titleValue), /*#__PURE__*/_react.default.createElement("span", {
-  className: "battleCardNameHeader"
-}, "Discovery"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
-  cards: cards,
-  battleCardId: battleCardId,
-  isEmptyAddButtonState: isEmptyAddButtonState,
-  section: section
-}), /*#__PURE__*/_react.default.createElement("div", null, isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(AddCardButton, {
-  section: section,
-  battleCardId: battleCardId,
-  triggerAddCardState: triggerAddCardState
-}), !isEmptyAddButtonState && /*#__PURE__*/_react.default.createElement(NewDiscoveriesCardMenu, {
-  addCard: addCard,
-  battleCardId: battleCardId,
-  section: section
-})));
-
-const NewDiscoveriesCardMenu = ({
-  addCard,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("div", {
-  className: "addCardMenu"
-}, /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'commonAnswer', section)
-}, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'goodPhrasing', section)
-}, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("button", {
-  className: "unfilledAddButton",
-  onClick: () => addCard(battleCardId, 'checklist', section)
-}, "Checklist")); /////////////////// ADD CARD BUTTON ////////////////
-
-
-const AddCardButton = ({
-  triggerAddCardState,
-  battleCardId,
-  section
-}) => /*#__PURE__*/_react.default.createElement("button", {
-  className: "addCardButton",
-  onClick: () => triggerAddCardState(battleCardId, section)
-}, "+");
-
-const mapState = state => {
+var mapState = function mapState(state) {
   return {
     objectionsBattleCards: state.battleCards.objectionsBattleCards,
     isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
@@ -36466,36 +36754,79 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-//import {Provider} from 'react-redux'
-//import store from './redux/store'
-class App extends _react.Component {
-  constructor(props) {
-    super(props);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var App = /*#__PURE__*/function (_Component) {
+  _inherits(App, _Component);
+
+  var _super = _createSuper(App);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    return _super.call(this, props);
   }
 
-  componentDidMount() {
-    _axios.default.get('./api/battleCards').then(response => {
-      if (response.data.length === 0) {
-        _axios.default.post('/api/battleCards', { ...this.props.battleCards
-        }).then(this.props.readItems()).catch(e => console.log("Addition failed , Error ", e));
-      } else {
-        this.props.readItems();
-      }
-    }).catch(e => console.log("fetching failed , Error ", e));
-  }
+  _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
 
-  render() {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_BattleCards.default, null));
-  }
+      _axios.default.get('./api/BattleCards').then(function (response) {
+        if (response.data.length === 0) {
+          _axios.default.post('/api/BattleCards', _objectSpread({}, _this.props.battleCards)).then(_this.props.readItems()).catch(function (e) {
+            return console.log("Addition failed , Error ", e);
+          });
+        } else {
+          _this.props.readItems();
+        }
+      }).catch(function (e) {
+        return console.log("fetching failed , Error ", e);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_BattleCards.default, null));
+    }
+  }]);
 
-}
+  return App;
+}(_react.Component);
 
-const mapState = state => {
-  _axios.default.put(`/api/battleCards/${state.battleCards.id}`, state.battleCards).then(({
-    data
-  }) => {
-    console.log(`Item - ${data.id} updated successfully`);
-  }).catch(e => console.log('Updation failed, Error ', e));
+var mapState = function mapState(state) {
+  _axios.default.put("/api/BattleCards/".concat(state.battleCards.id), state.battleCards).then(function (_ref) {
+    var data = _ref.data;
+    console.log("Item - ".concat(data.id, " updated successfully"));
+  }).catch(function (e) {
+    return console.log('Updation failed, Error ', e);
+  });
 
   return {
     battleCards: state.battleCards
@@ -36534,14 +36865,17 @@ var _App = _interopRequireDefault(require("./App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //element where we'll mount our react app
-const rootElement = document.getElementById("root");
+var rootElement = document.getElementById("root");
 
-const Application = () =>
-/*#__PURE__*/
-// making our redux store available to nested components. 
-_react.default.createElement(_reactRedux.Provider, {
-  store: _store.default
-}, /*#__PURE__*/_react.default.createElement(_App.default, null)); //we render our app over rootElement
+var Application = function Application() {
+  return (
+    /*#__PURE__*/
+    // making our redux store available to nested components. 
+    _react.default.createElement(_reactRedux.Provider, {
+      store: _store.default
+    }, /*#__PURE__*/_react.default.createElement(_App.default, null))
+  );
+}; //we render our app over rootElement
 
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(Application, null), rootElement);
@@ -36591,7 +36925,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51807" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62180" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

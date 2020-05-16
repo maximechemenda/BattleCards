@@ -13,9 +13,12 @@ fastify.register(require('fastify-static'), {
 
 
 //connect to mongodb atlas
-mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority/authSource=admin`, { useFindAndModify: false, useNewUrlParser: true })
+
+//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority/authSource=admin`, { useFindAndModify: false, useNewUrlParser: true })
+mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
   .then(() => console.log('MongoDB connected'))
-  .catch(e => console.log('MongoDB could not be connected duooooo to ', e));
+  .catch(e => console.log('bro, MongoDB could not be connected duooooo to ', e)); 
 
 //handles GET / request
 fastify.get('/', async (request, reply) => {
@@ -31,10 +34,20 @@ fastify.get('/', async (request, reply) => {
 routes.forEach(route => fastify.route(route))
 
 //launching server at port : 3000 in local environment
-fastify.listen(process.env.PORT || 3000, '0.0.0.0', (err) => {
+fastify.listen({
+  port: process.env.PORT || 3000, 
+  host: '0.0.0.0'}, (err) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
   }
   console.log(`server running at ${fastify.server.address().port}`)
 })
+
+/* fastify.listen(process.env.PORT || 3000, '0.0.0.0', (err) => {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+  console.log(`server running at ${fastify.server.address().port}`)
+}) */
