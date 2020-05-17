@@ -27,11 +27,11 @@ const initialBattleCardsState = {
                 section: 'objections',
                 blueHeaderValues: {
                     headerId: uuid(),
-                    headerValue: 'second argument'
+                    headerValue: 'text'
                 },
                 redHeaderValues: {
                     headerId: uuid(),
-                    headerValue: 'second argument'
+                    headerValue: 'text'
                 }
             }
         ],
@@ -46,7 +46,15 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'competitors'
+                section: 'competitors',
+                blueHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                },
+                redHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                }
             }
         ],
         profilesBattleCards: [
@@ -60,7 +68,15 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'profiles'
+                section: 'profiles',
+                blueHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                },
+                redHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                }
             }
         ],
         discoveriesBattleCards: [
@@ -74,7 +90,15 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'discoveries'
+                section: 'discoveries',
+                blueHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                },
+                redHeaderValues: {
+                    headerId: uuid(),
+                    headerValue: 'text'
+                }
             }
         ],
         selectedBattleCards: [],
@@ -115,23 +139,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
 
 
         case CHANGE_BLUE_HEADER_VALUE:
-            console.log('entering blue header values')
             switch (action.section) {
                 case 'objections':
                     if (action.charCode === 13) {
-                        console.log('entering 13')
                         return ({
                             ...state,
                             battleCards: {
                                 ...state.battleCards,
                                 objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
                                     if (battleCard.battleCardId === action.battleCardId) {
-                                        console.log('entering other condition')
                                         battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
                                             headerId: uuid(),
                                             headerValue: ''
                                         }])
-                                        console.log(battleCard.blueHeaderValues)
                                         return battleCard;
                                     }
                                 })
@@ -139,30 +159,130 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         })
                     }
                     else {
-                        console.log('entering other 13 condition')
                         return ({
                             ...state,
                             battleCards: {
                                 ...state.battleCards,
                                 objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
-                                    console.log("just another battleCard")
-                                    console.log(battleCard)
                                     if (battleCard.battleCardId === action.battleCardId) {
-                                        console.log('true')
                                         battleCard.blueHeaderValues.map(header => {
                                             if (header.headerId === action.headerId) {
-                                                console.log('also true')
-                                                console.log(header.headerValue)
-                                                console.log(action.newValue)
                                                 header.headerValue = action.newValue;
                                             }
-                                            console.log('header')
-                                            console.log(header)
                                             return header;
                                         })
                                     }
-                                    console.log('THISbattleCard')
-                                    console.log(battleCard)
+                                    return battleCard;
+                                })
+                            } 
+                        })
+                    }
+                case 'competitors':
+                    if (action.charCode === 13) {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                            headerId: uuid(),
+                                            headerValue: ''
+                                        }])
+                                        return battleCard;
+                                    }
+                                })
+                            } 
+                        })
+                    }
+                    else {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues.map(header => {
+                                            if (header.headerId === action.headerId) {
+                                                header.headerValue = action.newValue;
+                                            }
+                                            return header;
+                                        })
+                                    }
+                                    return battleCard;
+                                })
+                            } 
+                        })
+                    }
+                case 'profiles':
+                    if (action.charCode === 13) {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                            headerId: uuid(),
+                                            headerValue: ''
+                                        }])
+                                        return battleCard;
+                                    }
+                                })
+                            } 
+                        })
+                    }
+                    else {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues.map(header => {
+                                            if (header.headerId === action.headerId) {
+                                                header.headerValue = action.newValue;
+                                            }
+                                            return header;
+                                        })
+                                    }
+                                    return battleCard;
+                                })
+                            } 
+                        })
+                    }
+                case 'discoveries':
+                    if (action.charCode === 13) {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                            headerId: uuid(),
+                                            headerValue: ''
+                                        }])
+                                        return battleCard;
+                                    }
+                                })
+                            } 
+                        })
+                    }
+                    else {
+                        return ({
+                            ...state,
+                            battleCards: {
+                                ...state.battleCards,
+                                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues.map(header => {
+                                            if (header.headerId === action.headerId) {
+                                                header.headerValue = action.newValue;
+                                            }
+                                            return header;
+                                        })
+                                    }
                                     return battleCard;
                                 })
                             } 

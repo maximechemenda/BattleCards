@@ -32538,11 +32538,11 @@ var initialBattleCardsState = {
       section: 'objections',
       blueHeaderValues: {
         headerId: (0, _uuid.v4)(),
-        headerValue: 'second argument'
+        headerValue: 'text'
       },
       redHeaderValues: {
         headerId: (0, _uuid.v4)(),
-        headerValue: 'second argument'
+        headerValue: 'text'
       }
     }],
     competitorsBattleCards: [{
@@ -32555,7 +32555,15 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'competitors'
+      section: 'competitors',
+      blueHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      },
+      redHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      }
     }],
     profilesBattleCards: [{
       cards: {
@@ -32567,7 +32575,15 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'profiles'
+      section: 'profiles',
+      blueHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      },
+      redHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      }
     }],
     discoveriesBattleCards: [{
       cards: {
@@ -32579,7 +32595,15 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'discoveries'
+      section: 'discoveries',
+      blueHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      },
+      redHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'text'
+      }
     }],
     selectedBattleCards: [],
     isEmptyObjectionsState: true,
@@ -32618,53 +32642,141 @@ var battleCards = function battleCards() {
       return state;
 
     case _actionTypes.CHANGE_BLUE_HEADER_VALUE:
-      console.log('entering blue header values');
-
       switch (action.section) {
         case 'objections':
           if (action.charCode === 13) {
-            console.log('entering 13');
             return _objectSpread(_objectSpread({}, state), {}, {
               battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
                 objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                   if (battleCard.battleCardId === action.battleCardId) {
-                    console.log('entering other condition');
                     battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
                       headerId: (0, _uuid.v4)(),
                       headerValue: ''
                     }]);
-                    console.log(battleCard.blueHeaderValues);
                     return battleCard;
                   }
                 })
               })
             });
           } else {
-            console.log('entering other 13 condition');
             return _objectSpread(_objectSpread({}, state), {}, {
               battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
                 objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                  console.log("just another battleCard");
-                  console.log(battleCard);
-
                   if (battleCard.battleCardId === action.battleCardId) {
-                    console.log('true');
                     battleCard.blueHeaderValues.map(function (header) {
                       if (header.headerId === action.headerId) {
-                        console.log('also true');
-                        console.log(header.headerValue);
-                        console.log(action.newValue);
                         header.headerValue = action.newValue;
                       }
 
-                      console.log('header');
-                      console.log(header);
                       return header;
                     });
                   }
 
-                  console.log('THISbattleCard');
-                  console.log(battleCard);
+                  return battleCard;
+                })
+              })
+            });
+          }
+
+        case 'competitors':
+          if (action.charCode === 13) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                      headerId: (0, _uuid.v4)(),
+                      headerValue: ''
+                    }]);
+                    return battleCard;
+                  }
+                })
+              })
+            });
+          } else {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues.map(function (header) {
+                      if (header.headerId === action.headerId) {
+                        header.headerValue = action.newValue;
+                      }
+
+                      return header;
+                    });
+                  }
+
+                  return battleCard;
+                })
+              })
+            });
+          }
+
+        case 'profiles':
+          if (action.charCode === 13) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                      headerId: (0, _uuid.v4)(),
+                      headerValue: ''
+                    }]);
+                    return battleCard;
+                  }
+                })
+              })
+            });
+          } else {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues.map(function (header) {
+                      if (header.headerId === action.headerId) {
+                        header.headerValue = action.newValue;
+                      }
+
+                      return header;
+                    });
+                  }
+
+                  return battleCard;
+                })
+              })
+            });
+          }
+
+        case 'discoveries':
+          if (action.charCode === 13) {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                      headerId: (0, _uuid.v4)(),
+                      headerValue: ''
+                    }]);
+                    return battleCard;
+                  }
+                })
+              })
+            });
+          } else {
+            return _objectSpread(_objectSpread({}, state), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.blueHeaderValues.map(function (header) {
+                      if (header.headerId === action.headerId) {
+                        header.headerValue = action.newValue;
+                      }
+
+                      return header;
+                    });
+                  }
+
                   return battleCard;
                 })
               })
@@ -36143,7 +36255,8 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    changeblueHeaderValues: changeblueHeaderValues
   }));
 };
 
@@ -36151,7 +36264,8 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
   var selectedBattleCards = _ref2.selectedBattleCards,
       deleteBattleCard = _ref2.deleteBattleCard,
       modifyBattleCardTitle = _ref2.modifyBattleCardTitle,
-      addCard = _ref2.addCard;
+      addCard = _ref2.addCard,
+      changeblueHeaderValues = _ref2.changeblueHeaderValues;
   return /*#__PURE__*/_react.default.createElement("div", null, selectedBattleCards.map(function (battleCard) {
     if (battleCard.section === 'objections') {
       return /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
@@ -36163,7 +36277,9 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
         modifyBattleCardTitle: modifyBattleCardTitle,
         titleValue: battleCard.titleValue,
         triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        changeblueHeaderValues: changeblueHeaderValues
       });
     }
 
@@ -36177,7 +36293,9 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
         modifyBattleCardTitle: modifyBattleCardTitle,
         titleValue: battleCard.titleValue,
         triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        changeblueHeaderValues: changeblueHeaderValues
       });
     }
 
@@ -36191,7 +36309,9 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
         modifyBattleCardTitle: modifyBattleCardTitle,
         titleValue: battleCard.titleValue,
         triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        changeblueHeaderValues: changeblueHeaderValues
       });
     }
 
@@ -36205,7 +36325,9 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
         modifyBattleCardTitle: modifyBattleCardTitle,
         titleValue: battleCard.titleValue,
         triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        changeblueHeaderValues: changeblueHeaderValues
       });
     }
   }));
@@ -36920,7 +37042,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53069" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54366" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

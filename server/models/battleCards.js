@@ -32,7 +32,15 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String
+        section: String,
+        blueHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }],
+        redHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }]
 }],
     profilesBattleCards: [{
         cards: [{
@@ -44,7 +52,15 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String
+        section: String,
+        blueHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }],
+        redHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }]
     }],
     discoveriesBattleCards: [{
         cards: [{
@@ -56,7 +72,15 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String
+        section: String,
+        blueHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }],
+        redHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }]
     }],
     selectedBattleCards: [{
         cards: [{
@@ -68,7 +92,15 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String
+        section: String,
+        blueHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }],
+        redHeaderValues: [{
+            headerId: String,
+            headerValue: String
+        }]
     }],
     isEmptyObjectionsState: Boolean,
     isEmptyCompetitorsState: Boolean,

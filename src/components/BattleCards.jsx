@@ -187,13 +187,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        changeblueHeaderValues={changeblueHeaderValues}
         />}
         
     </div>
 )    
 
 
-const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
+const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard, changeblueHeaderValues}) => (
     <div>
         
         {selectedBattleCards.map(battleCard => {
@@ -208,6 +209,8 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 titleValue={battleCard.titleValue}
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
+                blueHeaderValues={battleCard.blueHeaderValues}
+                changeblueHeaderValues={changeblueHeaderValues}
                 />
             }
             if (battleCard.section === 'competitors') {
@@ -221,6 +224,8 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 titleValue={battleCard.titleValue}
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
+                blueHeaderValues={battleCard.blueHeaderValues}
+                changeblueHeaderValues={changeblueHeaderValues}
                 />
             }
             if (battleCard.section === 'profiles') {
@@ -234,6 +239,8 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 titleValue={battleCard.titleValue}
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
+                blueHeaderValues={battleCard.blueHeaderValues}
+                changeblueHeaderValues={changeblueHeaderValues}
                 />
             }
             if (battleCard.section === 'discoveries') {
@@ -247,6 +254,8 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 titleValue={battleCard.titleValue}
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
+                blueHeaderValues={battleCard.blueHeaderValues}
+                changeblueHeaderValues={changeblueHeaderValues}
                 />
             }
         })}
