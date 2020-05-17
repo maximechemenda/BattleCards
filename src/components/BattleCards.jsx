@@ -347,12 +347,13 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
 
 
-            <h3>Bad arguments/good arguments</h3>
-            {/* <div>
-                {blueHeaderValues.map(headerValue => (
-                    
-                    <ul>
+            <h3>Good arguments</h3>
+            <div>
+                <ul>
+                    {blueHeaderValues.map(headerValue => (
                         <li>
+                            {console.log('headerValueee')}
+                            {console.log(headerValue)}
                             <textarea  
                             onKeyPress={(e) => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections')}
                             onBlur={(e) => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections')}
@@ -360,9 +361,10 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
                                     {headerValue.headerValue}
                             </textarea>
                         </li>
-                    </ul>
-                ))}
-            </div> */}
+                    ))}
+                </ul>
+                
+            </div>
 
             
 

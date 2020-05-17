@@ -14,8 +14,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('this is the mode')
-    console.log(process.env.NODE_ENV)
     axios.get('./api/battleCards')
     .then(response => {
       if (response.data.length === 0) {
@@ -45,7 +43,7 @@ const mapState = (state) => {
 
 
   axios.put(`/api/battleCards/${state.battleCards.id}`,state.battleCards).then(({data})=>{
-    console.log(`Item - ${data.id} updated successfully`);
+    console.log('');
   }).catch(e => console.log('Updation failed, Error ',e));
 
   return ({

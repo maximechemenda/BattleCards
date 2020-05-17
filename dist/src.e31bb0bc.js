@@ -32535,7 +32535,15 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'objections'
+      section: 'objections',
+      blueHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'second argument'
+      },
+      redHeaderValues: {
+        headerId: (0, _uuid.v4)(),
+        headerValue: 'second argument'
+      }
     }],
     competitorsBattleCards: [{
       cards: {
@@ -32580,62 +32588,6 @@ var initialBattleCardsState = {
     isEmptyDiscoveriesState: true
   }
 };
-/* const initialBattleCardsState = {
-    objectionsBattleCards: [],
-    competitorsBattleCards: [], 
-    profilesBattleCards: [],
-    discoveriesBattleCards: [],
-    selectedBattleCards: [],
-    isEmptyObjectionsState: true,
-    isEmptyCompetitorsState: true,
-    isEmptyProfilesState: true,
-    isEmptyDiscoveriesState: true
-} */
-
-/*
-export const sectionStates = (state = initialSectionsStates, action) => {
-    switch (action.type) {
-        case TRIGGER_SECTION_STATE:
-            switch (action.section) {
-                case 'objections':
-                        return ({
-                            ...state,
-                            isEmptyObjectionsState: false,
-                            isEmptyCompetitorsState: true,
-                            isEmptyProfilesState: true,
-                            isEmptyDiscoveriesState: true,    
-                        })
-                case 'competitors':
-                        return ({
-                            ...state,
-                            isEmptyObjectionsState: true,
-                            isEmptyCompetitorsState: false,
-                            isEmptyProfilesState: true,
-                            isEmptyDiscoveriesState: true,    
-                        })
-                case 'profiles':
-                    return ({
-                        ...state,
-                        isEmptyObjectionsState: true,
-                        isEmptyCompetitorsState: true,
-                        isEmptyProfilesState: false,
-                        isEmptyDiscoveriesState: true,    
-                    })
-                case 'discoveries':
-                    return ({
-                        ...state,
-                        isEmptyObjectionsState: true,
-                        isEmptyCompetitorsState: true,
-                        isEmptyProfilesState: true,
-                        isEmptyDiscoveriesState: false,    
-                    })        
-            }
-        break;
-        default:
-            return state    
-    }
-}
-*/
 
 var battleCards = function battleCards() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialBattleCardsState;
@@ -32666,37 +32618,55 @@ var battleCards = function battleCards() {
       return state;
 
     case _actionTypes.CHANGE_BLUE_HEADER_VALUE:
+      console.log('entering blue header values');
+
       switch (action.section) {
         case 'objections':
           if (action.charCode === 13) {
             console.log('entering 13');
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  console.log('entering other condition');
-                  battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                    headerId: (0, _uuid.v4)(),
-                    headerValue: ''
-                  }]);
-                  console.log(battleCard.blueHeaderValues);
-                  return battleCard;
-                }
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    console.log('entering other condition');
+                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                      headerId: (0, _uuid.v4)(),
+                      headerValue: ''
+                    }]);
+                    console.log(battleCard.blueHeaderValues);
+                    return battleCard;
+                  }
+                })
               })
             });
           } else {
+            console.log('entering other 13 condition');
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.blueHeaderValues.map(function (header) {
-                    if (header.headerId === action.headerId) {
-                      header.headerValue = action.newValue;
-                    }
+              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  console.log("just another battleCard");
+                  console.log(battleCard);
 
-                    return header;
-                  });
-                }
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    console.log('true');
+                    battleCard.blueHeaderValues.map(function (header) {
+                      if (header.headerId === action.headerId) {
+                        console.log('also true');
+                        console.log(header.headerValue);
+                        console.log(action.newValue);
+                        header.headerValue = action.newValue;
+                      }
 
-                return battleCard;
+                      console.log('header');
+                      console.log(header);
+                      return header;
+                    });
+                  }
+
+                  console.log('THISbattleCard');
+                  console.log(battleCard);
+                  return battleCard;
+                })
               })
             });
           }
@@ -32994,7 +32964,7 @@ var battleCards = function battleCards() {
                 section: 'objections',
                 blueHeaderValues: [{
                   headerId: (0, _uuid.v4)(),
-                  headerValue: ''
+                  headerValue: 'argument'
                 }],
                 redHeaderValues: []
               }])
@@ -36358,7 +36328,17 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Good arguments"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, blueHeaderValues.map(function (headerValue) {
+    return /*#__PURE__*/_react.default.createElement("li", null, console.log('headerValueee'), console.log(headerValue), /*#__PURE__*/_react.default.createElement("textarea", {
+      onKeyPress: function onKeyPress(e) {
+        return changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections');
+      },
+      onBlur: function onBlur(e) {
+        return changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections');
+      },
+      className: "blueHeaderValues"
+    }, headerValue.headerValue));
+  })))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     section: section
@@ -36806,9 +36786,6 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this = this;
 
-      console.log('this is the mode');
-      console.log("development");
-
       _axios.default.get('./api/battleCards').then(function (response) {
         if (response.data.length === 0) {
           _axios.default.post('/api/battleCards', _objectSpread({}, _this.props.battleCards)).then(_this.props.readItems()).catch(function (e) {
@@ -36834,7 +36811,7 @@ var App = /*#__PURE__*/function (_Component) {
 var mapState = function mapState(state) {
   _axios.default.put("/api/battleCards/".concat(state.battleCards.id), state.battleCards).then(function (_ref) {
     var data = _ref.data;
-    console.log("Item - ".concat(data.id, " updated successfully"));
+    console.log('');
   }).catch(function (e) {
     return console.log('Updation failed, Error ', e);
   });
@@ -36943,7 +36920,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53641" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53069" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
