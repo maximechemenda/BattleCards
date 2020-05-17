@@ -36038,13 +36038,15 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     }
   }, "Discoveries")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Objections"), /*#__PURE__*/_react.default.createElement("ol", null, objectionsBattleCards.map(function (battleCard) {
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Objections"), /*#__PURE__*/_react.default.createElement("ol", {
+    className: "itemsContainer"
+  }, objectionsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
         return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
       },
       key: battleCard.battleCardId,
-      className: "leftMenuItems"
+      className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
   })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
     className: "closeAllOpenedBattleCardsButton",
@@ -36065,7 +36067,9 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     }
   }, "add BattleCard"))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", null, competitorsBattleCards.map(function (battleCard) {
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", {
+    className: "itemsContainer"
+  }, competitorsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
         return changeSelectedBattleCards(battleCard.battleCardId, 'competitors');
@@ -36092,7 +36096,9 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     }
   }, "add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", null, profilesBattleCards.map(function (battleCard) {
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", {
+    className: "itemsContainer"
+  }, profilesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
         return changeSelectedBattleCards(battleCard.battleCardId, 'profiles');
@@ -36119,7 +36125,9 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     }
   }, "add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", null, discoveriesBattleCards.map(function (battleCard) {
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", {
+    className: "itemsContainer"
+  }, discoveriesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
         return changeSelectedBattleCards(battleCard.battleCardId, 'discoveries');
@@ -36935,7 +36943,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62319" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64776" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

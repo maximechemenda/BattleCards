@@ -140,7 +140,7 @@
 }
 
 .leftMenu {
-  width: 190px;
+  width: 216px;
   min-height: 400px;
   background: white;
   float: left;
@@ -209,12 +209,21 @@
   float: left;
 }
 
-.leftMenuItems {
+.openedLeftMenuItems {
+  color: var(--secondary);
+  font-size: 16px;
+  margin: 5px 0px;
+  cursor: pointer;
+}
+
+.closedLeftMenuItems {
   color: rgb(80, 80, 80);
   font-size: 16px;
   margin: 5px 0px;
   cursor: pointer;
 }
+
+
 
 .closeAllOpenedBattleCardsButton {
   color: white;
@@ -318,4 +327,8 @@
   outline: none;
   border: none;
   float: right;
+}
+
+.itemsContainer {
+  padding-inline-start: 16px;
 }

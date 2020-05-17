@@ -42,14 +42,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
  
                 <div className='leftMenu'>
                     <h3>Objections</h3>
-                    <ol>
+                    <ol className='itemsContainer'>
                         {objectionsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
 
                     {selectedBattleCards.length !== 0 &&
-                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all those fuckers</button>
+                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened Battlecards</button>
                     }
                 </div>
 
@@ -74,9 +74,9 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Competitors</h3>
-                    <ol>
+                    <ol className='itemsContainer'>
                         {competitorsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
@@ -104,9 +104,9 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Profiles</h3>
-                    <ol>
+                    <ol className='itemsContainer'>
                         {profilesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
@@ -134,9 +134,9 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3>Discoveries</h3>
-                    <ol>
+                    <ol className='itemsContainer'>
                         {discoveriesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId} className="leftMenuItems">{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
