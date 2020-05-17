@@ -36053,7 +36053,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return clearSelectedBattleCards();
     }
-  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
@@ -36072,17 +36072,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, competitorsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'competitors');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
       },
       key: battleCard.battleCardId,
-      className: "leftMenuItems"
+      className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
   })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
     }
-  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
@@ -36101,17 +36101,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, profilesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'profiles');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
       },
       key: battleCard.battleCardId,
-      className: "leftMenuItems"
+      className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
   })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
     }
-  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
@@ -36130,17 +36130,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, discoveriesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'discoveries');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
       },
       key: battleCard.battleCardId,
-      className: "leftMenuItems"
+      className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
   })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
     }
-  }, "Close all those fuckers")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
@@ -36943,7 +36943,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53641" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
