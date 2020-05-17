@@ -36852,7 +36852,12 @@ var _default = (0, _reactRedux.connect)(mapState, {
 
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./App.css":"App.css","./components/BattleCards":"components/BattleCards.jsx","./redux/actions":"redux/actions.js","react-redux":"../node_modules/react-redux/es/index.js","axios":"../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./App.css":"App.css","./components/BattleCards":"components/BattleCards.jsx","./redux/actions":"redux/actions.js","react-redux":"../node_modules/react-redux/es/index.js","axios":"../node_modules/axios/index.js"}],"index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -36864,6 +36869,8 @@ var _reactRedux = require("react-redux");
 var _store = _interopRequireDefault(require("./redux/store"));
 
 var _App = _interopRequireDefault(require("./App"));
+
+require("./index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36900,7 +36907,7 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
 /*serviceWorker.register(); UNCOMMENT THIS */
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./redux/store":"redux/store.js","./App":"App.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./redux/store":"redux/store.js","./App":"App.jsx","./index.css":"index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -36928,7 +36935,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61546" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62319" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
