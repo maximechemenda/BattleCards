@@ -24,15 +24,7 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'objections',
-                blueHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                },
-                redHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                }
+                section: 'objections'
             }
         ],
         competitorsBattleCards: [
@@ -46,15 +38,7 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'competitors',
-                blueHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                },
-                redHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                }
+                section: 'competitors'
             }
         ],
         profilesBattleCards: [
@@ -68,15 +52,7 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'profiles',
-                blueHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                },
-                redHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                }
+                section: 'profiles'
             }
         ],
         discoveriesBattleCards: [
@@ -90,15 +66,7 @@ const initialBattleCardsState = {
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'discoveries',
-                blueHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                },
-                redHeaderValues: {
-                    headerId: uuid(),
-                    headerValue: 'text'
-                }
+                section: 'discoveries'
             }
         ],
         selectedBattleCards: [],
@@ -141,42 +109,24 @@ export const battleCards = (state = initialBattleCardsState, action) => {
         case CHANGE_BLUE_HEADER_VALUE:
             switch (action.section) {
                 case 'objections':
-                    if (action.charCode === 13) {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                            headerId: uuid(),
-                                            headerValue: ''
-                                        }])
-                                        return battleCard;
-                                    }
-                                })
-                            } 
-                        })
-                    }
-                    else {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues.map(header => {
-                                            if (header.headerId === action.headerId) {
-                                                header.headerValue = action.newValue;
-                                            }
-                                            return header;
-                                        })
-                                    }
-                                    return battleCard;
-                                })
-                            } 
-                        })
-                    }
+                    return ({
+                        ...state,
+                        battleCards: {
+                            ...state.battleCards,
+                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                    battleCard.blueHeaderValues.map(header => {
+                                        if (header.headerId === action.headerId) {
+                                            header.headerValue = action.newValue;
+                                        }
+                                        return header;
+                                    })
+                                }
+                                return battleCard;
+                            })
+                        } 
+                    })
+                    
                 case 'competitors':
                     if (action.charCode === 13) {
                         return ({
@@ -591,12 +541,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'objections',
-                            blueHeaderValues: [{
-                                headerId: uuid(),
-                                headerValue: 'argument'
-                            }],
-                            redHeaderValues: []
+                            section: 'objections'
                         }])}
                     })
                 case 'competitors':
@@ -609,12 +554,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'competitors',
-                            blueHeaderValues: [{
-                                headerId: uuid(),
-                                headerValue: ''
-                            }],
-                            redHeaderValues: []
+                            section: 'competitors'
                         }])}
                     })
                 case 'profiles':
@@ -627,12 +567,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'profiles',
-                            blueHeaderValues: [{
-                                headerId: uuid(),
-                                headerValue: ''
-                            }],
-                            redHeaderValues: []
+                            section: 'profiles'
                         }])}
                     })
                 case 'discoveries':
@@ -645,12 +580,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: uuid(),
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'discoveries',
-                            blueHeaderValues: [{
-                                headerId: uuid(),
-                                headerValue: ''
-                            }],
-                            redHeaderValues: []
+                            section: 'discoveries'
                         }])}
                     })
             }

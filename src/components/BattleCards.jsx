@@ -55,13 +55,13 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}>add BattleCard</button>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}>Add BattleCard</button>
                 </div>
                 }
 
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('objections')}>add BattleCard</button>
+                    <button onClick={() => addBattleCard('objections')}>Add BattleCard</button>
                 </div>
                 }
 
@@ -71,14 +71,15 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
             {!isEmptyCompetitorsState &&
             <div>
-                
+ 
                 <div className='leftMenu'>
                     <h3>Competitors</h3>
                     <ol className='itemsContainer'>
                         {competitorsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
+
                     {selectedBattleCards.length !== 0 &&
                     <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</button>
                     }
@@ -86,15 +87,16 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')}>add BattleCard</button>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')}>Add BattleCard</button>
                 </div>
                 }
-                
-                {selectedBattleCards.length === 0 && 
+
+                {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('competitors')}>add BattleCard</button>
+                    <button onClick={() => addBattleCard('competitors')}>Add BattleCard</button>
                 </div>
                 }
+
 
             </div>
             }
@@ -106,7 +108,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     <h3>Profiles</h3>
                     <ol className='itemsContainer'>
                         {profilesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
@@ -116,13 +118,13 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')}>add BattleCard</button>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')}>Add BattleCard</button>
                 </div>
                 }
                 
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('profiles')}>add BattleCard</button>
+                    <button onClick={() => addBattleCard('profiles')}>Add BattleCard</button>
                 </div>
                 }
 
@@ -136,7 +138,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     <h3>Discoveries</h3>
                     <ol className='itemsContainer'>
                         {discoveriesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
@@ -146,13 +148,13 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')}>add BattleCard</button>
+                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')}>Add BattleCard</button>
                 </div>
                 }
                 
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('discoveries')}>add BattleCard</button>
+                    <button onClick={() => addBattleCard('discoveries')}>Add BattleCard</button>
                 </div>
                 }
 
@@ -356,13 +358,11 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
 
 
-            <h3>Good arguments</h3>
-            <div>
+            {/* <h3>Good arguments</h3> */}
+            {/* <div>
                 <ul>
                     {blueHeaderValues.map(headerValue => (
                         <li>
-                            {console.log('headerValueee')}
-                            {console.log(headerValue)}
                             <textarea  
                             onKeyPress={(e) => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections')}
                             onBlur={(e) => changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections')}
@@ -372,8 +372,7 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
                         </li>
                     ))}
                 </ul>
-                
-            </div>
+            </div> */}
 
             
 
@@ -410,6 +409,8 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodArguments', section)}>Good Arguments</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'badArguments', section)}>Bad Arguments</button>
     </div>
 )
 
@@ -443,7 +444,9 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Competitor</span>
-            <h3>Bad arguments/good arguments</h3>
+            {/* <h3>Bad arguments/good arguments</h3> */}
+
+            
         </div>
         <br></br>
 
@@ -472,6 +475,8 @@ const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
         <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'howWeWin', section)}>How We Win</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'howWeLose', section)}>How We Lose</button>
     </div>
 )
 
@@ -506,7 +511,7 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Profile</span>
-            <h3>Bad arguments/good arguments</h3>
+            {/* <h3>Bad arguments/good arguments</h3> */}
         </div>
         <br></br>
 
@@ -535,6 +540,8 @@ const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
         <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'positiveDifferences', section)}>Positive Differences</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'negativeDifferences', section)}>Negative Differences</button>
     </div>
 )
 
@@ -567,7 +574,7 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Discovery</span>
-            <h3>Bad arguments/good arguments</h3>
+            {/* <h3>Bad arguments/good arguments</h3> */}
         </div>
         <br></br>
 
@@ -596,6 +603,8 @@ const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
+        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'whenToAsk', section)}>When To Ask</button>
+        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'whenNotToAsk', section)}>When Not To Ask</button>
     </div>
 )
 

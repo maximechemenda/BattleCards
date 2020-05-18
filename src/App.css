@@ -328,8 +328,8 @@
 
 .blueHeaderValues {
   font-size: 12px;
-  outline: none;
-  border: none;
+  /* outline: none;
+  border: none; */
   float: right;
 }
 

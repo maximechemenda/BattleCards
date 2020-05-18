@@ -32535,15 +32535,7 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'objections',
-      blueHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      },
-      redHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      }
+      section: 'objections'
     }],
     competitorsBattleCards: [{
       cards: {
@@ -32555,15 +32547,7 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'competitors',
-      blueHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      },
-      redHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      }
+      section: 'competitors'
     }],
     profilesBattleCards: [{
       cards: {
@@ -32575,15 +32559,7 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'profiles',
-      blueHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      },
-      redHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      }
+      section: 'profiles'
     }],
     discoveriesBattleCards: [{
       cards: {
@@ -32595,15 +32571,7 @@ var initialBattleCardsState = {
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
       titleValue: '',
-      section: 'discoveries',
-      blueHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      },
-      redHeaderValues: {
-        headerId: (0, _uuid.v4)(),
-        headerValue: 'text'
-      }
+      section: 'discoveries'
     }],
     selectedBattleCards: [],
     isEmptyObjectionsState: true,
@@ -32644,39 +32612,23 @@ var battleCards = function battleCards() {
     case _actionTypes.CHANGE_BLUE_HEADER_VALUE:
       switch (action.section) {
         case 'objections':
-          if (action.charCode === 13) {
-            return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                  if (battleCard.battleCardId === action.battleCardId) {
-                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                      headerId: (0, _uuid.v4)(),
-                      headerValue: ''
-                    }]);
-                    return battleCard;
-                  }
-                })
-              })
-            });
-          } else {
-            return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                  if (battleCard.battleCardId === action.battleCardId) {
-                    battleCard.blueHeaderValues.map(function (header) {
-                      if (header.headerId === action.headerId) {
-                        header.headerValue = action.newValue;
-                      }
+          return _objectSpread(_objectSpread({}, state), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
+                if (battleCard.battleCardId === action.battleCardId) {
+                  battleCard.blueHeaderValues.map(function (header) {
+                    if (header.headerId === action.headerId) {
+                      header.headerValue = action.newValue;
+                    }
 
-                      return header;
-                    });
-                  }
+                    return header;
+                  });
+                }
 
-                  return battleCard;
-                })
+                return battleCard;
               })
-            });
-          }
+            })
+          });
 
         case 'competitors':
           if (action.charCode === 13) {
@@ -33073,12 +33025,7 @@ var battleCards = function battleCards() {
                 battleCardId: (0, _uuid.v4)(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'objections',
-                blueHeaderValues: [{
-                  headerId: (0, _uuid.v4)(),
-                  headerValue: 'argument'
-                }],
-                redHeaderValues: []
+                section: 'objections'
               }])
             })
           });
@@ -33091,12 +33038,7 @@ var battleCards = function battleCards() {
                 battleCardId: (0, _uuid.v4)(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'competitors',
-                blueHeaderValues: [{
-                  headerId: (0, _uuid.v4)(),
-                  headerValue: ''
-                }],
-                redHeaderValues: []
+                section: 'competitors'
               }])
             })
           });
@@ -33109,12 +33051,7 @@ var battleCards = function battleCards() {
                 battleCardId: (0, _uuid.v4)(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'profiles',
-                blueHeaderValues: [{
-                  headerId: (0, _uuid.v4)(),
-                  headerValue: ''
-                }],
-                redHeaderValues: []
+                section: 'profiles'
               }])
             })
           });
@@ -33128,12 +33065,7 @@ var battleCards = function battleCards() {
                 battleCardId: (0, _uuid.v4)(),
                 isEmptyAddButtonState: true,
                 titleValue: '',
-                section: 'discoveries',
-                blueHeaderValues: [{
-                  headerId: (0, _uuid.v4)(),
-                  headerValue: ''
-                }],
-                redHeaderValues: []
+                section: 'discoveries'
               }])
             })
           });
@@ -35973,6 +35905,206 @@ var _default = function _default(_ref) {
       className: "blueCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
   }
+
+  if (cardType === 'goodArguments') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "blueCardHeader"
+    }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "blueCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'howWeWin') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "blueCardHeader"
+    }, "How We Win"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "blueCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'positiveDifferences') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "blueCardHeader"
+    }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "blueCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'whenToAsk') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "blueCardHeader"
+    }, "When To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "blueCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'badArguments') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "redCardHeader"
+    }, "Bad Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "redCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'howWeLose') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "redCardHeader"
+    }, "How We Lose"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "redCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'negativeDifferences') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "redCardHeader"
+    }, "Negative Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "redCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
+
+  if (cardType === 'whenNotToAsk') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "redCardHeader"
+    }, "When Not To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "redCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
 };
 
 exports.default = _default;
@@ -36141,20 +36273,20 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('objections');
     }
-  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return addBattleCard('objections');
     }
-  }, "add BattleCard"))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard"))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, competitorsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'competitors');
       },
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
@@ -36170,20 +36302,20 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('competitors');
     }
-  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return addBattleCard('competitors');
     }
-  }, "add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, profilesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'profiles');
       },
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
@@ -36199,20 +36331,20 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('profiles');
     }
-  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return addBattleCard('profiles');
     }
-  }, "add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, discoveriesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
       onClick: function onClick() {
-        return changeSelectedBattleCards(battleCard.battleCardId, 'objections');
+        return changeSelectedBattleCards(battleCard.battleCardId, 'discoveries');
       },
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
@@ -36228,13 +36360,13 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('discoveries');
     }
-  }, "add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return addBattleCard('discoveries');
     }
-  }, "add BattleCard")))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
+  }, "Add BattleCard")))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
     addBattleCard: addBattleCard,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
@@ -36450,17 +36582,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Objection"), /*#__PURE__*/_react.default.createElement("h3", null, "Good arguments"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, blueHeaderValues.map(function (headerValue) {
-    return /*#__PURE__*/_react.default.createElement("li", null, console.log('headerValueee'), console.log(headerValue), /*#__PURE__*/_react.default.createElement("textarea", {
-      onKeyPress: function onKeyPress(e) {
-        return changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections');
-      },
-      onBlur: function onBlur(e) {
-        return changeblueHeaderValues(e.target.value, e.charCode, battleCardId, headerValue.headerId, 'objections');
-      },
-      className: "blueHeaderValues"
-    }, headerValue.headerValue));
-  })))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, "Objection")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     section: section
@@ -36511,7 +36633,17 @@ var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref6) {
     onClick: function onClick() {
       return addCard(battleCardId, 'text', section);
     }
-  }, "Text"));
+  }, "Text"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'goodArguments', section);
+    }
+  }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'badArguments', section);
+    }
+  }, "Bad Arguments"));
 }; //////////////////////  COMPETITORS /////////////////////
 
 
@@ -36568,7 +36700,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Competitor"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, "Competitor")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -36605,7 +36737,17 @@ var NewCompetitorsCardMenu = function NewCompetitorsCardMenu(_ref9) {
     onClick: function onClick() {
       return addCard(battleCardId, 'warning', section);
     }
-  }, "Warning"));
+  }, "Warning"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'howWeWin', section);
+    }
+  }, "How We Win"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'howWeLose', section);
+    }
+  }, "How We Lose"));
 }; //////////////////////  PROFILES /////////////////////
 
 
@@ -36662,7 +36804,7 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Profile"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, "Profile")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -36699,7 +36841,17 @@ var NewProfilesCardMenu = function NewProfilesCardMenu(_ref12) {
     onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
-  }, "Checklist"));
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'positiveDifferences', section);
+    }
+  }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'negativeDifferences', section);
+    }
+  }, "Negative Differences"));
 }; //////////////////////  DISCOVERIES /////////////////////
 
 
@@ -36756,7 +36908,7 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Discovery"), /*#__PURE__*/_react.default.createElement("h3", null, "Bad arguments/good arguments")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, "Discovery")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -36793,7 +36945,17 @@ var NewDiscoveriesCardMenu = function NewDiscoveriesCardMenu(_ref15) {
     onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
-  }, "Checklist"));
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "unfilledAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'whenToAsk', section);
+    }
+  }, "When To Ask"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "redAddButton",
+    onClick: function onClick() {
+      return addCard(battleCardId, 'whenNotToAsk', section);
+    }
+  }, "When Not To Ask"));
 }; /////////////////// ADD CARD BUTTON ////////////////
 
 
@@ -37042,7 +37204,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54366" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54280" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

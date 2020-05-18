@@ -12,15 +12,7 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String,
-        blueHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }],
-        redHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }]
+        section: String
     }],
     competitorsBattleCards: [{
         cards: [{
@@ -32,15 +24,7 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String,
-        blueHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }],
-        redHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }]
+        section: String
 }],
     profilesBattleCards: [{
         cards: [{
@@ -52,15 +36,7 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String,
-        blueHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }],
-        redHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }]
+        section: String
     }],
     discoveriesBattleCards: [{
         cards: [{
@@ -72,15 +48,7 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String,
-        blueHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }],
-        redHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }]
+        section: String
     }],
     selectedBattleCards: [{
         cards: [{
@@ -92,15 +60,7 @@ const battleCardsSchema = new mongoose.Schema({
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String,
-        blueHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }],
-        redHeaderValues: [{
-            headerId: String,
-            headerValue: String
-        }]
+        section: String
     }],
     isEmptyObjectionsState: Boolean,
     isEmptyCompetitorsState: Boolean,
