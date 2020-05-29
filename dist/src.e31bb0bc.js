@@ -36161,7 +36161,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     }
   }, "Discoveries")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Objections"), /*#__PURE__*/_react.default.createElement("ol", {
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "leftMenuTitle"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-axe-battle"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Objections")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, objectionsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
@@ -36204,7 +36208,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     class: "fas fa-plus"
   })))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Competitors"), /*#__PURE__*/_react.default.createElement("ol", {
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "leftMenuTitle"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-swords"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Competitors")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, competitorsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
@@ -36247,7 +36255,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     class: "fas fa-plus"
   })))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", {
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "leftMenuTitle"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-user"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Profiles")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, profilesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
@@ -36290,7 +36302,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     class: "fas fa-plus"
   })))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", {
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "leftMenuTitle"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-telescope"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Discoveries")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, discoveriesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("li", {
@@ -36932,7 +36948,11 @@ var AddCardButton = function AddCardButton(_ref16) {
     onClick: function onClick() {
       return triggerAddCardState(battleCardId, section);
     }
-  }, "+");
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addCardIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fa fa-plus"
+  })));
 };
 
 var mapState = function mapState(state) {
@@ -37166,7 +37186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64341" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52925" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
