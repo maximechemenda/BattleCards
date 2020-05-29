@@ -183,10 +183,12 @@
 }
 
 .smallIndex {
+  background-color: white;
   width: 100%;
   overflow: auto;
   border-style: ridge;
-  background-color: white;
+  border-width: 1px;
+  box-shadow: rgb(187, 187, 187) 0px 0px 7px !important;
 }
 
 .unselectedSmallIndexButton {
