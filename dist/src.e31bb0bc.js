@@ -36452,7 +36452,9 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Objection")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-axe-battle"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Objection"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     section: section
@@ -36573,7 +36575,9 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Competitor")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-swords"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Competitor"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -36680,7 +36684,9 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Profile")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-user"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Profile"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -36787,7 +36793,9 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
     className: "titleBattleCard"
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
-  }, "Discovery")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-telescope"
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Discovery"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -37081,7 +37089,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53874" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

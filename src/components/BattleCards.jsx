@@ -373,7 +373,10 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
         
         <div className="cards">
             <textarea on  r={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <span className="battleCardNameHeader">Objection</span>
+            <span className="battleCardNameHeader">
+                <i class="fa fa-axe-battle"></i>
+                <span> Objection</span>
+            </span>
         </div>
         <br></br>
 
@@ -443,8 +446,10 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <span className="battleCardNameHeader">Competitor</span>
-            {/* <h3>Bad arguments/good arguments</h3> */}
+            <span className="battleCardNameHeader">
+                <i class="fa fa-swords"></i>
+                <span> Competitor</span>
+            </span>
 
             
         </div>
@@ -513,8 +518,10 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <span className="battleCardNameHeader">Profile</span>
-            {/* <h3>Bad arguments/good arguments</h3> */}
+            <span className="battleCardNameHeader">
+                <i class="fa fa-user"></i>
+                <span> Profile</span>
+            </span>
         </div>
         <br></br>
 
@@ -576,11 +583,13 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
         <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <i class="fa fa-trash"></i>
         </button>
-        
+
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <span className="battleCardNameHeader">Discovery</span>
-            {/* <h3>Bad arguments/good arguments</h3> */}
+            <span className="battleCardNameHeader">
+                <i class="fa fa-telescope"></i>
+                <span> Discovery</span>
+            </span>
         </div>
         <br></br>
 
