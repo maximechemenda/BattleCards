@@ -5,8 +5,7 @@ import axios from 'axios';
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT_CARD,
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
-    ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-    CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ,
+    ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
     FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE} from './actionTypes';
 
 
@@ -35,33 +34,6 @@ export const readItems = () => {
         .catch(error => dispatch(fetchItemsFailure(error))); //errors
     }
   }
-
-
-
-
-export const changeblueHeaderValues = (newValue, charCode, battleCardId, headerId, section) => (
-    {
-        type: CHANGE_BLUE_HEADER_VALUE,
-        newValue,
-        charCode,
-        battleCardId,
-        headerId,
-        section
-
-    }
-)
-
-export const changeRedHeaderValue = (newValue, charCode, battleCardId, headerId, section) => (
-    {
-        type: CHANGE_RED_HEADER_VALUE,
-        newValue,
-        charCode,
-        battleCardId,
-        headerId,
-        section
-
-    }
-)
 
 export const addBattleCardToSectionAndSelectedBattleCards = (section) => (
     {

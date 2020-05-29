@@ -5,8 +5,7 @@ import {v4 as uuid} from 'uuid'
 import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, 
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
-        CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS,
-        CHANGE_BLUE_HEADER_VALUE, CHANGE_RED_HEADER_VALUE, READ,
+        CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
         FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE} from './actionTypes'
 
 
@@ -103,142 +102,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
           }
         //reads all the data from the store
         case READ: return state;
-
-
-
-        case CHANGE_BLUE_HEADER_VALUE:
-            switch (action.section) {
-                case 'objections':
-                    return ({
-                        ...state,
-                        battleCards: {
-                            ...state.battleCards,
-                            objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
-                                if (battleCard.battleCardId === action.battleCardId) {
-                                    battleCard.blueHeaderValues.map(header => {
-                                        if (header.headerId === action.headerId) {
-                                            header.headerValue = action.newValue;
-                                        }
-                                        return header;
-                                    })
-                                }
-                                return battleCard;
-                            })
-                        } 
-                    })
-                    
-                case 'competitors':
-                    if (action.charCode === 13) {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                            headerId: uuid(),
-                                            headerValue: ''
-                                        }])
-                                        return battleCard;
-                                    }
-                                })
-                            } 
-                        })
-                    }
-                    else {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues.map(header => {
-                                            if (header.headerId === action.headerId) {
-                                                header.headerValue = action.newValue;
-                                            }
-                                            return header;
-                                        })
-                                    }
-                                    return battleCard;
-                                })
-                            } 
-                        })
-                    }
-                case 'profiles':
-                    if (action.charCode === 13) {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                            headerId: uuid(),
-                                            headerValue: ''
-                                        }])
-                                        return battleCard;
-                                    }
-                                })
-                            } 
-                        })
-                    }
-                    else {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues.map(header => {
-                                            if (header.headerId === action.headerId) {
-                                                header.headerValue = action.newValue;
-                                            }
-                                            return header;
-                                        })
-                                    }
-                                    return battleCard;
-                                })
-                            } 
-                        })
-                    }
-                case 'discoveries':
-                    if (action.charCode === 13) {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                            headerId: uuid(),
-                                            headerValue: ''
-                                        }])
-                                        return battleCard;
-                                    }
-                                })
-                            } 
-                        })
-                    }
-                    else {
-                        return ({
-                            ...state,
-                            battleCards: {
-                                ...state.battleCards,
-                                discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
-                                    if (battleCard.battleCardId === action.battleCardId) {
-                                        battleCard.blueHeaderValues.map(header => {
-                                            if (header.headerId === action.headerId) {
-                                                header.headerValue = action.newValue;
-                                            }
-                                            return header;
-                                        })
-                                    }
-                                    return battleCard;
-                                })
-                            } 
-                        })
-                    }
-            }
+        
         case TRIGGER_SECTION_STATE: 
             switch (action.section) {
                 case 'objections':
