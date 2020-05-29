@@ -36139,22 +36139,22 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       addCard = _ref.addCard;
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "smallIndex"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
     onClick: function onClick() {
       return triggerSectionState('objections');
     }
-  }, "Objections"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Objections"), /*#__PURE__*/_react.default.createElement("div", {
     className: isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
     onClick: function onClick() {
       return triggerSectionState('competitors');
     }
-  }, "Competitors"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Competitors"), /*#__PURE__*/_react.default.createElement("div", {
     className: isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
     onClick: function onClick() {
       return triggerSectionState('profiles');
     }
-  }, "Profiles"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Profiles"), /*#__PURE__*/_react.default.createElement("div", {
     className: isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
     onClick: function onClick() {
       return triggerSectionState('discoveries');
@@ -36688,7 +36688,7 @@ var NewCompetitorsCardMenu = function NewCompetitorsCardMenu(_ref9) {
       section = _ref9.section;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "addCardMenu"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'battlePitch', section);
@@ -37186,7 +37186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63189" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51545" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

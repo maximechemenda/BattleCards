@@ -27,10 +27,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
     
         <div className="smallIndex">
-            <button className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</button>
-            <button className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</button>
-            <button className={isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('profiles')}>Profiles</button>
-            <button className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</button>
+            <div className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</div>
+            <div className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</div>
+            <div className={isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('profiles')}>Profiles</div>
+            <div className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</div>
         </div>
 
         <div>   
@@ -416,7 +416,6 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
 const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
         <button className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
@@ -493,7 +492,7 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => ( 
     <div className="addCardMenu">
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</div>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
         <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
         <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'howWeWin', section)}>How We Win</button>
