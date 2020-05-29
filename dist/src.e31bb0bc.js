@@ -36112,11 +36112,15 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('objections');
     }
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-axe-battle"
-  }), /*#__PURE__*/_react.default.createElement("i", {
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-plus"
-  })), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+  }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCard('objections');
@@ -36147,18 +36151,32 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       return clearSelectedBattleCards();
     }
   }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('competitors');
     }
-  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-swords"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCard('competitors');
     }
-  }, "Add BattleCard"))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-swords"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  })))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Profiles"), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
@@ -36176,18 +36194,32 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       return clearSelectedBattleCards();
     }
   }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('profiles');
     }
-  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-user"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCard('profiles');
     }
-  }, "Add BattleCard"))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-user"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  })))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Discoveries"), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
@@ -36205,18 +36237,32 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       return clearSelectedBattleCards();
     }
   }, "Close all opened battlecards")), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCardToSectionAndSelectedBattleCards('discoveries');
     }
-  }, "Add BattleCard")), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
-    className: "addBattleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-telescope"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: "addBattleCard",
     onClick: function onClick() {
       return addBattleCard('discoveries');
     }
-  }, "Add BattleCard")))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardAxeIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-telescope"
+  })), /*#__PURE__*/_react.default.createElement("span", {
+    className: "addBattleCardPlusIcon"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  }))))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
     addBattleCard: addBattleCard,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
@@ -36510,8 +36556,11 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
-    }
-  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    },
+    className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-trash"
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -36614,8 +36663,11 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
-    }
-  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    },
+    className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-trash"
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -36718,8 +36770,11 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
-    }
-  }, "Delete BattleCard"), /*#__PURE__*/_react.default.createElement("div", {
+    },
+    className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fa fa-trash"
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -37026,7 +37081,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51156" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53874" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

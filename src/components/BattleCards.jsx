@@ -53,22 +53,23 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')} >
-                    {/* <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}> */}
-                        <i class="fas fa-axe-battle"></i>
+                    <span className = "addBattleCardAxeIcon">
+                           <i class="fas fa-axe-battle"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
                         <i class="fas fa-plus"></i>
-                    {/* </button> */}
+                    </span>
                 </div>
                 }
 
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard' onClick={() => addBattleCard('objections')}>
-                       <span className = "addBattleCardAxeIcon">
-                           <i class="fas fa-axe-battle"></i>
-                        </span>
-                        <span className="addBattleCardPlusIcon">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        
+                    <span className = "addBattleCardAxeIcon">
+                        <i class="fas fa-axe-battle"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>   
                 </div>
                 }
 
@@ -93,14 +94,24 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 </div>
 
                 {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')} >
+                    <span className = "addBattleCardAxeIcon">
+                           <i class="fas fa-swords"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>
                 </div>
                 }
 
                 {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('competitors')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCard('competitors')}>
+                    <span className = "addBattleCardAxeIcon">
+                        <i class="fas fa-swords"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>   
                 </div>
                 }
 
@@ -124,14 +135,24 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 </div>
 
                 {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')} >
+                    <span className = "addBattleCardAxeIcon">
+                           <i class="fas fa-user"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>
                 </div>
                 }
-                
+
                 {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('profiles')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCard('profiles')}>
+                    <span className = "addBattleCardAxeIcon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>   
                 </div>
                 }
 
@@ -154,14 +175,24 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 </div>
 
                 {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')} >
+                    <span className = "addBattleCardAxeIcon">
+                           <i class="fas fa-telescope"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>
                 </div>
                 }
-                
+
                 {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('discoveries')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCard('discoveries')}>
+                    <span className = "addBattleCardAxeIcon">
+                    <i class="fas fa-telescope"></i>
+                    </span>
+                    <span className="addBattleCardPlusIcon">
+                        <i class="fas fa-plus"></i>
+                    </span>   
                 </div>
                 }
 
@@ -406,7 +437,10 @@ const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBa
 const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+            <i class="fa fa-trash"></i>
+        </button>
+
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Competitor</span>
@@ -473,7 +507,10 @@ const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCa
 const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+            <i class="fa fa-trash"></i>
+        </button>
+
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Profile</span>
@@ -536,7 +573,10 @@ const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBa
 const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+            <i class="fa fa-trash"></i>
+        </button>
+        
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Discovery</span>
