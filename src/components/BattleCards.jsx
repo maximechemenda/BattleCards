@@ -213,31 +213,33 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
         </div>
 
-        {(selectedBattleCards.length === 0) && 
-        <IndependentBattleCards
-        addBattleCard={addBattleCard} 
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        isEmptyObjectionsState={isEmptyObjectionsState}
-        isEmptyCompetitorsState={isEmptyCompetitorsState}
-        isEmptyProfilesState={isEmptyProfilesState}
-        isEmptyDiscoveriesState={isEmptyDiscoveriesState}
-        objectionsBattleCards={objectionsBattleCards}
-        competitorsBattleCards={competitorsBattleCards}
-        profilesBattleCards={profilesBattleCards}
-        discoveriesBattleCards={discoveriesBattleCards}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+        <div className="mainDiv">
+            {(selectedBattleCards.length === 0) && 
+            <IndependentBattleCards
+            addBattleCard={addBattleCard} 
+            deleteBattleCard={deleteBattleCard}
+            modifyBattleCardTitle={modifyBattleCardTitle}
+            isEmptyObjectionsState={isEmptyObjectionsState}
+            isEmptyCompetitorsState={isEmptyCompetitorsState}
+            isEmptyProfilesState={isEmptyProfilesState}
+            isEmptyDiscoveriesState={isEmptyDiscoveriesState}
+            objectionsBattleCards={objectionsBattleCards}
+            competitorsBattleCards={competitorsBattleCards}
+            profilesBattleCards={profilesBattleCards}
+            discoveriesBattleCards={discoveriesBattleCards}
+            triggerAddCardState={triggerAddCardState}
+            addCard={addCard}
+            />}
 
-        {(selectedBattleCards.length !== 0) &&
-        <SelectedBattleCards 
-        selectedBattleCards={selectedBattleCards}
-        deleteBattleCard={deleteBattleCard}
-        modifyBattleCardTitle={modifyBattleCardTitle}
-        triggerAddCardState={triggerAddCardState}
-        addCard={addCard}
-        />}
+            {(selectedBattleCards.length !== 0) &&
+            <SelectedBattleCards 
+            selectedBattleCards={selectedBattleCards}
+            deleteBattleCard={deleteBattleCard}
+            modifyBattleCardTitle={modifyBattleCardTitle}
+            triggerAddCardState={triggerAddCardState}
+            addCard={addCard}
+            />}
+        </div>
         
     </div>
 )    

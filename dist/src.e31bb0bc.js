@@ -36347,7 +36347,9 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-plus"
-  }))))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
+  }))))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "mainDiv"
+  }, selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
     addBattleCard: addBattleCard,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
@@ -36367,7 +36369,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
     addCard: addCard
-  }));
+  })));
 };
 
 var SelectedBattleCards = function SelectedBattleCards(_ref2) {
@@ -37186,7 +37188,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56348" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60640" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

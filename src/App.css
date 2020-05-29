@@ -457,3 +457,14 @@
   color: var(--secondary);
   font-family: Arial;
 }
+
+.mainDiv {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* white-space: nowrap; */
+  padding: 5px 10px;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  position: relative;
+  box-sizing: border-box;
+}
