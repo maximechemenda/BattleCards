@@ -207,10 +207,20 @@
 }
 
 .addBattleCard {
-  width: 60px;
-  margin: 20px 20px 0px 10px;
-  height: 100%;
+  background-color: var(--secondary);
+  cursor: pointer;
   float: left;
+  text-align: center;
+  color: white;
+  padding-top: 9px;
+  font-size: 23px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 15px;
 }
 
 .openedLeftMenuItems {
@@ -337,6 +347,52 @@
   padding-inline-start: 16px;
 }
 
+.deleteBattleCardButton {
+  float: right;
+  margin-right: -11px;
+  margin-top: -5px;
+  color: rgb(142, 135, 135);
+  padding: 0;
+  cursor: pointer;
+  border: 0px;
+}
+
+.deleteBattleCardButton:hover {
+  color: var(--red)
+}
+
+.fa.fa-trash:before {
+  font-size: 12px;
+  margin-right: 0px;
+  content: "\f1f8";
+}
+
+.addBattleCardPlusIcon {
+  content: "\f067";
+  font-size: 12px;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border-radius: 100%;
+  padding: 1px;
+  background-color: var(--secondary);
+  color: white;
+  left: 30px;
+}
+
+.addBattleCardAxeIcon {
+  font-size: 28px;
+  /* content: "\f6b3";
+  font-size: 13px;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  border-radius: 100%;
+  padding: 1px;
+  background-color: var(--secondary);
+  color: white;
+  left: 30px; */
+}
 body {
   margin: 5px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

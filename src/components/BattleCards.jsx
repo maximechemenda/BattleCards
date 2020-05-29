@@ -52,14 +52,23 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 </div>
 
                 {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')} >
+                    {/* <button onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')}> */}
+                        <i class="fas fa-axe-battle"></i>
+                        <i class="fas fa-plus"></i>
+                    {/* </button> */}
                 </div>
                 }
 
                 {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard'>
-                    <button onClick={() => addBattleCard('objections')}>Add BattleCard</button>
+                <div className='addBattleCard' onClick={() => addBattleCard('objections')}>
+                       <span className = "addBattleCardAxeIcon">
+                           <i class="fas fa-axe-battle"></i>
+                        </span>
+                        <span className="addBattleCardPlusIcon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        
                 </div>
                 }
 
@@ -327,15 +336,13 @@ const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBatt
 const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)}>Delete BattleCard</button>
+        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+            <i class="fa fa-trash"></i>
+        </button>
+        
         <div className="cards">
             <textarea on  r={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">Objection</span>
-            <div>
-                <span>Good Arguments</span>
-                <button onClick={() => console.log('hey')}>+++</button>
-            </div>
-            
         </div>
         <br></br>
 
