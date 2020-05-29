@@ -368,7 +368,9 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
-            <i class="fa fa-trash"></i>
+            <span className="battleCardTrash">
+                <i class="fa fa-trash"></i>
+            </span>
         </button>
         
         <div className="cards">
@@ -441,7 +443,9 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
-            <i class="fa fa-trash"></i>
+            <span className="battleCardTrash">
+                <i class="fa fa-trash"></i>
+            </span>
         </button>
 
         <div className="cards">
@@ -513,7 +517,9 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
-            <i class="fa fa-trash"></i>
+            <span className="battleCardTrash">
+                <i class="fa fa-trash"></i>
+            </span>
         </button>
 
         <div className="cards">
@@ -581,7 +587,9 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
     <div className="battleCard">   
         <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
-            <i class="fa fa-trash"></i>
+            <span className="battleCardTrash">
+                <i class="fa fa-trash"></i>
+            </span>
         </button>
 
         <div className="cards">

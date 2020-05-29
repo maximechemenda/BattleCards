@@ -33141,7 +33141,8 @@ var battleCards = function battleCards() {
             battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
               objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.isEmptyAddButtonState = false;
+                  //battleCard.isEmptyAddButtonState = false;
+                  battleCard.isEmptyAddButtonState = !battleCard.isEmptyAddButtonState;
                 }
 
                 return battleCard;
@@ -35534,7 +35535,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Text"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35559,7 +35564,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Offer a Deal"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35584,7 +35593,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Common Answer"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35609,7 +35622,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35634,7 +35651,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35659,7 +35680,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Checklist"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35684,7 +35709,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Watch Out!"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35709,7 +35738,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Quick Battle Pitch"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35734,7 +35767,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35759,7 +35796,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35784,7 +35825,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "How We Win"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35809,7 +35854,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35834,7 +35883,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "When To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35859,7 +35912,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35884,7 +35941,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "How We Lose"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35909,7 +35970,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Negative Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -35934,7 +35999,11 @@ var _default = function _default(_ref) {
       onClick: function onClick(e) {
         return deleteCard(e, battleCardId, cardId, section);
       }
-    }, "x"), /*#__PURE__*/_react.default.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      class: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "When Not To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
       onBlur: function onBlur(e) {
@@ -36436,9 +36505,11 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
       return deleteBattleCard(battleCardId, section);
     },
     className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fa fa-trash"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     on: true,
@@ -36560,9 +36631,11 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
       return deleteBattleCard(battleCardId, section);
     },
     className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fa fa-trash"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -36669,9 +36742,11 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
       return deleteBattleCard(battleCardId, section);
     },
     className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fa fa-trash"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -36778,9 +36853,11 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
       return deleteBattleCard(battleCardId, section);
     },
     className: "deleteBattleCardButton"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fa fa-trash"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
     onBlur: function onBlur(e) {
@@ -37089,7 +37166,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55983" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64341" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

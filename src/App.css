@@ -122,8 +122,16 @@
 }
 
 .deleteCardButton {
-  background-color: rgb(230, 111, 111);
-  float: right; 
+  /* background-color: rgb(230, 111, 111);
+  float: right; */ 
+
+  float: right;
+  margin-right: 4px;
+  margin-top: -5px;
+  color: var(--red);
+  padding: 0;
+  cursor: pointer;
+  border: 0px;
 }
 
 .addCardButton {
@@ -361,8 +369,8 @@
   color: var(--red)
 }
 
-.fa.fa-trash:before {
-  font-size: 12px;
+.battleCardTrash {
+  font-size: 14px;
   margin-right: 0px;
   content: "\f1f8";
 }
@@ -380,16 +388,14 @@
   left: 30px;
 }
 
+/* this is also the name of the class for other sections (with the swords, the user and the telescope) */
 .addBattleCardAxeIcon {
   font-size: 28px;
-  /* content: "\f6b3";
-  font-size: 13px;
-  position: absolute;
-  top: 25px;
-  right: 10px;
-  border-radius: 100%;
-  padding: 1px;
-  background-color: var(--secondary);
-  color: white;
-  left: 30px; */
 }
+
+.cardTrash {
+  font-size: 14px;
+  margin-right: 0px;
+  content: "\f1f8";
+}
+

@@ -640,7 +640,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             ...state.battleCards,
                             objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
-                                    battleCard.isEmptyAddButtonState = false;
+                                    //battleCard.isEmptyAddButtonState = false;
+                                    battleCard.isEmptyAddButtonState = !battleCard.isEmptyAddButtonState;
                                 }
                                 return battleCard
                             })
