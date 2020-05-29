@@ -36175,7 +36175,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
-  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
@@ -36222,7 +36222,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
-  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
@@ -36269,7 +36269,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
-  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
@@ -36316,7 +36316,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
     }, battleCard.titleValue);
-  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("button", {
+  })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
       return clearSelectedBattleCards();
@@ -36516,7 +36516,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
       addCard = _ref5.addCard;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "battleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
     },
@@ -36562,42 +36562,42 @@ var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref6) {
       section = _ref6.section;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "addCardMenu"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'goodQuestion', section);
     }
-  }, "Good Question"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Good Question"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'badQuestion', section);
     }
-  }, "Bad Question"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Bad Question"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'offerDeal', section);
     }
-  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
-  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'commonAnswer', section);
     }
-  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'text', section);
     }
-  }, "Text"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Text"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'goodArguments', section);
     }
-  }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'badArguments', section);
@@ -36642,7 +36642,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
       addCard = _ref8.addCard;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "battleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
     },
@@ -36693,22 +36693,22 @@ var NewCompetitorsCardMenu = function NewCompetitorsCardMenu(_ref9) {
     onClick: function onClick() {
       return addCard(battleCardId, 'battlePitch', section);
     }
-  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'offerDeal', section);
     }
-  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'warning', section);
     }
-  }, "Warning"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Warning"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'howWeWin', section);
     }
-  }, "How We Win"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "How We Win"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'howWeLose', section);
@@ -36753,7 +36753,7 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
       addCard = _ref11.addCard;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "battleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
     },
@@ -36799,27 +36799,27 @@ var NewProfilesCardMenu = function NewProfilesCardMenu(_ref12) {
       section = _ref12.section;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "addCardMenu"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'battlePitch', section);
     }
-  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Battle Pitch"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'warning', section);
     }
-  }, "Warning"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Warning"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
-  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'positiveDifferences', section);
     }
-  }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'negativeDifferences', section);
@@ -36864,7 +36864,7 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
       addCard = _ref14.addCard;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "battleCard"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick() {
       return deleteBattleCard(battleCardId, section);
     },
@@ -36910,40 +36910,40 @@ var NewDiscoveriesCardMenu = function NewDiscoveriesCardMenu(_ref15) {
       section = _ref15.section;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "addCardMenu"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'commonAnswer', section);
     }
-  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'goodPhrasing', section);
     }
-  }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
-  }, "Checklist"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Checklist"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'whenToAsk', section);
     }
-  }, "When To Ask"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "When To Ask"), /*#__PURE__*/_react.default.createElement("div", {
     className: "redAddButton",
     onClick: function onClick() {
       return addCard(battleCardId, 'whenNotToAsk', section);
     }
   }, "When Not To Ask"));
-}; /////////////////// ADD CARD BUTTON ////////////////
+}; /////////////////// ADD CARD div ////////////////
 
 
 var AddCardButton = function AddCardButton(_ref16) {
   var triggerAddCardState = _ref16.triggerAddCardState,
       battleCardId = _ref16.battleCardId,
       section = _ref16.section;
-  return /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: "addCardButton",
     onClick: function onClick() {
       return triggerAddCardState(battleCardId, section);
@@ -37186,7 +37186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51545" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56348" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

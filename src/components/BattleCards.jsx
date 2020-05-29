@@ -50,7 +50,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     </ol> 
 
                     {selectedBattleCards.length !== 0 &&
-                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</button>
+                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
                     }
                 </div>
 
@@ -95,7 +95,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     </ol> 
 
                     {selectedBattleCards.length !== 0 &&
-                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</button>
+                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
                     }
                 </div>
 
@@ -139,7 +139,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
-                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</button>
+                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
                     }
                 </div>
 
@@ -182,7 +182,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         )} 
                     </ol> 
                     {selectedBattleCards.length !== 0 &&
-                    <button className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</button>
+                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
                     }
                 </div>
 
@@ -379,11 +379,11 @@ const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBatt
 const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
                 <i class="fa fa-trash"></i>
             </span>
-        </button>
+        </div>
         
         <div className="cards">
             <textarea on  r={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
@@ -416,14 +416,14 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
 
 const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodArguments', section)}>Good Arguments</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'badArguments', section)}>Bad Arguments</button>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodArguments', section)}>Good Arguments</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badArguments', section)}>Bad Arguments</div>
     </div>
 )
 
@@ -453,11 +453,11 @@ const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBa
 const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
                 <i class="fa fa-trash"></i>
             </span>
-        </button>
+        </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
@@ -493,10 +493,10 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => ( 
     <div className="addCardMenu">
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</div>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'howWeWin', section)}>How We Win</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'howWeLose', section)}>How We Lose</button>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'howWeWin', section)}>How We Win</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'howWeLose', section)}>How We Lose</div>
     </div>
 )
 
@@ -527,11 +527,11 @@ const ProfilesBattleCards = ({addBattleCard, profilesBattleCards, deleteBattleCa
 const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
                 <i class="fa fa-trash"></i>
             </span>
-        </button>
+        </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
@@ -564,11 +564,11 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
 
 const NewProfilesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'positiveDifferences', section)}>Positive Differences</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'negativeDifferences', section)}>Negative Differences</button>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'positiveDifferences', section)}>Positive Differences</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'negativeDifferences', section)}>Negative Differences</div>
     </div>
 )
 
@@ -597,11 +597,11 @@ const DiscoveriesBattleCards = ({addBattleCard, discoveriesBattleCards, deleteBa
 const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
-        <button onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
                 <i class="fa fa-trash"></i>
             </span>
-        </button>
+        </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
@@ -634,22 +634,22 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 const NewDiscoveriesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</button>
-        <button className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'whenToAsk', section)}>When To Ask</button>
-        <button className='redAddButton' onClick = {() => addCard(battleCardId, 'whenNotToAsk', section)}>When Not To Ask</button>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodPhrasing', section)}>Good Phrasing</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'whenToAsk', section)}>When To Ask</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'whenNotToAsk', section)}>When Not To Ask</div>
     </div>
 )
 
 
-/////////////////// ADD CARD BUTTON ////////////////
+/////////////////// ADD CARD div ////////////////
 const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
-    <button className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>
+    <div className="addCardButton" onClick={() => triggerAddCardState(battleCardId, section)}>
         <span className="addCardIcon">
             <i className="fa fa-plus"></i>
         </span>
-    </button>
+    </div>
 ) 
 
 
