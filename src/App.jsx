@@ -26,6 +26,66 @@ class App extends Component {
   })
   .catch(e => console.log("fetching failed , Error ", e));
 
+
+
+  //code for blue textareas
+  var blueTextAreas = document.getElementsByClassName('blueCardText');
+
+  for(var i=0; i<blueTextAreas.length; ++i) {
+    var textarea = blueTextAreas[i]
+    textarea.addEventListener('keydown', autosize);
+              
+  function autosize(){
+    var el = this;
+    setTimeout(function(){
+      el.style.cssText = 'height:auto; padding:0';
+      // for box-sizing other than "content-box" use:
+      //el.style.cssText = '-moz-box-sizing:content-box';
+      el.style.cssText = 'height:' + el.scrollHeight + 'px';
+    },0);
+  }
+  }
+
+  }
+
+  //allows the textareas to get bigger and bigger according to the size of the text
+  componentDidUpdate() {
+
+    //code for red textareas
+    var redTextAreas = document.getElementsByClassName('redCardText');
+
+    for(var i=0; i<redTextAreas.length; ++i) {
+      var textarea = redTextAreas[i]
+      textarea.addEventListener('keydown', autosize);
+                
+    function autosize(){
+      var el = this;
+      setTimeout(function(){
+        el.style.cssText = 'height:auto; padding:0';
+        // for box-sizing other than "content-box" use:
+        //el.style.cssText = '-moz-box-sizing:content-box';
+        el.style.cssText = 'height:' + el.scrollHeight + 'px';
+      },0);
+    }
+    }
+
+    //code for blue textareas
+    var blueTextAreas = document.getElementsByClassName('blueCardText');
+
+    for(var i=0; i<blueTextAreas.length; ++i) {
+      var textarea = blueTextAreas[i]
+      textarea.addEventListener('keydown', autosize);
+                
+    function autosize(){
+      var el = this;
+      setTimeout(function(){
+        el.style.cssText = 'height:auto; padding:0';
+        // for box-sizing other than "content-box" use:
+        //el.style.cssText = '-moz-box-sizing:content-box';
+        el.style.cssText = 'height:' + el.scrollHeight + 'px';
+      },0);
+    }
+    }
   }
 
   render() {
