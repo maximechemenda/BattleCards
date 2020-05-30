@@ -214,10 +214,11 @@
 
 .closedLeftMenuItems {
   color: rgb(80, 80, 80);
-  font-size: 16px;
+  font-size: 13px;
   margin: 5px 0px;
   cursor: pointer;
   font-family: Arial;
+  white-space: normal;
 }
 
 
@@ -317,7 +318,7 @@
 .blueCardText {
   color: var(--secondary);
   font-size: 15px;
-  width: 100%;
+  width: 97%;
   margin-top: 10px;
   outline: none;
   background: transparent;
@@ -331,7 +332,7 @@
 .redCardText {
   color: var(--red);
   font-size: 15px;
-  width: 100%;
+  width: 97%;
   margin-top: 10px;
   outline: none;
   background: transparent;
