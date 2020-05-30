@@ -40,12 +40,14 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
  
                 <div className='leftMenu'>
                     <h3 className="leftMenuTitle">
-                        <i class="fa fa-axe-battle"></i>
+                        <i className="fa fa-axe-battle"></i>
                         <span> Objections</span>
                     </h3>
                     <ol className='itemsContainer'>
                         {objectionsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>
+                                <span>{battleCard.titleValue}</span>
+                            </li>
                         )} 
                     </ol> 
 
@@ -57,10 +59,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')} >
                     <span className = "addBattleCardAxeIcon">
-                           <i class="fas fa-axe-battle"></i>
+                           <i className="fas fa-axe-battle"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>
                 </div>
                 }
@@ -68,10 +70,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard' onClick={() => addBattleCard('objections')}>
                     <span className = "addBattleCardAxeIcon">
-                        <i class="fas fa-axe-battle"></i>
+                        <i className="fas fa-axe-battle"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>   
                 </div>
                 }
@@ -85,7 +87,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
  
                 <div className='leftMenu'>
                     <h3 className="leftMenuTitle">
-                        <i class="fa fa-swords"></i>
+                        <i className="fa fa-swords"></i>
                         <span> Competitors</span>
                     </h3>
                     <ol className='itemsContainer'>
@@ -102,10 +104,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')} >
                     <span className = "addBattleCardAxeIcon">
-                           <i class="fas fa-swords"></i>
+                           <i className="fas fa-swords"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>
                 </div>
                 }
@@ -113,10 +115,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard' onClick={() => addBattleCard('competitors')}>
                     <span className = "addBattleCardAxeIcon">
-                        <i class="fas fa-swords"></i>
+                        <i className="fas fa-swords"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>   
                 </div>
                 }
@@ -130,7 +132,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3 className="leftMenuTitle">
-                        <i class="fa fa-user"></i>
+                        <i className="fa fa-user"></i>
                         <span> Profiles</span>
                     </h3>
                     <ol className='itemsContainer'>
@@ -146,10 +148,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')} >
                     <span className = "addBattleCardAxeIcon">
-                           <i class="fas fa-user"></i>
+                           <i className="fas fa-user"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>
                 </div>
                 }
@@ -157,10 +159,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard' onClick={() => addBattleCard('profiles')}>
                     <span className = "addBattleCardAxeIcon">
-                        <i class="fas fa-user"></i>
+                        <i className="fas fa-user"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>   
                 </div>
                 }
@@ -173,7 +175,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 
                 <div className='leftMenu'>
                     <h3 className="leftMenuTitle">
-                        <i class="fa fa-telescope"></i>
+                        <i className="fa fa-telescope"></i>
                         <span> Discoveries</span>
                     </h3>
                     <ol className='itemsContainer'>
@@ -189,10 +191,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length !== 0 && 
                 <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')} >
                     <span className = "addBattleCardAxeIcon">
-                           <i class="fas fa-telescope"></i>
+                           <i className="fas fa-telescope"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>
                 </div>
                 }
@@ -200,10 +202,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                 {selectedBattleCards.length === 0 &&
                 <div className='addBattleCard' onClick={() => addBattleCard('discoveries')}>
                     <span className = "addBattleCardAxeIcon">
-                    <i class="fas fa-telescope"></i>
+                    <i className="fas fa-telescope"></i>
                     </span>
                     <span className="addBattleCardPlusIcon">
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </span>   
                 </div>
                 }
@@ -383,14 +385,14 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
-                <i class="fa fa-trash"></i>
+                <i className="fa fa-trash"></i>
             </span>
         </div>
         
         <div className="cards">
             <textarea on  r={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">
-                <i class="fa fa-axe-battle"></i>
+                <i className="fa fa-axe-battle"></i>
                 <span> Objection</span>
             </span>
         </div>
@@ -457,14 +459,14 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
-                <i class="fa fa-trash"></i>
+                <i className="fa fa-trash"></i>
             </span>
         </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'competitors')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">
-                <i class="fa fa-swords"></i>
+                <i className="fa fa-swords"></i>
                 <span> Competitor</span>
             </span>
 
@@ -531,14 +533,14 @@ const ProfilesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddBu
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
-                <i class="fa fa-trash"></i>
+                <i className="fa fa-trash"></i>
             </span>
         </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'profiles')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">
-                <i class="fa fa-user"></i>
+                <i className="fa fa-user"></i>
                 <span> Profile</span>
             </span>
         </div>
@@ -601,14 +603,14 @@ const DiscoveriesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
             <span className="battleCardTrash">
-                <i class="fa fa-trash"></i>
+                <i className="fa fa-trash"></i>
             </span>
         </div>
 
         <div className="cards">
             <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'discoveries')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
             <span className="battleCardNameHeader">
-                <i class="fa fa-telescope"></i>
+                <i className="fa fa-telescope"></i>
                 <span> Discovery</span>
             </span>
         </div>

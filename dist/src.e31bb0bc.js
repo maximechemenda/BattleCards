@@ -35538,7 +35538,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Text"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35567,7 +35567,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Offer a Deal"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35596,7 +35596,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Common Answer"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35625,7 +35625,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35654,7 +35654,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35683,7 +35683,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Checklist"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35712,7 +35712,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Watch Out!"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35741,7 +35741,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Quick Battle Pitch"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35770,7 +35770,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35799,7 +35799,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35828,7 +35828,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "How We Win"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35857,7 +35857,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35886,7 +35886,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "When To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35915,10 +35915,12 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
+      rows: "3",
+      "data-min-rows": "3",
       onBlur: function onBlur(e) {
         return editCard(e.target.value, battleCardId, cardId, section);
       },
@@ -35926,7 +35928,7 @@ var _default = function _default(_ref) {
         return editCard(e.target.value, battleCardId, cardId, section);
       },
       placeholder: "Content for this tile goes here",
-      className: "redCardText"
+      class: "redCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
   }
 
@@ -35944,7 +35946,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "How We Lose"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -35973,7 +35975,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Negative Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36002,7 +36004,7 @@ var _default = function _default(_ref) {
     }, /*#__PURE__*/_react.default.createElement("span", {
       className: "cardTrash"
     }, /*#__PURE__*/_react.default.createElement("i", {
-      class: "fa fa-trash"
+      className: "fa fa-trash"
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "When Not To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36164,7 +36166,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-axe-battle"
+    className: "fa fa-axe-battle"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Objections")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, objectionsBattleCards.map(function (battleCard) {
@@ -36174,7 +36176,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       },
       key: battleCard.battleCardId,
       className: selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"
-    }, battleCard.titleValue);
+    }, /*#__PURE__*/_react.default.createElement("span", null, battleCard.titleValue));
   })), selectedBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "closeAllOpenedBattleCardsButton",
     onClick: function onClick() {
@@ -36188,11 +36190,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-axe-battle"
+    className: "fas fa-axe-battle"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard",
     onClick: function onClick() {
@@ -36201,17 +36203,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-axe-battle"
+    className: "fas fa-axe-battle"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   })))), !isEmptyCompetitorsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-swords"
+    className: "fa fa-swords"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Competitors")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, competitorsBattleCards.map(function (battleCard) {
@@ -36235,11 +36237,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-swords"
+    className: "fas fa-swords"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard",
     onClick: function onClick() {
@@ -36248,17 +36250,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-swords"
+    className: "fas fa-swords"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   })))), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-user"
+    className: "fa fa-user"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Profiles")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, profilesBattleCards.map(function (battleCard) {
@@ -36282,11 +36284,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-user"
+    className: "fas fa-user"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard",
     onClick: function onClick() {
@@ -36295,17 +36297,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-user"
+    className: "fas fa-user"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   })))), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-telescope"
+    className: "fa fa-telescope"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Discoveries")), /*#__PURE__*/_react.default.createElement("ol", {
     className: "itemsContainer"
   }, discoveriesBattleCards.map(function (battleCard) {
@@ -36329,11 +36331,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-telescope"
+    className: "fas fa-telescope"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   }))), selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
     className: "addBattleCard",
     onClick: function onClick() {
@@ -36342,11 +36344,11 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardAxeIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-telescope"
+    className: "fas fa-telescope"
   })), /*#__PURE__*/_react.default.createElement("span", {
     className: "addBattleCardPlusIcon"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-plus"
+    className: "fas fa-plus"
   }))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "mainDiv"
   }, selectedBattleCards.length === 0 && /*#__PURE__*/_react.default.createElement(IndependentBattleCards, {
@@ -36526,7 +36528,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-trash"
+    className: "fa fa-trash"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36542,7 +36544,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-axe-battle"
+    className: "fa fa-axe-battle"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Objection"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
@@ -36652,7 +36654,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-trash"
+    className: "fa fa-trash"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36667,7 +36669,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref8) {
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-swords"
+    className: "fa fa-swords"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Competitor"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
@@ -36763,7 +36765,7 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-trash"
+    className: "fa fa-trash"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36778,7 +36780,7 @@ var ProfilesBattleCard = function ProfilesBattleCard(_ref11) {
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-user"
+    className: "fa fa-user"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Profile"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
@@ -36874,7 +36876,7 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardTrash"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-trash"
+    className: "fa fa-trash"
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
@@ -36889,7 +36891,7 @@ var DiscoveriesBattleCard = function DiscoveriesBattleCard(_ref14) {
   }, titleValue), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fa fa-telescope"
+    className: "fa fa-telescope"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Discovery"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
@@ -37188,7 +37190,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51945" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54175" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

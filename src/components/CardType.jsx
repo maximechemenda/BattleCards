@@ -9,7 +9,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
                         
@@ -26,7 +26,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -43,7 +43,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -60,7 +60,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -77,7 +77,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -94,7 +94,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -111,7 +111,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
                         
@@ -129,7 +129,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -146,7 +146,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -163,7 +163,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -180,7 +180,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -197,7 +197,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -214,7 +214,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -231,14 +231,14 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
                         <span className="redCardHeader">Bad Arguments</span>
-                        <textarea onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                        <textarea rows='3' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
                                     onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
-                                    placeholder="Content for this tile goes here" className="redCardText">{text}</textarea>  
+                                    placeholder="Content for this tile goes here" class="redCardText">{text}</textarea>  
                     </div> 
                     <br></br>
                 </div>
@@ -248,7 +248,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -265,7 +265,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
 
@@ -282,7 +282,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                     <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
-                                <i class="fa fa-trash"></i>
+                                <i className="fa fa-trash"></i>
                             </span>
                         </button>
                         

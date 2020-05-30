@@ -8,9 +8,40 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css" 
         integrity="sha384-TxKWSXbsweFt0o2WqfkfJRRNVaPdzXJ/YLqgStggBVRREXkwU7OKz+xXtqOU4u8+" crossorigin="anonymous">
   <!-- <script src="https://kit.fontawesome.com/b76ccfe13c.js" crossorigin="anonymous"></script> -->
+
+
 </head>
 <body>
   <div id="root"></div>
   <script src="index.js" ></script>
+
+
+
+
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+
+<script type="text/javascript">
+  // Applied globally on all textareas with the "redCardText" class
+  $(document)
+      .one('focus.redCardText', 'textarea.redCardText', function(){
+          var savedValue = this.value;
+          console.log('hey')
+          console.log(savedValue)
+          this.value = '';
+          this.baseScrollHeight = this.scrollHeight;
+          this.value = savedValue;
+      })
+      .on('input.redCardText', 'textarea.redCardText', function(){
+          var minRows = this.getAttribute('data-min-rows')|0, rows;
+          this.rows = minRows;
+          rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+          this.rows = minRows + rows;
+      });
+</script>
+
+
+
+
+
 </body>
 </html>

@@ -12,9 +12,6 @@
   --secondary-light: #ecf1ff;
 }
 
-
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -50,12 +47,8 @@
   }
 }
 
-
-
-
-
 .battleCard {
-  width: 600px;
+  width: 566px;
   min-height: 100px;
   background-color: #f6f8f9;
   float: left;
@@ -70,38 +63,12 @@
   border-width: 1px;
   box-shadow: 0px 0px 8px #bbb !important;
   font-family: Arial;
-
-  /* border-width: '10px 10px 10px 10px'; */ 
-    
-
-  /* overflow-x: visible;
-  overflow-y: scroll; */
-/*   background-color:rgb(228, 222, 222);  
-
-  max-height: 700px;
-  width: 500px;
-  overflow: auto;
-  border-style: ridge;
-  border-width: '10px 10px 10px 10px';
-  
-
-  min-height: 100px;
-  float: left;
-  position: relative;
-  padding: 15px;
-  padding-top: 8px;
-  padding-right: 10px;
-  box-sizing: border-box;
-  margin-bottom: 30px; */ 
-
-
 }
 
 .cards {
   width: calc(100% - 30px);
   background-color: white;
   position: relative;
-
   float: left;
   min-height: 80px;
   padding: 15px;
@@ -109,24 +76,14 @@
   padding-right: inherit;
   display: inline-block;
   margin-bottom: 20px;
-
   box-sizing: border-box;
-
-  
   border-style: ridge;
   border-width: 0px;
   box-shadow: 0px 0px 5px #bbb !important;
-  font-family: Arial;
-  /* border-width: '10px 10px 10px 10px';   */
-  
-
-
+  font-family: Arial;  
 }
 
 .deleteCardButton {
-  /* background-color: rgb(230, 111, 111);
-  float: right; */ 
-
   float: right;
   margin-right: 4px;
   margin-top: -5px;
@@ -138,8 +95,6 @@
 }
 
 .addCardButton {
-  /* background-color: rgb(93, 151, 240);
-  float: center; */
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -269,7 +224,6 @@
 
 .closeAllOpenedBattleCardsButton {
   color: white;
-  /* background: var(--secondary); */
   background: rgb(62, 113, 207);
   text-align: center;
   padding: 5px 5px;
@@ -378,17 +332,17 @@
   font-size: 15px;
   width: 100%;
   margin-top: 10px;
-  resize: none;
   outline: none;
   background: transparent;
   border: none;
   font-family: Arial;
+  display: block; 
+  overflow: hidden; 
+  resize: none;
 }
 
 .blueHeaderValues {
   font-size: 12px;
-  /* outline: none;
-  border: none; */
   float: right;
   font-family: Arial;
 }
@@ -435,7 +389,7 @@
   font-family: Arial;
 }
 
-/* this is also the name of the class for other sections (with the swords, the user and the telescope) */
+/* this is also the name of the className for other sections (with the swords, the user and the telescope) */
 .addBattleCardAxeIcon {
   font-size: 28px;
   font-family: Arial;
@@ -461,7 +415,6 @@
 .mainDiv {
   overflow-x: scroll;
   overflow-y: hidden;
-  /* white-space: nowrap; */
   padding: 5px 10px;
   border-left: 2px solid #ddd;
   border-right: 2px solid #ddd;
