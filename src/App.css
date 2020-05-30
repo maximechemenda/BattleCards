@@ -417,9 +417,12 @@
 .mainDiv {
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 5px 10px;
+  padding: 5px -1px;
   border-left: 2px solid #ddd;
   border-right: 2px solid #ddd;
   position: relative;
   box-sizing: border-box;
+  width: 10000%;
+  left: 302px;
+  bottom: 408px;
 }
