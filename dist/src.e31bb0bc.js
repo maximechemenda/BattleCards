@@ -36567,8 +36567,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref5) {
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
-    on: true,
-    r: function r(e) {
+    onBlur: function onBlur(e) {
       return modifyBattleCardTitle(e.target.value, battleCardId, 'objections');
     },
     onKeyPress: function onKeyPress(e) {
@@ -37283,7 +37282,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59655" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61092" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

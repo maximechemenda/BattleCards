@@ -138,7 +138,7 @@
   font-weight: 500;
   margin: 0px;
   padding: 0px;
-  width: 380px;
+  width: 358px;
   resize: none;
   font-family: Arial;
 }
@@ -206,10 +206,11 @@
 
 .openedLeftMenuItems {
   color: var(--secondary);
-  font-size: 16px;
+  font-size: 13px;
   margin: 5px 0px;
   cursor: pointer;
   font-family: Arial;
+  white-space: normal;
 }
 
 .closedLeftMenuItems {
@@ -294,7 +295,6 @@
   font-weight: 900;
   margin-left: 5px;
   float: right;
-  padding: 0px 3px;
   color: var(--secondary);
   text-align: right;
   line-height: 27px;

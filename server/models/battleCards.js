@@ -50,7 +50,7 @@ const battleCardsSchema = new mongoose.Schema({
         titleValue: String,
         section: String
     }],
-    selectedBattleCards: [{
+    /* selectedBattleCards: [{
         cards: [{
             cardId: String,
             text: String,
@@ -61,7 +61,7 @@ const battleCardsSchema = new mongoose.Schema({
         isEmptyAddButtonState: Boolean,
         titleValue: String,
         section: String
-    }],
+    }], */
     isEmptyObjectionsState: Boolean,
     isEmptyCompetitorsState: Boolean,
     isEmptyProfilesState: Boolean,
