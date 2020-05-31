@@ -33,7 +33,8 @@ const initialBattleCardsState = {
                     cardId: uuid(),
                     text: '',
                     cardType: 'warning',
-                    editing: false
+                    editing: false,
+                    height: '105px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -47,7 +48,8 @@ const initialBattleCardsState = {
                     cardId: uuid(),
                     text: '',
                     cardType: 'warning',
-                    editing: false
+                    editing: false,
+                    height: '105px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -61,7 +63,8 @@ const initialBattleCardsState = {
                     cardId: uuid(),
                     text: '',
                     cardType: 'warning',
-                    editing: false
+                    editing: false,
+                    height: '105px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -88,6 +91,15 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 battleCards: {
                     ...state.battleCards,
                     objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                        battleCard.cards.map(card => {
+                            if (card.cardId === action.cardId) {
+                                card.height = action.height
+                            }
+                            return card
+                        })
+                        return battleCard
+                    }),
+                    competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
                         battleCard.cards.map(card => {
                             if (card.cardId === action.cardId) {
                                 card.height = action.height
@@ -545,7 +557,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       cardId: uuid(),
                                       text: '',
                                       cardType: action.cardType,
-                                      editing: false
+                                      editing: false,
+                                      height: '105px'
                                     }])
                                   }
                                   return battleCard;
@@ -564,7 +577,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       cardId: uuid(),
                                       text: '',
                                       cardType: action.cardType,
-                                      editing: false
+                                      editing: false,
+                                      height: '105px'
                                     }])
                                   }
                                   return battleCard;
@@ -583,7 +597,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       cardId: uuid(),
                                       text: '',
                                       cardType: action.cardType,
-                                      editing: false
+                                      editing: false,
+                                      height: '105px'
                                     }])
                                   }
                                   return battleCard;

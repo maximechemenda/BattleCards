@@ -20,19 +20,22 @@ const battleCardsSchema = new mongoose.Schema({
             cardId: String,
             text: String,
             cardType: String,
-            editing: Boolean
+            editing: Boolean,
+            height: String
         }],
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
         titleValue: String,
-        section: String
+        section: String,
+        height: String
 }],
     profilesBattleCards: [{
         cards: [{
             cardId: String,
             text: String,
             cardType: String,
-            editing: Boolean
+            editing: Boolean,
+            height: String
         }],
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
@@ -44,7 +47,8 @@ const battleCardsSchema = new mongoose.Schema({
             cardId: String,
             text: String,
             cardType: String,
-            editing: Boolean
+            editing: Boolean,
+            height: String
         }],
         battleCardId: String,
         isEmptyAddButtonState: Boolean,
@@ -56,7 +60,8 @@ const battleCardsSchema = new mongoose.Schema({
             cardId: String,
             text: String,
             cardType: String,
-            editing: Boolean
+            editing: Boolean,
+            height: String
         }],
         battleCardId: String,
         isEmptyAddButtonState: Boolean,

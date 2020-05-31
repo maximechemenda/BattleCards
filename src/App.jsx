@@ -34,19 +34,28 @@ class App extends Component {
     //code for red textareas
     var redTextAreas = document.getElementsByClassName('redCardText');
 
-    for(var i=0; i<redTextAreas.length; ++i) {
+    var appState = this.props
+
+    for(var i = 0; i < redTextAreas.length; ++i) {
       var textarea = redTextAreas[i]
-      textarea.addEventListener('keydown', autosize);
+      textarea.addEventListener('keydown', autosize(textarea, appState));
+
+      var height;
                 
-    function autosize(){
-      var el = this;
-      setTimeout(function(){
-        el.style.cssText = 'height:auto; padding:0';
-        // for box-sizing other than "content-box" use:
-        //el.style.cssText = '-moz-box-sizing:content-box';
-        el.style.cssText = 'height:' + el.scrollHeight + 'px';
-      },0);
-    }
+      function autosize(textarea, appState){
+        //var el = this;
+        var el = textarea;
+        setTimeout(function(){
+          el.style.cssText = 'height:auto; padding:0';
+          // for box-sizing other than "content-box" use:
+          //el.style.cssText = '-moz-box-sizing:content-box';
+          el.style.cssText = 'height:' + el.scrollHeight + 'px';
+          height = '' + el.scrollHeight + 'px';
+
+          appState.updateCardHeight(height, textarea.id)
+
+        },0);
+      }  
     }
 
     //code for blue textareas
@@ -73,9 +82,9 @@ class App extends Component {
           appState.updateCardHeight(height, textarea.id)
 
         },0);
-      }
-      
+      }  
     }
+
   }
 
   render() {

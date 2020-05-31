@@ -32541,7 +32541,8 @@ var initialBattleCardsState = {
         cardId: (0, _uuid.v4)(),
         text: '',
         cardType: 'warning',
-        editing: false
+        editing: false,
+        height: '105px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32553,7 +32554,8 @@ var initialBattleCardsState = {
         cardId: (0, _uuid.v4)(),
         text: '',
         cardType: 'warning',
-        editing: false
+        editing: false,
+        height: '105px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32565,7 +32567,8 @@ var initialBattleCardsState = {
         cardId: (0, _uuid.v4)(),
         text: '',
         cardType: 'warning',
-        editing: false
+        editing: false,
+        height: '105px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32589,6 +32592,16 @@ var battleCards = function battleCards() {
       return _objectSpread(_objectSpread({}, state), {}, {
         battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
           objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
+            battleCard.cards.map(function (card) {
+              if (card.cardId === action.cardId) {
+                card.height = action.height;
+              }
+
+              return card;
+            });
+            return battleCard;
+          }),
+          competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
             battleCard.cards.map(function (card) {
               if (card.cardId === action.cardId) {
                 card.height = action.height;
@@ -33036,7 +33049,8 @@ var battleCards = function battleCards() {
                     cardId: (0, _uuid.v4)(),
                     text: '',
                     cardType: action.cardType,
-                    editing: false
+                    editing: false,
+                    height: '105px'
                   }]);
                 }
 
@@ -33056,7 +33070,8 @@ var battleCards = function battleCards() {
                     cardId: (0, _uuid.v4)(),
                     text: '',
                     cardType: action.cardType,
-                    editing: false
+                    editing: false,
+                    height: '105px'
                   }]);
                 }
 
@@ -33076,7 +33091,8 @@ var battleCards = function battleCards() {
                     cardId: (0, _uuid.v4)(),
                     text: '',
                     cardType: action.cardType,
-                    editing: false
+                    editing: false,
+                    height: '105px'
                   }]);
                 }
 
@@ -35557,7 +35573,7 @@ var _default = function _default(_ref) {
       section = _ref.section;
 
   if (cardType === 'text') {
-    return /*#__PURE__*/_react.default.createElement("div", null, console.log(height), /*#__PURE__*/_react.default.createElement("div", {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
       onClick: function onClick() {
         return activateCardEdit(battleCardId, cardId, section);
@@ -35609,6 +35625,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Offer a Deal"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35640,6 +35660,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Common Answer"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35671,6 +35695,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35702,6 +35730,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Counter Question"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35733,6 +35765,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Checklist"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35764,6 +35800,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Watch Out!"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35795,6 +35835,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Quick Battle Pitch"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35826,6 +35870,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Phrasing"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35857,6 +35905,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35888,6 +35940,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "How We Win"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35919,6 +35975,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Positive Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35950,6 +36010,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "When To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -35981,6 +36045,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Bad Arguments"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -36012,6 +36080,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "How We Lose"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -36043,6 +36115,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "Negative Differences"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -36074,6 +36150,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "redCardHeader"
     }, "When Not To Ask"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -37132,18 +37212,23 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidUpdate() {
       //code for red textareas
       var redTextAreas = document.getElementsByClassName('redCardText');
+      var appState = this.props;
 
       for (var i = 0; i < redTextAreas.length; ++i) {
         var textarea = redTextAreas[i];
-        textarea.addEventListener('keydown', autosize);
+        textarea.addEventListener('keydown', autosize(textarea, appState));
+        var height;
 
-        function autosize() {
-          var el = this;
+        function autosize(textarea, appState) {
+          //var el = this;
+          var el = textarea;
           setTimeout(function () {
             el.style.cssText = 'height:auto; padding:0'; // for box-sizing other than "content-box" use:
             //el.style.cssText = '-moz-box-sizing:content-box';
 
             el.style.cssText = 'height:' + el.scrollHeight + 'px';
+            height = '' + el.scrollHeight + 'px';
+            appState.updateCardHeight(height, textarea.id);
           }, 0);
         }
       } //code for blue textareas
@@ -37294,7 +37379,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56020" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56558" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
