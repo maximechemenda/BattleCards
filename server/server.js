@@ -15,10 +15,10 @@ fastify.register(require('fastify-static'), {
 //connect to mongodb atlas
 
 //PRODUCTION MODE
-mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
 
 //DEVELOPMENT MODE
-//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
 
   .then(() => console.log('MongoDB connected'))
   .catch(e => console.log('MongoDB could not be connected due to ', e)); 
@@ -26,10 +26,21 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
-    reply.sendFile('index.html')
+    console.log('route')
+   reply.sendFile('index.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
 });
+
+/* fastify.get('/:app.html', async (request, reply) => {
+  try {
+    console.log('other route')
+    reply.sendFile('app.html')
+    console.log('i am here baby eva')
+    //reply.send({ hello: 'world' })
+  }
+  catch (e) { console.log('The following error occured: ', e) }
+}); */ 
 
 //iterating over all the routes and registering them with fastify
 routes.forEach(route => fastify.route(route))
