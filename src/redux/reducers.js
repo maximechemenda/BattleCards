@@ -6,7 +6,7 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         EDIT_CARD, ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
         CHANGE_SELECTED_BATTLECARDS,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
-        FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE} from './actionTypes'
+        FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -18,7 +18,8 @@ const initialBattleCardsState = {
                     cardId: uuid(),
                     text: '',
                     cardType: 'warning',
-                    editing: false
+                    editing: false,
+                    height: '105px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -81,6 +82,22 @@ const initialBattleCardsState = {
 export const battleCards = (state = initialBattleCardsState, action) => {
 
     switch (action.type) {
+        case UPDATE_CARD_HEIGHT:
+            return ({
+                ...state,
+                battleCards: {
+                    ...state.battleCards,
+                    objectionsBattleCards: state.battleCards.objectionsBattleCards.map(battleCard => {
+                        battleCard.cards.map(card => {
+                            if (card.cardId === action.cardId) {
+                                card.height = action.height
+                            }
+                            return card
+                        })
+                        return battleCard
+                    })
+                }
+            })
         case FETCH_ITEMS_BEGIN: 
             return { 
                 ...state,
@@ -507,9 +524,11 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       cardId: uuid(),
                                       text: '',
                                       cardType: action.cardType,
-                                      editing: false
+                                      editing: false,
+                                      height: '105px'
                                     }])
                                   }
+                                  console.log(battleCard.cards)
                                   return battleCard;
                             })
                         }

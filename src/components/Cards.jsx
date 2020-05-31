@@ -21,10 +21,12 @@ const Cards = ({cards, deleteCard, activateCardEdit, editCard, battleCardId, sec
                     deleteCard={deleteCard} 
                     cardId={card.cardId} 
                     cardType={card.cardType}
+                    height = {card.height}
                     activateCardEdit={activateCardEdit}
                     editCard={editCard}
                     battleCardId={battleCardId}
                     section = {section}
+                    
                     />
                 </div>   
             )}

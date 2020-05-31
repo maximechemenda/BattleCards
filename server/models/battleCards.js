@@ -7,7 +7,8 @@ const battleCardsSchema = new mongoose.Schema({
             cardId: String,
             text: String,
             cardType: String,
-            editing: Boolean
+            editing: Boolean,
+            height: String
         }],
         battleCardId: String,
         isEmptyAddButtonState: Boolean,

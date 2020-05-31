@@ -2,11 +2,12 @@ import React from 'react';
 import Editable from './Editable';
 import '../App.css';
 
-export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, editCard, battleCardId, section}) => {
+export default ({editing, text, deleteCard, cardId, cardType, height, activateCardEdit, editCard, battleCardId, section}) => {
 
     if (cardType === 'text') {
          return <div>
-                    <div style={{height: '80px'}} className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
+                    {console.log(height)}
+                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
                         <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
                             <span className="cardTrash">
                                 <i className="fa fa-trash"></i>
@@ -14,7 +15,7 @@ export default ({editing, text, deleteCard, cardId, cardType, activateCardEdit, 
                         </button>
                         
                         <span className="blueCardHeader">Text</span>
-                        <textarea rows='3' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                        <textarea style={{height: height}} id={cardId} rows='3' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
                                     onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
                                     placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>         
                     </div> 

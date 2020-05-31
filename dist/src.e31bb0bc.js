@@ -32460,7 +32460,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
+exports.UPDATE_CARD_HEIGHT = exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
 var ADD_CARD = 'ADD_CARD';
 exports.ADD_CARD = ADD_CARD;
 var DELETE_CARD = 'DELETE_CARD';
@@ -32492,6 +32492,8 @@ exports.FETCH_ITEMS_BEGIN = FETCH_ITEMS_BEGIN;
 var FETCH_ITEMS_SUCCESS = "Items fetched successfully";
 exports.FETCH_ITEMS_SUCCESS = FETCH_ITEMS_SUCCESS;
 var FETCH_ITEMS_FAILURE = "Failed to fetch items";
+exports.FETCH_ITEMS_FAILURE = FETCH_ITEMS_FAILURE;
+var UPDATE_CARD_HEIGHT = 'UPDATE_CARD_HEIGHT';
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'
 export const FILTER_ALL = 'all'
@@ -32499,7 +32501,7 @@ export const FILTER_COMPLETED = 'completed'
 export const FILTER_INCOMPLETE = 'incomplete'
 export const Filters = [FILTER_ALL, FILTER_COMPLETED, FILTER_INCOMPLETE] */
 
-exports.FETCH_ITEMS_FAILURE = FETCH_ITEMS_FAILURE;
+exports.UPDATE_CARD_HEIGHT = UPDATE_CARD_HEIGHT;
 },{}],"redux/reducers.js":[function(require,module,exports) {
 "use strict";
 
@@ -32526,7 +32528,8 @@ var initialBattleCardsState = {
         cardId: (0, _uuid.v4)(),
         text: '',
         cardType: 'warning',
-        editing: false
+        editing: false,
+        height: '105px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32582,6 +32585,22 @@ var battleCards = function battleCards() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actionTypes.UPDATE_CARD_HEIGHT:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+          objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
+            battleCard.cards.map(function (card) {
+              if (card.cardId === action.cardId) {
+                card.height = action.height;
+              }
+
+              return card;
+            });
+            return battleCard;
+          })
+        })
+      });
+
     case _actionTypes.FETCH_ITEMS_BEGIN:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: true,
@@ -32995,10 +33014,12 @@ var battleCards = function battleCards() {
                     cardId: (0, _uuid.v4)(),
                     text: '',
                     cardType: action.cardType,
-                    editing: false
+                    editing: false,
+                    height: '105px'
                   }]);
                 }
 
+                console.log(battleCard.cards);
                 return battleCard;
               })
             })
@@ -35250,7 +35271,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = void 0;
+exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = exports.updateCardHeight = void 0;
 
 var _uuid = require("uuid");
 
@@ -35261,6 +35282,16 @@ var _actionTypes = require("./actionTypes");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import uuid from 'uuid';
+var updateCardHeight = function updateCardHeight(height, cardId) {
+  return {
+    type: _actionTypes.UPDATE_CARD_HEIGHT,
+    height: height,
+    cardId: cardId
+  };
+};
+
+exports.updateCardHeight = updateCardHeight;
+
 var fetchItemsBegin = function fetchItemsBegin() {
   return {
     type: _actionTypes.FETCH_ITEMS_BEGIN
@@ -35519,16 +35550,14 @@ var _default = function _default(_ref) {
       deleteCard = _ref.deleteCard,
       cardId = _ref.cardId,
       cardType = _ref.cardType,
+      height = _ref.height,
       activateCardEdit = _ref.activateCardEdit,
       editCard = _ref.editCard,
       battleCardId = _ref.battleCardId,
       section = _ref.section;
 
   if (cardType === 'text') {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-      style: {
-        height: '80px'
-      },
+    return /*#__PURE__*/_react.default.createElement("div", null, console.log(height), /*#__PURE__*/_react.default.createElement("div", {
       className: "cards",
       onClick: function onClick() {
         return activateCardEdit(battleCardId, cardId, section);
@@ -35545,6 +35574,10 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Text"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
@@ -36092,6 +36125,7 @@ var Cards = function Cards(_ref) {
       deleteCard: deleteCard,
       cardId: card.cardId,
       cardType: card.cardType,
+      height: card.height,
       activateCardEdit: activateCardEdit,
       editCard: editCard,
       battleCardId: battleCardId,
@@ -37090,25 +37124,7 @@ var App = /*#__PURE__*/function (_Component) {
         }
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
-      }); //code for blue textareas
-
-
-      var blueTextAreas = document.getElementsByClassName('blueCardText');
-
-      for (var i = 0; i < blueTextAreas.length; ++i) {
-        var textarea = blueTextAreas[i];
-        textarea.addEventListener('keydown', autosize);
-
-        function autosize() {
-          var el = this;
-          setTimeout(function () {
-            el.style.cssText = 'height:auto; padding:0'; // for box-sizing other than "content-box" use:
-            //el.style.cssText = '-moz-box-sizing:content-box';
-
-            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-          }, 0);
-        }
-      }
+      });
     } //allows the textareas to get bigger and bigger according to the size of the text
 
   }, {
@@ -37134,18 +37150,23 @@ var App = /*#__PURE__*/function (_Component) {
 
 
       var blueTextAreas = document.getElementsByClassName('blueCardText');
+      var appState = this.props;
 
       for (var i = 0; i < blueTextAreas.length; ++i) {
         var textarea = blueTextAreas[i];
-        textarea.addEventListener('keydown', autosize);
+        textarea.addEventListener('keydown', autosize(textarea, appState));
+        var height;
 
-        function autosize() {
-          var el = this;
+        function autosize(textarea, appState) {
+          //var el = this;
+          var el = textarea;
           setTimeout(function () {
             el.style.cssText = 'height:auto; padding:0'; // for box-sizing other than "content-box" use:
             //el.style.cssText = '-moz-box-sizing:content-box';
 
             el.style.cssText = 'height:' + el.scrollHeight + 'px';
+            height = '' + el.scrollHeight + 'px';
+            appState.updateCardHeight(height, textarea.id);
           }, 0);
         }
       }
@@ -37174,7 +37195,8 @@ var mapState = function mapState(state) {
 };
 
 var _default = (0, _reactRedux.connect)(mapState, {
-  readItems: _actions.readItems
+  readItems: _actions.readItems,
+  updateCardHeight: _actions.updateCardHeight
 })(App);
 /* function App() {
   return (
@@ -37272,7 +37294,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49655" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56020" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

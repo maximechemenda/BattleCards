@@ -3,7 +3,7 @@ import './App.css';
 //import {Provider} from 'react-redux'
 //import store from './redux/store'
 import BattleCardsMenu from './components/BattleCards'
-import { readItems } from './redux/actions'
+import { readItems, updateCardHeight } from './redux/actions'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -25,26 +25,6 @@ class App extends Component {
       }
   })
   .catch(e => console.log("fetching failed , Error ", e));
-
-
-
-  //code for blue textareas
-  var blueTextAreas = document.getElementsByClassName('blueCardText');
-
-  for(var i=0; i<blueTextAreas.length; ++i) {
-    var textarea = blueTextAreas[i]
-    textarea.addEventListener('keydown', autosize);
-              
-  function autosize(){
-    var el = this;
-    setTimeout(function(){
-      el.style.cssText = 'height:auto; padding:0';
-      // for box-sizing other than "content-box" use:
-      //el.style.cssText = '-moz-box-sizing:content-box';
-      el.style.cssText = 'height:' + el.scrollHeight + 'px';
-    },0);
-  }
-  }
 
   }
 
@@ -72,19 +52,29 @@ class App extends Component {
     //code for blue textareas
     var blueTextAreas = document.getElementsByClassName('blueCardText');
 
-    for(var i=0; i<blueTextAreas.length; ++i) {
+    var appState = this.props
+
+    for(var i = 0; i < blueTextAreas.length; ++i) {
       var textarea = blueTextAreas[i]
-      textarea.addEventListener('keydown', autosize);
+      textarea.addEventListener('keydown', autosize(textarea, appState));
+
+      var height;
                 
-    function autosize(){
-      var el = this;
-      setTimeout(function(){
-        el.style.cssText = 'height:auto; padding:0';
-        // for box-sizing other than "content-box" use:
-        //el.style.cssText = '-moz-box-sizing:content-box';
-        el.style.cssText = 'height:' + el.scrollHeight + 'px';
-      },0);
-    }
+      function autosize(textarea, appState){
+        //var el = this;
+        var el = textarea;
+        setTimeout(function(){
+          el.style.cssText = 'height:auto; padding:0';
+          // for box-sizing other than "content-box" use:
+          //el.style.cssText = '-moz-box-sizing:content-box';
+          el.style.cssText = 'height:' + el.scrollHeight + 'px';
+          height = '' + el.scrollHeight + 'px';
+
+          appState.updateCardHeight(height, textarea.id)
+
+        },0);
+      }
+      
     }
   }
 
@@ -100,8 +90,6 @@ class App extends Component {
 
 const mapState = (state) => {
 
-
-
   axios.put(`/api/battleCards/${state.battleCards.id}`,state.battleCards).then(({data})=>{
     console.log('');
   }).catch(e => console.log('Updation failed, Error ',e));
@@ -111,7 +99,7 @@ const mapState = (state) => {
   })
 }
 
-export default connect(mapState, { readItems })(App)
+export default connect(mapState, { readItems, updateCardHeight })(App)
 
 
 
