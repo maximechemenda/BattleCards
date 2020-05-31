@@ -36186,17 +36186,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return triggerSectionState('competitors');
     }
-  }, "Competitors"), /*#__PURE__*/_react.default.createElement("div", {
-    className: isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-    onClick: function onClick() {
-      return triggerSectionState('profiles');
-    }
-  }, "Profiles"), /*#__PURE__*/_react.default.createElement("div", {
-    className: isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
-    onClick: function onClick() {
-      return triggerSectionState('discoveries');
-    }
-  }, "Discoveries")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Competitors")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
@@ -37282,7 +37272,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50475" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60785" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

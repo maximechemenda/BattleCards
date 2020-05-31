@@ -7,93 +7,9 @@
   <title>DEVELOPMENT</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css" 
         integrity="sha384-TxKWSXbsweFt0o2WqfkfJRRNVaPdzXJ/YLqgStggBVRREXkwU7OKz+xXtqOU4u8+" crossorigin="anonymous">
-  <!-- <script src="https://kit.fontawesome.com/b76ccfe13c.js" crossorigin="anonymous"></script> -->
-
-
 </head>
 <body>
   <div id="root"></div>
   <script src="index.js" ></script>
-
-
-
-
- <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
-
- <!-- <script type="text/javascript">
-
-    $(document).ready(function() {
-    console.log('working')
-
-    var textareas = document.getElementsByClassName('redCardText');
-    console.log(textareas)
-    console.log(textareas.length)
-    console.log(textareas[0])
-
-    for(var i=0; i<textareas.length; ++i) {
-      textarea = textareas[i]
-      textarea.addEventListener('keydown', autosize);
-                
-    function autosize(){
-      var el = this;
-      setTimeout(function(){
-        el.style.cssText = 'height:auto; padding:0';
-        // for box-sizing other than "content-box" use:
-        //el.style.cssText = '-moz-box-sizing:content-box';
-        el.style.cssText = 'height:' + el.scrollHeight + 'px';
-      },0);
-    }
-    }
-
-  });
-
-
-
- </script> -->
-
-
-
-
-
-
-
-
-
-<!-- <script type="text/javascript">
-  // Applied globally on all textareas with the "redCardText" class
-  $(document)
-      .one('focus.redCardText', 'textarea.redCardText', function(){
-          var savedValue = this.value;
-          this.value = '';
-          this.baseScrollHeight = this.scrollHeight;
-          this.value = savedValue;
-      })
-      .on('input.redCardText', 'textarea.redCardText', function(){
-          var minRows = this.getAttribute('data-min-rows')|0, rows;
-          this.rows = minRows;
-          rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
-          this.rows = minRows + rows;
-      });
-
-      // Applied globally on all textareas with the "blueCardText" class
-  $(document)
-      .one('focus.blueCardText', 'textarea.blueCardText', function(){
-          var savedValue = this.value;
-          this.value = '';
-          this.baseScrollHeight = this.scrollHeight;
-          this.value = savedValue;
-      })
-      .on('input.blueCardText', 'textarea.blueCardText', function(){
-          var minRows = this.getAttribute('data-min-rows')|0, rows;
-          this.rows = minRows;
-          rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
-          this.rows = minRows + rows;
-      });
-</script> -->
-
-
-
-
-
 </body>
 </html>

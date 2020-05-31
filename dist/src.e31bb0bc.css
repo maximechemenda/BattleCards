@@ -415,7 +415,7 @@
 }
 
 .mainDiv {
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   padding: 5px -1px;
   border-left: 2px solid #ddd;
@@ -435,7 +435,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*background-color: #f6f8f9;*/
-  background-color: #e2ebec;
+  background-color: #f3feff;
   /* font-family: "Ibarra Real Nova"; */
   font-family: "Arial";
 }
