@@ -816,23 +816,11 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                         card.text = action.text;
                                         
                                         var textarea = document.getElementById(card.cardId)
-                                        console.log(textarea.scrollHeight)
-                                        
-                                        /* var length = (action.text).length;
-                                        var rows = Math.ceil(length / 70)
-                                        if (action.charCode == 13) {
-                                            rows = rows + 1
-                                        }
-                                        console.log(rows)
-                                        var pixels = rows * 17 */
 
                                         textarea.style.cssText = 'height:50px; padding:0';
-                                        console.log(textarea.scrollHeight)
 
                                         var height = textarea.scrollHeight - 4 + 10
                                         textarea.style.cssText = 'height:' + height + 'px;padding:0';
-
-                                        
 
                                         if (height >= 50) {
                                             card.height = height + 'px'
@@ -855,10 +843,23 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             competitorsBattleCards: state.battleCards.competitorsBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     battleCard.cards = battleCard.cards.map(card => {
-                                      if(card.cardId === action.cardId) {
-                                        card.editing = false;
-                                        card.text = action.text;
-                                      }
+                                        if(card.cardId === action.cardId) {
+                                            card.editing = false;
+                                            card.text = action.text;
+                                            
+                                            var textarea = document.getElementById(card.cardId)
+    
+                                            textarea.style.cssText = 'height:50px; padding:0';
+    
+                                            var height = textarea.scrollHeight - 4 + 10
+                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+    
+                                            if (height >= 50) {
+                                                card.height = height + 'px'
+                                            } else {
+                                                card.height = '50px'
+                                            }                                        
+                                          }
                                       return card;
                                     })
                                   }
@@ -874,10 +875,23 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             profilesBattleCards: state.battleCards.profilesBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     battleCard.cards = battleCard.cards.map(card => {
-                                      if(card.cardId === action.cardId) {
-                                        card.editing = false;
-                                        card.text = action.text;
-                                      }
+                                        if(card.cardId === action.cardId) {
+                                            card.editing = false;
+                                            card.text = action.text;
+                                            
+                                            var textarea = document.getElementById(card.cardId)
+    
+                                            textarea.style.cssText = 'height:50px; padding:0';
+    
+                                            var height = textarea.scrollHeight - 4 + 10
+                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+    
+                                            if (height >= 50) {
+                                                card.height = height + 'px'
+                                            } else {
+                                                card.height = '50px'
+                                            }                                        
+                                          }
                                       return card;
                                     })
                                   }
@@ -893,10 +907,23 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                     battleCard.cards = battleCard.cards.map(card => {
-                                      if(card.cardId === action.cardId) {
-                                        card.editing = false;
-                                        card.text = action.text;
-                                      }
+                                        if(card.cardId === action.cardId) {
+                                            card.editing = false;
+                                            card.text = action.text;
+                                            
+                                            var textarea = document.getElementById(card.cardId)
+    
+                                            textarea.style.cssText = 'height:50px; padding:0';
+    
+                                            var height = textarea.scrollHeight - 4 + 10
+                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+    
+                                            if (height >= 50) {
+                                                card.height = height + 'px'
+                                            } else {
+                                                card.height = '50px'
+                                            }                                        
+                                          }
                                       return card;
                                     })
                                   }

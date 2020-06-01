@@ -33321,17 +33321,7 @@ var battleCards = function battleCards() {
                       card.editing = false;
                       card.text = action.text;
                       var textarea = document.getElementById(card.cardId);
-                      console.log(textarea.scrollHeight);
-                      /* var length = (action.text).length;
-                      var rows = Math.ceil(length / 70)
-                      if (action.charCode == 13) {
-                          rows = rows + 1
-                      }
-                      console.log(rows)
-                      var pixels = rows * 17 */
-
                       textarea.style.cssText = 'height:50px; padding:0';
-                      console.log(textarea.scrollHeight);
                       var height = textarea.scrollHeight - 4 + 10;
                       textarea.style.cssText = 'height:' + height + 'px;padding:0';
 
@@ -33360,6 +33350,16 @@ var battleCards = function battleCards() {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
+                      var textarea = document.getElementById(card.cardId);
+                      textarea.style.cssText = 'height:50px; padding:0';
+                      var height = textarea.scrollHeight - 4 + 10;
+                      textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                      if (height >= 50) {
+                        card.height = height + 'px';
+                      } else {
+                        card.height = '50px';
+                      }
                     }
 
                     return card;
@@ -33380,6 +33380,16 @@ var battleCards = function battleCards() {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
+                      var textarea = document.getElementById(card.cardId);
+                      textarea.style.cssText = 'height:50px; padding:0';
+                      var height = textarea.scrollHeight - 4 + 10;
+                      textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                      if (height >= 50) {
+                        card.height = height + 'px';
+                      } else {
+                        card.height = '50px';
+                      }
                     }
 
                     return card;
@@ -33400,6 +33410,16 @@ var battleCards = function battleCards() {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
+                      var textarea = document.getElementById(card.cardId);
+                      textarea.style.cssText = 'height:50px; padding:0';
+                      var height = textarea.scrollHeight - 4 + 10;
+                      textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                      if (height >= 50) {
+                        card.height = height + 'px';
+                      } else {
+                        card.height = '50px';
+                      }
                     }
 
                     return card;
@@ -35610,7 +35630,9 @@ var _default = function _default(_ref) {
     }))), /*#__PURE__*/_react.default.createElement("span", {
       className: "blueCardHeader"
     }, "Text"), /*#__PURE__*/_react.default.createElement("textarea", {
-      /* style={{height: height}}  */
+      style: {
+        height: height
+      },
       id: cardId,
       rows: "3",
       "data-min-rows": "3",
@@ -37336,7 +37358,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58938" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
