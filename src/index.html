@@ -24,9 +24,13 @@
 
       if (email.includes("chemenda") || email.includes("adikteev") || email.includes("klessova")) {
         console.log('email correct');
+
+        axios.get('/app')
+        .then(response => {console.log(response)})
+        .catch((e) => {console.log(e)})
       
-        //location.href = "app.html";
-        window.location.replace('app.html')
+        location.href = "app.html";
+        //window.location.replace('app.html')
         
       } else {
         console.log('not correct')
