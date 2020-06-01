@@ -29,15 +29,15 @@
 
   <script>
     function onSignIn(googleUser) {
+      console.log('logging')
       var profile = googleUser.getBasicProfile();
       var email = profile.getEmail();
 
       if (email.includes("chemenda") || email.includes("adikteev") || email.includes("klessova")) {
         console.log('email correct');
       
-        //location.href = "app.html";
-        location.href = " https://akpitchtank.herokuapp.com/app.html";
-       
+        location.href = "./app.html";
+        
       } else {
         console.log('not correct')
       }
