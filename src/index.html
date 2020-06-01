@@ -18,13 +18,15 @@
 
   <script>
     function onSignIn(googleUser) {
+      console.log('entering onSignIn')
       var profile = googleUser.getBasicProfile();
       var email = profile.getEmail();
 
       if (email.includes("chemenda") || email.includes("adikteev") || email.includes("klessova")) {
         console.log('email correct');
       
-        location.href = "app.html";
+        //location.href = "app.html";
+        window.location.replace('app.html')
         
       } else {
         console.log('not correct')
