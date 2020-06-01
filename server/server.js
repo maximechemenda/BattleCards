@@ -32,15 +32,18 @@ fastify.get('/', async (request, reply) => {
   catch (e) { console.log('The following error occured: ', e) }
 });
 
-/* fastify.get('/:app.html', async (request, reply) => {
+
+
+/* fastify.get('/:app', async (request, reply) => {
   try {
     console.log('other route')
-    reply.sendFile('app.html')
-    console.log('i am here baby eva')
-    //reply.send({ hello: 'world' })
+    reply.send({ hello: 'world' })
+    //reply.sendFile('app.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
-}); */ 
+});  */
+
+
 
 //iterating over all the routes and registering them with fastify
 routes.forEach(route => fastify.route(route))
