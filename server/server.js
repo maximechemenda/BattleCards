@@ -32,13 +32,13 @@ fastify.get('/', async (request, reply) => {
   catch (e) { console.log('The following error occured: ', e) }
 });
 
-fastify.get('/app', async (request, reply) => {
+/* fastify.get('/app', async (request, reply) => {
   try {
     console.log('other other route')
    reply.sendFile('app.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
-});
+}); */
 
 
 

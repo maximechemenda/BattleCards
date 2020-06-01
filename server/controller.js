@@ -1,15 +1,16 @@
 const { BattleCards } = require('./models/battleCards');
 
-/* const redirectUser = async (req, reply) => {
+const redirectUser = async (req, reply) => {
   try {
     console.log('other route')
     //reply.send({ hello: 'world' })
     //reply.sendFile(__dirname + '/../src/app.html')
-    reply.redirect("/application")
+    reply.sendFile("app.html")
   }
   catch (e) { console.log('The following error occured: ', e) }
 }
 
+/*
 const showApp = async (req, reply) => {
   try {
     console.log('other route')
@@ -53,4 +54,4 @@ const updateItem = async (req, reply) => {
 }
 
 
-module.exports = { fetchItems, addItem, updateItem };
+module.exports = { fetchItems, addItem, updateItem, redirectUser };
