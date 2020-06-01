@@ -816,10 +816,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                         card.text = action.text;
                                         
                                         var textarea = document.getElementById(card.cardId)
-                                        var height = textarea.scrollHeight - 4
-
-                                        console.log(height)
-
+                                        console.log(textarea.scrollHeight)
+                                        
                                         /* var length = (action.text).length;
                                         var rows = Math.ceil(length / 70)
                                         if (action.charCode == 13) {
@@ -828,12 +826,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                         console.log(rows)
                                         var pixels = rows * 17 */
 
+                                        textarea.style.cssText = 'height:50px; padding:0';
+                                        console.log(textarea.scrollHeight)
+
+                                        var height = textarea.scrollHeight - 4 + 10
+                                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                                        
+
                                         if (height >= 50) {
                                             card.height = height + 'px'
                                         } else {
                                             card.height = '50px'
-                                        }
-                                        
+                                        }                                        
                                       }
                                       return card;
                                     })
