@@ -1,4 +1,4 @@
-const { fetchItems, addItem, updateItem, redirectUser } = require('./controller');
+const { fetchItems, addItem, updateItem } = require('./controller');
 
 const routes = [
     {

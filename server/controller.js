@@ -54,4 +54,4 @@ const updateItem = async (req, reply) => {
 }
 
 
-module.exports = { fetchItems, addItem, updateItem, redirectUser };
+module.exports = { fetchItems, addItem, updateItem };
