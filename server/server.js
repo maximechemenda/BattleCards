@@ -26,19 +26,17 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
-    console.log('route')
    reply.sendFile('index.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
 });
 
-/* fastify.get('/app', async (request, reply) => {
+fastify.get('/app', async (request, reply) => {
   try {
-    console.log('other other route')
    reply.sendFile('app.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
-}); */
+}); 
 
 
 

@@ -1,6 +1,6 @@
 const { BattleCards } = require('./models/battleCards');
 
-const redirectUser = async (req, reply) => {
+/* const redirectUser = async (req, reply) => {
   try {
     console.log('other route')
     //reply.send({ hello: 'world' })
@@ -8,7 +8,7 @@ const redirectUser = async (req, reply) => {
     reply.sendFile("app.html")
   }
   catch (e) { console.log('The following error occured: ', e) }
-}
+} */
 
 /*
 const showApp = async (req, reply) => {
