@@ -14,7 +14,7 @@ export default ({editing, text, deleteCard, cardId, cardType, height, activateCa
                         </button>
                         
                         <span className="blueCardHeader">Text</span>
-                        <textarea style={{height: height}} id={cardId} rows='3' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                        <textarea style={{height: height}} id={cardId} rows='8' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
                                     onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
                                     placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>         
                     </div> 
