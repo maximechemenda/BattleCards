@@ -115,13 +115,14 @@ export const activateCardEdit = (battleCardId, cardId, section) => (
     }
 )
 
-export const editCard = (text, battleCardId, cardId, section) => (
+export const editCard = (text, battleCardId, cardId, section, charCode) => (
     {
         type: EDIT_CARD,
         battleCardId,
         cardId,
         text, 
-        section
+        section,
+        charCode
         
     }
 )

@@ -32529,7 +32529,7 @@ var initialBattleCardsState = {
         text: '',
         cardType: 'warning',
         editing: false,
-        height: '105px'
+        height: '50px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32542,7 +32542,7 @@ var initialBattleCardsState = {
         text: '',
         cardType: 'warning',
         editing: false,
-        height: '105px'
+        height: '50px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32555,7 +32555,7 @@ var initialBattleCardsState = {
         text: '',
         cardType: 'warning',
         editing: false,
-        height: '105px'
+        height: '50px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -32568,7 +32568,7 @@ var initialBattleCardsState = {
         text: '',
         cardType: 'warning',
         editing: false,
-        height: '105px'
+        height: '50px'
       },
       battleCardId: (0, _uuid.v4)(),
       isEmptyAddButtonState: true,
@@ -33028,11 +33028,10 @@ var battleCards = function battleCards() {
                     text: '',
                     cardType: action.cardType,
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                   }]);
                 }
 
-                console.log(battleCard.cards);
                 return battleCard;
               })
             })
@@ -33050,7 +33049,7 @@ var battleCards = function battleCards() {
                     text: '',
                     cardType: action.cardType,
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                   }]);
                 }
 
@@ -33071,7 +33070,7 @@ var battleCards = function battleCards() {
                     text: '',
                     cardType: action.cardType,
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                   }]);
                 }
 
@@ -33092,7 +33091,7 @@ var battleCards = function battleCards() {
                     text: '',
                     cardType: action.cardType,
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                   }]);
                 }
 
@@ -33321,6 +33320,22 @@ var battleCards = function battleCards() {
                     if (card.cardId === action.cardId) {
                       card.editing = false;
                       card.text = action.text;
+                      var textarea = document.getElementById(card.cardId);
+                      var height = textarea.scrollHeight - 4;
+                      console.log(height);
+                      /* var length = (action.text).length;
+                      var rows = Math.ceil(length / 70)
+                      if (action.charCode == 13) {
+                          rows = rows + 1
+                      }
+                      console.log(rows)
+                      var pixels = rows * 17 */
+
+                      if (height >= 50) {
+                        card.height = height + 'px';
+                      } else {
+                        card.height = '50px';
+                      }
                     }
 
                     return card;
@@ -35450,13 +35465,14 @@ var activateCardEdit = function activateCardEdit(battleCardId, cardId, section) 
 
 exports.activateCardEdit = activateCardEdit;
 
-var editCard = function editCard(text, battleCardId, cardId, section) {
+var editCard = function editCard(text, battleCardId, cardId, section, charCode) {
   return {
     type: _actionTypes.EDIT_CARD,
     battleCardId: battleCardId,
     cardId: cardId,
     text: text,
-    section: section
+    section: section,
+    charCode: charCode
   };
 };
 
@@ -35597,10 +35613,10 @@ var _default = function _default(_ref) {
       rows: "3",
       "data-min-rows": "3",
       onBlur: function onBlur(e) {
-        return editCard(e.target.value, battleCardId, cardId, section);
+        return editCard(e.target.value, battleCardId, cardId, section, e.charCode);
       },
       onKeyPress: function onKeyPress(e) {
-        return editCard(e.target.value, battleCardId, cardId, section);
+        return editCard(e.target.value, battleCardId, cardId, section, e.charCode);
       },
       placeholder: "Content for this tile goes here",
       className: "blueCardText"
@@ -37205,56 +37221,6 @@ var App = /*#__PURE__*/function (_Component) {
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
       });
-    } //allows the textareas to get bigger and bigger according to the size of the text
-
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      //code for red textareas
-      var redTextAreas = document.getElementsByClassName('redCardText');
-      var appState = this.props;
-
-      for (var i = 0; i < redTextAreas.length; ++i) {
-        var textarea = redTextAreas[i];
-        textarea.addEventListener('keydown', autosize(textarea, appState));
-        var height;
-
-        function autosize(textarea, appState) {
-          //var el = this;
-          var el = textarea;
-          setTimeout(function () {
-            el.style.cssText = 'height:auto; padding:0'; // for box-sizing other than "content-box" use:
-            //el.style.cssText = '-moz-box-sizing:content-box';
-
-            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-            height = '' + el.scrollHeight + 'px';
-            appState.updateCardHeight(height, textarea.id);
-          }, 0);
-        }
-      } //code for blue textareas
-
-
-      var blueTextAreas = document.getElementsByClassName('blueCardText');
-      var appState = this.props;
-
-      for (var i = 0; i < blueTextAreas.length; ++i) {
-        var textarea = blueTextAreas[i];
-        textarea.addEventListener('keydown', autosize(textarea, appState));
-        var height;
-
-        function autosize(textarea, appState) {
-          //var el = this;
-          var el = textarea;
-          setTimeout(function () {
-            el.style.cssText = 'height:auto; padding:0'; // for box-sizing other than "content-box" use:
-            //el.style.cssText = '-moz-box-sizing:content-box';
-
-            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-            height = '' + el.scrollHeight + 'px';
-            appState.updateCardHeight(height, textarea.id);
-          }, 0);
-        }
-      }
     }
   }, {
     key: "render",
@@ -37283,17 +37249,6 @@ var _default = (0, _reactRedux.connect)(mapState, {
   readItems: _actions.readItems,
   updateCardHeight: _actions.updateCardHeight
 })(App);
-/* function App() {
-  return (
-    //<Provider store={store}>
-    <div >
-      <BattleCardsMenu />
-    </div>
-    //</Provider>
-  );
-} */
-//export default App;
-
 
 exports.default = _default;
 },{"react":"../node_modules/react/index.js","./App.css":"App.css","./components/BattleCards":"components/BattleCards.jsx","./redux/actions":"redux/actions.js","react-redux":"../node_modules/react-redux/es/index.js","axios":"../node_modules/axios/index.js"}],"index.css":[function(require,module,exports) {
@@ -37379,7 +37334,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50585" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51845" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

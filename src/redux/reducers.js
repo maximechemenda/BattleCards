@@ -19,7 +19,7 @@ const initialBattleCardsState = {
                     text: '',
                     cardType: 'warning',
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -34,7 +34,7 @@ const initialBattleCardsState = {
                     text: '',
                     cardType: 'warning',
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -49,7 +49,7 @@ const initialBattleCardsState = {
                     text: '',
                     cardType: 'warning',
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -64,7 +64,7 @@ const initialBattleCardsState = {
                     text: '',
                     cardType: 'warning',
                     editing: false,
-                    height: '105px'
+                    height: '50px'
                 },
                 battleCardId: uuid(),
                 isEmptyAddButtonState: true,
@@ -537,10 +537,9 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       text: '',
                                       cardType: action.cardType,
                                       editing: false,
-                                      height: '105px'
+                                      height: '50px'
                                     }])
                                   }
-                                  console.log(battleCard.cards)
                                   return battleCard;
                             })
                         }
@@ -558,7 +557,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       text: '',
                                       cardType: action.cardType,
                                       editing: false,
-                                      height: '105px'
+                                      height: '50px'
                                     }])
                                   }
                                   return battleCard;
@@ -578,7 +577,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       text: '',
                                       cardType: action.cardType,
                                       editing: false,
-                                      height: '105px'
+                                      height: '50px'
                                     }])
                                   }
                                   return battleCard;
@@ -598,7 +597,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       text: '',
                                       cardType: action.cardType,
                                       editing: false,
-                                      height: '105px'
+                                      height: '50px'
                                     }])
                                   }
                                   return battleCard;
@@ -815,6 +814,26 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       if(card.cardId === action.cardId) {
                                         card.editing = false;
                                         card.text = action.text;
+                                        
+                                        var textarea = document.getElementById(card.cardId)
+                                        var height = textarea.scrollHeight - 4
+
+                                        console.log(height)
+
+                                        /* var length = (action.text).length;
+                                        var rows = Math.ceil(length / 70)
+                                        if (action.charCode == 13) {
+                                            rows = rows + 1
+                                        }
+                                        console.log(rows)
+                                        var pixels = rows * 17 */
+
+                                        if (height >= 50) {
+                                            card.height = height + 'px'
+                                        } else {
+                                            card.height = '50px'
+                                        }
+                                        
                                       }
                                       return card;
                                     })

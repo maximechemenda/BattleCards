@@ -1,6 +1,21 @@
 <!DOCTYPE html>
-<!-- <html lang="en" style="margin-top: 24%; margin-left: 42%">
- -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Akpitchtank</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-TxKWSXbsweFt0o2WqfkfJRRNVaPdzXJ/YLqgStggBVRREXkwU7OKz+xXtqOU4u8+" crossorigin="anonymous">
+<link rel="stylesheet" href="/src.e31bb0bc.css"></head>
+<body>
+  <div id="root"></div>
+  <script src="/src.e31bb0bc.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
  <html lang="en" style="height: 100%; width: 100%; margin: 5px">
  <head>
   <meta charset="UTF-8">
@@ -8,38 +23,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="google-signin-client_id" content="237509704363-e8p2dds1319kknlnb8l9ulsmc7pl1fa0.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"> </script> 
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src = "https://unpkg.com/axios/dist/axios.min.js"> </script> 
 
 
   <title>Akpitchtank</title>
 </head>
 
-<!-- style="top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  position: absolute;
-  margin: auto;
-  width: 100px;
-  height: 100px;" -->
-
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-  <script>function onSignIn(googleUser) {
-  console.log('logging');
-  var profile = googleUser.getBasicProfile();
-  var email = profile.getEmail();
+  <script>
+    function onSignIn(googleUser) {
+      console.log('logging')
+      var profile = googleUser.getBasicProfile();
+      var email = profile.getEmail();
 
-  if (email.includes("chemenda") || email.includes("adikteev") || email.includes("klessova")) {
-    console.log('email correct');
-    location.href = "app.html";
-  } else {
-    console.log('not correct');
-  }
-}</script>
+      if (email.includes("chemenda") || email.includes("adikteev") || email.includes("klessova")) {
+        console.log('email correct');
+      
+        location.href = "app.html";
+        
+      } else {
+        console.log('not correct')
+      }
+    }
+  </script>
 
   
 </body>
-</html> 
+</html>  -->

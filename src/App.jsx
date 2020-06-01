@@ -25,66 +25,7 @@ class App extends Component {
       }
   })
   .catch(e => console.log("fetching failed , Error ", e));
-
-  }
-
-  //allows the textareas to get bigger and bigger according to the size of the text
-  componentDidUpdate() {
-
-    //code for red textareas
-    var redTextAreas = document.getElementsByClassName('redCardText');
-
-    var appState = this.props
-
-    for(var i = 0; i < redTextAreas.length; ++i) {
-      var textarea = redTextAreas[i]
-      textarea.addEventListener('keydown', autosize(textarea, appState));
-
-      var height;
-                
-      function autosize(textarea, appState){
-        //var el = this;
-        var el = textarea;
-        setTimeout(function(){
-          el.style.cssText = 'height:auto; padding:0';
-          // for box-sizing other than "content-box" use:
-          //el.style.cssText = '-moz-box-sizing:content-box';
-          el.style.cssText = 'height:' + el.scrollHeight + 'px';
-          height = '' + el.scrollHeight + 'px';
-
-          appState.updateCardHeight(height, textarea.id)
-
-        },0);
-      }  
-    }
-
-    //code for blue textareas
-    var blueTextAreas = document.getElementsByClassName('blueCardText');
-
-    var appState = this.props
-
-    for(var i = 0; i < blueTextAreas.length; ++i) {
-      var textarea = blueTextAreas[i]
-      textarea.addEventListener('keydown', autosize(textarea, appState));
-
-      var height;
-                
-      function autosize(textarea, appState){
-        //var el = this;
-        var el = textarea;
-        setTimeout(function(){
-          el.style.cssText = 'height:auto; padding:0';
-          // for box-sizing other than "content-box" use:
-          //el.style.cssText = '-moz-box-sizing:content-box';
-          el.style.cssText = 'height:' + el.scrollHeight + 'px';
-          height = '' + el.scrollHeight + 'px';
-
-          appState.updateCardHeight(height, textarea.id)
-
-        },0);
-      }  
-    }
-
+  
   }
 
   render() {
@@ -109,19 +50,3 @@ const mapState = (state) => {
 }
 
 export default connect(mapState, { readItems, updateCardHeight })(App)
-
-
-
-
-
-/* function App() {
-  return (
-    //<Provider store={store}>
-    <div >
-      <BattleCardsMenu />
-    </div>
-    //</Provider>
-  );
-} */
-
-//export default App;
