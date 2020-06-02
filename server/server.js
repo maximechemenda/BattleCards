@@ -35,7 +35,7 @@ fastify.get('/app', async (request, reply) => {
   try {
     console.log('in the route')
     reply.send({hello: 'world'})
-    reply.sendFile('app.html')
+    reply.sendFile(__dirname +  '/app.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
 }); 
