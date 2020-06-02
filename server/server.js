@@ -31,14 +31,14 @@ fastify.get('/', async (request, reply) => {
   catch (e) { console.log('The following error occured: ', e) }
 });
 
-fastify.get('/app', async (request, reply) => {
+/* fastify.get('/app', async (request, reply) => {
   try {
     console.log('in the route')
     reply.send({hello: 'world'})
-    reply.sendFile(__dirname +  '/app.html')
+    reply.sendFile('app.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
-}); 
+});  */
 
 
 
