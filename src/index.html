@@ -1,23 +1,5 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Akpitchtank</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css" 
-        integrity="sha384-TxKWSXbsweFt0o2WqfkfJRRNVaPdzXJ/YLqgStggBVRREXkwU7OKz+xXtqOU4u8+" crossorigin="anonymous">
-</head>
-<body>
-  <div id="root"></div>
-  <script src="index.js" ></script>
-</body>
-</html>
-
-
-
-
-<!-- <!DOCTYPE html>
  <html lang="en" style="height: 100%; width: 100%; margin: 5px">
  <head>
   <meta charset="UTF-8">
@@ -35,7 +17,18 @@
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn" redirect_uri="htts://facebook.com"></div>
 
+  <a href="#" onclick="signOut();">Sign out</a>
   <script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+  </script>
+
+  <script>
+    console.log('entering script')
     function onSignIn(googleUser) {
       console.log('entering onSignIn')
       var profile = googleUser.getBasicProfile();
@@ -60,4 +53,4 @@
 
   
 </body>
-</html>  -->
+</html> 
