@@ -7,8 +7,8 @@
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
  <meta name="google-signin-client_id" content="237509704363-e8p2dds1319kknlnb8l9ulsmc7pl1fa0.apps.googleusercontent.com">
- <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
- <script src="https://unpkg.com/axios/dist/axios.min.js"> </script> 
+ <script src="https://apis.google.com/js/platform.js" async defer></script>
+ <script src = "https://unpkg.com/axios/dist/axios.min.js"> </script> 
 
 
  <title>Akpitchtank</title>
@@ -17,20 +17,25 @@
 <body>
  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
- <script>console.log('entering script');
+ <script>
 
-function onSignIn(googleUser) {
-  console.log('entering onSignIn');
-  var profile = googleUser.getBasicProfile();
-  var email = profile.getEmail();
+   console.log('entering script')
+   function onSignIn(googleUser) {
+      
+    console.log('entering onSignIn')
+    var profile = googleUser.getBasicProfile();
+    var email = profile.getEmail();
 
-  if (email.includes("chemenda") || email.includes("adikteev")) {
-    console.log('email correct');
-    location.href = "app.html";
-  } else {
-    console.log('not correct');
+    if (email.includes("chemenda") || email.includes("adikteev")) {
+      console.log('email correct');
+     
+      location.href = "app.html";
+       
+    } else {
+      console.log('not correct')
+    }
   }
-}</script>
+ </script>
 
  
 </body>
