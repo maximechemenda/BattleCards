@@ -32460,7 +32460,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.UPDATE_CARD_HEIGHT = exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
+exports.TRIGGER_BIG_SECTION_STATE = exports.UPDATE_CARD_HEIGHT = exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
 var ADD_CARD = 'ADD_CARD';
 exports.ADD_CARD = ADD_CARD;
 var DELETE_CARD = 'DELETE_CARD';
@@ -32494,6 +32494,8 @@ exports.FETCH_ITEMS_SUCCESS = FETCH_ITEMS_SUCCESS;
 var FETCH_ITEMS_FAILURE = "Failed to fetch items";
 exports.FETCH_ITEMS_FAILURE = FETCH_ITEMS_FAILURE;
 var UPDATE_CARD_HEIGHT = 'UPDATE_CARD_HEIGHT';
+exports.UPDATE_CARD_HEIGHT = UPDATE_CARD_HEIGHT;
+var TRIGGER_BIG_SECTION_STATE = 'TRIGGER_BIG_SECTION_STATE';
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'
 export const FILTER_ALL = 'all'
@@ -32501,7 +32503,7 @@ export const FILTER_COMPLETED = 'completed'
 export const FILTER_INCOMPLETE = 'incomplete'
 export const Filters = [FILTER_ALL, FILTER_COMPLETED, FILTER_INCOMPLETE] */
 
-exports.UPDATE_CARD_HEIGHT = UPDATE_CARD_HEIGHT;
+exports.TRIGGER_BIG_SECTION_STATE = TRIGGER_BIG_SECTION_STATE;
 },{}],"redux/reducers.js":[function(require,module,exports) {
 "use strict";
 
@@ -32521,66 +32523,74 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var initialBattleCardsState = {
-  battleCards: {
+  data: {
     id: (0, _uuid.v4)(),
-    objectionsBattleCards: [{
-      cards: {
-        cardId: (0, _uuid.v4)(),
-        text: '',
-        cardType: 'warning',
-        editing: false,
-        height: '50px'
-      },
-      battleCardId: (0, _uuid.v4)(),
-      isEmptyAddButtonState: true,
-      titleValue: '',
-      section: 'objections'
-    }],
-    competitorsBattleCards: [{
-      cards: {
-        cardId: (0, _uuid.v4)(),
-        text: '',
-        cardType: 'warning',
-        editing: false,
-        height: '50px'
-      },
-      battleCardId: (0, _uuid.v4)(),
-      isEmptyAddButtonState: true,
-      titleValue: '',
-      section: 'competitors'
-    }],
-    profilesBattleCards: [{
-      cards: {
-        cardId: (0, _uuid.v4)(),
-        text: '',
-        cardType: 'warning',
-        editing: false,
-        height: '50px'
-      },
-      battleCardId: (0, _uuid.v4)(),
-      isEmptyAddButtonState: true,
-      titleValue: '',
-      section: 'profiles'
-    }],
-    discoveriesBattleCards: [{
-      cards: {
-        cardId: (0, _uuid.v4)(),
-        text: '',
-        cardType: 'warning',
-        editing: false,
-        height: '50px'
-      },
-      battleCardId: (0, _uuid.v4)(),
-      isEmptyAddButtonState: true,
-      titleValue: '',
-      section: 'discoveries'
-    }],
-    selectedBattleCards: [],
-    isEmptyObjectionsState: true,
-    isEmptyCompetitorsState: true,
-    isEmptyProfilesState: true,
-    isEmptyDiscoveriesState: true
-  }
+    caseStudies: {
+      caseStudiesBattleCards: []
+    },
+    battleCards: {
+      objectionsBattleCards: [{
+        cards: [{
+          cardId: (0, _uuid.v4)(),
+          text: '',
+          cardType: 'warning',
+          editing: false,
+          height: '50px'
+        }],
+        battleCardId: (0, _uuid.v4)(),
+        isEmptyAddButtonState: true,
+        titleValue: '',
+        section: 'objections'
+      }],
+      competitorsBattleCards: [{
+        cards: [{
+          cardId: (0, _uuid.v4)(),
+          text: '',
+          cardType: 'warning',
+          editing: false,
+          height: '50px'
+        }],
+        battleCardId: (0, _uuid.v4)(),
+        isEmptyAddButtonState: true,
+        titleValue: '',
+        section: 'competitors'
+      }],
+      profilesBattleCards: [{
+        cards: {
+          cardId: (0, _uuid.v4)(),
+          text: '',
+          cardType: 'warning',
+          editing: false,
+          height: '50px'
+        },
+        battleCardId: (0, _uuid.v4)(),
+        isEmptyAddButtonState: true,
+        titleValue: '',
+        section: 'profiles'
+      }],
+      discoveriesBattleCards: [{
+        cards: {
+          cardId: (0, _uuid.v4)(),
+          text: '',
+          cardType: 'warning',
+          editing: false,
+          height: '50px'
+        },
+        battleCardId: (0, _uuid.v4)(),
+        isEmptyAddButtonState: true,
+        titleValue: '',
+        section: 'discoveries'
+      }],
+      //selectedBattleCards: [],
+      isEmptyObjectionsState: true,
+      isEmptyCompetitorsState: true,
+      isEmptyProfilesState: true,
+      isEmptyDiscoveriesState: true
+    },
+    isEmptyBattleCardsState: true,
+    isEmptyCaseStudiesState: true
+  },
+  selectedBattleCards: []
 };
 
 var battleCards = function battleCards() {
@@ -32588,28 +32598,38 @@ var battleCards = function battleCards() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actionTypes.TRIGGER_BIG_SECTION_STATE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        data: _objectSpread(_objectSpread({}, state.data), {}, {
+          isEmptyBattleCardsState: !state.data.battleCards.initialBattleCardsState,
+          isEmptyCaseStudiesState: !state.data.battleCards.isEmptyCaseStudiesState
+        })
+      });
+
     case _actionTypes.UPDATE_CARD_HEIGHT:
       return _objectSpread(_objectSpread({}, state), {}, {
-        battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-          objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-            battleCard.cards.map(function (card) {
-              if (card.cardId === action.cardId) {
-                card.height = action.height;
-              }
+        data: _objectSpread(_objectSpread({}, state.data), {}, {
+          battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+              battleCard.cards.map(function (card) {
+                if (card.cardId === action.cardId) {
+                  card.height = action.height;
+                }
 
-              return card;
-            });
-            return battleCard;
-          }),
-          competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-            battleCard.cards.map(function (card) {
-              if (card.cardId === action.cardId) {
-                card.height = action.height;
-              }
+                return card;
+              });
+              return battleCard;
+            }),
+            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+              battleCard.cards.map(function (card) {
+                if (card.cardId === action.cardId) {
+                  card.height = action.height;
+                }
 
-              return card;
-            });
-            return battleCard;
+                return card;
+              });
+              return battleCard;
+            })
           })
         })
       });
@@ -32623,14 +32643,15 @@ var battleCards = function battleCards() {
     case _actionTypes.FETCH_ITEMS_SUCCESS:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: false,
-        battleCards: action.payload.items
+        data: action.payload.items,
+        selectedBattleCards: []
       });
 
     case _actionTypes.FETCH_ITEMS_FAILURE:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: false,
         errors: action.payload.errors,
-        battleCards: initialBattleCardsState.battleCards
+        data: initialBattleCardsState.data
       });
     //reads all the data from the store
 
@@ -32641,27 +32662,31 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              isEmptyObjectionsState: false,
-              isEmptyCompetitorsState: true,
-              isEmptyProfilesState: true,
-              isEmptyDiscoveriesState: true
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                isEmptyObjectionsState: false,
+                isEmptyCompetitorsState: true,
+                isEmptyProfilesState: true,
+                isEmptyDiscoveriesState: true
+              })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              isEmptyObjectionsState: true,
-              isEmptyCompetitorsState: false,
-              isEmptyProfilesState: true,
-              isEmptyDiscoveriesState: true
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                isEmptyObjectionsState: true,
+                isEmptyCompetitorsState: false,
+                isEmptyProfilesState: true,
+                isEmptyDiscoveriesState: true
+              })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
               isEmptyObjectionsState: true,
               isEmptyCompetitorsState: true,
               isEmptyProfilesState: false,
@@ -32671,7 +32696,7 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
               isEmptyObjectionsState: true,
               isEmptyCompetitorsState: true,
               isEmptyProfilesState: true,
@@ -32686,55 +32711,59 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.concat([{
-                cards: [],
-                battleCardId: action.id,
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'objections'
-              }]),
-              selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
-                cards: [],
-                battleCardId: action.id,
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'objections'
-              }])
-            })
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.concat([{
+                  cards: [],
+                  battleCardId: action.id,
+                  isEmptyAddButtonState: true,
+                  titleValue: '',
+                  section: 'objections'
+                }])
+              })
+            }),
+            selectedBattleCards: state.selectedBattleCards.concat([{
+              cards: [],
+              battleCardId: action.id,
+              isEmptyAddButtonState: true,
+              titleValue: '',
+              section: 'objections'
+            }])
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.concat([{
-                cards: [],
-                battleCardId: action.id,
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'competitors'
-              }]),
-              selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
-                cards: [],
-                battleCardId: action.id,
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'competitors'
-              }])
-            })
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.concat([{
+                  cards: [],
+                  battleCardId: action.id,
+                  isEmptyAddButtonState: true,
+                  titleValue: '',
+                  section: 'competitors'
+                }])
+              })
+            }),
+            selectedBattleCards: state.selectedBattleCards.concat([{
+              cards: [],
+              battleCardId: action.id,
+              isEmptyAddButtonState: true,
+              titleValue: '',
+              section: 'competitors'
+            }])
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.concat([{
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
                 isEmptyAddButtonState: true,
                 titleValue: '',
                 section: 'profiles'
               }]),
-              selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+              selectedBattleCards: state.selectedBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
                 isEmptyAddButtonState: true,
@@ -32746,15 +32775,15 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.concat([{
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
                 isEmptyAddButtonState: true,
                 titleValue: '',
                 section: 'discoveries'
               }]),
-              selectedBattleCards: state.battleCards.selectedBattleCards.concat([{
+              selectedBattleCards: state.selectedBattleCards.concat([{
                 cards: [],
                 battleCardId: action.id,
                 isEmptyAddButtonState: true,
@@ -32766,71 +32795,108 @@ var battleCards = function battleCards() {
       }
 
     case _actionTypes.CLEAR_SELECTED_BATTLECARDS:
+      console.log('clearing');
       return _objectSpread(_objectSpread({}, state), {}, {
-        battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-          selectedBattleCards: []
-        })
+        selectedBattleCards: []
+        /* data: {
+            ...state.data,
+            battleCards: {
+                ...state.data.battleCards,
+                selectedBattleCards: []
+            }
+        } */
+
       });
 
     case _actionTypes.CHANGE_SELECTED_BATTLECARDS:
+      console.log('haha');
+
       switch (action.section) {
         case 'objections':
-          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+          if (state.selectedBattleCards.map(function (battleCard) {
             return battleCard.battleCardId;
           }).includes(action.battleCardId)) {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
-                  return battleCard.battleCardId !== action.battleCardId;
-                })
+              selectedBattleCards: state.selectedBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
               })
+              /* data: {
+                  ...state.data,
+                  battleCards: {
+                      ...state.data.battleCards,
+                      selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                  }
+              } */
+
             });
           } else {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.objectionsBattleCards.filter(function (battleCard) {
-                  return battleCard.battleCardId === action.battleCardId;
-                }))
-              })
+              selectedBattleCards: state.selectedBattleCards.concat(state.data.battleCards.objectionsBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId === action.battleCardId;
+              }))
+              /* data: {
+                  ...state.data,
+                  battleCards: {
+                      ...state.data.battleCards,
+                      selectedBattleCards: state.selectedBattleCards.concat(
+                          state.data.battleCards.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                      )
+                  }
+              } */
+
             });
           }
 
         case 'competitors':
-          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+          if (state.selectedBattleCards.map(function (battleCard) {
             return battleCard.battleCardId;
           }).includes(action.battleCardId)) {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
-                  return battleCard.battleCardId !== action.battleCardId;
-                })
+              selectedBattleCards: state.selectedBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId !== action.battleCardId;
               })
+              /* data: {
+                  ...state.data,
+                  battleCards: {
+                      ...state.data.battleCards,
+                      selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                  }
+               } */
+
             });
           } else {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.competitorsBattleCards.filter(function (battleCard) {
-                  return battleCard.battleCardId === action.battleCardId;
-                }))
-              })
+              selectedBattleCards: state.selectedBattleCards.concat(state.data.battleCards.competitorsBattleCards.filter(function (battleCard) {
+                return battleCard.battleCardId === action.battleCardId;
+              }))
+              /* data: {
+                  ...state.data,
+                  battleCards: {
+                      ...state.data.battleCards,
+                      selectedBattleCards: state.selectedBattleCards.concat(
+                          state.data.battleCards.competitorsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                      )
+                  }
+               } */
+
             });
           }
 
         case 'profiles':
-          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+          if (state.selectedBattleCards.map(function (battleCard) {
             return battleCard.battleCardId;
           }).includes(action.battleCardId)) {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                selectedBattleCards: state.selectedBattleCards.filter(function (battleCard) {
                   return battleCard.battleCardId !== action.battleCardId;
                 })
               })
             });
           } else {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.profilesBattleCards.filter(function (battleCard) {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                selectedBattleCards: state.selectedBattleCards.concat(state.data.battleCards.profilesBattleCards.filter(function (battleCard) {
                   return battleCard.battleCardId === action.battleCardId;
                 }))
               })
@@ -32838,20 +32904,20 @@ var battleCards = function battleCards() {
           }
 
         case 'discoveries':
-          if (state.battleCards.selectedBattleCards.map(function (battleCard) {
+          if (state.selectedBattleCards.map(function (battleCard) {
             return battleCard.battleCardId;
           }).includes(action.battleCardId)) {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.filter(function (battleCard) {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                selectedBattleCards: state.selectedBattleCards.filter(function (battleCard) {
                   return battleCard.battleCardId !== action.battleCardId;
                 })
               })
             });
           } else {
             return _objectSpread(_objectSpread({}, state), {}, {
-              battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-                selectedBattleCards: state.battleCards.selectedBattleCards.concat(state.battleCards.discoveriesBattleCards.filter(function (battleCard) {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                selectedBattleCards: state.selectedBattleCards.concat(state.data.battleCards.discoveriesBattleCards.filter(function (battleCard) {
                   return battleCard.battleCardId === action.battleCardId;
                 }))
               })
@@ -32864,34 +32930,38 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.titleValue = action.newValue;
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.titleValue = action.newValue;
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.titleValue = action.newValue;
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.titleValue = action.newValue;
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
@@ -32903,8 +32973,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.titleValue = action.newValue;
                 }
@@ -32919,34 +32989,38 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.concat([{
-                cards: [],
-                battleCardId: (0, _uuid.v4)(),
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'objections'
-              }])
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.concat([{
+                  cards: [],
+                  battleCardId: (0, _uuid.v4)(),
+                  isEmptyAddButtonState: true,
+                  titleValue: '',
+                  section: 'objections'
+                }])
+              })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.concat([{
-                cards: [],
-                battleCardId: (0, _uuid.v4)(),
-                isEmptyAddButtonState: true,
-                titleValue: '',
-                section: 'competitors'
-              }])
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.concat([{
+                  cards: [],
+                  battleCardId: (0, _uuid.v4)(),
+                  isEmptyAddButtonState: true,
+                  titleValue: '',
+                  section: 'competitors'
+                }])
+              })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.concat([{
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.concat([{
                 cards: [],
                 battleCardId: (0, _uuid.v4)(),
                 isEmptyAddButtonState: true,
@@ -32958,8 +33032,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.concat([{
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.concat([{
                 //TODO: this is the right way (almost sure)
                 cards: [],
                 battleCardId: (0, _uuid.v4)(),
@@ -32977,26 +33051,30 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.filter(function (battleCard) {
-                return battleCard.battleCardId !== action.battleCardId;
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.filter(function (battleCard) {
-                return battleCard.battleCardId !== action.battleCardId;
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.filter(function (battleCard) {
+                  return battleCard.battleCardId !== action.battleCardId;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.filter(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.filter(function (battleCard) {
                 return battleCard.battleCardId !== action.battleCardId;
               })
             })
@@ -33004,8 +33082,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.filter(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.filter(function (battleCard) {
                 return battleCard.battleCardId !== action.battleCardId;
               })
             })
@@ -33018,50 +33096,54 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  // finds the battleCard where we want to add a card
-                  battleCard.isEmptyAddButtonState = true;
-                  battleCard.cards = battleCard.cards.concat([{
-                    cardId: (0, _uuid.v4)(),
-                    text: '',
-                    cardType: action.cardType,
-                    editing: false,
-                    height: '50px'
-                  }]);
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    // finds the battleCard where we want to add a card
+                    battleCard.isEmptyAddButtonState = true;
+                    battleCard.cards = battleCard.cards.concat([{
+                      cardId: (0, _uuid.v4)(),
+                      text: '',
+                      cardType: action.cardType,
+                      editing: false,
+                      height: '50px'
+                    }]);
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  // finds the battleCard where we want to add a card
-                  battleCard.isEmptyAddButtonState = true;
-                  battleCard.cards = battleCard.cards.concat([{
-                    cardId: (0, _uuid.v4)(),
-                    text: '',
-                    cardType: action.cardType,
-                    editing: false,
-                    height: '50px'
-                  }]);
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    // finds the battleCard where we want to add a card
+                    battleCard.isEmptyAddButtonState = true;
+                    battleCard.cards = battleCard.cards.concat([{
+                      cardId: (0, _uuid.v4)(),
+                      text: '',
+                      cardType: action.cardType,
+                      editing: false,
+                      height: '50px'
+                    }]);
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33081,8 +33163,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   // finds the battleCard where we want to add a card
                   battleCard.isEmptyAddButtonState = true;
@@ -33109,38 +33191,42 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(function (card) {
-                    return card.cardId !== action.cardId;
-                  });
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.filter(function (card) {
+                      return card.cardId !== action.cardId;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.filter(function (card) {
-                    return card.cardId !== action.cardId;
-                  });
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.filter(function (card) {
+                      return card.cardId !== action.cardId;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.filter(function (card) {
                     return card.cardId !== action.cardId;
@@ -33154,8 +33240,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.filter(function (card) {
                     return card.cardId !== action.cardId;
@@ -33173,36 +33259,41 @@ var battleCards = function battleCards() {
     case _actionTypes.TRIGGER_ADD_CARD_STATE:
       switch (action.section) {
         case 'objections':
+          console.log('oulala');
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  //battleCard.isEmptyAddButtonState = false;
-                  battleCard.isEmptyAddButtonState = !battleCard.isEmptyAddButtonState;
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    //battleCard.isEmptyAddButtonState = false;
+                    battleCard.isEmptyAddButtonState = !battleCard.isEmptyAddButtonState;
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.isEmptyAddButtonState = false;
-                }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.isEmptyAddButtonState = false;
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
@@ -33214,8 +33305,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.isEmptyAddButtonState = false;
                 }
@@ -33232,46 +33323,50 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(function (card) {
-                    if (card.cardId === action.cardId) {
-                      card.editing = true;
-                    }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.map(function (card) {
+                      if (card.cardId === action.cardId) {
+                        card.editing = true;
+                      }
 
-                    return card;
-                  });
-                }
+                      return card;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(function (card) {
-                    if (card.cardId === action.cardId) {
-                      card.editing = true;
-                    }
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.map(function (card) {
+                      if (card.cardId === action.cardId) {
+                        card.editing = true;
+                      }
 
-                    return card;
-                  });
-                }
+                      return card;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
@@ -33289,8 +33384,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
@@ -33313,68 +33408,72 @@ var battleCards = function battleCards() {
       switch (action.section) {
         case 'objections':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              objectionsBattleCards: state.battleCards.objectionsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(function (card) {
-                    if (card.cardId === action.cardId) {
-                      card.editing = false;
-                      card.text = action.text;
-                      var textarea = document.getElementById(card.cardId);
-                      textarea.style.cssText = 'height:50px; padding:0';
-                      var height = textarea.scrollHeight - 4 + 10;
-                      textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.map(function (card) {
+                      if (card.cardId === action.cardId) {
+                        card.editing = false;
+                        card.text = action.text;
+                        var textarea = document.getElementById(card.cardId);
+                        textarea.style.cssText = 'height:50px; padding:0';
+                        var height = textarea.scrollHeight - 4 + 10;
+                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
 
-                      if (height >= 50) {
-                        card.height = height + 'px';
-                      } else {
-                        card.height = '50px';
+                        if (height >= 50) {
+                          card.height = height + 'px';
+                        } else {
+                          card.height = '50px';
+                        }
                       }
-                    }
 
-                    return card;
-                  });
-                }
+                      return card;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'competitors':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              competitorsBattleCards: state.battleCards.competitorsBattleCards.map(function (battleCard) {
-                if (battleCard.battleCardId === action.battleCardId) {
-                  battleCard.cards = battleCard.cards.map(function (card) {
-                    if (card.cardId === action.cardId) {
-                      card.editing = false;
-                      card.text = action.text;
-                      var textarea = document.getElementById(card.cardId);
-                      textarea.style.cssText = 'height:50px; padding:0';
-                      var height = textarea.scrollHeight - 4 + 10;
-                      textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            data: _objectSpread(_objectSpread({}, state.data), {}, {
+              battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                  if (battleCard.battleCardId === action.battleCardId) {
+                    battleCard.cards = battleCard.cards.map(function (card) {
+                      if (card.cardId === action.cardId) {
+                        card.editing = false;
+                        card.text = action.text;
+                        var textarea = document.getElementById(card.cardId);
+                        textarea.style.cssText = 'height:50px; padding:0';
+                        var height = textarea.scrollHeight - 4 + 10;
+                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
 
-                      if (height >= 50) {
-                        card.height = height + 'px';
-                      } else {
-                        card.height = '50px';
+                        if (height >= 50) {
+                          card.height = height + 'px';
+                        } else {
+                          card.height = '50px';
+                        }
                       }
-                    }
 
-                    return card;
-                  });
-                }
+                      return card;
+                    });
+                  }
 
-                return battleCard;
+                  return battleCard;
+                })
               })
             })
           });
 
         case 'profiles':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              profilesBattleCards: state.battleCards.profilesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              profilesBattleCards: state.data.battleCards.profilesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
@@ -33403,8 +33502,8 @@ var battleCards = function battleCards() {
 
         case 'discoveries':
           return _objectSpread(_objectSpread({}, state), {}, {
-            battleCards: _objectSpread(_objectSpread({}, state.battleCards), {}, {
-              discoveriesBattleCards: state.battleCards.discoveriesBattleCards.map(function (battleCard) {
+            battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+              discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards.map(function (battleCard) {
                 if (battleCard.battleCardId === action.battleCardId) {
                   battleCard.cards = battleCard.cards.map(function (card) {
                     if (card.cardId === action.cardId) {
@@ -35326,7 +35425,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = exports.updateCardHeight = void 0;
+exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = exports.updateCardHeight = exports.triggerBigSectionState = void 0;
 
 var _uuid = require("uuid");
 
@@ -35337,6 +35436,15 @@ var _actionTypes = require("./actionTypes");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import uuid from 'uuid';
+var triggerBigSectionState = function triggerBigSectionState(bigSection) {
+  return {
+    type: _actionTypes.TRIGGER_BIG_SECTION_STATE,
+    bigSection: bigSection
+  };
+};
+
+exports.triggerBigSectionState = triggerBigSectionState;
+
 var updateCardHeight = function updateCardHeight(height, cardId) {
   return {
     type: _actionTypes.UPDATE_CARD_HEIGHT,
@@ -35386,7 +35494,12 @@ var readItems = function readItems() {
     return _axios.default.get('/api/battleCards') // req data from server
     .then(function (_ref) {
       var data = _ref.data;
-      // if data is found
+      {
+        console.log('data');
+      }
+      {
+        console.log(data[0]);
+      }
       dispatch(fetchItemsSuccess(data[0])); // success 
     }).catch(function (error) {
       return dispatch(fetchItemsFailure(error));
@@ -36327,7 +36440,10 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
       clearSelectedBattleCards = _ref.clearSelectedBattleCards,
       addBattleCardToSectionAndSelectedBattleCards = _ref.addBattleCardToSectionAndSelectedBattleCards,
       triggerAddCardState = _ref.triggerAddCardState,
-      addCard = _ref.addCard;
+      addCard = _ref.addCard,
+      isEmptyBattleCardsState = _ref.isEmptyBattleCardsState,
+      isEmptyCaseStudiesState = _ref.isEmptyCaseStudiesState,
+      triggerBigSectionState = _ref.triggerBigSectionState;
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "smallIndex"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -36559,61 +36675,27 @@ var SelectedBattleCards = function SelectedBattleCards(_ref2) {
       modifyBattleCardTitle = _ref2.modifyBattleCardTitle,
       addCard = _ref2.addCard;
   return /*#__PURE__*/_react.default.createElement("div", null, selectedBattleCards.map(function (battleCard) {
-    if (battleCard.section === 'objections') {
-      return /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
-        cards: battleCard.cards,
-        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-        deleteBattleCard: deleteBattleCard,
-        battleCardId: battleCard.battleCardId,
-        section: battleCard.section,
-        modifyBattleCardTitle: modifyBattleCardTitle,
-        titleValue: battleCard.titleValue,
-        triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
-      });
-    }
-
-    if (battleCard.section === 'competitors') {
-      return /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
-        cards: battleCard.cards,
-        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-        deleteBattleCard: deleteBattleCard,
-        battleCardId: battleCard.battleCardId,
-        section: battleCard.section,
-        modifyBattleCardTitle: modifyBattleCardTitle,
-        titleValue: battleCard.titleValue,
-        triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
-      });
-    }
-
-    if (battleCard.section === 'profiles') {
-      return /*#__PURE__*/_react.default.createElement(ProfilesBattleCard, {
-        cards: battleCard.cards,
-        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-        deleteBattleCard: deleteBattleCard,
-        battleCardId: battleCard.battleCardId,
-        section: battleCard.section,
-        modifyBattleCardTitle: modifyBattleCardTitle,
-        titleValue: battleCard.titleValue,
-        triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
-      });
-    }
-
-    if (battleCard.section === 'discoveries') {
-      return /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCard, {
-        cards: battleCard.cards,
-        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
-        deleteBattleCard: deleteBattleCard,
-        battleCardId: battleCard.battleCardId,
-        section: battleCard.section,
-        modifyBattleCardTitle: modifyBattleCardTitle,
-        titleValue: battleCard.titleValue,
-        triggerAddCardState: _actions.triggerAddCardState,
-        addCard: addCard
-      });
-    }
+    return /*#__PURE__*/_react.default.createElement("div", null, battleCard.section === 'objections' && /*#__PURE__*/_react.default.createElement(ObjectionsBattleCard, {
+      cards: battleCard.cards,
+      isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+      deleteBattleCard: deleteBattleCard,
+      battleCardId: battleCard.battleCardId,
+      section: battleCard.section,
+      modifyBattleCardTitle: modifyBattleCardTitle,
+      titleValue: battleCard.titleValue,
+      triggerAddCardState: _actions.triggerAddCardState,
+      addCard: addCard
+    }), battleCard.section === 'competitors' && /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
+      cards: battleCard.cards,
+      isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+      deleteBattleCard: deleteBattleCard,
+      battleCardId: battleCard.battleCardId,
+      section: battleCard.section,
+      modifyBattleCardTitle: modifyBattleCardTitle,
+      titleValue: battleCard.titleValue,
+      triggerAddCardState: _actions.triggerAddCardState,
+      addCard: addCard
+    }));
   }));
 };
 
@@ -37138,16 +37220,21 @@ var AddCardButton = function AddCardButton(_ref16) {
 };
 
 var mapState = function mapState(state) {
+  console.log(state);
+  console.log(state.selectedBattleCards);
   return {
-    objectionsBattleCards: state.battleCards.objectionsBattleCards,
-    isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
-    competitorsBattleCards: state.battleCards.competitorsBattleCards,
-    isEmptyCompetitorsState: state.battleCards.isEmptyCompetitorsState,
-    profilesBattleCards: state.battleCards.profilesBattleCards,
-    isEmptyProfilesState: state.battleCards.isEmptyProfilesState,
-    discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
-    isEmptyDiscoveriesState: state.battleCards.isEmptyDiscoveriesState,
-    selectedBattleCards: state.battleCards.selectedBattleCards
+    objectionsBattleCards: state.data.battleCards.objectionsBattleCards,
+    isEmptyObjectionsState: state.data.battleCards.isEmptyObjectionsState,
+    competitorsBattleCards: state.data.battleCards.competitorsBattleCards,
+    isEmptyCompetitorsState: state.data.battleCards.isEmptyCompetitorsState,
+    profilesBattleCards: state.data.battleCards.profilesBattleCards,
+    isEmptyProfilesState: state.data.battleCards.isEmptyProfilesState,
+    discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards,
+    isEmptyDiscoveriesState: state.data.battleCards.isEmptyDiscoveriesState,
+    //selectedBattleCards: state.data.battleCards.selectedBattleCards,
+    selectedBattleCards: state.selectedBattleCards,
+    isEmptyBattleCardsState: state.data.isEmptyBattleCardsState,
+    isEmptyCaseStudiesState: state.data.isEmptyCaseStudiesState
   };
 };
 
@@ -37160,6 +37247,7 @@ var _default = (0, _reactRedux.connect)(mapState, {
   clearSelectedBattleCards: _actions.clearSelectedBattleCards,
   addBattleCardToSectionAndSelectedBattleCards: _actions.addBattleCardToSectionAndSelectedBattleCards,
   triggerAddCardState: _actions.triggerAddCardState,
+  triggerBigSectionState: _actions.triggerBigSectionState,
   addCard: _actions.addCard
 })(BattleCardsMenu);
 
@@ -37236,7 +37324,7 @@ var App = /*#__PURE__*/function (_Component) {
 
       _axios.default.get('./api/battleCards').then(function (response) {
         if (response.data.length === 0) {
-          _axios.default.post('/api/battleCards', _objectSpread({}, _this.props.battleCards)).then(_this.props.readItems()).catch(function (e) {
+          _axios.default.post('/api/battleCards', _objectSpread({}, _this.props.data)).then(_this.props.readItems()).catch(function (e) {
             return console.log("Addition failed , Error ", e);
           });
         } else {
@@ -37246,6 +37334,10 @@ var App = /*#__PURE__*/function (_Component) {
         return console.log("fetching failed , Error ", e);
       });
     }
+    /* componentDidMount() {
+      this.props.clearSelectedBattleCards()
+    } */
+
   }, {
     key: "render",
     value: function render() {
@@ -37257,7 +37349,7 @@ var App = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var mapState = function mapState(state) {
-  _axios.default.put("/api/battleCards/".concat(state.battleCards.id), state.battleCards).then(function (_ref) {
+  _axios.default.put("/api/battleCards/".concat(state.data.id), state.data).then(function (_ref) {
     var data = _ref.data;
     console.log('');
   }).catch(function (e) {
@@ -37265,13 +37357,14 @@ var mapState = function mapState(state) {
   });
 
   return {
-    battleCards: state.battleCards
+    data: state.data
   };
 };
 
 var _default = (0, _reactRedux.connect)(mapState, {
   readItems: _actions.readItems,
-  updateCardHeight: _actions.updateCardHeight
+  updateCardHeight: _actions.updateCardHeight,
+  clearSelectedBattleCards: _actions.clearSelectedBattleCards
 })(App);
 
 exports.default = _default;
@@ -37358,7 +37451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52961" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53331" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

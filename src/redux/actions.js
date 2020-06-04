@@ -6,7 +6,13 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     ADD_BATTLECARD, DELETE_BATTLECARD, TRIGGER_SECTION_STATE, MODIFY_BATTLECARD_TITLE,
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
     ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
-    FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT} from './actionTypes';
+    FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
+    TRIGGER_BIG_SECTION_STATE} from './actionTypes';
+
+export const triggerBigSectionState = (bigSection) => ({
+    type: TRIGGER_BIG_SECTION_STATE,
+    bigSection
+})
 
 export const updateCardHeight = (height, cardId) => ({
     type: UPDATE_CARD_HEIGHT,
@@ -32,7 +38,9 @@ export const readItems = () => {
     return (dispatch) => {                     // function starts
       dispatch(fetchItemsBegin());             // fetching begins
       return axios.get('/api/battleCards')       // req data from server
-        .then(({data}) => {                    // if data is found
+        .then(({data}) => {
+            {console.log('data')} 
+            {console.log(data[0])}
           dispatch(fetchItemsSuccess(data[0]));   // success 
         })
         .catch(error => dispatch(fetchItemsFailure(error))); //errors

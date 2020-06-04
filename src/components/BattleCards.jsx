@@ -6,7 +6,7 @@ import { modifyBattleCardTitle } from '../redux/actions'
 import { changeSelectedBattleCards } from '../redux/actions'
 import { clearSelectedBattleCards } from '../redux/actions'
 import { addBattleCardToSectionAndSelectedBattleCards } from '../redux/actions'
-import { triggerAddCardState } from '../redux/actions'
+import { triggerAddCardState, triggerBigSectionState } from '../redux/actions'
 import { addCard } from '../redux/actions'
 import { connect } from 'react-redux'
 import '../App.css'  
@@ -21,9 +21,16 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         discoveriesBattleCards, isEmptyDiscoveriesState,
         modifyBattleCardTitle,
         changeSelectedBattleCards, selectedBattleCards, clearSelectedBattleCards,
-        addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard}) => (
+        addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard,
+        isEmptyBattleCardsState, isEmptyCaseStudiesState, triggerBigSectionState}) => (
 
     <div>
+
+
+        {/* <div className="smallIndex">
+            <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>BattleCards</div>
+            <div className={isEmptyCaseStudiesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('caseStudies')}>Case Studies</div>
+        </div> */}
 
     
         <div className="smallIndex">
@@ -33,8 +40,18 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
             <div className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</div> */}
         </div>
 
-        <div>   
+
+
+        {/* <div>
+            {!isEmptyBattleCardsState && 
             
+            }
+        </div> */}
+
+
+
+
+        <div>   
             {!isEmptyObjectionsState &&
             <div>
  
@@ -250,9 +267,25 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
     <div>
         
-        {selectedBattleCards.map(battleCard => {
-            if (battleCard.section === 'objections') {
-                return <ObjectionsBattleCard 
+        {selectedBattleCards.map(battleCard => (
+            <div>
+                {battleCard.section === 'objections' && 
+                    <ObjectionsBattleCard 
+                    cards={battleCard.cards}
+                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                    deleteBattleCard={deleteBattleCard}
+                    battleCardId={battleCard.battleCardId}
+                    section={battleCard.section}
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    triggerAddCardState={triggerAddCardState}
+                    addCard={addCard}
+                    />
+                }
+
+                
+                {battleCard.section === 'competitors' &&
+                <CompetitorsBattleCard 
                 cards={battleCard.cards}
                 isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                 deleteBattleCard={deleteBattleCard}
@@ -264,20 +297,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 addCard={addCard}
                 />
             }
-            if (battleCard.section === 'competitors') {
-                return <CompetitorsBattleCard 
-                cards={battleCard.cards}
-                isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                deleteBattleCard={deleteBattleCard}
-                battleCardId={battleCard.battleCardId}
-                section={battleCard.section}
-                modifyBattleCardTitle={modifyBattleCardTitle}
-                titleValue={battleCard.titleValue}
-                triggerAddCardState={triggerAddCardState}
-                addCard={addCard}
-                />
-            }
-            if (battleCard.section === 'profiles') {
+            {/* if (battleCard.section === 'profiles') {
                 return <ProfilesBattleCard 
                 cards={battleCard.cards}
                 isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
@@ -302,8 +322,12 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
                 />
-            }
-        })}
+            } */}
+
+            </div>
+
+            
+        ))}
     </div>
     
 )
@@ -658,25 +682,31 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 
 const mapState = (state) => {
+    console.log(state)
+    console.log(state.selectedBattleCards)
 
     return ({
-        objectionsBattleCards: state.battleCards.objectionsBattleCards,
-        isEmptyObjectionsState: state.battleCards.isEmptyObjectionsState,
+        objectionsBattleCards: state.data.battleCards.objectionsBattleCards,
+        isEmptyObjectionsState: state.data.battleCards.isEmptyObjectionsState,
 
-        competitorsBattleCards: state.battleCards.competitorsBattleCards,
-        isEmptyCompetitorsState: state.battleCards.isEmptyCompetitorsState,
+        competitorsBattleCards: state.data.battleCards.competitorsBattleCards,
+        isEmptyCompetitorsState: state.data.battleCards.isEmptyCompetitorsState,
 
-        profilesBattleCards: state.battleCards.profilesBattleCards,
-        isEmptyProfilesState: state.battleCards.isEmptyProfilesState,
+        profilesBattleCards: state.data.battleCards.profilesBattleCards,
+        isEmptyProfilesState: state.data.battleCards.isEmptyProfilesState,
 
-        discoveriesBattleCards: state.battleCards.discoveriesBattleCards,
-        isEmptyDiscoveriesState: state.battleCards.isEmptyDiscoveriesState,
+        discoveriesBattleCards: state.data.battleCards.discoveriesBattleCards,
+        isEmptyDiscoveriesState: state.data.battleCards.isEmptyDiscoveriesState,
         
-        selectedBattleCards: state.battleCards.selectedBattleCards
+        //selectedBattleCards: state.data.battleCards.selectedBattleCards,
+        selectedBattleCards: state.selectedBattleCards,
+
+        isEmptyBattleCardsState: state.data.isEmptyBattleCardsState,
+        isEmptyCaseStudiesState: state.data.isEmptyCaseStudiesState
     })
 }
 
 export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSectionState, 
                         modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards,
                         addBattleCardToSectionAndSelectedBattleCards, 
-                        triggerAddCardState, addCard})(BattleCardsMenu);
+                        triggerAddCardState, triggerBigSectionState, addCard})(BattleCardsMenu);
