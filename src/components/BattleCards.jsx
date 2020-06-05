@@ -31,7 +31,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
 
         <div className="smallIndex">
-            <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>BattleCards</div>
+            <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>Battlecards</div>
             <div className={isEmptyCaseStudiesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('caseStudies')}>Case Studies</div>
         </div>
 
