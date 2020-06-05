@@ -36564,6 +36564,41 @@ var _default = function _default(_ref) {
       className: "redCardText"
     }, text)), /*#__PURE__*/_react.default.createElement("br", null));
   }
+
+  if (cardType === 'keyTakeaway') {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "cards",
+      onClick: function onClick() {
+        return activateCardEdit(battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "deleteCardButton",
+      onClick: function onClick(e) {
+        return deleteCard(e, battleCardId, cardId, section);
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "cardTrash"
+    }, /*#__PURE__*/_react.default.createElement("i", {
+      className: "fa fa-trash"
+    }))), /*#__PURE__*/_react.default.createElement("span", {
+      className: "blueCardHeader"
+    }, "Key Takeaway"), /*#__PURE__*/_react.default.createElement("textarea", {
+      style: {
+        height: height
+      },
+      id: cardId,
+      rows: "3",
+      "data-min-rows": "3",
+      onBlur: function onBlur(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      onKeyPress: function onKeyPress(e) {
+        return editCard(e.target.value, battleCardId, cardId, section);
+      },
+      placeholder: "Content for this tile goes here",
+      className: "blueCardText"
+    }, text)), /*#__PURE__*/_react.default.createElement("br", null));
+  }
 };
 
 exports.default = _default;
@@ -37190,44 +37225,14 @@ var NewCaseStudiesCardMenu = function NewCaseStudiesCardMenu(_ref7) {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
-      return addCard(battleCardId, 'goodQuestion', section);
-    }
-  }, "Good Question"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "redAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'badQuestion', section);
-    }
-  }, "Bad Question"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'offerDeal', section);
-    }
-  }, "Offer Deal"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
       return addCard(battleCardId, 'checklist', section);
     }
   }, "Checklist"), /*#__PURE__*/_react.default.createElement("div", {
     className: "unfilledAddButton",
     onClick: function onClick() {
-      return addCard(battleCardId, 'commonAnswer', section);
+      return addCard(battleCardId, 'keyTakeaway', section);
     }
-  }, "Common Answer"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'text', section);
-    }
-  }, "Text"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'goodArguments', section);
-    }
-  }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "redAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'badArguments', section);
-    }
-  }, "Bad Arguments"));
+  }, "Key Takeaway"));
 }; //////////////////////  OBJECTIONS /////////////////////
 
 
@@ -37940,7 +37945,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51555" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52004" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

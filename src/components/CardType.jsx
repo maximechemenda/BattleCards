@@ -294,4 +294,21 @@ export default ({editing, text, deleteCard, cardId, cardType, height, activateCa
                     <br></br>
                 </div>
     }
+    if (cardType === 'keyTakeaway') {
+        return  <div>
+                    <div className="cards" onClick={() => activateCardEdit(battleCardId, cardId, section)}>
+                        <button className="deleteCardButton" onClick={(e) => deleteCard(e, battleCardId, cardId, section)}>
+                            <span className="cardTrash">
+                                <i className="fa fa-trash"></i>
+                            </span>
+                        </button>
+                        
+                        <span className="blueCardHeader">Key Takeaway</span>
+                        <textarea style={{height: height}} id={cardId} rows='3' data-min-rows='3' onBlur={(e) => editCard(e.target.value, battleCardId, cardId, section)}
+                                    onKeyPress={(e) => editCard(e.target.value, battleCardId, cardId, section)} 
+                                    placeholder="Content for this tile goes here" className="blueCardText">{text}</textarea>  
+                    </div> 
+                    <br></br>
+                </div>
+    }
 }

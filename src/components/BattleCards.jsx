@@ -581,14 +581,8 @@ const CaseStudiesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
 
 const NewCaseStudiesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</div>
-        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodArguments', section)}>Good Arguments</div>
-        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badArguments', section)}>Bad Arguments</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'keyTakeaway', section)}>Key Takeaway</div>
     </div>
 )
 
