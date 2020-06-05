@@ -85,7 +85,7 @@ const initialBattleCardsState = {
             isEmptyProfilesState: true,
             isEmptyDiscoveriesState: true
         },
-        isEmptyBattleCardsState: true,
+        isEmptyBattleCardsState: false,
         isEmptyCaseStudiesState: true
     },
     selectedBattleCards: [],
