@@ -391,7 +391,6 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 
             })
         case CHANGE_SELECTED_BATTLECARDS:
-            console.log('haha')
             switch (action.section) {
                 case 'objections':
                     if ((state.selectedBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
@@ -462,6 +461,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         })
                     }
                 case 'caseStudies':
+                    console.log('entering this function')
                     if ((state.selectedCaseStudiesBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
                         return ({
                             ...state,
@@ -480,7 +480,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         return ({
                             ...state,
                             selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.concat(
-                                state.data.battleCards.caseStudiesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                state.data.caseStudies.caseStudiesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
                             )
                             /* data: {
                                 ...state.data,

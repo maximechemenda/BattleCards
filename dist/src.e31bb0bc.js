@@ -32862,8 +32862,6 @@ var battleCards = function battleCards() {
       });
 
     case _actionTypes.CHANGE_SELECTED_BATTLECARDS:
-      console.log('haha');
-
       switch (action.section) {
         case 'objections':
           if (state.selectedBattleCards.map(function (battleCard) {
@@ -32936,6 +32934,8 @@ var battleCards = function battleCards() {
           }
 
         case 'caseStudies':
+          console.log('entering this function');
+
           if (state.selectedCaseStudiesBattleCards.map(function (battleCard) {
             return battleCard.battleCardId;
           }).includes(action.battleCardId)) {
@@ -32954,7 +32954,7 @@ var battleCards = function battleCards() {
             });
           } else {
             return _objectSpread(_objectSpread({}, state), {}, {
-              selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.concat(state.data.battleCards.caseStudiesBattleCards.filter(function (battleCard) {
+              selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.concat(state.data.caseStudies.caseStudiesBattleCards.filter(function (battleCard) {
                 return battleCard.battleCardId === action.battleCardId;
               }))
               /* data: {
@@ -36770,7 +36770,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     triggerAddCardState: triggerAddCardState,
     addCard: addCard
   }), selectedCaseStudiesBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement(SelectedCaseStudiesBattleCards, {
-    selecteCaseStudiesBattleCards: selectedCaseStudiesBattleCards,
+    selectedCaseStudiesBattleCards: selectedCaseStudiesBattleCards,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
@@ -37005,7 +37005,7 @@ var SelectedCaseStudiesBattleCards = function SelectedCaseStudiesBattleCards(_re
       deleteBattleCard = _ref2.deleteBattleCard,
       modifyBattleCardTitle = _ref2.modifyBattleCardTitle,
       addCard = _ref2.addCard;
-  return /*#__PURE__*/_react.default.createElement("div", null, selectedBattleCards.map(function (battleCard) {
+  return /*#__PURE__*/_react.default.createElement("div", null, selectedCaseStudiesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(CaseStudiesBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
@@ -37707,7 +37707,7 @@ var AddCardButton = function AddCardButton(_ref20) {
 
 var mapState = function mapState(state) {
   console.log(state);
-  console.log(state.selectedBattleCards);
+  console.log(state.selectedCaseStudiesBattleCards);
   return {
     objectionsBattleCards: state.data.battleCards.objectionsBattleCards,
     isEmptyObjectionsState: state.data.battleCards.isEmptyObjectionsState,
@@ -37940,7 +37940,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50336" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51555" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

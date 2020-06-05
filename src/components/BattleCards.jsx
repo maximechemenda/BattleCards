@@ -106,7 +106,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
                         {(selectedCaseStudiesBattleCards.length !== 0) &&
                         <SelectedCaseStudiesBattleCards 
-                        selecteCaseStudiesBattleCards={selectedCaseStudiesBattleCards}
+                        selectedCaseStudiesBattleCards={selectedCaseStudiesBattleCards}
                         deleteBattleCard={deleteBattleCard}
                         modifyBattleCardTitle={modifyBattleCardTitle}
                         triggerAddCardState={triggerAddCardState}
@@ -361,7 +361,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 const SelectedCaseStudiesBattleCards = ({selectedCaseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
     <div>
         
-        {selectedBattleCards.map(battleCard => (
+        {selectedCaseStudiesBattleCards.map(battleCard => (
             <div>
                 <CaseStudiesBattleCard 
                 cards={battleCard.cards}
@@ -895,7 +895,7 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 const mapState = (state) => {
     console.log(state)
-    console.log(state.selectedBattleCards)
+    console.log(state.selectedCaseStudiesBattleCards)
 
     return ({
         objectionsBattleCards: state.data.battleCards.objectionsBattleCards,
