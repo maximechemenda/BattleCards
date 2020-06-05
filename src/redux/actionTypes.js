@@ -16,6 +16,7 @@ export const FETCH_ITEMS_SUCCESS = "Items fetched successfully";
 export const FETCH_ITEMS_FAILURE = "Failed to fetch items";
 export const UPDATE_CARD_HEIGHT = 'UPDATE_CARD_HEIGHT'
 export const TRIGGER_BIG_SECTION_STATE = 'TRIGGER_BIG_SECTION_STATE'
+export const CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS = 'CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS'
 
 /* export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_FILTER = 'SET_FILTER'

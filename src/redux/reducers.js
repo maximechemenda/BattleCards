@@ -7,7 +7,7 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         CHANGE_SELECTED_BATTLECARDS,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
         FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
-        TRIGGER_BIG_SECTION_STATE} from './actionTypes'
+        TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -88,7 +88,8 @@ const initialBattleCardsState = {
         isEmptyBattleCardsState: true,
         isEmptyCaseStudiesState: true
     },
-    selectedBattleCards: []
+    selectedBattleCards: [],
+    selectedCaseStudiesBattleCards: []
 }
 
 
@@ -96,6 +97,13 @@ const initialBattleCardsState = {
 export const battleCards = (state = initialBattleCardsState, action) => {
 
     switch (action.type) {
+        case CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS:
+            return ({
+                ...state,
+                selectedCaseStudiesBattleCards: []
+            })
+
+
         case TRIGGER_BIG_SECTION_STATE:
             switch (action.bigSection) {
                 case 'battleCards':
@@ -143,6 +151,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             })
                             return battleCard
                         })
+                    },
+                    caseStudies: {
+                        ...state.data.caseStudies,
+                        caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                            battleCard.cards.map(card => {
+                                if (card.cardId === action.cardId) {
+                                    card.height = action.height
+                                }
+                                return card
+                            })
+                            return battleCard
+                        })
+                        
                     }
                 }
                 
@@ -158,7 +179,8 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                 ...state,
                 loading: false,
                 data: action.payload.items,
-                selectedBattleCards: []
+                selectedBattleCards: [],
+                selectedCaseStudiesBattleCards: []
               }
           case FETCH_ITEMS_FAILURE: 
           return {
@@ -283,6 +305,33 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         }])
                         
                     })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.concat([{
+                                    cards: [],
+                                    battleCardId: action.id,
+                                    isEmptyAddButtonState: true,
+                                    titleValue: '',
+                                    section: 'caseStudies'
+                                }])
+                            }
+
+                        },
+                        selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.concat([{
+                            cards: [],
+                            battleCardId: action.id,
+                            isEmptyAddButtonState: true,
+                            titleValue: '',
+                            section: 'caseStudies'
+                        
+                        }])
+                        
+                    })
                 case 'profiles':
                     return ({
                         ...state,
@@ -329,7 +378,6 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                     })
             }
         case CLEAR_SELECTED_BATTLECARDS: 
-        console.log('clearing')
             return ({
                 ...state,
                 selectedBattleCards: []
@@ -409,6 +457,39 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     )
                                 }
 
+                            } */
+                            
+                        })
+                    }
+                case 'caseStudies':
+                    if ((state.selectedCaseStudiesBattleCards.map(battleCard => battleCard.battleCardId)).includes(action.battleCardId)) {
+                        return ({
+                            ...state,
+                            selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                            /* data: {
+                                ...state.data,
+                                battleCards: {
+                                    ...state.data.battleCards,
+                                    selectedBattleCards: state.selectedBattleCards.filter(battleCard => battleCard.battleCardId !== action.battleCardId)
+                                }
+                            } */
+                            
+                        })
+                    } 
+                    else {
+                        return ({
+                            ...state,
+                            selectedCaseStudiesBattleCards: state.selectedCaseStudiesBattleCards.concat(
+                                state.data.battleCards.caseStudiesBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                            )
+                            /* data: {
+                                ...state.data,
+                                battleCards: {
+                                    ...state.data.battleCards,
+                                    selectedBattleCards: state.selectedBattleCards.concat(
+                                        state.data.battleCards.objectionsBattleCards.filter(battleCard => battleCard.battleCardId === action.battleCardId)
+                                    )
+                                }
                             } */
                             
                         })
@@ -494,6 +575,24 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         }
                          
                     })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.titleValue = action.newValue;
+                                    }
+                                    return battleCard
+                                })
+                            }
+
+                        }
+                         
+                    })
                 case 'profiles':
                     return ({
                         ...state,
@@ -558,6 +657,22 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         }
                         
                     })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards:  state.data.caseStudies.caseStudiesBattleCards.concat([{  
+                                cards: [],
+                                battleCardId: uuid(),
+                                isEmptyAddButtonState: true,
+                                titleValue: '',
+                                section: 'caseStudies'
+                            }])}
+                        }
+                    })
                 case 'profiles':
                     return ({
                         ...state,
@@ -611,6 +726,21 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCards: {
                                 ...state.data.battleCards,
                                 competitorsBattleCards: state.data.battleCards.competitorsBattleCards.filter(
+                                    battleCard => battleCard.battleCardId !== action.battleCardId
+                                )
+                            }
+
+                        }
+                        
+                    })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.filter(
                                     battleCard => battleCard.battleCardId !== action.battleCardId
                                 )
                             }
@@ -688,6 +818,31 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       return battleCard;
                                 })
                             }
+                        }
+                        
+                    })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                    if(battleCard.battleCardId === action.battleCardId) { // finds the battleCard where we want to add a card
+                                        battleCard.isEmptyAddButtonState = true;
+                                        battleCard.cards = battleCard.cards.concat([{
+                                          cardId: uuid(),
+                                          text: '',
+                                          cardType: action.cardType,
+                                          editing: false,
+                                          height: '50px'
+                                        }])
+                                      }
+                                      return battleCard;
+                                })
+                            }
+
                         }
                         
                     })
@@ -771,6 +926,23 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         }
                           
                     })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                    if(battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.cards = battleCard.cards.filter(card => card.cardId !== action.cardId)
+                                    }
+                                    return battleCard;
+                                })
+                            }
+                        }
+                          
+                    })
                 case 'profiles':
                     return ({
                         ...state,
@@ -802,7 +974,6 @@ export const battleCards = (state = initialBattleCardsState, action) => {
         case TRIGGER_ADD_CARD_STATE:
             switch (action.section) {
                 case 'objections':
-                    console.log('oulala')
                     return ({
                         ...state,
                         data: {
@@ -835,6 +1006,24 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 })
                             }
 
+                        }
+                        
+                    })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        //battleCard.isEmptyAddButtonState = false;
+                                        battleCard.isEmptyAddButtonState = !battleCard.isEmptyAddButtonState;
+                                    }
+                                    return battleCard
+                                })
+                            }
                         }
                         
                     })
@@ -899,6 +1088,29 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                         battleCards: {
                             ...state.data.battleCards,
                             competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                if (battleCard.battleCardId === action.battleCardId) {
+                                
+                                    battleCard.cards = battleCard.cards.map(card => { 
+                                    if(card.cardId === action.cardId) {
+                                      card.editing = true;
+                                    }
+                                    return card;
+                                  })
+                                }
+                                return battleCard;
+                            })
+                        }
+                    }
+                    
+                })
+            case 'caseStudies':
+                return ({
+                    ...state,
+                    data: {
+                        ...state.data,
+                        caseStudies: {
+                            ...state.data.caseStudies,
+                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
                                 if (battleCard.battleCardId === action.battleCardId) {
                                 
                                     battleCard.cards = battleCard.cards.map(card => { 
@@ -1019,6 +1231,42 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                                     card.height = '50px'
                                                 }                                        
                                               }
+                                          return card;
+                                        })
+                                      }
+                                      return battleCard;
+                                })
+                            }
+                        }
+                          
+                    })
+                case 'caseStudies':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            caseStudies: {
+                                ...state.data.caseStudies,
+                                caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.cards = battleCard.cards.map(card => {
+                                          if(card.cardId === action.cardId) {
+                                            card.editing = false;
+                                            card.text = action.text;
+                                            
+                                            var textarea = document.getElementById(card.cardId)
+    
+                                            textarea.style.cssText = 'height:50px; padding:0';
+    
+                                            var height = textarea.scrollHeight - 4 + 10
+                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+    
+                                            if (height >= 50) {
+                                                card.height = height + 'px'
+                                            } else {
+                                                card.height = '50px'
+                                            }                                        
+                                          }
                                           return card;
                                         })
                                       }
