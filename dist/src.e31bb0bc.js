@@ -32601,20 +32601,20 @@ var battleCards = function battleCards() {
     case _actionTypes.TRIGGER_BIG_SECTION_STATE:
       switch (action.bigSection) {
         case 'battleCards':
-          return {
+          return _objectSpread(_objectSpread({}, state), {}, {
             data: _objectSpread(_objectSpread({}, state.data), {}, {
               isEmptyBattleCardsState: false,
               isEmptyCaseStudiesState: true
             })
-          };
+          });
 
         case 'caseStudies':
-          return {
+          return _objectSpread(_objectSpread({}, state), {}, {
             data: _objectSpread(_objectSpread({}, state.data), {}, {
               isEmptyBattleCardsState: true,
               isEmptyCaseStudiesState: false
             })
-          };
+          });
       }
 
     case _actionTypes.UPDATE_CARD_HEIGHT:
@@ -36467,7 +36467,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return triggerBigSectionState('caseStudies');
     }
-  }, "Case Studies")), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Case Studies")), !isEmptyBattleCardsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "smallIndex"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton",
@@ -36479,7 +36479,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return triggerSectionState('competitors');
     }
-  }, "Competitors")), !isEmptyBattleCardsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "Competitors")), /*#__PURE__*/_react.default.createElement("div", null, !isEmptyObjectionsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "leftMenu"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "leftMenuTitle"
@@ -36689,7 +36689,7 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
     addCard: addCard
-  }))));
+  }))), !isEmptyCaseStudiesState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hello")));
 };
 
 var SelectedBattleCards = function SelectedBattleCards(_ref2) {
@@ -37474,7 +37474,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51670" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

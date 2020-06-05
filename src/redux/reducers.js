@@ -100,6 +100,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
             switch (action.bigSection) {
                 case 'battleCards':
                     return ({
+                        ...state,
                         data: {
                             ...state.data,
                             isEmptyBattleCardsState: false,
@@ -108,6 +109,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                     })
                 case 'caseStudies':
                     return ({
+                        ...state,
                         data: {
                             ...state.data,
                             isEmptyBattleCardsState: true,

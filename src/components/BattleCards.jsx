@@ -33,21 +33,16 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         </div>
 
     
-        <div className="smallIndex">
-            <div className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</div>
-            <div className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</div>
-            {/* <div className={isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('profiles')}>Profiles</div>
-            <div className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</div> */}
-        </div>
-
-
-        
-
-
-    
         {!isEmptyBattleCardsState &&
 
             <div>
+
+                <div className="smallIndex">
+                    <div className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</div>
+                    <div className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</div>
+                    {/* <div className={isEmptyProfilesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('profiles')}>Profiles</div>
+                    <div className={isEmptyDiscoveriesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('discoveries')}>Discoveries</div> */}
+                </div>
 
                 <div>   
                     {!isEmptyObjectionsState &&
@@ -258,6 +253,15 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     />}
                 </div>
             </div>
+        }
+
+        {!isEmptyCaseStudiesState &&
+
+        <div>
+            <h1>Hello</h1>
+        </div>
+        
+        
         }
         
     </div>
