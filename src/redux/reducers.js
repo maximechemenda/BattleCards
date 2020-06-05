@@ -7,7 +7,8 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         CHANGE_SELECTED_BATTLECARDS,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
         FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
-        TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS} from './actionTypes'
+        TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS,
+        ADD_BLUE_HEADER_VALUE, EDIT_BLUE_HEADER_VALUE} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -31,7 +32,8 @@ const initialBattleCardsState = {
                     battleCardId: uuid(),
                     isEmptyAddButtonState: true,
                     titleValue: '',
-                    section: 'objections'
+                    section: 'objections',
+                    blueHeaderValues: []
                 }
             ],
             competitorsBattleCards: [
@@ -97,6 +99,66 @@ const initialBattleCardsState = {
 export const battleCards = (state = initialBattleCardsState, action) => {
 
     switch (action.type) {
+        case EDIT_BLUE_HEADER_VALUE:
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            battleCards: {
+                                ...state.data.battleCards,
+                                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(header => {
+                                            if (header.headerId === action.headerId) {
+                                                header.headerText = action.text
+
+                                                var textarea = document.getElementById(header.headerId)
+    
+                                                textarea.style.cssText = 'height:30px; padding:0';
+        
+                                                var height = textarea.scrollHeight - 4 + 10
+                                                textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                                                if (height >= 30) {
+                                                    header.height = height + 'px'
+                                                } else {
+                                                    header.height = '30px'
+                                                }
+                                            }
+                                            return header
+                                        })
+                                    }
+                                    return battleCard
+                                })
+                            }
+                        }
+                    })
+        }
+        case ADD_BLUE_HEADER_VALUE:
+            switch (action.section) {
+                case 'objections':
+                    return ({
+                        ...state,
+                        data: {
+                            ...state.data,
+                            battleCards: {
+                                ...state.data.battleCards,
+                                objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                    if (battleCard.battleCardId === action.battleCardId) {
+                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                            headerId: uuid(),
+                                            headerText: 'write again',
+                                            height: '30px'
+                                        }])
+                                    }
+                                    return battleCard
+                                })
+                            }
+                        }
+                    })
+            }
         case CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS:
             return ({
                 ...state,
@@ -635,7 +697,12 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
-                                section: 'objections'
+                                section: 'objections',
+                                blueHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: 'write here',
+                                    height: '30px'
+                                }]
                             }])}
                         }
                     })

@@ -5,9 +5,10 @@ import { triggerSectionState } from '../redux/actions'
 import { modifyBattleCardTitle } from '../redux/actions'
 import { changeSelectedBattleCards } from '../redux/actions'
 import { clearSelectedBattleCards } from '../redux/actions'
+import { addCard } from '../redux/actions'
 import { addBattleCardToSectionAndSelectedBattleCards } from '../redux/actions'
 import { triggerAddCardState, triggerBigSectionState } from '../redux/actions'
-import { addCard } from '../redux/actions'
+import { addBlueHeaderValue, editBlueHeaderValue } from '../redux/actions'
 import { connect } from 'react-redux'
 import { clearSelectedCaseStudiesBattleCards } from '../redux/actions'
 import '../App.css'  
@@ -25,7 +26,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard,
         isEmptyBattleCardsState, isEmptyCaseStudiesState, triggerBigSectionState,
         caseStudiesBattleCards, selectedCaseStudiesBattleCards,
-        clearSelectedCaseStudiesBattleCards}) => (
+        clearSelectedCaseStudiesBattleCards, addBlueHeaderValue, editBlueHeaderValue}) => (
 
     <div>
 
@@ -91,14 +92,6 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         addBattleCard={addBattleCard} 
                         deleteBattleCard={deleteBattleCard}
                         modifyBattleCardTitle={modifyBattleCardTitle}
-                        /* isEmpty={isEmptyObjectionsState}
-                        isEmptyCompetitorsState={isEmptyCompetitorsState}
-                        isEmptyProfilesState={isEmptyProfilesState}
-                        isEmptyDiscoveriesState={isEmptyDiscoveriesState}
-                        objectionsBattleCards={objectionsBattleCards}
-                        competitorsBattleCards={competitorsBattleCards}
-                        profilesBattleCards={profilesBattleCards}
-                        discoveriesBattleCards={discoveriesBattleCards} */
                         caseStudiesBattleCards={caseStudiesBattleCards}
                         triggerAddCardState={triggerAddCardState}
                         addCard={addCard}
@@ -113,25 +106,12 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         addCard={addCard}
                         />}
                 </div>
-
-
-
-
-
-
         </div>
         }
 
-
-
-
-
-
-    
         {!isEmptyBattleCardsState &&
 
             <div>
-
                 <div className="smallIndex">
                     <div className={isEmptyObjectionsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('objections')}>Objections</div>
                     <div className={isEmptyCompetitorsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerSectionState('competitors')}>Competitors</div>
@@ -336,6 +316,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     discoveriesBattleCards={discoveriesBattleCards}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />}
 
                     {(selectedBattleCards.length !== 0) &&
@@ -472,7 +454,7 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
 const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
                                 isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
                                 objectionsBattleCards, competitorsBattleCards, profilesBattleCards, discoveriesBattleCards,
-                                triggerAddCardState, addCard}) => (
+                                triggerAddCardState, addCard, addBlueHeaderValue, editBlueHeaderValue}) => (
     <div>
 
         {!isEmptyObjectionsState &&
@@ -483,6 +465,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        addBlueHeaderValue={addBlueHeaderValue}
+        editBlueHeaderValue={editBlueHeaderValue}
         />}
 
         {!isEmptyCompetitorsState && 
@@ -590,7 +574,7 @@ const NewCaseStudiesCardMenu = ({addCard, battleCardId, section}) => (
 
 //////////////////////  OBJECTIONS /////////////////////
 
-const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
         {objectionsBattleCards.map((battleCard) => 
@@ -605,12 +589,15 @@ const ObjectionsBattleCards = ({addBattleCard, objectionsBattleCards, deleteBatt
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
         </div> 
     )}</div>
 )
 
-const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
@@ -625,6 +612,27 @@ const ObjectionsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAdd
                 <i className="fa fa-axe-battle"></i>
                 <span> Objection</span>
             </span>
+
+            <span>
+                Good Arguments
+                <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button>
+            </span>
+            
+            <div>
+                {blueHeaderValues.map(header => 
+                    <div>
+                        <span style={{float: 'left'}}>●</span>
+                        <textarea
+                            className="blueHeaderValue"
+                            style={{height: header.height}} id={header.headerId} 
+                            onKeyPress={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section)}
+                            onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section)}>
+                            {header.headerText}
+                        </textarea>
+                    </div>
+                )}
+            </div>
+
         </div>
         <br></br>
 
@@ -888,8 +896,6 @@ const AddCardButton = ({triggerAddCardState, battleCardId, section}) => (
 
 
 const mapState = (state) => {
-    console.log(state)
-    console.log(state.selectedCaseStudiesBattleCards)
 
     return ({
         objectionsBattleCards: state.data.battleCards.objectionsBattleCards,
@@ -919,4 +925,5 @@ export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSecti
                         modifyBattleCardTitle, changeSelectedBattleCards, clearSelectedBattleCards,
                         addBattleCardToSectionAndSelectedBattleCards, 
                         triggerAddCardState, triggerBigSectionState, addCard,
-                        clearSelectedCaseStudiesBattleCards})(BattleCardsMenu);
+                        clearSelectedCaseStudiesBattleCards, addBlueHeaderValue,
+                        editBlueHeaderValue})(BattleCardsMenu);

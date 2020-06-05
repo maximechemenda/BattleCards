@@ -7,8 +7,23 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     CHANGE_SELECTED_BATTLECARDS, CLEAR_SELECTED_BATTLECARDS,
     ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
     FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
-    TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS} from './actionTypes';
+    TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS, ADD_BLUE_HEADER_VALUE,
+    EDIT_BLUE_HEADER_VALUE} from './actionTypes';
 
+
+export const editBlueHeaderValue = (text, battleCardId, headerId, section) => ({
+    type: EDIT_BLUE_HEADER_VALUE,
+    text,
+    battleCardId,
+    headerId,
+    section
+})
+
+export const addBlueHeaderValue = (battleCardId, section) => ({
+    type: ADD_BLUE_HEADER_VALUE,
+    battleCardId,
+    section
+})
 
 export const clearSelectedCaseStudiesBattleCards = () => ({
     type: CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS
