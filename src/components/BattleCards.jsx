@@ -27,10 +27,10 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
     <div>
 
 
-        {/* <div className="smallIndex">
+        <div className="smallIndex">
             <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>BattleCards</div>
             <div className={isEmptyCaseStudiesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('caseStudies')}>Case Studies</div>
-        </div> */}
+        </div>
 
     
         <div className="smallIndex">
@@ -41,224 +41,224 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         </div>
 
 
-
-        {/* <div>
-            {!isEmptyBattleCardsState && 
-            
-            }
-        </div> */}
+        
 
 
+    
+        {!isEmptyBattleCardsState &&
 
-
-        <div>   
-            {!isEmptyObjectionsState &&
             <div>
- 
-                <div className='leftMenu'>
-                    <h3 className="leftMenuTitle">
-                        <i className="fa fa-axe-battle"></i>
-                        <span> Objections</span>
-                    </h3>
-                    <ol className='itemsContainer'>
-                        {objectionsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>
-                                <span>{battleCard.titleValue}</span>
-                            </li>
-                        )} 
-                    </ol> 
 
-                    {selectedBattleCards.length !== 0 &&
-                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                <div>   
+                    {!isEmptyObjectionsState &&
+                    <div>
+
+                        <div className='leftMenu'>
+                            <h3 className="leftMenuTitle">
+                                <i className="fa fa-axe-battle"></i>
+                                <span> Objections</span>
+                            </h3>
+                            <ol className='itemsContainer'>
+                                {objectionsBattleCards.map((battleCard) => 
+                                    <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'objections')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>
+                                        <span>{battleCard.titleValue}</span>
+                                    </li>
+                                )} 
+                            </ol> 
+
+                            {selectedBattleCards.length !== 0 &&
+                            <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                            }
+                        </div>
+
+                        {selectedBattleCards.length !== 0 && 
+                        <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')} >
+                            <span className = "addBattleCardAxeIcon">
+                                    <i className="fas fa-axe-battle"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        }
+
+                        {selectedBattleCards.length === 0 &&
+                        <div className='addBattleCard' onClick={() => addBattleCard('objections')}>
+                            <span className = "addBattleCardAxeIcon">
+                                <i className="fas fa-axe-battle"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>   
+                        </div>
+                        }
+
+
+                    </div>
                     }
-                </div>
 
-                {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('objections')} >
-                    <span className = "addBattleCardAxeIcon">
-                           <i className="fas fa-axe-battle"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>
-                </div>
-                }
+                    {!isEmptyCompetitorsState &&
+                    <div>
 
-                {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard' onClick={() => addBattleCard('objections')}>
-                    <span className = "addBattleCardAxeIcon">
-                        <i className="fas fa-axe-battle"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>   
-                </div>
-                }
+                        <div className='leftMenu'>
+                            <h3 className="leftMenuTitle">
+                                <i className="fa fa-swords"></i>
+                                <span> Competitors</span>
+                            </h3>
+                            <ol className='itemsContainer'>
+                                {competitorsBattleCards.map((battleCard) => 
+                                    <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                                )} 
+                            </ol> 
+
+                            {selectedBattleCards.length !== 0 &&
+                            <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                            }
+                        </div>
+
+                        {selectedBattleCards.length !== 0 && 
+                        <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')} >
+                            <span className = "addBattleCardAxeIcon">
+                                    <i className="fas fa-swords"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        }
+
+                        {selectedBattleCards.length === 0 &&
+                        <div className='addBattleCard' onClick={() => addBattleCard('competitors')}>
+                            <span className = "addBattleCardAxeIcon">
+                                <i className="fas fa-swords"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>   
+                        </div>
+                        }
 
 
-            </div>
-            }
-
-            {!isEmptyCompetitorsState &&
-            <div>
- 
-                <div className='leftMenu'>
-                    <h3 className="leftMenuTitle">
-                        <i className="fa fa-swords"></i>
-                        <span> Competitors</span>
-                    </h3>
-                    <ol className='itemsContainer'>
-                        {competitorsBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'competitors')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
-                        )} 
-                    </ol> 
-
-                    {selectedBattleCards.length !== 0 &&
-                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                    </div>
                     }
-                </div>
 
-                {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('competitors')} >
-                    <span className = "addBattleCardAxeIcon">
-                           <i className="fas fa-swords"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>
-                </div>
-                }
+                    {!isEmptyProfilesState &&
+                    <div>
+                        
+                        <div className='leftMenu'>
+                            <h3 className="leftMenuTitle">
+                                <i className="fa fa-user"></i>
+                                <span> Profiles</span>
+                            </h3>
+                            <ol className='itemsContainer'>
+                                {profilesBattleCards.map((battleCard) => 
+                                    <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                                )} 
+                            </ol> 
+                            {selectedBattleCards.length !== 0 &&
+                            <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                            }
+                        </div>
 
-                {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard' onClick={() => addBattleCard('competitors')}>
-                    <span className = "addBattleCardAxeIcon">
-                        <i className="fas fa-swords"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>   
-                </div>
-                }
+                        {selectedBattleCards.length !== 0 && 
+                        <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')} >
+                            <span className = "addBattleCardAxeIcon">
+                                    <i className="fas fa-user"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        }
 
+                        {selectedBattleCards.length === 0 &&
+                        <div className='addBattleCard' onClick={() => addBattleCard('profiles')}>
+                            <span className = "addBattleCardAxeIcon">
+                                <i className="fas fa-user"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>   
+                        </div>
+                        }
 
-            </div>
-            }
-
-            {!isEmptyProfilesState &&
-            <div>
-                
-                <div className='leftMenu'>
-                    <h3 className="leftMenuTitle">
-                        <i className="fa fa-user"></i>
-                        <span> Profiles</span>
-                    </h3>
-                    <ol className='itemsContainer'>
-                        {profilesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'profiles')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
-                        )} 
-                    </ol> 
-                    {selectedBattleCards.length !== 0 &&
-                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                    </div>
                     }
-                </div>
 
-                {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('profiles')} >
-                    <span className = "addBattleCardAxeIcon">
-                           <i className="fas fa-user"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>
-                </div>
-                }
+                    {!isEmptyDiscoveriesState &&
+                    <div>
+                        
+                        <div className='leftMenu'>
+                            <h3 className="leftMenuTitle">
+                                <i className="fa fa-telescope"></i>
+                                <span> Discoveries</span>
+                            </h3>
+                            <ol className='itemsContainer'>
+                                {discoveriesBattleCards.map((battleCard) => 
+                                    <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
+                                )} 
+                            </ol> 
+                            {selectedBattleCards.length !== 0 &&
+                            <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                            }
+                        </div>
 
-                {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard' onClick={() => addBattleCard('profiles')}>
-                    <span className = "addBattleCardAxeIcon">
-                        <i className="fas fa-user"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>   
-                </div>
-                }
+                        {selectedBattleCards.length !== 0 && 
+                        <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')} >
+                            <span className = "addBattleCardAxeIcon">
+                                    <i className="fas fa-telescope"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        }
 
-            </div>
-            }
+                        {selectedBattleCards.length === 0 &&
+                        <div className='addBattleCard' onClick={() => addBattleCard('discoveries')}>
+                            <span className = "addBattleCardAxeIcon">
+                            <i className="fas fa-telescope"></i>
+                            </span>
+                            <span className="addBattleCardPlusIcon">
+                                <i className="fas fa-plus"></i>
+                            </span>   
+                        </div>
+                        }
 
-            {!isEmptyDiscoveriesState &&
-            <div>
-                
-                <div className='leftMenu'>
-                    <h3 className="leftMenuTitle">
-                        <i className="fa fa-telescope"></i>
-                        <span> Discoveries</span>
-                    </h3>
-                    <ol className='itemsContainer'>
-                        {discoveriesBattleCards.map((battleCard) => 
-                            <li onClick={() => changeSelectedBattleCards(battleCard.battleCardId, 'discoveries')} key={battleCard.battleCardId} className={selectedBattleCards.includes(battleCard) ? "openedLeftMenuItems" : "closedLeftMenuItems"}>{battleCard.titleValue}</li>
-                        )} 
-                    </ol> 
-                    {selectedBattleCards.length !== 0 &&
-                    <div className="closeAllOpenedBattleCardsButton" onClick={() => clearSelectedBattleCards()}>Close all opened battlecards</div>
+                    </div>
                     }
+
                 </div>
 
-                {selectedBattleCards.length !== 0 && 
-                <div className='addBattleCard' onClick={() => addBattleCardToSectionAndSelectedBattleCards('discoveries')} >
-                    <span className = "addBattleCardAxeIcon">
-                           <i className="fas fa-telescope"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>
-                </div>
-                }
+                <div className="mainDiv">
+                    {(selectedBattleCards.length === 0) && 
+                    <IndependentBattleCards
+                    addBattleCard={addBattleCard} 
+                    deleteBattleCard={deleteBattleCard}
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    isEmptyObjectionsState={isEmptyObjectionsState}
+                    isEmptyCompetitorsState={isEmptyCompetitorsState}
+                    isEmptyProfilesState={isEmptyProfilesState}
+                    isEmptyDiscoveriesState={isEmptyDiscoveriesState}
+                    objectionsBattleCards={objectionsBattleCards}
+                    competitorsBattleCards={competitorsBattleCards}
+                    profilesBattleCards={profilesBattleCards}
+                    discoveriesBattleCards={discoveriesBattleCards}
+                    triggerAddCardState={triggerAddCardState}
+                    addCard={addCard}
+                    />}
 
-                {selectedBattleCards.length === 0 &&
-                <div className='addBattleCard' onClick={() => addBattleCard('discoveries')}>
-                    <span className = "addBattleCardAxeIcon">
-                    <i className="fas fa-telescope"></i>
-                    </span>
-                    <span className="addBattleCardPlusIcon">
-                        <i className="fas fa-plus"></i>
-                    </span>   
+                    {(selectedBattleCards.length !== 0) &&
+                    <SelectedBattleCards 
+                    selectedBattleCards={selectedBattleCards}
+                    deleteBattleCard={deleteBattleCard}
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    triggerAddCardState={triggerAddCardState}
+                    addCard={addCard}
+                    />}
                 </div>
-                }
-
             </div>
-            }
-
-        </div>
-
-        <div className="mainDiv">
-            {(selectedBattleCards.length === 0) && 
-            <IndependentBattleCards
-            addBattleCard={addBattleCard} 
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            isEmptyObjectionsState={isEmptyObjectionsState}
-            isEmptyCompetitorsState={isEmptyCompetitorsState}
-            isEmptyProfilesState={isEmptyProfilesState}
-            isEmptyDiscoveriesState={isEmptyDiscoveriesState}
-            objectionsBattleCards={objectionsBattleCards}
-            competitorsBattleCards={competitorsBattleCards}
-            profilesBattleCards={profilesBattleCards}
-            discoveriesBattleCards={discoveriesBattleCards}
-            triggerAddCardState={triggerAddCardState}
-            addCard={addCard}
-            />}
-
-            {(selectedBattleCards.length !== 0) &&
-            <SelectedBattleCards 
-            selectedBattleCards={selectedBattleCards}
-            deleteBattleCard={deleteBattleCard}
-            modifyBattleCardTitle={modifyBattleCardTitle}
-            triggerAddCardState={triggerAddCardState}
-            addCard={addCard}
-            />}
-        </div>
+        }
         
     </div>
 )    

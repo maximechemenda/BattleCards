@@ -97,14 +97,25 @@ export const battleCards = (state = initialBattleCardsState, action) => {
 
     switch (action.type) {
         case TRIGGER_BIG_SECTION_STATE:
-            return ({
-                ...state,
-                data: {
-                    ...state.data,
-                    isEmptyBattleCardsState: !state.data.battleCards.initialBattleCardsState,
-                    isEmptyCaseStudiesState: !state.data.battleCards.isEmptyCaseStudiesState
-                }
-            })
+            switch (action.bigSection) {
+                case 'battleCards':
+                    return ({
+                        data: {
+                            ...state.data,
+                            isEmptyBattleCardsState: false,
+                            isEmptyCaseStudiesState: true
+                        }
+                    })
+                case 'caseStudies':
+                    return ({
+                        data: {
+                            ...state.data,
+                            isEmptyBattleCardsState: true,
+                            isEmptyCaseStudiesState: false
+                        }
+                    })
+            }
+            
         case UPDATE_CARD_HEIGHT:
             return ({
                 ...state,
