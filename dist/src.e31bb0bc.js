@@ -33254,7 +33254,17 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
-                  section: 'objections'
+                  section: 'objections',
+                  blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }]
                 }])
               })
             }),
@@ -33263,7 +33273,17 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
-              section: 'objections'
+              section: 'objections',
+              blueHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }],
+              redHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }]
             }])
           });
 
@@ -33276,7 +33296,17 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
-                  section: 'competitors'
+                  section: 'competitors',
+                  blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }]
                 }])
               })
             }),
@@ -33285,7 +33315,17 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
-              section: 'competitors'
+              section: 'competitors',
+              blueHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }],
+              redHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }]
             }])
           });
 
@@ -33298,7 +33338,17 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
-                  section: 'caseStudies'
+                  section: 'caseStudies',
+                  blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }]
                 }])
               })
             }),
@@ -33307,7 +33357,17 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
-              section: 'caseStudies'
+              section: 'caseStudies',
+              blueHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }],
+              redHeaderValues: [{
+                headerId: (0, _uuid.v4)(),
+                headerText: '',
+                height: '30px'
+              }]
             }])
           });
 
@@ -37808,7 +37868,7 @@ var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref6) {
     className: "blueLine"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardBlueHeaderTitle"
-  }, "GOOD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
+  }, "SUCCESSES"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
         marginBottom: '-18px'
@@ -37841,7 +37901,7 @@ var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref6) {
     className: "redLine"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardRedHeaderTitle"
-  }, "BAD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
+  }, "LIMITATIONS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
         marginBottom: '-18px'
@@ -38086,17 +38146,7 @@ var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref10) {
     onClick: function onClick() {
       return addCard(battleCardId, 'text', section);
     }
-  }, "Text"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'goodArguments', section);
-    }
-  }, "Good Arguments"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "redAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'badArguments', section);
-    }
-  }, "Bad Arguments"));
+  }, "Text"));
 }; //////////////////////  COMPETITORS /////////////////////
 
 
@@ -38178,7 +38228,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
     className: "blueLine"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardBlueHeaderTitle"
-  }, "GOOD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
+  }, "HOW WE WIN"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
         marginBottom: '-18px'
@@ -38211,7 +38261,7 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
     className: "redLine"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: "battleCardRedHeaderTitle"
-  }, "BAD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
+  }, "HOW WE LOSE"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
         marginBottom: '-18px'
@@ -38272,17 +38322,7 @@ var NewCompetitorsCardMenu = function NewCompetitorsCardMenu(_ref13) {
     onClick: function onClick() {
       return addCard(battleCardId, 'warning', section);
     }
-  }, "Warning"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "unfilledAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'howWeWin', section);
-    }
-  }, "How We Win"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "redAddButton",
-    onClick: function onClick() {
-      return addCard(battleCardId, 'howWeLose', section);
-    }
-  }, "How We Lose"));
+  }, "Warning"));
 }; //////////////////////  PROFILES /////////////////////
 
 
@@ -38759,7 +38799,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65017" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50159" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

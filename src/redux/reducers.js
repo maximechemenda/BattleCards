@@ -796,7 +796,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
-                                    section: 'objections'
+                                    section: 'objections',
+                                    blueHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }],
+                                    redHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }]
                                 }])
                             }
 
@@ -806,7 +816,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'objections'
+                            section: 'objections',
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }],
+                            redHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }]
                         
                         }])
                         
@@ -823,7 +843,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
-                                    section: 'competitors'
+                                    section: 'competitors',
+                                    blueHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }],
+                                    redHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }]
                                 }])
                                 
                             }
@@ -834,7 +864,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'competitors'
+                            section: 'competitors',
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }],
+                            redHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }]
                         
                         }])
                         
@@ -851,7 +891,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
-                                    section: 'caseStudies'
+                                    section: 'caseStudies',
+                                    blueHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }],
+                                    redHeaderValues: [{
+                                        headerId: uuid(),
+                                        headerText: '',
+                                        height: '30px'
+                                    }]
                                 }])
                             }
 
@@ -861,7 +911,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
-                            section: 'caseStudies'
+                            section: 'caseStudies',
+                            blueHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }],
+                            redHeaderValues: [{
+                                headerId: uuid(),
+                                headerText: '',
+                                height: '30px'
+                            }]
                         
                         }])
                         

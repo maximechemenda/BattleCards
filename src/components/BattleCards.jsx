@@ -579,7 +579,7 @@ const CaseStudiesBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeader
                 <div className="blueLine"></div>
 
                 <span className="battleCardBlueHeaderTitle">
-                    GOOD ARGUMENTS
+                    SUCCESSES
                 </span>
                 
                 <div>
@@ -605,7 +605,7 @@ const CaseStudiesBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeader
                 <div className="redLine"></div>
 
                 <span className="battleCardRedHeaderTitle">
-                    BAD ARGUMENTS
+                    LIMITATIONS
                 </span>
                 
                 <div>
@@ -787,8 +787,6 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodArguments', section)}>Good Arguments</div>
-        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badArguments', section)}>Bad Arguments</div>
     </div>
 )
 
@@ -840,7 +838,7 @@ const CompetitorsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeader
                 <div className="blueLine"></div>
 
                 <span className="battleCardBlueHeaderTitle">
-                    GOOD ARGUMENTS
+                    HOW WE WIN
                 </span>
                 
                 <div>
@@ -866,7 +864,7 @@ const CompetitorsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeader
                 <div className="redLine"></div>
 
                 <span className="battleCardRedHeaderTitle">
-                    BAD ARGUMENTS
+                    HOW WE LOSE
                 </span>
                 
                 <div>
@@ -916,8 +914,6 @@ const NewCompetitorsCardMenu = ({addCard, battleCardId, section}) => (
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'battlePitch', section)}>Battle Pitch</div>
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
         <div className='redAddButton' onClick = {() => addCard(battleCardId, 'warning', section)}>Warning</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'howWeWin', section)}>How We Win</div>
-        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'howWeLose', section)}>How We Lose</div>
     </div>
 )
 
