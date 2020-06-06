@@ -95,6 +95,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         caseStudiesBattleCards={caseStudiesBattleCards}
                         triggerAddCardState={triggerAddCardState}
                         addCard={addCard}
+                        addBlueHeaderValue={addBlueHeaderValue}
+                        editBlueHeaderValue={editBlueHeaderValue}
                         />}
 
                         {(selectedCaseStudiesBattleCards.length !== 0) &&
@@ -104,6 +106,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         modifyBattleCardTitle={modifyBattleCardTitle}
                         triggerAddCardState={triggerAddCardState}
                         addCard={addCard}
+                        addBlueHeaderValue={addBlueHeaderValue}
+                        editBlueHeaderValue={editBlueHeaderValue}
                         />}
                 </div>
         </div>
@@ -327,6 +331,8 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     modifyBattleCardTitle={modifyBattleCardTitle}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />}
                 </div>
             </div>
@@ -340,7 +346,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
 
 
 
-const SelectedCaseStudiesBattleCards = ({selectedCaseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
+const SelectedCaseStudiesBattleCards = ({addBlueHeaderValue, editBlueHeaderValue, selectedCaseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
     <div>
         
         {selectedCaseStudiesBattleCards.map(battleCard => (
@@ -355,6 +361,10 @@ const SelectedCaseStudiesBattleCards = ({selectedCaseStudiesBattleCards, deleteB
                 titleValue={battleCard.titleValue}
                 triggerAddCardState={triggerAddCardState}
                 addCard={addCard}
+                blueHeaderValues={battleCard.blueHeaderValues}
+                redHeaderValues={battleCard.redHeaderValues}
+                addBlueHeaderValue={addBlueHeaderValue}
+                editBlueHeaderValue={editBlueHeaderValue}
                 />
             </div>
 
@@ -365,7 +375,7 @@ const SelectedCaseStudiesBattleCards = ({selectedCaseStudiesBattleCards, deleteB
 )
 
 
-const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
+const SelectedBattleCards = ({addBlueHeaderValue, editBlueHeaderValue, selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
     <div>
         
         {selectedBattleCards.map(battleCard => (
@@ -381,6 +391,10 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
                 }
 
@@ -396,6 +410,10 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
                 }
 
@@ -410,6 +428,10 @@ const SelectedBattleCards = ({selectedBattleCards, deleteBattleCard, modifyBattl
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
                 }
 
@@ -477,6 +499,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        addBlueHeaderValue={addBlueHeaderValue}
+        editBlueHeaderValue={editBlueHeaderValue}
         />}
 
         {!isEmptyProfilesState && 
@@ -487,6 +511,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        addBlueHeaderValue={addBlueHeaderValue}
+        editBlueHeaderValue={editBlueHeaderValue}
         />}
 
         {!isEmptyDiscoveriesState && 
@@ -497,6 +523,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         modifyBattleCardTitle={modifyBattleCardTitle}
         triggerAddCardState={triggerAddCardState}
         addCard={addCard}
+        addBlueHeaderValue={addBlueHeaderValue}
+        editBlueHeaderValue={editBlueHeaderValue}
         />}
 
     </div>
@@ -505,7 +533,7 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 
 //////////////////////  CASE STUDIES /////////////////////
 
-const CaseStudiesBattleCards = ({addBattleCard, caseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const CaseStudiesBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, caseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
         {caseStudiesBattleCards.map((battleCard) => 
@@ -520,12 +548,16 @@ const CaseStudiesBattleCards = ({addBattleCard, caseStudiesBattleCards, deleteBa
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
         </div> 
     )}</div>
 )
 
-const CaseStudiesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const CaseStudiesBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
@@ -540,6 +572,62 @@ const CaseStudiesBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
                 <i className="fa fa-axe-battle"></i>
                 <span> Case Study</span>
             </span>
+
+
+            {/* BLUE HEADER VALUES */}
+            <div style={{width: '50%', float: 'left'}}>
+                <div className="blueLine"></div>
+
+                <span className="battleCardBlueHeaderTitle">
+                    GOOD ARGUMENTS
+                </span>
+                
+                <div>
+                    {blueHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="blueHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+            {/* RED HEADER VALUES */}
+            <div style={{width: '50%', float: 'right'}}>
+                <div className="redLine"></div>
+
+                <span className="battleCardRedHeaderTitle">
+                    BAD ARGUMENTS
+                </span>
+                
+                <div>
+                    {redHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="redHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+
+
         </div>
         <br></br>
 
@@ -598,7 +686,7 @@ const ObjectionsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBatt
     )}</div>
 )
 
-const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
@@ -620,7 +708,6 @@ const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHead
 
                 <span className="battleCardBlueHeaderTitle">
                     GOOD ARGUMENTS
-                    {/* <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button> */}
                 </span>
                 
                 <div>
@@ -647,7 +734,6 @@ const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHead
 
                 <span className="battleCardRedHeaderTitle">
                     BAD ARGUMENTS
-                    {/* <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button> */}
                 </span>
                 
                 <div>
@@ -709,7 +795,7 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
 
 //////////////////////  COMPETITORS /////////////////////
 
-const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const CompetitorsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
         {competitorsBattleCards.map((battleCard) => 
@@ -724,12 +810,16 @@ const CompetitorsBattleCards = ({addBattleCard, competitorsBattleCards, deleteBa
                     titleValue={battleCard.titleValue}
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
                     />
         </div> 
     )}</div>
 )
 
-const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const CompetitorsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
@@ -744,6 +834,58 @@ const CompetitorsBattleCard = ({cards, deleteBattleCard, battleCardId, isEmptyAd
                 <i className="fa fa-swords"></i>
                 <span> Competitor</span>
             </span>
+
+            {/* BLUE HEADER VALUES */}
+            <div style={{width: '50%', float: 'left'}}>
+                <div className="blueLine"></div>
+
+                <span className="battleCardBlueHeaderTitle">
+                    GOOD ARGUMENTS
+                </span>
+                
+                <div>
+                    {blueHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="blueHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+            {/* RED HEADER VALUES */}
+            <div style={{width: '50%', float: 'right'}}>
+                <div className="redLine"></div>
+
+                <span className="battleCardRedHeaderTitle">
+                    BAD ARGUMENTS
+                </span>
+                
+                <div>
+                    {redHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="redHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
 
             
         </div>

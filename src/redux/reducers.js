@@ -15,7 +15,31 @@ const initialBattleCardsState = {
     data: {
         id: uuid(),
         caseStudies: {
-            caseStudiesBattleCards: []
+            caseStudiesBattleCards: [
+                {
+                    cards: [{
+                        cardId: uuid(),
+                        text: '',
+                        cardType: 'warning',
+                        editing: false,
+                        height: '50px'
+                    }],
+                    battleCardId: uuid(),
+                    isEmptyAddButtonState: true,
+                    titleValue: '',
+                    section: 'caseStudies',
+                    blueHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }],
+                    redHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }]
+                }
+            ]
         },    
         battleCards: {
             objectionsBattleCards: [
@@ -31,8 +55,16 @@ const initialBattleCardsState = {
                     isEmptyAddButtonState: true,
                     titleValue: '',
                     section: 'objections',
-                    blueHeaderValues: [],
-                    redHeaderValues: []
+                    blueHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }],
+                    redHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }]
                 }
             ],
             competitorsBattleCards: [
@@ -47,7 +79,17 @@ const initialBattleCardsState = {
                     battleCardId: uuid(),
                     isEmptyAddButtonState: true,
                     titleValue: '',
-                    section: 'competitors'
+                    section: 'competitors',
+                    blueHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }],
+                    redHeaderValues: [{
+                        headerId: uuid(),
+                        headerText: '',
+                        height: '30px'
+                    }]
                 }
             ],
             profilesBattleCards: [
@@ -255,11 +297,316 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 })
                             }
                     }
-
-
-
+                case 'competitors':
+                    switch (action.color) {
+                        case 'blue':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.blueHeaderValues.length > 1) {
+                                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
                     
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        case 'red':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.redHeaderValues.length > 1) {
+                                                        battleCard.redHeaderValues = battleCard.redHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
                     
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                    }
+                case 'caseStudies':
+                    switch (action.color) {
+                        case 'blue':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.blueHeaderValues.length > 1) {
+                                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
+                    
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        case 'red':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.redHeaderValues.length > 1) {
+                                                        battleCard.redHeaderValues = battleCard.redHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        caseStudies: {
+                                            ...state.data.caseStudies,
+                                            caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
+                    
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                    }           
         }
         case ADD_BLUE_HEADER_VALUE:
             switch (action.section) {
@@ -848,7 +1195,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
-                                section: 'competitors'
+                                section: 'competitors',
+                                blueHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: '',
+                                    height: '30px'
+                                }],
+                                redHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: '',
+                                    height: '30px'
+                                }]
                             }])}
 
                         }
@@ -866,7 +1223,17 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
-                                section: 'caseStudies'
+                                section: 'caseStudies',
+                                blueHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: '',
+                                    height: '30px'
+                                }],
+                                redHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: '',
+                                    height: '30px'
+                                }]
                             }])}
                         }
                     })

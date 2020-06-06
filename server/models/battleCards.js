@@ -14,7 +14,9 @@ const battleCardsSchema = new mongoose.Schema({
             battleCardId: String,
             isEmptyAddButtonState: Boolean,
             titleValue: String,
-            section: String
+            section: String,
+            blueHeaderValues: [],
+            redHeaderValues: []
         }], 
     },
     battleCards: {
@@ -44,7 +46,9 @@ const battleCardsSchema = new mongoose.Schema({
             battleCardId: String,
             isEmptyAddButtonState: Boolean,
             titleValue: String,
-            section: String
+            section: String,
+            blueHeaderValues: [],
+            redHeaderValues: []
         }],
         profilesBattleCards: [{
             cards: [{

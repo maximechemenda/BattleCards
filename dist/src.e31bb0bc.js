@@ -32532,7 +32532,29 @@ var initialBattleCardsState = {
   data: {
     id: (0, _uuid.v4)(),
     caseStudies: {
-      caseStudiesBattleCards: []
+      caseStudiesBattleCards: [{
+        cards: [{
+          cardId: (0, _uuid.v4)(),
+          text: '',
+          cardType: 'warning',
+          editing: false,
+          height: '50px'
+        }],
+        battleCardId: (0, _uuid.v4)(),
+        isEmptyAddButtonState: true,
+        titleValue: '',
+        section: 'caseStudies',
+        blueHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }],
+        redHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }]
+      }]
     },
     battleCards: {
       objectionsBattleCards: [{
@@ -32547,8 +32569,16 @@ var initialBattleCardsState = {
         isEmptyAddButtonState: true,
         titleValue: '',
         section: 'objections',
-        blueHeaderValues: [],
-        redHeaderValues: []
+        blueHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }],
+        redHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }]
       }],
       competitorsBattleCards: [{
         cards: [{
@@ -32561,7 +32591,17 @@ var initialBattleCardsState = {
         battleCardId: (0, _uuid.v4)(),
         isEmptyAddButtonState: true,
         titleValue: '',
-        section: 'competitors'
+        section: 'competitors',
+        blueHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }],
+        redHeaderValues: [{
+          headerId: (0, _uuid.v4)(),
+          headerText: '',
+          height: '30px'
+        }]
       }],
       profilesBattleCards: [{
         cards: {
@@ -32724,6 +32764,294 @@ var battleCards = function battleCards() {
                   data: _objectSpread(_objectSpread({}, state.data), {}, {
                     battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
                       objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
+          }
+
+        case 'competitors':
+          switch (action.color) {
+            case 'blue':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.blueHeaderValues.length > 1) {
+                            battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
+                          }
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
+            case 'red':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.redHeaderValues.length > 1) {
+                            battleCard.redHeaderValues = battleCard.redHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
+                          }
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
+          }
+
+        case 'caseStudies':
+          switch (action.color) {
+            case 'blue':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.blueHeaderValues.length > 1) {
+                            battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
+                          }
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
+            case 'red':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.redHeaderValues.length > 1) {
+                            battleCard.redHeaderValues = battleCard.redHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
+                          }
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    caseStudies: _objectSpread(_objectSpread({}, state.data.caseStudies), {}, {
+                      caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
                         if (battleCard.battleCardId === action.battleCardId) {
                           battleCard.redHeaderValues = battleCard.redHeaderValues.map(function (header) {
                             if (header.headerId === action.headerId) {
@@ -33300,7 +33628,17 @@ var battleCards = function battleCards() {
                   battleCardId: (0, _uuid.v4)(),
                   isEmptyAddButtonState: true,
                   titleValue: '',
-                  section: 'competitors'
+                  section: 'competitors',
+                  blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }]
                 }])
               })
             })
@@ -33315,7 +33653,17 @@ var battleCards = function battleCards() {
                   battleCardId: (0, _uuid.v4)(),
                   isEmptyAddButtonState: true,
                   titleValue: '',
-                  section: 'caseStudies'
+                  section: 'caseStudies',
+                  blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }]
                 }])
               })
             })
@@ -37006,13 +37354,17 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     modifyBattleCardTitle: modifyBattleCardTitle,
     caseStudiesBattleCards: caseStudiesBattleCards,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }), selectedCaseStudiesBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement(SelectedCaseStudiesBattleCards, {
     selectedCaseStudiesBattleCards: selectedCaseStudiesBattleCards,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }))), !isEmptyBattleCardsState && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "smallIndex"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -37236,12 +37588,16 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }))));
 };
 
 var SelectedCaseStudiesBattleCards = function SelectedCaseStudiesBattleCards(_ref2) {
-  var selectedCaseStudiesBattleCards = _ref2.selectedCaseStudiesBattleCards,
+  var addBlueHeaderValue = _ref2.addBlueHeaderValue,
+      editBlueHeaderValue = _ref2.editBlueHeaderValue,
+      selectedCaseStudiesBattleCards = _ref2.selectedCaseStudiesBattleCards,
       deleteBattleCard = _ref2.deleteBattleCard,
       modifyBattleCardTitle = _ref2.modifyBattleCardTitle,
       addCard = _ref2.addCard;
@@ -37255,13 +37611,19 @@ var SelectedCaseStudiesBattleCards = function SelectedCaseStudiesBattleCards(_re
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: _actions.triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }));
   }));
 };
 
 var SelectedBattleCards = function SelectedBattleCards(_ref3) {
-  var selectedBattleCards = _ref3.selectedBattleCards,
+  var addBlueHeaderValue = _ref3.addBlueHeaderValue,
+      editBlueHeaderValue = _ref3.editBlueHeaderValue,
+      selectedBattleCards = _ref3.selectedBattleCards,
       deleteBattleCard = _ref3.deleteBattleCard,
       modifyBattleCardTitle = _ref3.modifyBattleCardTitle,
       addCard = _ref3.addCard;
@@ -37275,7 +37637,11 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: _actions.triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }), battleCard.section === 'competitors' && /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
@@ -37285,7 +37651,11 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: _actions.triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }), battleCard.section === 'caseStudies' && /*#__PURE__*/_react.default.createElement(CaseStudiesBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
@@ -37295,7 +37665,11 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: _actions.triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }));
   }));
 };
@@ -37331,27 +37705,35 @@ var IndependentBattleCards = function IndependentBattleCards(_ref4) {
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement(ProfilesBattleCards, {
     addBattleCard: addBattleCard,
     profilesBattleCards: profilesBattleCards,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }), !isEmptyDiscoveriesState && /*#__PURE__*/_react.default.createElement(DiscoveriesBattleCards, {
     addBattleCard: addBattleCard,
     discoveriesBattleCards: discoveriesBattleCards,
     deleteBattleCard: deleteBattleCard,
     modifyBattleCardTitle: modifyBattleCardTitle,
     triggerAddCardState: triggerAddCardState,
-    addCard: addCard
+    addCard: addCard,
+    addBlueHeaderValue: addBlueHeaderValue,
+    editBlueHeaderValue: editBlueHeaderValue
   }));
 }; //////////////////////  CASE STUDIES /////////////////////
 
 
 var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref5) {
-  var addBattleCard = _ref5.addBattleCard,
+  var editBlueHeaderValue = _ref5.editBlueHeaderValue,
+      addBlueHeaderValue = _ref5.addBlueHeaderValue,
+      addBattleCard = _ref5.addBattleCard,
       caseStudiesBattleCards = _ref5.caseStudiesBattleCards,
       deleteBattleCard = _ref5.deleteBattleCard,
       modifyBattleCardTitle = _ref5.modifyBattleCardTitle,
@@ -37369,13 +37751,20 @@ var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref5) {
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }));
   }));
 };
 
 var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref6) {
-  var cards = _ref6.cards,
+  var editBlueHeaderValue = _ref6.editBlueHeaderValue,
+      blueHeaderValues = _ref6.blueHeaderValues,
+      redHeaderValues = _ref6.redHeaderValues,
+      cards = _ref6.cards,
       deleteBattleCard = _ref6.deleteBattleCard,
       battleCardId = _ref6.battleCardId,
       isEmptyAddButtonState = _ref6.isEmptyAddButtonState,
@@ -37410,7 +37799,73 @@ var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref6) {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fa fa-axe-battle"
-  }), /*#__PURE__*/_react.default.createElement("span", null, " Case Study"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Case Study")), /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      width: '50%',
+      float: 'left'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "blueLine"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardBlueHeaderTitle"
+  }, "GOOD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        marginBottom: '-18px'
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      style: {
+        float: 'left',
+        marginTop: '10px'
+      }
+    }, "\u25CF"), /*#__PURE__*/_react.default.createElement("textarea", {
+      placeholder: "Text goes here",
+      className: "blueHeaderValue",
+      style: {
+        height: header.height
+      },
+      id: header.headerId,
+      onKeyDown: function onKeyDown(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue');
+      },
+      onBlur: function onBlur(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue');
+      }
+    }, header.headerText));
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      width: '50%',
+      float: 'right'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "redLine"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardRedHeaderTitle"
+  }, "BAD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        marginBottom: '-18px'
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      style: {
+        float: 'left',
+        marginTop: '10px'
+      }
+    }, "\u25CF"), /*#__PURE__*/_react.default.createElement("textarea", {
+      placeholder: "Text goes here",
+      className: "redHeaderValue",
+      style: {
+        height: header.height
+      },
+      id: header.headerId,
+      onKeyDown: function onKeyDown(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red');
+      },
+      onBlur: function onBlur(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red');
+      }
+    }, header.headerText));
+  })))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     section: section
@@ -37477,7 +37932,6 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref8) {
 
 var ObjectionsBattleCard = function ObjectionsBattleCard(_ref9) {
   var editBlueHeaderValue = _ref9.editBlueHeaderValue,
-      addBlueHeaderValue = _ref9.addBlueHeaderValue,
       blueHeaderValues = _ref9.blueHeaderValues,
       redHeaderValues = _ref9.redHeaderValues,
       cards = _ref9.cards,
@@ -37647,7 +38101,9 @@ var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref10) {
 
 
 var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
-  var addBattleCard = _ref11.addBattleCard,
+  var editBlueHeaderValue = _ref11.editBlueHeaderValue,
+      addBlueHeaderValue = _ref11.addBlueHeaderValue,
+      addBattleCard = _ref11.addBattleCard,
       competitorsBattleCards = _ref11.competitorsBattleCards,
       deleteBattleCard = _ref11.deleteBattleCard,
       modifyBattleCardTitle = _ref11.modifyBattleCardTitle,
@@ -37665,13 +38121,20 @@ var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
       modifyBattleCardTitle: modifyBattleCardTitle,
       titleValue: battleCard.titleValue,
       triggerAddCardState: triggerAddCardState,
-      addCard: addCard
+      addCard: addCard,
+      blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
+      addBlueHeaderValue: addBlueHeaderValue,
+      editBlueHeaderValue: editBlueHeaderValue
     }));
   }));
 };
 
 var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
-  var cards = _ref12.cards,
+  var editBlueHeaderValue = _ref12.editBlueHeaderValue,
+      blueHeaderValues = _ref12.blueHeaderValues,
+      redHeaderValues = _ref12.redHeaderValues,
+      cards = _ref12.cards,
       deleteBattleCard = _ref12.deleteBattleCard,
       battleCardId = _ref12.battleCardId,
       isEmptyAddButtonState = _ref12.isEmptyAddButtonState,
@@ -37706,7 +38169,73 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
     className: "battleCardNameHeader"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fa fa-swords"
-  }), /*#__PURE__*/_react.default.createElement("span", null, " Competitor"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
+  }), /*#__PURE__*/_react.default.createElement("span", null, " Competitor")), /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      width: '50%',
+      float: 'left'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "blueLine"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardBlueHeaderTitle"
+  }, "GOOD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        marginBottom: '-18px'
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      style: {
+        float: 'left',
+        marginTop: '10px'
+      }
+    }, "\u25CF"), /*#__PURE__*/_react.default.createElement("textarea", {
+      placeholder: "Text goes here",
+      className: "blueHeaderValue",
+      style: {
+        height: header.height
+      },
+      id: header.headerId,
+      onKeyDown: function onKeyDown(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue');
+      },
+      onBlur: function onBlur(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue');
+      }
+    }, header.headerText));
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      width: '50%',
+      float: 'right'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "redLine"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardRedHeaderTitle"
+  }, "BAD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        marginBottom: '-18px'
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      style: {
+        float: 'left',
+        marginTop: '10px'
+      }
+    }, "\u25CF"), /*#__PURE__*/_react.default.createElement("textarea", {
+      placeholder: "Text goes here",
+      className: "redHeaderValue",
+      style: {
+        height: header.height
+      },
+      id: header.headerId,
+      onKeyDown: function onKeyDown(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red');
+      },
+      onBlur: function onBlur(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red');
+      }
+    }, header.headerText));
+  })))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
     cards: cards,
     battleCardId: battleCardId,
     isEmptyAddButtonState: isEmptyAddButtonState,
@@ -38230,7 +38759,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57909" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65017" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
