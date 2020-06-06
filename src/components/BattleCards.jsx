@@ -613,25 +613,33 @@ const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHead
                 <span> Objection</span>
             </span>
 
-            <span>
-                Good Arguments
-                <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button>
-            </span>
-            
-            <div>
-                {blueHeaderValues.map(header => 
-                    <div>
-                        <span style={{float: 'left'}}>●</span>
-                        <textarea
-                            className="blueHeaderValue"
-                            style={{height: header.height}} id={header.headerId} 
-                            onKeyPress={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section)}
-                            onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section)}>
-                            {header.headerText}
-                        </textarea>
-                    </div>
-                )}
+            <div style={{width: '50%'}}>
+                <div className="blueLine"></div>
+
+                <span className="battleCardHeaderTitle">
+                    GOOD ARGUMENTS
+                    {/* <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button> */}
+                </span>
+                
+                <div>
+                    {blueHeaderValues.map(header => 
+                        <div style={{marginBottom: '-17px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="blueHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode)}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode)}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
             </div>
+
+            
 
         </div>
         <br></br>

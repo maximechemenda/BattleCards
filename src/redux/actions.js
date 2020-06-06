@@ -11,12 +11,13 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     EDIT_BLUE_HEADER_VALUE} from './actionTypes';
 
 
-export const editBlueHeaderValue = (text, battleCardId, headerId, section) => ({
+export const editBlueHeaderValue = (text, battleCardId, headerId, section, keyCode) => ({
     type: EDIT_BLUE_HEADER_VALUE,
     text,
     battleCardId,
     headerId,
-    section
+    section,
+    keyCode
 })
 
 export const addBlueHeaderValue = (battleCardId, section) => ({
