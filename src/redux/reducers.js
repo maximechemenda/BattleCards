@@ -16,9 +16,7 @@ const initialBattleCardsState = {
         id: uuid(),
         caseStudies: {
             caseStudiesBattleCards: []
-        },
-
-    
+        },    
         battleCards: {
             objectionsBattleCards: [
                 {
@@ -33,7 +31,8 @@ const initialBattleCardsState = {
                     isEmptyAddButtonState: true,
                     titleValue: '',
                     section: 'objections',
-                    blueHeaderValues: []
+                    blueHeaderValues: [],
+                    redHeaderValues: []
                 }
             ],
             competitorsBattleCards: [
@@ -102,81 +101,164 @@ export const battleCards = (state = initialBattleCardsState, action) => {
         case EDIT_BLUE_HEADER_VALUE:
             switch (action.section) {
                 case 'objections':
-                    if (action.keyCode === 13) {
-                        return ({
-                            ...state,
-                            data: {
-                                ...state.data,
-                                battleCards: {
-                                    ...state.data.battleCards,
-                                    objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
-                                        if (battleCard.battleCardId === action.battleCardId) {
-                                            battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                                                headerId: uuid(),
-                                                headerText: '',
-                                                height: '30px'
-                                            }])
-                                        }
-                                        return battleCard
-                                    })
-                                }
-                            }
-                        })
-                    } else if (action.text.length === 0 && action.keyCode === 8) {
-                        console.log('hey bro')
-                        return ({
-                            ...state,
-                            data: {
-                                ...state.data,
-                                battleCards: {
-                                    ...state.data.battleCards,
-                                    objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
-                                        if (battleCard.battleCardId === action.battleCardId) {
-                                            if (battleCard.blueHeaderValues.length > 1) {
-                                                battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(header => header.headerId !== action.headerId)
-                                            }
-                                            
-                                        }
-                                        return battleCard
-                                    })
-                                }
-                            }
-                        })
-                    } else {
-                        return ({
-                            ...state,
-                            data: {
-                                ...state.data,
-                                battleCards: {
-                                    ...state.data.battleCards,
-                                    objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
-                                        if (battleCard.battleCardId === action.battleCardId) {
-                                            battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(header => {
-                                                if (header.headerId === action.headerId) {
-                                                    header.headerText = action.text
-    
-                                                    var textarea = document.getElementById(header.headerId)
-        
-                                                    textarea.style.cssText = 'height:30px; padding:0';
-            
-                                                    var height = textarea.scrollHeight - 4 + 10
-                                                    textarea.style.cssText = 'height:' + height + 'px;padding:0';
-    
-                                                    if (height >= 30) {
-                                                        header.height = height + 'px'
-                                                    } else {
-                                                        header.height = '30px'
-                                                    }
+                    switch (action.color) {
+                        case 'blue':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
                                                 }
-                                                return header
+                                                return battleCard
                                             })
                                         }
-                                        return battleCard
-                                    })
-                                }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.blueHeaderValues.length > 1) {
+                                                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
+                    
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
                             }
-                        })
+                        case 'red':
+                            if (action.keyCode === 13) {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                                                        headerId: uuid(),
+                                                        headerText: '',
+                                                        height: '30px'
+                                                    }])
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else if (action.text.length === 0 && action.keyCode === 8) {
+                                console.log('hey bro')
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    if (battleCard.redHeaderValues.length > 1) {
+                                                        battleCard.redHeaderValues = battleCard.redHeaderValues.filter(header => header.headerId !== action.headerId)
+                                                    }
+                                                    
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            } else {
+                                return ({
+                                    ...state,
+                                    data: {
+                                        ...state.data,
+                                        battleCards: {
+                                            ...state.data.battleCards,
+                                            objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
+                                                if (battleCard.battleCardId === action.battleCardId) {
+                                                    battleCard.redHeaderValues = battleCard.redHeaderValues.map(header => {
+                                                        if (header.headerId === action.headerId) {
+                                                            header.headerText = action.text
+            
+                                                            var textarea = document.getElementById(header.headerId)
+                
+                                                            textarea.style.cssText = 'height:30px; padding:0';
+                    
+                                                            var height = textarea.scrollHeight - 4 + 10
+                                                            textarea.style.cssText = 'height:' + height + 'px;padding:0';
+            
+                                                            if (height >= 30) {
+                                                                header.height = height + 'px'
+                                                            } else {
+                                                                header.height = '30px'
+                                                            }
+                                                        }
+                                                        return header
+                                                    })
+                                                }
+                                                return battleCard
+                                            })
+                                        }
+                                    }
+                                })
+                            }
                     }
+
+
+
+                    
                     
         }
         case ADD_BLUE_HEADER_VALUE:
@@ -742,6 +824,11 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 titleValue: '',
                                 section: 'objections',
                                 blueHeaderValues: [{
+                                    headerId: uuid(),
+                                    headerText: '',
+                                    height: '30px'
+                                }],
+                                redHeaderValues: [{
                                     headerId: uuid(),
                                     headerText: '',
                                     height: '30px'

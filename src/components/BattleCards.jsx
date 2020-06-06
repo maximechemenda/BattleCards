@@ -590,6 +590,7 @@ const ObjectionsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBatt
                     triggerAddCardState={triggerAddCardState}
                     addCard={addCard}
                     blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
                     />
@@ -597,7 +598,7 @@ const ObjectionsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBatt
     )}</div>
 )
 
-const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
 
     <div className="battleCard">   
         <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
@@ -613,24 +614,52 @@ const ObjectionsBattleCard = ({editBlueHeaderValue, addBlueHeaderValue, blueHead
                 <span> Objection</span>
             </span>
 
-            <div style={{width: '50%'}}>
+            {/* BLUE HEADER VALUES */}
+            <div style={{width: '50%', float: 'left'}}>
                 <div className="blueLine"></div>
 
-                <span className="battleCardHeaderTitle">
+                <span className="battleCardBlueHeaderTitle">
                     GOOD ARGUMENTS
                     {/* <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button> */}
                 </span>
                 
                 <div>
                     {blueHeaderValues.map(header => 
-                        <div style={{marginBottom: '-17px'}}>
+                        <div style={{marginBottom: '-18px'}}>
                             <span style={{float: 'left', marginTop: '10px'}}>●</span>
                             <textarea
                                 placeholder = 'Text goes here'
                                 className="blueHeaderValue"
                                 style={{height: header.height}} id={header.headerId} 
-                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode)}
-                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode)}>
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+            {/* RED HEADER VALUES */}
+            <div style={{width: '50%', float: 'right'}}>
+                <div className="redLine"></div>
+
+                <span className="battleCardRedHeaderTitle">
+                    BAD ARGUMENTS
+                    {/* <button onClick={() => addBlueHeaderValue(battleCardId, section)}>+</button> */}
+                </span>
+                
+                <div>
+                    {redHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="redHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red')}>
                                 {header.headerText}
                             </textarea>
                         </div> 

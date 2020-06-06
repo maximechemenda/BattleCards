@@ -30,7 +30,8 @@ const battleCardsSchema = new mongoose.Schema({
             isEmptyAddButtonState: Boolean,
             titleValue: String,
             section: String,
-            blueHeaderValues: []
+            blueHeaderValues: [],
+            redHeaderValues: []
         }],
         competitorsBattleCards: [{
             cards: [{

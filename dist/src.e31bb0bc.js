@@ -32547,7 +32547,8 @@ var initialBattleCardsState = {
         isEmptyAddButtonState: true,
         titleValue: '',
         section: 'objections',
-        blueHeaderValues: []
+        blueHeaderValues: [],
+        redHeaderValues: []
       }],
       competitorsBattleCards: [{
         cards: [{
@@ -32609,73 +32610,147 @@ var battleCards = function battleCards() {
     case _actionTypes.EDIT_BLUE_HEADER_VALUE:
       switch (action.section) {
         case 'objections':
-          if (action.keyCode === 13) {
-            return _objectSpread(_objectSpread({}, state), {}, {
-              data: _objectSpread(_objectSpread({}, state.data), {}, {
-                battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
-                  objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
-                    if (battleCard.battleCardId === action.battleCardId) {
-                      battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
-                        headerId: (0, _uuid.v4)(),
-                        headerText: '',
-                        height: '30px'
-                      }]);
-                    }
+          switch (action.color) {
+            case 'blue':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
 
-                    return battleCard;
+                        return battleCard;
+                      })
+                    })
                   })
-                })
-              })
-            });
-          } else if (action.text.length === 0 && action.keyCode === 8) {
-            console.log('hey bro');
-            return _objectSpread(_objectSpread({}, state), {}, {
-              data: _objectSpread(_objectSpread({}, state.data), {}, {
-                battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
-                  objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
-                    if (battleCard.battleCardId === action.battleCardId) {
-                      if (battleCard.blueHeaderValues.length > 1) {
-                        battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(function (header) {
-                          return header.headerId !== action.headerId;
-                        });
-                      }
-                    }
-
-                    return battleCard;
-                  })
-                })
-              })
-            });
-          } else {
-            return _objectSpread(_objectSpread({}, state), {}, {
-              data: _objectSpread(_objectSpread({}, state.data), {}, {
-                battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
-                  objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
-                    if (battleCard.battleCardId === action.battleCardId) {
-                      battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(function (header) {
-                        if (header.headerId === action.headerId) {
-                          header.headerText = action.text;
-                          var textarea = document.getElementById(header.headerId);
-                          textarea.style.cssText = 'height:30px; padding:0';
-                          var height = textarea.scrollHeight - 4 + 10;
-                          textarea.style.cssText = 'height:' + height + 'px;padding:0';
-
-                          if (height >= 30) {
-                            header.height = height + 'px';
-                          } else {
-                            header.height = '30px';
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.blueHeaderValues.length > 1) {
+                            battleCard.blueHeaderValues = battleCard.blueHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
                           }
                         }
 
-                        return header;
-                      });
-                    }
-
-                    return battleCard;
+                        return battleCard;
+                      })
+                    })
                   })
-                })
-              })
-            });
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.blueHeaderValues = battleCard.blueHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
+            case 'red':
+              if (action.keyCode === 13) {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.concat([{
+                            headerId: (0, _uuid.v4)(),
+                            headerText: '',
+                            height: '30px'
+                          }]);
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else if (action.text.length === 0 && action.keyCode === 8) {
+                console.log('hey bro');
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          if (battleCard.redHeaderValues.length > 1) {
+                            battleCard.redHeaderValues = battleCard.redHeaderValues.filter(function (header) {
+                              return header.headerId !== action.headerId;
+                            });
+                          }
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              } else {
+                return _objectSpread(_objectSpread({}, state), {}, {
+                  data: _objectSpread(_objectSpread({}, state.data), {}, {
+                    battleCards: _objectSpread(_objectSpread({}, state.data.battleCards), {}, {
+                      objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
+                        if (battleCard.battleCardId === action.battleCardId) {
+                          battleCard.redHeaderValues = battleCard.redHeaderValues.map(function (header) {
+                            if (header.headerId === action.headerId) {
+                              header.headerText = action.text;
+                              var textarea = document.getElementById(header.headerId);
+                              textarea.style.cssText = 'height:30px; padding:0';
+                              var height = textarea.scrollHeight - 4 + 10;
+                              textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                              if (height >= 30) {
+                                header.height = height + 'px';
+                              } else {
+                                header.height = '30px';
+                              }
+                            }
+
+                            return header;
+                          });
+                        }
+
+                        return battleCard;
+                      })
+                    })
+                  })
+                });
+              }
+
           }
 
       }
@@ -33202,6 +33277,11 @@ var battleCards = function battleCards() {
                   titleValue: '',
                   section: 'objections',
                   blueHeaderValues: [{
+                    headerId: (0, _uuid.v4)(),
+                    headerText: '',
+                    height: '30px'
+                  }],
+                  redHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
                     headerText: '',
                     height: '30px'
@@ -35779,14 +35859,15 @@ var _actionTypes = require("./actionTypes");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import uuid from 'uuid';
-var editBlueHeaderValue = function editBlueHeaderValue(text, battleCardId, headerId, section, keyCode) {
+var editBlueHeaderValue = function editBlueHeaderValue(text, battleCardId, headerId, section, keyCode, color) {
   return {
     type: _actionTypes.EDIT_BLUE_HEADER_VALUE,
     text: text,
     battleCardId: battleCardId,
     headerId: headerId,
     section: section,
-    keyCode: keyCode
+    keyCode: keyCode,
+    color: color
   };
 };
 
@@ -37387,6 +37468,7 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref8) {
       triggerAddCardState: triggerAddCardState,
       addCard: addCard,
       blueHeaderValues: battleCard.blueHeaderValues,
+      redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
       editBlueHeaderValue: editBlueHeaderValue
     }));
@@ -37397,6 +37479,7 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref9) {
   var editBlueHeaderValue = _ref9.editBlueHeaderValue,
       addBlueHeaderValue = _ref9.addBlueHeaderValue,
       blueHeaderValues = _ref9.blueHeaderValues,
+      redHeaderValues = _ref9.redHeaderValues,
       cards = _ref9.cards,
       deleteBattleCard = _ref9.deleteBattleCard,
       battleCardId = _ref9.battleCardId,
@@ -37434,16 +37517,17 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref9) {
     className: "fa fa-axe-battle"
   }), /*#__PURE__*/_react.default.createElement("span", null, " Objection")), /*#__PURE__*/_react.default.createElement("div", {
     style: {
-      width: '50%'
+      width: '50%',
+      float: 'left'
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "blueLine"
   }), /*#__PURE__*/_react.default.createElement("span", {
-    className: "battleCardHeaderTitle"
+    className: "battleCardBlueHeaderTitle"
   }, "GOOD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, blueHeaderValues.map(function (header) {
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
-        marginBottom: '-17px'
+        marginBottom: '-18px'
       }
     }, /*#__PURE__*/_react.default.createElement("span", {
       style: {
@@ -37458,10 +37542,43 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref9) {
       },
       id: header.headerId,
       onKeyDown: function onKeyDown(e) {
-        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode);
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue');
       },
       onBlur: function onBlur(e) {
-        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode);
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue');
+      }
+    }, header.headerText));
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      width: '50%',
+      float: 'right'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "redLine"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "battleCardRedHeaderTitle"
+  }, "BAD ARGUMENTS"), /*#__PURE__*/_react.default.createElement("div", null, redHeaderValues.map(function (header) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        marginBottom: '-18px'
+      }
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      style: {
+        float: 'left',
+        marginTop: '10px'
+      }
+    }, "\u25CF"), /*#__PURE__*/_react.default.createElement("textarea", {
+      placeholder: "Text goes here",
+      className: "redHeaderValue",
+      style: {
+        height: header.height
+      },
+      id: header.headerId,
+      onKeyDown: function onKeyDown(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red');
+      },
+      onBlur: function onBlur(e) {
+        return editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red');
       }
     }, header.headerText));
   })))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Cards.default, {
@@ -38113,7 +38230,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57909" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
