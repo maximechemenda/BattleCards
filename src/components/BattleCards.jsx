@@ -41,7 +41,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         <div className="smallIndex">
             <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>Battlecards</div>
             <div className={isEmptyCaseStudiesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('caseStudies')}>Case Studies</div>
-            <div>
+            <div className="searchBarContainer">
                 <i className="fa fa-search"></i>
                 <input className="searchBar" placeholder='Search' 
                     onKeyDown={(e) => editSearchBoxValue(e.target.value)}
@@ -566,12 +566,12 @@ const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHead
                 var cardTexts = battleCard.cards.map(card => card.text);
                 var isContained = false;
 
-                if (title.includes(searchBoxValue)) {
+                if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
                     isContained = true;
                 }
 
                 cardTexts.forEach(text => {
-                    if (text.includes(searchBoxValue)) {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
                         isContained = true;
                     }
                 })

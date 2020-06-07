@@ -37379,7 +37379,9 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     onClick: function onClick() {
       return triggerBigSectionState('caseStudies');
     }
-  }, "Case Studies"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("i", {
+  }, "Case Studies"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "searchBarContainer"
+  }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fa fa-search"
   }), /*#__PURE__*/_react.default.createElement("input", {
     className: "searchBar",
@@ -37844,12 +37846,12 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
     });
     var isContained = false;
 
-    if (title.includes(searchBoxValue)) {
+    if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
       isContained = true;
     }
 
     cardTexts.forEach(function (text) {
-      if (text.includes(searchBoxValue)) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
         isContained = true;
       }
     });
@@ -38873,7 +38875,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64743" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
