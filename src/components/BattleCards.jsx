@@ -11,6 +11,7 @@ import { triggerAddCardState, triggerBigSectionState } from '../redux/actions'
 import { addBlueHeaderValue, editBlueHeaderValue } from '../redux/actions'
 import { connect } from 'react-redux'
 import { clearSelectedCaseStudiesBattleCards } from '../redux/actions'
+import { editSearchBoxValue } from '../redux/actions'
 import '../App.css'  
 import Cards from './Cards'
 
@@ -26,14 +27,29 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
         addBattleCardToSectionAndSelectedBattleCards, triggerAddCardState, addCard,
         isEmptyBattleCardsState, isEmptyCaseStudiesState, triggerBigSectionState,
         caseStudiesBattleCards, selectedCaseStudiesBattleCards,
-        clearSelectedCaseStudiesBattleCards, addBlueHeaderValue, editBlueHeaderValue}) => (
+        clearSelectedCaseStudiesBattleCards, addBlueHeaderValue, editBlueHeaderValue,
+        searchBoxValue, editSearchBoxValue}) => (
 
     <div>
+
+
+
+
+
 
 
         <div className="smallIndex">
             <div className={isEmptyBattleCardsState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('battleCards')}>Battlecards</div>
             <div className={isEmptyCaseStudiesState ? "unselectedSmallIndexButton" : "selectedSmallIndexButton"} onClick={() => triggerBigSectionState('caseStudies')}>Case Studies</div>
+            <div>
+                <i className="fa fa-search"></i>
+                <input className="searchBar" placeholder='Search' 
+                    onKeyDown={(e) => editSearchBoxValue(e.target.value)}
+                    onBlur={(e) => editSearchBoxValue(e.target.value)}>
+                    
+                </input>
+            </div>
+            
         </div>
 
 
@@ -322,6 +338,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     addCard={addCard}
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
+                    searchBoxValue={searchBoxValue}
                     />}
 
                     {(selectedBattleCards.length !== 0) &&
@@ -333,6 +350,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                     addCard={addCard}
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
+                    searchBoxValue={searchBoxValue}
                     />}
                 </div>
             </div>
@@ -375,7 +393,7 @@ const SelectedCaseStudiesBattleCards = ({addBlueHeaderValue, editBlueHeaderValue
 )
 
 
-const SelectedBattleCards = ({addBlueHeaderValue, editBlueHeaderValue, selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
+const SelectedBattleCards = ({searchBoxValue, addBlueHeaderValue, editBlueHeaderValue, selectedBattleCards, deleteBattleCard, modifyBattleCardTitle, addCard}) => (
     <div>
         
         {selectedBattleCards.map(battleCard => (
@@ -395,6 +413,7 @@ const SelectedBattleCards = ({addBlueHeaderValue, editBlueHeaderValue, selectedB
                     redHeaderValues={battleCard.redHeaderValues}
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
+                    searchBoxValue={searchBoxValue}
                     />
                 }
 
@@ -476,7 +495,7 @@ const SelectedBattleCards = ({addBlueHeaderValue, editBlueHeaderValue, selectedB
 const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCardTitle,
                                 isEmptyObjectionsState, isEmptyCompetitorsState, isEmptyProfilesState, isEmptyDiscoveriesState,
                                 objectionsBattleCards, competitorsBattleCards, profilesBattleCards, discoveriesBattleCards,
-                                triggerAddCardState, addCard, addBlueHeaderValue, editBlueHeaderValue}) => (
+                                triggerAddCardState, addCard, addBlueHeaderValue, editBlueHeaderValue, searchBoxValue}) => (
     <div>
 
         {!isEmptyObjectionsState &&
@@ -489,6 +508,7 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         addCard={addCard}
         addBlueHeaderValue={addBlueHeaderValue}
         editBlueHeaderValue={editBlueHeaderValue}
+        searchBoxValue={searchBoxValue}
         />}
 
         {!isEmptyCompetitorsState && 
@@ -529,6 +549,191 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 
     </div>
 )
+
+//////////////////////  OBJECTIONS /////////////////////
+
+const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHeaderValue, addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+    
+    <div>
+        {console.log(searchBoxValue)}
+
+
+        {searchBoxValue.length !== 0 &&
+        <div>
+            {console.log('entering searchBox part')}
+            {objectionsBattleCards.map(battleCard => {
+                var title = battleCard.titleValue;
+                var cardTexts = battleCard.cards.map(card => card.text);
+                var isContained = false;
+
+                if (title.includes(searchBoxValue)) {
+                    isContained = true;
+                }
+
+                cardTexts.forEach(text => {
+                    if (text.includes(searchBoxValue)) {
+                        isContained = true;
+                    }
+                })
+
+                if (isContained) {
+                    return <ObjectionsBattleCard
+                    cards={battleCard.cards}
+                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                    deleteBattleCard={deleteBattleCard}
+                    battleCardId={battleCard.battleCardId}
+                    section={'objections'}
+                    modifyBattleCardTitle={modifyBattleCardTitle}
+                    titleValue={battleCard.titleValue}
+                    triggerAddCardState={triggerAddCardState}
+                    addCard={addCard}
+                    blueHeaderValues={battleCard.blueHeaderValues}
+                    redHeaderValues={battleCard.redHeaderValues}
+                    addBlueHeaderValue={addBlueHeaderValue}
+                    editBlueHeaderValue={editBlueHeaderValue}
+                    />
+                }
+                
+            })}
+        </div>
+        }
+    
+
+
+        {searchBoxValue.length === 0 &&
+            <div>
+            {objectionsBattleCards.map((battleCard) => 
+                <div key={battleCard.battleCardId}>
+                        <ObjectionsBattleCard
+                            cards={battleCard.cards}
+                            isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                            deleteBattleCard={deleteBattleCard}
+                            battleCardId={battleCard.battleCardId}
+                            section={'objections'}
+                            modifyBattleCardTitle={modifyBattleCardTitle}
+                            titleValue={battleCard.titleValue}
+                            triggerAddCardState={triggerAddCardState}
+                            addCard={addCard}
+                            blueHeaderValues={battleCard.blueHeaderValues}
+                            redHeaderValues={battleCard.redHeaderValues}
+                            addBlueHeaderValue={addBlueHeaderValue}
+                            editBlueHeaderValue={editBlueHeaderValue}
+                            />
+                </div> 
+            )}</div>
+        
+        }
+    </div>
+
+
+
+        
+)
+
+const ObjectionsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
+
+    <div className="battleCard">   
+        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
+            <span className="battleCardTrash">
+                <i className="fa fa-trash"></i>
+            </span>
+        </div>
+        
+        <div className="cards">
+            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
+            <span className="battleCardNameHeader">
+                <i className="fa fa-axe-battle"></i>
+                <span> Objection</span>
+            </span>
+
+            {/* BLUE HEADER VALUES */}
+            <div style={{width: '50%', float: 'left'}}>
+                <div className="blueLine"></div>
+
+                <span className="battleCardBlueHeaderTitle">
+                    GOOD ARGUMENTS
+                </span>
+                
+                <div>
+                    {blueHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="blueHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+            {/* RED HEADER VALUES */}
+            <div style={{width: '50%', float: 'right'}}>
+                <div className="redLine"></div>
+
+                <span className="battleCardRedHeaderTitle">
+                    BAD ARGUMENTS
+                </span>
+                
+                <div>
+                    {redHeaderValues.map(header => 
+                        <div style={{marginBottom: '-18px'}}>
+                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
+                            <textarea
+                                placeholder = 'Text goes here'
+                                className="redHeaderValue"
+                                style={{height: header.height}} id={header.headerId} 
+                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red')}
+                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red')}>
+                                {header.headerText}
+                            </textarea>
+                        </div> 
+                    
+                    )}
+                </div>
+            </div>
+
+            
+
+        </div>
+        <br></br>
+
+        <Cards
+        cards={cards}
+        battleCardId = {battleCardId}
+        section = {section}
+        />
+
+        <div>
+            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
+
+            {!isEmptyAddButtonState &&
+            <NewObjectionsCardMenu 
+                addCard = {addCard}
+                battleCardId={battleCardId}
+                section={section}
+            />} 
+        </div>
+
+    </div>
+)
+
+const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
+    <div className="addCardMenu">
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</div>
+        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
+        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</div>
+    </div>
+)
+
 
 
 //////////////////////  CASE STUDIES /////////////////////
@@ -655,138 +860,6 @@ const NewCaseStudiesCardMenu = ({addCard, battleCardId, section}) => (
     <div className="addCardMenu">
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
         <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'keyTakeaway', section)}>Key Takeaway</div>
-    </div>
-)
-
-
-
-//////////////////////  OBJECTIONS /////////////////////
-
-const ObjectionsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
-    
-    <div>
-        {objectionsBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <ObjectionsBattleCard
-                    cards={battleCard.cards}
-                    isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
-                    deleteBattleCard={deleteBattleCard}
-                    battleCardId={battleCard.battleCardId}
-                    section={'objections'}
-                    modifyBattleCardTitle={modifyBattleCardTitle}
-                    titleValue={battleCard.titleValue}
-                    triggerAddCardState={triggerAddCardState}
-                    addCard={addCard}
-                    blueHeaderValues={battleCard.blueHeaderValues}
-                    redHeaderValues={battleCard.redHeaderValues}
-                    addBlueHeaderValue={addBlueHeaderValue}
-                    editBlueHeaderValue={editBlueHeaderValue}
-                    />
-        </div> 
-    )}</div>
-)
-
-const ObjectionsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
-
-    <div className="battleCard">   
-        <div onClick={() => deleteBattleCard(battleCardId, section)} className="deleteBattleCardButton">
-            <span className="battleCardTrash">
-                <i className="fa fa-trash"></i>
-            </span>
-        </div>
-        
-        <div className="cards">
-            <textarea onBlur={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} onKeyPress={(e) => modifyBattleCardTitle(e.target.value, battleCardId, 'objections')} placeholder="Title of Battle Card" className="titleBattleCard">{titleValue}</textarea>        
-            <span className="battleCardNameHeader">
-                <i className="fa fa-axe-battle"></i>
-                <span> Objection</span>
-            </span>
-
-            {/* BLUE HEADER VALUES */}
-            <div style={{width: '50%', float: 'left'}}>
-                <div className="blueLine"></div>
-
-                <span className="battleCardBlueHeaderTitle">
-                    GOOD ARGUMENTS
-                </span>
-                
-                <div>
-                    {blueHeaderValues.map(header => 
-                        <div style={{marginBottom: '-18px'}}>
-                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
-                            <textarea
-                                placeholder = 'Text goes here'
-                                className="blueHeaderValue"
-                                style={{height: header.height}} id={header.headerId} 
-                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'blue')}
-                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'blue')}>
-                                {header.headerText}
-                            </textarea>
-                        </div> 
-                    
-                    )}
-                </div>
-            </div>
-
-            {/* RED HEADER VALUES */}
-            <div style={{width: '50%', float: 'right'}}>
-                <div className="redLine"></div>
-
-                <span className="battleCardRedHeaderTitle">
-                    BAD ARGUMENTS
-                </span>
-                
-                <div>
-                    {redHeaderValues.map(header => 
-                        <div style={{marginBottom: '-18px'}}>
-                            <span style={{float: 'left', marginTop: '10px'}}>●</span>
-                            <textarea
-                                placeholder = 'Text goes here'
-                                className="redHeaderValue"
-                                style={{height: header.height}} id={header.headerId} 
-                                onKeyDown={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.keyCode, 'red')}
-                                onBlur={(e) => editBlueHeaderValue(e.target.value, battleCardId, header.headerId, section, e.charCode, 'red')}>
-                                {header.headerText}
-                            </textarea>
-                        </div> 
-                    
-                    )}
-                </div>
-            </div>
-
-            
-
-        </div>
-        <br></br>
-
-        <Cards
-        cards={cards}
-        battleCardId = {battleCardId}
-        section = {section}
-        />
-
-        <div>
-            {isEmptyAddButtonState && <AddCardButton section={section} battleCardId={battleCardId} triggerAddCardState={triggerAddCardState}/>}
-
-            {!isEmptyAddButtonState &&
-            <NewObjectionsCardMenu 
-                addCard = {addCard}
-                battleCardId={battleCardId}
-                section={section}
-            />} 
-        </div>
-
-    </div>
-)
-
-const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
-    <div className="addCardMenu">
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'goodQuestion', section)}>Good Question</div>
-        <div className='redAddButton' onClick = {() => addCard(battleCardId, 'badQuestion', section)}>Bad Question</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'offerDeal', section)}>Offer Deal</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'checklist', section)}>Checklist</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'commonAnswer', section)}>Common Answer</div>
-        <div className='unfilledAddButton' onClick = {() => addCard(battleCardId, 'text', section)}>Text</div>
     </div>
 )
 
@@ -1093,6 +1166,7 @@ const mapState = (state) => {
 
         isEmptyBattleCardsState: state.data.isEmptyBattleCardsState,
         isEmptyCaseStudiesState: state.data.isEmptyCaseStudiesState,
+        searchBoxValue: state.searchBoxValue
     })
 }
 
@@ -1101,4 +1175,4 @@ export default connect(mapState, { addBattleCard, deleteBattleCard, triggerSecti
                         addBattleCardToSectionAndSelectedBattleCards, 
                         triggerAddCardState, triggerBigSectionState, addCard,
                         clearSelectedCaseStudiesBattleCards, addBlueHeaderValue,
-                        editBlueHeaderValue})(BattleCardsMenu);
+                        editBlueHeaderValue, editSearchBoxValue})(BattleCardsMenu);

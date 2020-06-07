@@ -8,7 +8,7 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT,
         CLEAR_SELECTED_BATTLECARDS, ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
         FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
         TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS,
-        ADD_BLUE_HEADER_VALUE, EDIT_BLUE_HEADER_VALUE} from './actionTypes'
+        ADD_BLUE_HEADER_VALUE, EDIT_BLUE_HEADER_VALUE, EDIT_SEARCH_BOX_VALUE} from './actionTypes'
 
 
 const initialBattleCardsState = {
@@ -132,7 +132,8 @@ const initialBattleCardsState = {
         isEmptyCaseStudiesState: true
     },
     selectedBattleCards: [],
-    selectedCaseStudiesBattleCards: []
+    selectedCaseStudiesBattleCards: [],
+    searchBoxValue: ''
 }
 
 
@@ -140,6 +141,14 @@ const initialBattleCardsState = {
 export const battleCards = (state = initialBattleCardsState, action) => {
 
     switch (action.type) {
+        case EDIT_SEARCH_BOX_VALUE:
+            console.log('entering function')
+            return ({
+                ...state,
+                searchBoxValue: action.text
+            })
+
+
         case EDIT_BLUE_HEADER_VALUE:
             switch (action.section) {
                 case 'objections':
