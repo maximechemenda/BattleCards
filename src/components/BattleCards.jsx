@@ -564,6 +564,8 @@ const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHead
             {objectionsBattleCards.map(battleCard => {
                 var title = battleCard.titleValue;
                 var cardTexts = battleCard.cards.map(card => card.text);
+                var blueHeaderTexts = battleCard.blueHeaderValues.map(header => header.headerText)
+                var redHeaderTexts = battleCard.redHeaderValues.map(header => header.headerText)
                 var isContained = false;
 
                 if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
@@ -571,6 +573,18 @@ const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHead
                 }
 
                 cardTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                blueHeaderTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                redHeaderTexts.forEach(text => {
                     if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
                         isContained = true;
                     }

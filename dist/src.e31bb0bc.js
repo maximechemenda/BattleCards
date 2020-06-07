@@ -37844,6 +37844,12 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
     var cardTexts = battleCard.cards.map(function (card) {
       return card.text;
     });
+    var blueHeaderTexts = battleCard.blueHeaderValues.map(function (header) {
+      return header.headerText;
+    });
+    var redHeaderTexts = battleCard.redHeaderValues.map(function (header) {
+      return header.headerText;
+    });
     var isContained = false;
 
     if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
@@ -37851,6 +37857,16 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
     }
 
     cardTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    blueHeaderTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    redHeaderTexts.forEach(function (text) {
       if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
         isContained = true;
       }
@@ -38875,7 +38891,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49372" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49587" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
