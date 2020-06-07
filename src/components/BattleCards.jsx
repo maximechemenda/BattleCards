@@ -113,6 +113,7 @@ const BattleCardsMenu = ({triggerSectionState, addBattleCard, deleteBattleCard,
                         addCard={addCard}
                         addBlueHeaderValue={addBlueHeaderValue}
                         editBlueHeaderValue={editBlueHeaderValue}
+                        searchBoxValue={searchBoxValue}
                         />}
 
                         {(selectedCaseStudiesBattleCards.length !== 0) &&
@@ -521,6 +522,7 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
         addCard={addCard}
         addBlueHeaderValue={addBlueHeaderValue}
         editBlueHeaderValue={editBlueHeaderValue}
+        searchBoxValue={searchBoxValue}
         />}
 
         {!isEmptyProfilesState && 
@@ -555,12 +557,8 @@ const IndependentBattleCards = ({addBattleCard, deleteBattleCard, modifyBattleCa
 const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHeaderValue, addBattleCard, objectionsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-        {console.log(searchBoxValue)}
-
-
         {searchBoxValue.length !== 0 &&
         <div>
-            {console.log('entering searchBox part')}
             {objectionsBattleCards.map(battleCard => {
                 var title = battleCard.titleValue;
                 var cardTexts = battleCard.cards.map(card => card.text);
@@ -612,8 +610,6 @@ const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHead
         </div>
         }
     
-
-
         {searchBoxValue.length === 0 &&
             <div>
             {objectionsBattleCards.map((battleCard) => 
@@ -637,11 +633,7 @@ const ObjectionsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHead
             )}</div>
         
         }
-    </div>
-
-
-
-        
+    </div>        
 )
 
 const ObjectionsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
@@ -752,12 +744,42 @@ const NewObjectionsCardMenu = ({addCard, battleCardId, section}) => (
 
 //////////////////////  CASE STUDIES /////////////////////
 
-const CaseStudiesBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, caseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const CaseStudiesBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHeaderValue, addBattleCard, caseStudiesBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-        {caseStudiesBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <CaseStudiesBattleCard
+        {searchBoxValue.length !== 0 &&
+        <div>
+            {caseStudiesBattleCards.map(battleCard => {
+                var title = battleCard.titleValue;
+                var cardTexts = battleCard.cards.map(card => card.text);
+                var blueHeaderTexts = battleCard.blueHeaderValues.map(header => header.headerText)
+                var redHeaderTexts = battleCard.redHeaderValues.map(header => header.headerText)
+                var isContained = false;
+
+                if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                    isContained = true;
+                }
+
+                cardTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                blueHeaderTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                redHeaderTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                if (isContained) {
+                    return <CaseStudiesBattleCard
                     cards={battleCard.cards}
                     isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                     deleteBattleCard={deleteBattleCard}
@@ -772,8 +794,36 @@ const CaseStudiesBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBat
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
                     />
-        </div> 
-    )}</div>
+                }
+                
+            })}
+        </div>
+        }
+    
+        {searchBoxValue.length === 0 &&
+            <div>
+            {caseStudiesBattleCards.map((battleCard) => 
+                <div key={battleCard.battleCardId}>
+                        <CaseStudiesBattleCard
+                            cards={battleCard.cards}
+                            isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                            deleteBattleCard={deleteBattleCard}
+                            battleCardId={battleCard.battleCardId}
+                            section={'caseStudies'}
+                            modifyBattleCardTitle={modifyBattleCardTitle}
+                            titleValue={battleCard.titleValue}
+                            triggerAddCardState={triggerAddCardState}
+                            addCard={addCard}
+                            blueHeaderValues={battleCard.blueHeaderValues}
+                            redHeaderValues={battleCard.redHeaderValues}
+                            addBlueHeaderValue={addBlueHeaderValue}
+                            editBlueHeaderValue={editBlueHeaderValue}
+                            />
+                </div> 
+            )}</div>
+        
+        }
+    </div>        
 )
 
 const CaseStudiesBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (
@@ -880,12 +930,42 @@ const NewCaseStudiesCardMenu = ({addCard, battleCardId, section}) => (
 
 //////////////////////  COMPETITORS /////////////////////
 
-const CompetitorsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
+const CompetitorsBattleCards = ({searchBoxValue, editBlueHeaderValue, addBlueHeaderValue, addBattleCard, competitorsBattleCards, deleteBattleCard, modifyBattleCardTitle, triggerAddCardState, addCard}) => (
     
     <div>
-        {competitorsBattleCards.map((battleCard) => 
-        <div key={battleCard.battleCardId}>
-                <CompetitorsBattleCard
+        {searchBoxValue.length !== 0 &&
+        <div>
+            {competitorsBattleCards.map(battleCard => {
+                var title = battleCard.titleValue;
+                var cardTexts = battleCard.cards.map(card => card.text);
+                var blueHeaderTexts = battleCard.blueHeaderValues.map(header => header.headerText)
+                var redHeaderTexts = battleCard.redHeaderValues.map(header => header.headerText)
+                var isContained = false;
+
+                if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                    isContained = true;
+                }
+
+                cardTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                blueHeaderTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                redHeaderTexts.forEach(text => {
+                    if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+                        isContained = true;
+                    }
+                })
+
+                if (isContained) {
+                    return <CompetitorsBattleCard
                     cards={battleCard.cards}
                     isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
                     deleteBattleCard={deleteBattleCard}
@@ -900,8 +980,36 @@ const CompetitorsBattleCards = ({editBlueHeaderValue, addBlueHeaderValue, addBat
                     addBlueHeaderValue={addBlueHeaderValue}
                     editBlueHeaderValue={editBlueHeaderValue}
                     />
-        </div> 
-    )}</div>
+                }
+                
+            })}
+        </div>
+        }
+    
+        {searchBoxValue.length === 0 &&
+            <div>
+            {competitorsBattleCards.map((battleCard) => 
+                <div key={battleCard.battleCardId}>
+                        <CompetitorsBattleCard
+                            cards={battleCard.cards}
+                            isEmptyAddButtonState={battleCard.isEmptyAddButtonState}
+                            deleteBattleCard={deleteBattleCard}
+                            battleCardId={battleCard.battleCardId}
+                            section={'competitors'}
+                            modifyBattleCardTitle={modifyBattleCardTitle}
+                            titleValue={battleCard.titleValue}
+                            triggerAddCardState={triggerAddCardState}
+                            addCard={addCard}
+                            blueHeaderValues={battleCard.blueHeaderValues}
+                            redHeaderValues={battleCard.redHeaderValues}
+                            addBlueHeaderValue={addBlueHeaderValue}
+                            editBlueHeaderValue={editBlueHeaderValue}
+                            />
+                </div> 
+            )}</div>
+        
+        }
+    </div>        
 )
 
 const CompetitorsBattleCard = ({editBlueHeaderValue, blueHeaderValues, redHeaderValues, cards, deleteBattleCard, battleCardId, isEmptyAddButtonState, section, modifyBattleCardTitle, titleValue, triggerAddCardState, addCard}) => (

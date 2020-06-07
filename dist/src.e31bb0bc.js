@@ -37449,7 +37449,8 @@ var BattleCardsMenu = function BattleCardsMenu(_ref) {
     triggerAddCardState: triggerAddCardState,
     addCard: addCard,
     addBlueHeaderValue: addBlueHeaderValue,
-    editBlueHeaderValue: editBlueHeaderValue
+    editBlueHeaderValue: editBlueHeaderValue,
+    searchBoxValue: searchBoxValue
   }), selectedCaseStudiesBattleCards.length !== 0 && /*#__PURE__*/_react.default.createElement(SelectedCaseStudiesBattleCards, {
     selectedCaseStudiesBattleCards: selectedCaseStudiesBattleCards,
     deleteBattleCard: deleteBattleCard,
@@ -37806,7 +37807,8 @@ var IndependentBattleCards = function IndependentBattleCards(_ref4) {
     triggerAddCardState: triggerAddCardState,
     addCard: addCard,
     addBlueHeaderValue: addBlueHeaderValue,
-    editBlueHeaderValue: editBlueHeaderValue
+    editBlueHeaderValue: editBlueHeaderValue,
+    searchBoxValue: searchBoxValue
   }), !isEmptyProfilesState && /*#__PURE__*/_react.default.createElement(ProfilesBattleCards, {
     addBattleCard: addBattleCard,
     profilesBattleCards: profilesBattleCards,
@@ -37839,7 +37841,7 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
       modifyBattleCardTitle = _ref5.modifyBattleCardTitle,
       triggerAddCardState = _ref5.triggerAddCardState,
       addCard = _ref5.addCard;
-  return /*#__PURE__*/_react.default.createElement("div", null, console.log(searchBoxValue), searchBoxValue.length !== 0 && /*#__PURE__*/_react.default.createElement("div", null, console.log('entering searchBox part'), objectionsBattleCards.map(function (battleCard) {
+  return /*#__PURE__*/_react.default.createElement("div", null, searchBoxValue.length !== 0 && /*#__PURE__*/_react.default.createElement("div", null, objectionsBattleCards.map(function (battleCard) {
     var title = battleCard.titleValue;
     var cardTexts = battleCard.cards.map(function (card) {
       return card.text;
@@ -38071,7 +38073,8 @@ var NewObjectionsCardMenu = function NewObjectionsCardMenu(_ref7) {
 
 
 var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref8) {
-  var editBlueHeaderValue = _ref8.editBlueHeaderValue,
+  var searchBoxValue = _ref8.searchBoxValue,
+      editBlueHeaderValue = _ref8.editBlueHeaderValue,
       addBlueHeaderValue = _ref8.addBlueHeaderValue,
       addBattleCard = _ref8.addBattleCard,
       caseStudiesBattleCards = _ref8.caseStudiesBattleCards,
@@ -38079,7 +38082,57 @@ var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref8) {
       modifyBattleCardTitle = _ref8.modifyBattleCardTitle,
       triggerAddCardState = _ref8.triggerAddCardState,
       addCard = _ref8.addCard;
-  return /*#__PURE__*/_react.default.createElement("div", null, caseStudiesBattleCards.map(function (battleCard) {
+  return /*#__PURE__*/_react.default.createElement("div", null, searchBoxValue.length !== 0 && /*#__PURE__*/_react.default.createElement("div", null, caseStudiesBattleCards.map(function (battleCard) {
+    var title = battleCard.titleValue;
+    var cardTexts = battleCard.cards.map(function (card) {
+      return card.text;
+    });
+    var blueHeaderTexts = battleCard.blueHeaderValues.map(function (header) {
+      return header.headerText;
+    });
+    var redHeaderTexts = battleCard.redHeaderValues.map(function (header) {
+      return header.headerText;
+    });
+    var isContained = false;
+
+    if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+      isContained = true;
+    }
+
+    cardTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    blueHeaderTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    redHeaderTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+
+    if (isContained) {
+      return /*#__PURE__*/_react.default.createElement(CaseStudiesBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: 'caseStudies',
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: triggerAddCardState,
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        redHeaderValues: battleCard.redHeaderValues,
+        addBlueHeaderValue: addBlueHeaderValue,
+        editBlueHeaderValue: editBlueHeaderValue
+      });
+    }
+  })), searchBoxValue.length === 0 && /*#__PURE__*/_react.default.createElement("div", null, caseStudiesBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: battleCard.battleCardId
     }, /*#__PURE__*/_react.default.createElement(CaseStudiesBattleCard, {
@@ -38097,7 +38150,7 @@ var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref8) {
       addBlueHeaderValue: addBlueHeaderValue,
       editBlueHeaderValue: editBlueHeaderValue
     }));
-  }));
+  })));
 };
 
 var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref9) {
@@ -38241,7 +38294,8 @@ var NewCaseStudiesCardMenu = function NewCaseStudiesCardMenu(_ref10) {
 
 
 var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
-  var editBlueHeaderValue = _ref11.editBlueHeaderValue,
+  var searchBoxValue = _ref11.searchBoxValue,
+      editBlueHeaderValue = _ref11.editBlueHeaderValue,
       addBlueHeaderValue = _ref11.addBlueHeaderValue,
       addBattleCard = _ref11.addBattleCard,
       competitorsBattleCards = _ref11.competitorsBattleCards,
@@ -38249,7 +38303,57 @@ var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
       modifyBattleCardTitle = _ref11.modifyBattleCardTitle,
       triggerAddCardState = _ref11.triggerAddCardState,
       addCard = _ref11.addCard;
-  return /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(function (battleCard) {
+  return /*#__PURE__*/_react.default.createElement("div", null, searchBoxValue.length !== 0 && /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(function (battleCard) {
+    var title = battleCard.titleValue;
+    var cardTexts = battleCard.cards.map(function (card) {
+      return card.text;
+    });
+    var blueHeaderTexts = battleCard.blueHeaderValues.map(function (header) {
+      return header.headerText;
+    });
+    var redHeaderTexts = battleCard.redHeaderValues.map(function (header) {
+      return header.headerText;
+    });
+    var isContained = false;
+
+    if (title.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+      isContained = true;
+    }
+
+    cardTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    blueHeaderTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+    redHeaderTexts.forEach(function (text) {
+      if (text.toLowerCase().includes(searchBoxValue.toLowerCase())) {
+        isContained = true;
+      }
+    });
+
+    if (isContained) {
+      return /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
+        cards: battleCard.cards,
+        isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
+        deleteBattleCard: deleteBattleCard,
+        battleCardId: battleCard.battleCardId,
+        section: 'competitors',
+        modifyBattleCardTitle: modifyBattleCardTitle,
+        titleValue: battleCard.titleValue,
+        triggerAddCardState: triggerAddCardState,
+        addCard: addCard,
+        blueHeaderValues: battleCard.blueHeaderValues,
+        redHeaderValues: battleCard.redHeaderValues,
+        addBlueHeaderValue: addBlueHeaderValue,
+        editBlueHeaderValue: editBlueHeaderValue
+      });
+    }
+  })), searchBoxValue.length === 0 && /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(function (battleCard) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: battleCard.battleCardId
     }, /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
@@ -38267,7 +38371,7 @@ var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
       addBlueHeaderValue: addBlueHeaderValue,
       editBlueHeaderValue: editBlueHeaderValue
     }));
-  }));
+  })));
 };
 
 var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
@@ -38891,7 +38995,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49631" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50570" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
