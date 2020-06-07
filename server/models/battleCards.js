@@ -14,6 +14,7 @@ const battleCardsSchema = new mongoose.Schema({
             battleCardId: String,
             isEmptyAddButtonState: Boolean,
             titleValue: String,
+            titleHeight: String,
             section: String,
             blueHeaderValues: [],
             redHeaderValues: []
@@ -31,6 +32,7 @@ const battleCardsSchema = new mongoose.Schema({
             battleCardId: String,
             isEmptyAddButtonState: Boolean,
             titleValue: String,
+            titleHeight: String,
             section: String,
             blueHeaderValues: [],
             redHeaderValues: []
@@ -46,6 +48,7 @@ const battleCardsSchema = new mongoose.Schema({
             battleCardId: String,
             isEmptyAddButtonState: Boolean,
             titleValue: String,
+            titleHeight: String,
             section: String,
             blueHeaderValues: [],
             redHeaderValues: []

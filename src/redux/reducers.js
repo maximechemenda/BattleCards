@@ -27,6 +27,7 @@ const initialBattleCardsState = {
                     battleCardId: uuid(),
                     isEmptyAddButtonState: true,
                     titleValue: '',
+                    titleHeight: '43px',
                     section: 'caseStudies',
                     blueHeaderValues: [{
                         headerId: uuid(),
@@ -54,6 +55,7 @@ const initialBattleCardsState = {
                     battleCardId: uuid(),
                     isEmptyAddButtonState: true,
                     titleValue: '',
+                    titleHeight: '43px',
                     section: 'objections',
                     blueHeaderValues: [{
                         headerId: uuid(),
@@ -79,6 +81,7 @@ const initialBattleCardsState = {
                     battleCardId: uuid(),
                     isEmptyAddButtonState: true,
                     titleValue: '',
+                    titleHeight: '43px',
                     section: 'competitors',
                     blueHeaderValues: [{
                         headerId: uuid(),
@@ -128,8 +131,8 @@ const initialBattleCardsState = {
             isEmptyProfilesState: true,
             isEmptyDiscoveriesState: true
         },
-        isEmptyBattleCardsState: false,
-        isEmptyCaseStudiesState: true
+        isEmptyBattleCardsState: true,
+        isEmptyCaseStudiesState: false
     },
     selectedBattleCards: [],
     selectedCaseStudiesBattleCards: [],
