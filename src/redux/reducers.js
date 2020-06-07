@@ -808,6 +808,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
+                                    titleHeight: '43px',
                                     section: 'objections',
                                     blueHeaderValues: [{
                                         headerId: uuid(),
@@ -828,6 +829,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
+                            titleHeight: '43px',
                             section: 'objections',
                             blueHeaderValues: [{
                                 headerId: uuid(),
@@ -855,6 +857,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
+                                    titleHeight: '43px',
                                     section: 'competitors',
                                     blueHeaderValues: [{
                                         headerId: uuid(),
@@ -876,6 +879,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
+                            titleHeight: '43px',
                             section: 'competitors',
                             blueHeaderValues: [{
                                 headerId: uuid(),
@@ -903,6 +907,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                     battleCardId: action.id,
                                     isEmptyAddButtonState: true,
                                     titleValue: '',
+                                    titleHeight: '43px',
                                     section: 'caseStudies',
                                     blueHeaderValues: [{
                                         headerId: uuid(),
@@ -923,6 +928,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                             battleCardId: action.id,
                             isEmptyAddButtonState: true,
                             titleValue: '',
+                            titleHeight: '43px',
                             section: 'caseStudies',
                             blueHeaderValues: [{
                                 headerId: uuid(),
@@ -1155,6 +1161,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(battleCard => {
                                     if (battleCard.battleCardId === action.battleCardId) {
                                         battleCard.titleValue = action.newValue;
+
+                                        var textarea = document.getElementById(battleCard.battleCardId)
+    
+                                        textarea.style.cssText = 'height:43px; padding:0';
+
+                                        var height = textarea.scrollHeight - 4 + 10
+                                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                                        if (height >= 43) {
+                                            battleCard.titleHeight = height + 'px'
+                                        } else {
+                                            battleCard.titleHeight = '43px'
+                                        }
                                     }
                                     return battleCard
                                 })
@@ -1173,6 +1192,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(battleCard => {
                                     if (battleCard.battleCardId === action.battleCardId) {
                                         battleCard.titleValue = action.newValue;
+
+                                        var textarea = document.getElementById(battleCard.battleCardId)
+    
+                                        textarea.style.cssText = 'height:43px; padding:0';
+
+                                        var height = textarea.scrollHeight - 4 + 10
+                                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                                        if (height >= 43) {
+                                            battleCard.titleHeight = height + 'px'
+                                        } else {
+                                            battleCard.titleHeight = '43px'
+                                        }
                                     }
                                     return battleCard
                                 })
@@ -1191,6 +1223,19 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(battleCard => {
                                     if (battleCard.battleCardId === action.battleCardId) {
                                         battleCard.titleValue = action.newValue;
+
+                                        var textarea = document.getElementById(battleCard.battleCardId)
+    
+                                        textarea.style.cssText = 'height:43px; padding:0';
+
+                                        var height = textarea.scrollHeight - 4 + 10
+                                        textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                                        if (height >= 43) {
+                                            battleCard.titleHeight = height + 'px'
+                                        } else {
+                                            battleCard.titleHeight = '43px'
+                                        }
                                     }
                                     return battleCard
                                 })
@@ -1241,6 +1286,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
+                                titleHeight: '43px',
                                 section: 'objections',
                                 blueHeaderValues: [{
                                     headerId: uuid(),
@@ -1267,6 +1313,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
+                                titleHeight: '43px',
                                 section: 'competitors',
                                 blueHeaderValues: [{
                                     headerId: uuid(),
@@ -1295,6 +1342,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                 battleCardId: uuid(),
                                 isEmptyAddButtonState: true,
                                 titleValue: '',
+                                titleHeight: '43px',
                                 section: 'caseStudies',
                                 blueHeaderValues: [{
                                     headerId: uuid(),
@@ -1517,7 +1565,7 @@ export const battleCards = (state = initialBattleCardsState, action) => {
                                       editing: false,
                                       height: '50px'
                                     }])
-                                  }
+                                  }d
                                   return battleCard;
                             })
                         }

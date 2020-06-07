@@ -33266,6 +33266,7 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'objections',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33285,6 +33286,7 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
+              titleHeight: '43px',
               section: 'objections',
               blueHeaderValues: [{
                 headerId: (0, _uuid.v4)(),
@@ -33308,6 +33310,7 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'competitors',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33327,6 +33330,7 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
+              titleHeight: '43px',
               section: 'competitors',
               blueHeaderValues: [{
                 headerId: (0, _uuid.v4)(),
@@ -33350,6 +33354,7 @@ var battleCards = function battleCards() {
                   battleCardId: action.id,
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'caseStudies',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33369,6 +33374,7 @@ var battleCards = function battleCards() {
               battleCardId: action.id,
               isEmptyAddButtonState: true,
               titleValue: '',
+              titleHeight: '43px',
               section: 'caseStudies',
               blueHeaderValues: [{
                 headerId: (0, _uuid.v4)(),
@@ -33599,6 +33605,16 @@ var battleCards = function battleCards() {
                 objectionsBattleCards: state.data.battleCards.objectionsBattleCards.map(function (battleCard) {
                   if (battleCard.battleCardId === action.battleCardId) {
                     battleCard.titleValue = action.newValue;
+                    var textarea = document.getElementById(battleCard.battleCardId);
+                    textarea.style.cssText = 'height:43px; padding:0';
+                    var height = textarea.scrollHeight - 4 + 10;
+                    textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                    if (height >= 43) {
+                      battleCard.titleHeight = height + 'px';
+                    } else {
+                      battleCard.titleHeight = '43px';
+                    }
                   }
 
                   return battleCard;
@@ -33614,6 +33630,16 @@ var battleCards = function battleCards() {
                 competitorsBattleCards: state.data.battleCards.competitorsBattleCards.map(function (battleCard) {
                   if (battleCard.battleCardId === action.battleCardId) {
                     battleCard.titleValue = action.newValue;
+                    var textarea = document.getElementById(battleCard.battleCardId);
+                    textarea.style.cssText = 'height:43px; padding:0';
+                    var height = textarea.scrollHeight - 4 + 10;
+                    textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                    if (height >= 43) {
+                      battleCard.titleHeight = height + 'px';
+                    } else {
+                      battleCard.titleHeight = '43px';
+                    }
                   }
 
                   return battleCard;
@@ -33629,6 +33655,16 @@ var battleCards = function battleCards() {
                 caseStudiesBattleCards: state.data.caseStudies.caseStudiesBattleCards.map(function (battleCard) {
                   if (battleCard.battleCardId === action.battleCardId) {
                     battleCard.titleValue = action.newValue;
+                    var textarea = document.getElementById(battleCard.battleCardId);
+                    textarea.style.cssText = 'height:43px; padding:0';
+                    var height = textarea.scrollHeight - 4 + 10;
+                    textarea.style.cssText = 'height:' + height + 'px;padding:0';
+
+                    if (height >= 43) {
+                      battleCard.titleHeight = height + 'px';
+                    } else {
+                      battleCard.titleHeight = '43px';
+                    }
                   }
 
                   return battleCard;
@@ -33675,6 +33711,7 @@ var battleCards = function battleCards() {
                   battleCardId: (0, _uuid.v4)(),
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'objections',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33700,6 +33737,7 @@ var battleCards = function battleCards() {
                   battleCardId: (0, _uuid.v4)(),
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'competitors',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33725,6 +33763,7 @@ var battleCards = function battleCards() {
                   battleCardId: (0, _uuid.v4)(),
                   isEmptyAddButtonState: true,
                   titleValue: '',
+                  titleHeight: '43px',
                   section: 'caseStudies',
                   blueHeaderValues: [{
                     headerId: (0, _uuid.v4)(),
@@ -33935,6 +33974,7 @@ var battleCards = function battleCards() {
                   }]);
                 }
 
+                d;
                 return battleCard;
               })
             })
@@ -37714,7 +37754,8 @@ var SelectedCaseStudiesBattleCards = function SelectedCaseStudiesBattleCards(_re
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }));
   }));
 };
@@ -37742,7 +37783,8 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
       editBlueHeaderValue: editBlueHeaderValue,
-      searchBoxValue: searchBoxValue
+      searchBoxValue: searchBoxValue,
+      titleHeight: battleCard.titleHeight
     }), battleCard.section === 'competitors' && /*#__PURE__*/_react.default.createElement(CompetitorsBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
@@ -37756,7 +37798,8 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }), battleCard.section === 'caseStudies' && /*#__PURE__*/_react.default.createElement(CaseStudiesBattleCard, {
       cards: battleCard.cards,
       isEmptyAddButtonState: battleCard.isEmptyAddButtonState,
@@ -37770,7 +37813,8 @@ var SelectedBattleCards = function SelectedBattleCards(_ref3) {
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }));
   }));
 };
@@ -37899,7 +37943,8 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
         blueHeaderValues: battleCard.blueHeaderValues,
         redHeaderValues: battleCard.redHeaderValues,
         addBlueHeaderValue: addBlueHeaderValue,
-        editBlueHeaderValue: editBlueHeaderValue
+        editBlueHeaderValue: editBlueHeaderValue,
+        titleHeight: battleCard.titleHeight
       });
     }
   })), searchBoxValue.length === 0 && /*#__PURE__*/_react.default.createElement("div", null, objectionsBattleCards.map(function (battleCard) {
@@ -37918,13 +37963,15 @@ var ObjectionsBattleCards = function ObjectionsBattleCards(_ref5) {
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }));
   })));
 };
 
 var ObjectionsBattleCard = function ObjectionsBattleCard(_ref6) {
-  var editBlueHeaderValue = _ref6.editBlueHeaderValue,
+  var titleHeight = _ref6.titleHeight,
+      editBlueHeaderValue = _ref6.editBlueHeaderValue,
       blueHeaderValues = _ref6.blueHeaderValues,
       redHeaderValues = _ref6.redHeaderValues,
       cards = _ref6.cards,
@@ -37950,6 +37997,9 @@ var ObjectionsBattleCard = function ObjectionsBattleCard(_ref6) {
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
+    style: {
+      height: titleHeight
+    },
     id: battleCardId,
     onBlur: function onBlur(e) {
       return modifyBattleCardTitle(e.target.value, battleCardId, 'objections');
@@ -38149,7 +38199,8 @@ var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref8) {
         blueHeaderValues: battleCard.blueHeaderValues,
         redHeaderValues: battleCard.redHeaderValues,
         addBlueHeaderValue: addBlueHeaderValue,
-        editBlueHeaderValue: editBlueHeaderValue
+        editBlueHeaderValue: editBlueHeaderValue,
+        titleHeight: battleCard.titleHeight
       });
     }
   })), searchBoxValue.length === 0 && /*#__PURE__*/_react.default.createElement("div", null, caseStudiesBattleCards.map(function (battleCard) {
@@ -38168,13 +38219,15 @@ var CaseStudiesBattleCards = function CaseStudiesBattleCards(_ref8) {
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }));
   })));
 };
 
 var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref9) {
-  var editBlueHeaderValue = _ref9.editBlueHeaderValue,
+  var titleHeight = _ref9.titleHeight,
+      editBlueHeaderValue = _ref9.editBlueHeaderValue,
       blueHeaderValues = _ref9.blueHeaderValues,
       redHeaderValues = _ref9.redHeaderValues,
       cards = _ref9.cards,
@@ -38200,6 +38253,9 @@ var CaseStudiesBattleCard = function CaseStudiesBattleCard(_ref9) {
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
+    style: {
+      height: titleHeight
+    },
     id: battleCardId,
     onBlur: function onBlur(e) {
       return modifyBattleCardTitle(e.target.value, battleCardId, 'caseStudies');
@@ -38379,7 +38435,8 @@ var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
         blueHeaderValues: battleCard.blueHeaderValues,
         redHeaderValues: battleCard.redHeaderValues,
         addBlueHeaderValue: addBlueHeaderValue,
-        editBlueHeaderValue: editBlueHeaderValue
+        editBlueHeaderValue: editBlueHeaderValue,
+        titleHeight: battleCard.titleHeight
       });
     }
   })), searchBoxValue.length === 0 && /*#__PURE__*/_react.default.createElement("div", null, competitorsBattleCards.map(function (battleCard) {
@@ -38398,13 +38455,15 @@ var CompetitorsBattleCards = function CompetitorsBattleCards(_ref11) {
       blueHeaderValues: battleCard.blueHeaderValues,
       redHeaderValues: battleCard.redHeaderValues,
       addBlueHeaderValue: addBlueHeaderValue,
-      editBlueHeaderValue: editBlueHeaderValue
+      editBlueHeaderValue: editBlueHeaderValue,
+      titleHeight: battleCard.titleHeight
     }));
   })));
 };
 
 var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
-  var editBlueHeaderValue = _ref12.editBlueHeaderValue,
+  var titleHeight = _ref12.titleHeight,
+      editBlueHeaderValue = _ref12.editBlueHeaderValue,
       blueHeaderValues = _ref12.blueHeaderValues,
       redHeaderValues = _ref12.redHeaderValues,
       cards = _ref12.cards,
@@ -38430,6 +38489,9 @@ var CompetitorsBattleCard = function CompetitorsBattleCard(_ref12) {
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "cards"
   }, /*#__PURE__*/_react.default.createElement("textarea", {
+    style: {
+      height: titleHeight
+    },
     id: battleCardId,
     onBlur: function onBlur(e) {
       return modifyBattleCardTitle(e.target.value, battleCardId, 'competitors');
@@ -38997,7 +39059,7 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
 /*serviceWorker.register(); UNCOMMENT THIS */
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./redux/store":"redux/store.js","./App":"App.jsx","./index.css":"index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./redux/store":"redux/store.js","./App":"App.jsx","./index.css":"index.css"}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -39025,7 +39087,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56704" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59757" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -39201,5 +39263,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/src.e31bb0bc.js.map
