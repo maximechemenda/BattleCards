@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import store from './redux/store';
-import App from './App';
-import './index.css'
+import store from '../../src/redux/store';
+import App from '../../src/App';
+import '../../src/index.css'
 
 //element where we'll mount our react app
 const rootElement = document.getElementById("root");

@@ -344,7 +344,14 @@ function onSubscriptionComplete(result) {
   // Remove invoice from localstorage because payment is now complete.
   clearCache();
   // Change your UI to show a success message to your customer.
-  onSubscriptionSampleDemoComplete(result);
+  window.location.href = 'app.html';
+
+
+
+  //onSubscriptionSampleDemoComplete(result);
+
+
+
   // Call your backend to grant access to your service based on
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product

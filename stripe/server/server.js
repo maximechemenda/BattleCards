@@ -1,13 +1,30 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const { resolve } = require('path');
 const bodyParser = require('body-parser');
 // Replace if using a different env file or config
-require('dotenv').config({ path: './.env' });
+//require('dotenv').config({ path: './.env' }); the one used by them
+require('dotenv').config({ path: __dirname +  '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-//app.use(express.static(__dirname + process.env.STATIC_DIR));
-app.use(express.static(__dirname + '/../client'))
+//connect to mongodb atlas
+
+//PRODUCTION MODE
+//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+//DEVELOPMENT MODE
+mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+  .then(() => console.log('MongoDB connected'))
+  .catch(e => console.log('MongoDB could not be connected due to ', e)); 
+
+
+//app.use(express.static(__dirname + process.env.STATIC_DIR)); ceux qu'ils avaient avant
+//app.use(express.static(__dirname + '/../client')); 
+app.use(express.static(__dirname + '/../../dist')); 
+
+
 // Use JSON parser for all non-webhook routes.
 app.use((req, res, next) => {
   if (req.originalUrl === '/stripe-webhook') {
@@ -15,11 +32,21 @@ app.use((req, res, next) => {
   } else {
     bodyParser.json()(req, res, next);
   }
+}); 
+
+//handles GET /realBattleCards request
+app.get('/realBattleCards', (req, res) => {
+  try {
+   //res.sendFile('app.html')
+   res.send('hello world')
+  }
+  catch (e) { console.log('The following error occured: ', e) }
 });
 
 app.get('/', (req, res) => {
-  console.log(__dirname)
-  const path = resolve( __dirname + '/../client/index.html');
+  //const path = resolve( __dirname + '/../client/index.html');
+  const path = resolve( __dirname + '/../../dist/stripe/client/index.html');
+  
   res.sendFile(path);
 });
 
@@ -218,3 +245,36 @@ app.post(
 );
 
 app.listen(4343, () => console.log(`Node server listening on port ${4343}!`));
+
+
+
+
+
+
+/* const routes = require(__dirname + '/../../server/routes');
+const path = require('path')
+//const {parsed : {MONGO_ATLAS_PW}} = require('dotenv').config();
+
+
+const DistPath = path.join(__dirname, '..', 'dist')
+
+fastify.register(require('fastify-static'), {
+  root: DistPath,
+})
+
+
+
+
+//iterating over all the routes and registering them with fastify
+routes.forEach(route => fastify.route(route)) */
+
+/* //launching server at port : 3000 in local environment
+fastify.listen({
+  port: process.env.PORT || 3000, 
+  host: '0.0.0.0'}, (err) => {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+  console.log(`server running at ${fastify.server.address().port}`)
+}) */
