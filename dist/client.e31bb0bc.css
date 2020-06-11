@@ -1,0 +1,513 @@
+/* .App {
+  background-color: rgb(156, 149, 149);
+} */
+:root {
+  --primary: #FBB03B;
+  --dark: #1A1A1A;
+  --secondary: #577ce5;
+  --light: #f3f5ff;
+  --color-on-light: #2a4284;
+  --tertiary: #a1b9fc;
+  --red: #ff6060;
+  --secondary-light: #ecf1ff;
+  --blue: #577ce5;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.battleCard {
+  width: 566px;
+  min-height: 100px;
+  background-color: #f6f8f9;
+  float: left;
+  position: relative;
+  padding: 15px;
+  padding-top: 8px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-style: ridge;
+  border-width: 1px;
+  box-shadow: 0px 0px 8px #bbb !important;
+  font-family: Arial;
+}
+
+.cards {
+  width: calc(100% - 30px);
+  background-color: white;
+  position: relative;
+  float: left;
+  min-height: 80px;
+  padding: 15px;
+  padding-top: 8px;
+  padding-right: inherit;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border-style: ridge;
+  border-width: 0px;
+  box-shadow: 0px 0px 5px #bbb !important;
+  font-family: Arial;  
+}
+
+.deleteCardButton {
+  float: right;
+  margin-right: 4px;
+  margin-top: -5px;
+  color: var(--red);
+  padding: 0;
+  cursor: pointer;
+  border: 0px;
+  font-family: Arial;
+}
+
+.addCardButton {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 35px;
+  height: 35px; 
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 8px;
+  text-align: center;
+  margin-left: 46%;
+  font-family: Arial;
+}
+
+.leftMenu {
+  width: 216px;
+  min-height: 400px;
+  background: white;
+  float: left;
+  margin-right: 10px;
+  padding: 0px 10px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: 0.5s;
+  border-style: ridge;
+  text-align: left;
+  margin-top: 20px;
+  font-size: 14px;
+  border-width: 1px;
+  box-shadow: 0px 0px 5px #bbb !important;
+  font-family: Arial;
+}
+
+.titleBattleCard {
+  font-size: 18px;
+  color: var(--secondary);
+  border: none;
+  outline: none;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+  width: 358px;
+  resize: none;
+  font-family: Arial;
+}
+
+.smallIndex {
+  background-color: white;
+  width: 100%;
+  overflow: auto;
+  border-style: ridge;
+  border-width: 1px;
+  box-shadow: rgb(187, 187, 187) 0px 0px 7px !important;
+  font-family: Arial;
+}
+
+.unselectedSmallIndexButton {
+  float: left;
+  font-size: 14px;
+  color: #444;
+  padding: 7.5px 15px;
+  cursor: pointer;
+  padding: 5.5px 13px;
+  margin: 4px;
+  border-radius: 5px;
+  transition: 0.1s;
+  font-family: Arial;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d6d6d6;
+}
+
+.selectedSmallIndexButton {
+  background: #444;
+  float: left;
+  font-size: 14px;
+  color: white;
+  padding: 7.5px 15px;
+  cursor: pointer;
+  padding: 5.5px 13px;
+  margin: 4px;
+  border-radius: 5px;
+  transition: 0.1s;
+  font-family: Arial;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d6d6d6;
+}
+
+.addBattleCard {
+  background-color: var(--secondary);
+  cursor: pointer;
+  float: left;
+  text-align: center;
+  color: white;
+  padding-top: 9px;
+  font-size: 23px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 15px;
+  font-family: Arial;
+}
+
+.openedLeftMenuItems {
+  color: var(--secondary);
+  font-size: 13px;
+  margin: 5px 0px;
+  cursor: pointer;
+  font-family: Arial;
+  white-space: normal;
+}
+
+.closedLeftMenuItems {
+  color: rgb(80, 80, 80);
+  font-size: 13px;
+  margin: 5px 0px;
+  cursor: pointer;
+  font-family: Arial;
+  white-space: normal;
+}
+
+
+
+.closeAllOpenedBattleCardsButton {
+  color: white;
+  background: rgb(62, 113, 207);
+  text-align: center;
+  padding: 5px 5px;
+  font-size: 12px;
+  border-radius: 20px;
+  margin: 30px 0px;
+  cursor: pointer;
+  user-select: none;
+  font-family: Arial;
+}
+.addCardMenu {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: white;
+  padding: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-style: ridge;
+  border-width: 1px;
+  box-shadow: 0px 0px 5px #bbb !important;
+  font-family: Arial;
+}
+
+.unfilledAddButton {
+  width: 45%;
+  margin: 2.5%;
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  background-color: ghostwhite;
+  height: 40px;
+  color: var(--secondary);
+  padding-top: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  border-style: solid;
+  border-color: #d2d2d2;
+  border-width: 1px;
+  box-shadow: 0px 0px 8px #bbb !important;
+  font-family: Arial;
+  text-align: center;
+}
+
+.redAddButton {
+  width: 45%;
+  margin: 2.5%;
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  background-color: ghostwhite;
+  height: 40px;
+  color: var(--red);
+  padding-top: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  border-style: solid;
+  border-color: #d2d2d2;
+  border-width: 1px;
+  box-shadow: 0px 0px 8px #bbb !important;
+  font-family: Arial;
+  text-align: center;
+}
+
+.battleCardNameHeader {
+  font-size: 16px;
+  font-weight: 900;
+  margin-left: 5px;
+  float: right;
+  color: var(--secondary);
+  text-align: right;
+  line-height: 27px;
+  font-family: Arial;
+}
+
+.blueCardHeader {
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: 900;
+  font-family: Arial;
+}
+
+.redCardHeader {
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 900;
+  font-family: Arial;
+}
+
+.blueCardText {
+  color: var(--secondary);
+  font-size: 15px;
+  width: 97%;
+  margin-top: 10px;
+  outline: none;
+  background: transparent;
+  border: none;
+  font-family: Arial;
+  display: block; 
+  overflow: hidden; 
+  resize: none;
+}
+
+.redCardText {
+  color: var(--red);
+  font-size: 15px;
+  width: 97%;
+  margin-top: 10px;
+  outline: none;
+  background: transparent;
+  border: none;
+  font-family: Arial;
+  display: block; 
+  overflow: hidden; 
+  resize: none;
+}
+
+.blueHeaderValues {
+  font-size: 12px;
+  float: right;
+  font-family: Arial;
+}
+
+.itemsContainer {
+  padding-inline-start: 16px;
+  font-family: Arial;
+}
+
+.deleteBattleCardButton {
+  float: right;
+  margin-right: -11px;
+  margin-top: -5px;
+  color: rgb(142, 135, 135);
+  padding: 0;
+  cursor: pointer;
+  border: 0px;
+  font-family: Arial;
+}
+
+.deleteBattleCardButton:hover {
+  color: var(--red);
+  font-family: Arial;
+}
+
+.battleCardTrash {
+  font-size: 14px;
+  margin-right: 0px;
+  content: "\f1f8";
+  font-family: Arial;
+}
+
+.addBattleCardPlusIcon {
+  content: "\f067";
+  font-size: 12px;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border-radius: 100%;
+  padding: 1px;
+  background-color: var(--secondary);
+  color: white;
+  left: 30px;
+  font-family: Arial;
+}
+
+/* this is also the name of the className for other sections (with the swords, the user and the telescope) */
+.addBattleCardAxeIcon {
+  font-size: 28px;
+  font-family: Arial;
+}
+
+.cardTrash {
+  font-size: 14px;
+  margin-right: 0px;
+  content: "\f1f8";
+  font-family: Arial;
+}
+
+.addCardIcon {
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.leftMenuTitle {
+  color: var(--secondary);
+  font-family: Arial;
+}
+
+.mainDiv {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 5px -1px;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  position: relative;
+  box-sizing: border-box;
+  width: 10000%;
+  left: 302px;
+  bottom: 408px;
+}
+
+.blueHeaderValue {
+  resize: none;
+  border: none;
+  margin-left: 5px;
+  outline: none;
+  font-family: Arial;
+  margin-top: 10px
+}
+
+.battleCardBlueHeaderTitle {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 550;
+  opacity: 0.9
+}
+
+
+.blueLine {
+  height: 4px;
+  background-color: var(--blue);
+  margin-bottom: 3px;
+  opacity: 0.7
+  /* width: 50% */
+}
+
+.redHeaderValue {
+  resize: none;
+  border: none;
+  margin-left: 5px;
+  outline: none;
+  font-family: Arial;
+  margin-top: 10px
+}
+
+.battleCardRedHeaderTitle {
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 550;
+  opacity: 0.9
+}
+
+.redLine {
+  height: 4px;
+  background-color: var(--red);
+  margin-bottom: 3px;
+  opacity: 0.7
+  /* width: 50% */
+}
+
+.searchBar {
+  margin-top: 5px;
+  width: 270px;
+  margin-left: 7px;
+  height: 20px;
+  margin-right: 7px;
+  /* outline: none */
+}
+
+.searchBarContainer {
+  float: right
+}
+body {
+  margin: 5px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;  */
+  font-family: "Brother 1816","brother-1816","Futura", "Lato" , "Verdana";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*background-color: #f6f8f9;*/
+  background-color: #f3feff;
+  /* font-family: "Ibarra Real Nova"; */
+  font-family: "Arial";
+}
+
+code {
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+  font-family: "Brother 1816","brother-1816","Futura", "Lato" , "Verdana";
+}
+
+
+/*# sourceMappingURL=/client.e31bb0bc.css.map */
