@@ -126,9 +126,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-/* import './css/global.css';
-import './css/index.css';
-import './css/normalize.css'; */
 var stripe, customer, price, card;
 var priceInfo = {
   basic: {
@@ -188,7 +185,7 @@ function stripeElements(publishableKey) {
 
       createCustomer().then(function (result) {
         customer = result.customer;
-        window.location.href = 'app.html'; //window.location.href = '/prices.html?customerId=' + customer.id; 
+        window.location.href = '/prices.html?customerId=' + customer.id;
       });
     });
   }
@@ -443,7 +440,8 @@ function onSubscriptionComplete(result) {
 
   clearCache(); // Change your UI to show a success message to your customer.
 
-  onSubscriptionSampleDemoComplete(result); // Call your backend to grant access to your service based on
+  window.location.href = 'app.html'; //onSubscriptionSampleDemoComplete(result);
+  // Call your backend to grant access to your service based on
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product
 }
@@ -803,9 +801,8 @@ function clearCache() {
 }
 
 function resetDemo() {
-  /* clearCache();
-  window.location.href = '/'; */
-  window.location.href = '/realBattleCards';
+  clearCache();
+  window.location.href = '/';
 }
 },{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -835,7 +832,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58672" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55569" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

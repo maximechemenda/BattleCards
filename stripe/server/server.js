@@ -28,10 +28,8 @@ app.use(express.static(__dirname + '/../../dist'));
 // Use JSON parser for all non-webhook routes.
 app.use((req, res, next) => {
   if (req.originalUrl === '/stripe-webhook') {
-    console.log('entering if')
     next();
   } else {
-    console.log('entering else')
     bodyParser.json()(req, res, next);
   }
 }); 
@@ -46,7 +44,6 @@ app.get('/realBattleCards', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  console.log(__dirname)
   //const path = resolve( __dirname + '/../client/index.html');
   const path = resolve( __dirname + '/../../dist/stripe/client/index.html');
   

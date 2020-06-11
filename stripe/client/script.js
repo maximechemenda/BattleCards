@@ -1,7 +1,3 @@
-/* import './css/global.css';
-import './css/index.css';
-import './css/normalize.css'; */
-
 let stripe, customer, price, card;
 
 let priceInfo = {
@@ -66,8 +62,8 @@ function stripeElements(publishableKey) {
       // Create customer
       createCustomer().then((result) => {
         customer = result.customer;
-        window.location.href = 'app.html'; 
-        //window.location.href = '/prices.html?customerId=' + customer.id; 
+
+        window.location.href = '/prices.html?customerId=' + customer.id;
       });
     });
   }
@@ -348,7 +344,14 @@ function onSubscriptionComplete(result) {
   // Remove invoice from localstorage because payment is now complete.
   clearCache();
   // Change your UI to show a success message to your customer.
-  onSubscriptionSampleDemoComplete(result);   
+  window.location.href = 'app.html';
+
+
+
+  //onSubscriptionSampleDemoComplete(result);
+
+
+
   // Call your backend to grant access to your service based on
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product
@@ -750,8 +753,6 @@ function clearCache() {
 }
 
 function resetDemo() {
-  /* clearCache();
-  window.location.href = '/'; */
-
-  window.location.href  = '/realBattleCards'
+  clearCache();
+  window.location.href = '/';
 }
