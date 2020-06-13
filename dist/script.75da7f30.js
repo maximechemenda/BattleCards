@@ -126,12 +126,9 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-<<<<<<< HEAD
 /* import './css/global.css';
 import './css/index.css';
 import './css/normalize.css'; */
-=======
->>>>>>> 34586936b30fc6df44bdfd58e297ea86011d05a7
 var stripe, customer, price, card;
 var priceInfo = {
   basic: {
@@ -441,17 +438,14 @@ function handlePaymentMethodRequired(_ref3) {
 }
 
 function onSubscriptionComplete(result) {
+  console.log('completing subscription');
   console.log(result); // Payment was successful. Provision access to your service.
   // Remove invoice from localstorage because payment is now complete.
 
   clearCache(); // Change your UI to show a success message to your customer.
 
-<<<<<<< HEAD
-  onSubscriptionSampleDemoComplete(result); // Call your backend to grant access to your service based on
-=======
   window.location.href = 'app.html'; //onSubscriptionSampleDemoComplete(result);
   // Call your backend to grant access to your service based on
->>>>>>> 34586936b30fc6df44bdfd58e297ea86011d05a7
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product
 }
@@ -842,11 +836,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58211" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55569" + '/');
->>>>>>> 34586936b30fc6df44bdfd58e297ea86011d05a7
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62618" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

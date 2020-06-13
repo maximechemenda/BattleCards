@@ -343,6 +343,7 @@ function handlePaymentMethodRequired({
 }
 
 function onSubscriptionComplete(result) {
+  console.log('completing subscription')
   console.log(result);
   // Payment was successful. Provision access to your service.
   // Remove invoice from localstorage because payment is now complete.
