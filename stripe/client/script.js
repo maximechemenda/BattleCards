@@ -1,3 +1,7 @@
+/* import './css/global.css';
+import './css/index.css';
+import './css/normalize.css'; */
+
 let stripe, customer, price, card;
 
 let priceInfo = {

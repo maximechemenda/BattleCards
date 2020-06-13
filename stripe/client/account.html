@@ -291,6 +291,119 @@
         </div>
       </div>
     </div>
+    <script>
+
+      let stripe, customer, price, card;
+
+      let priceInfo = {
+        basic: {
+          amount: '500',
+          name: 'Basic',
+          interval: 'monthly',
+          currency: 'USD',
+        },
+        premium: {
+          amount: '1500',
+          name: 'Premium',
+          interval: 'monthly',
+          currency: 'USD',
+        },
+      };
+
+      function changePrice() {
+        demoChangePrice();
+      }
+
+      function demoChangePrice() {
+        document.querySelector('#basic').classList.remove('border-pasha');
+        document.querySelector('#premium').classList.remove('border-pasha');
+        document.querySelector('#price-change-form').classList.add('hidden');
+
+        // Grab the priceId from the URL
+        // This is meant for the demo, replace with a cache or database.
+        const params = new URLSearchParams(document.location.search.substring(1));
+        const priceId = params.get('priceId').toLowerCase();
+
+        // Show the change price screen
+        document.querySelector('#prices-form').classList.remove('hidden');
+        document
+          .querySelector('#' + priceId.toLowerCase())
+          .classList.add('border-pasha');
+
+        let elements = document.querySelectorAll(
+          '#submit-' + priceId + '-button-text'
+        );
+        for (let i = 0; i < elements.length; i++) {
+          elements[0].childNodes[3].innerText = 'Current';
+        }
+        if (priceId === 'premium') {
+          document.getElementById('submit-premium').disabled = true;
+          document.getElementById('submit-basic').disabled = false;
+        } else {
+          document.getElementById('submit-premium').disabled = false;
+          document.getElementById('submit-basic').disabled = true;
+        }
+      }
+
+      function cancelSubscription() {
+        changeLoadingStatePrices(true);
+        const params = new URLSearchParams(document.location.search.substring(1));
+        const subscriptionId = params.get('subscriptionId');
+
+        return fetch('/cancel-subscription', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            subscriptionId: subscriptionId,
+          }),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((cancelSubscriptionResponse) => {
+            return subscriptionCancelled(cancelSubscriptionResponse);
+          });
+      }
+
+      // Show a spinner on subscription submission
+      function changeLoadingStatePrices(isLoading) {
+        console.log(isLoading);
+        if (isLoading) {
+          document.querySelector('#button-text').classList.add('hidden');
+          document.querySelector('#loading').classList.remove('hidden');
+
+          document.querySelector('#submit-basic').classList.add('invisible');
+          document.querySelector('#submit-premium').classList.add('invisible');
+          if (document.getElementById('confirm-price-change-cancel')) {
+            document
+              .getElementById('confirm-price-change-cancel')
+              .classList.add('invisible');
+          }
+        } else {
+          document.querySelector('#button-text').classList.remove('hidden');
+          document.querySelector('#loading').classList.add('hidden');
+
+          document.querySelector('#submit-basic').classList.remove('invisible');
+          document.querySelector('#submit-premium').classList.remove('invisible');
+          if (document.getElementById('confirm-price-change-cancel')) {
+            document
+              .getElementById('confirm-price-change-cancel')
+              .classList.remove('invisible');
+            document
+              .getElementById('confirm-price-change-submit')
+              .classList.remove('invisible');
+          }
+        }
+      }
+
+      // Shows the cancellation response
+      function subscriptionCancelled() {
+        document.querySelector('#subscription-cancelled').classList.remove('hidden');
+        document.querySelector('#subscription-settings').classList.add('hidden');
+      }
+    </script>
   </body>
   <footer class="h-24"></footer>
 </html>
