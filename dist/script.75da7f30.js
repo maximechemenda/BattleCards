@@ -145,6 +145,10 @@ var priceInfo = {
   }
 };
 
+document.getElementById('helloId').onclick = function () {
+  console.log('hello buddyy');
+};
+
 function stripeElements(publishableKey) {
   stripe = Stripe(publishableKey);
 
@@ -836,7 +840,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62618" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61564" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

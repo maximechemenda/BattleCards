@@ -19,6 +19,12 @@ let priceInfo = {
   },
 };
 
+
+  document.getElementById('helloId').onclick = function()
+ {
+   console.log('hello buddyy')
+ }
+
 function stripeElements(publishableKey) {
   stripe = Stripe(publishableKey);
 

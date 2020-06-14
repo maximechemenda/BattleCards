@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const { resolve } = require('path');
@@ -5,6 +6,63 @@ const bodyParser = require('body-parser');
 // Replace if using a different env file or config
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+const { MongoClient } = require('mongodb');
+
+
+async function main() {
+    /**
+     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
+     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+     */
+    const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+
+    /**
+     * The Mongo Client you will use to interact with your database
+     * See https://mongodb.github.io/node-mongodb-native/3.3/api/MongoClient.html for more details
+     */
+    const client = new MongoClient(uri);
+
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+
+        // Make the appropriate DB calls
+        await listDatabases(client);
+
+    } catch (e) {
+        console.error(e);
+    } finally {
+        // Close the connection to the MongoDB cluster
+        await client.close();
+    }
+}
+
+/**
+ * Print the names of all available databases
+ * @param {MongoClient} client A MongoClient that is connected to a cluster
+ */
+async function listDatabases(client) {
+    databasesList = await client.db().admin().listDatabases();
+
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+
+   
+};
+
+
+//connect to mongodb atlas
+
+//PRODUCTION MODE
+//mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecards-pppqw.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+//DEVELOPMENT MODE
+mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+  .then(() => console.log('MongoDB connected'))
+  .catch(e => console.log('MongoDB could not be connected due to ', e)); 
+
 
 //app.use(express.static(__dirname + process.env.STATIC_DIR));
 app.use(express.static(__dirname + '/../../dist'))
@@ -15,6 +73,15 @@ app.use((req, res, next) => {
   } else {
     bodyParser.json()(req, res, next);
   }
+});
+
+app.get('/liveTesting', (req, res) => {
+  
+  console.log('heloooooo liivvee')
+  main().catch(console.error);
+
+  const path = resolve(__dirname + '/../client/app.html');
+  res.sendFile(path);
 });
 
 app.get('/', (req, res) => {
