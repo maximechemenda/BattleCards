@@ -2,6 +2,11 @@
 import './css/index.css';
 import './css/normalize.css'; */
 
+const regeneratorRuntime = require("regenerator-runtime");
+require("regenerator-runtime/runtime");
+require("regenerator-runtime/path").path;
+
+
 let stripe, customer, price, card;
 
 let priceInfo = {
@@ -19,13 +24,52 @@ let priceInfo = {
   },
 };
 
+async function main() {
+  const { MongoClient } = require('mongodb');
+  
+    /**
+     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
+     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+     */
+    const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
-  document.getElementById('helloId').onclick = function()
- {
-   console.log('hello buddyy')
- }
+    /**
+     * The Mongo Client you will use to interact with your database
+     * See https://mongodb.github.io/node-mongodb-native/3.3/api/MongoClient.html for more details
+     */
+    const client = new MongoClient(uri);
+
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+
+        // Make the appropriate DB calls
+        await listDatabases(client);
+
+    } catch (e) {
+        console.error(e);
+    } finally {
+        // Close the connection to the MongoDB cluster
+        await client.close();
+    }
+}
+
+  /**
+   * Print the names of all available databases
+   * @param {MongoClient} client A MongoClient that is connected to a cluster
+   */
+  async function listDatabases(client) {
+      databasesList = await client.db().admin().listDatabases();
+
+      console.log("Databases:");
+      databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+
+    
+  }
+
 
 function stripeElements(publishableKey) {
+  console.log('striping elements')
   stripe = Stripe(publishableKey);
 
   if (document.getElementById('card-element')) {
@@ -107,6 +151,8 @@ function stripeElements(publishableKey) {
 }
 
 function displayError(event) {
+  console.log('displaying error')
+  console.log(event)
   changeLoadingStatePrices(false);
   let displayError = document.getElementById('card-element-errors');
   if (event.error) {
@@ -223,6 +269,7 @@ function switchPrices(newPriceIdSelected) {
         'new-price-start-date'
       ).innerHTML = nextPaymentAttemptDateToDisplay;
 
+      console.log('switching prices')
       changeLoadingStatePrices(false);
     }
   );
@@ -350,12 +397,28 @@ function handlePaymentMethodRequired({
 
 function onSubscriptionComplete(result) {
   console.log('completing subscription')
-  console.log(result);
+  console.log(result.subscription.latest_invoice.customer_email);
+
   // Payment was successful. Provision access to your service.
   // Remove invoice from localstorage because payment is now complete.
   clearCache();
   // Change your UI to show a success message to your customer.
-  window.location.href = 'app.html';
+  //window.location.href = 'app.html';
+  //main().catch(console.error);
+
+  const { MongoClient } = require("mongodb");
+
+  const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+  const databaseName = "test";
+
+  MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
+    if (error) {
+      console.log(error)
+      return console.log("Connection failed for some reason");
+    }
+    console.log("Connection established - All well");
+    const db = client.db(databaseName);
+  });
 
 
 
@@ -366,6 +429,8 @@ function onSubscriptionComplete(result) {
   // Call your backend to grant access to your service based on
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product
+
+  
 }
 
 function createSubscription({ customerId, paymentMethodId, priceId }) {
@@ -471,6 +536,8 @@ function retryInvoiceWithNewPaymentMethod({
       .catch((error) => {
         // An error has happened. Display the failure to the user here.
         // We utilize the HTML element we created.
+        console.log('there is an error')
+        console.log(error)
         displayError(error);
       })
   );
@@ -497,6 +564,7 @@ function retrieveUpcomingInvoice(customerId, subscriptionId, newPriceId) {
 }
 
 function cancelSubscription() {
+  console.log('canceling subscription')
   changeLoadingStatePrices(true);
   const params = new URLSearchParams(document.location.search.substring(1));
   const subscriptionId = params.get('subscriptionId');
@@ -730,6 +798,7 @@ function changeLoadingState(isLoading) {
 
 // Show a spinner on subscription submission
 function changeLoadingStatePrices(isLoading) {
+  console.log('changing loading state prices')
   console.log(isLoading);
   if (isLoading) {
     document.querySelector('#button-text').classList.add('hidden');

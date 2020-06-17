@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const { MongoClient } = require('mongodb');
 
 
 async function main() {
+  const { MongoClient } = require('mongodb');
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
@@ -52,6 +52,7 @@ async function listDatabases(client) {
 };
 
 
+
 //connect to mongodb atlas
 
 //PRODUCTION MODE
@@ -65,7 +66,8 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.m
 
 
 //app.use(express.static(__dirname + process.env.STATIC_DIR));
-app.use(express.static(__dirname + '/../../dist'))
+//app.use(express.static(__dirname + '/../../dist'))
+app.use(express.static(__dirname + '/../client'))
 // Use JSON parser for all non-webhook routes.
 app.use((req, res, next) => {
   if (req.originalUrl === '/stripe-webhook') {
@@ -285,3 +287,5 @@ app.post(
 );
 
 app.listen(4343, () => console.log(`Node server listening on port ${4343}!`));
+
+main()

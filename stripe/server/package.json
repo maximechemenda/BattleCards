@@ -19,6 +19,7 @@
     "tailwindcss": "^1.4.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
     "@fullhuman/postcss-purgecss": "^2.1.2"
   }
 }
