@@ -93936,52 +93936,31 @@ function handlePaymentMethodRequired(_ref3) {
   }
 }
 
-function onSubscriptionComplete(_x2) {
-  return _onSubscriptionComplete.apply(this, arguments);
-}
+function onSubscriptionComplete(result) {
+  console.log('completing subscription');
+  console.log(result.subscription.latest_invoice.customer_email); // Payment was successful. Provision access to your service.
+  // Remove invoice from localstorage because payment is now complete.
 
-function _onSubscriptionComplete() {
-  _onSubscriptionComplete = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(result) {
-    var _require2, MongoClient, uri, databaseName;
+  clearCache(); // Change your UI to show a success message to your customer.
+  //window.location.href = 'app.html';
+  //main().catch(console.error);
 
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            console.log('completing subscription');
-            console.log(result.subscription.latest_invoice.customer_email); // Payment was successful. Provision access to your service.
-            // Remove invoice from localstorage because payment is now complete.
-
-            clearCache(); // Change your UI to show a success message to your customer.
-            //window.location.href = 'app.html';
-            //main().catch(console.error);
-
-            _require2 = require("mongodb"), MongoClient = _require2.MongoClient;
-            uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
-            databaseName = "test";
-            MongoClient.connect(uri, {
-              useNewUrlParser: true
-            }, function (error, client) {
-              if (error) {
-                console.log(error);
-                return console.log("Connection failed for some reason");
-              }
-
-              console.log("Connection established - All well");
-              var db = client.db(databaseName);
-            }); //onSubscriptionSampleDemoComplete(result);
-            // Call your backend to grant access to your service based on
-            // the product your customer subscribed to.
-            // Get the product by using result.subscription.price.product
-
-          case 7:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _onSubscriptionComplete.apply(this, arguments);
+  window.location.href = 'mongo.html';
+  /* const { MongoClient } = require("mongodb");
+   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+  const databaseName = "test";
+   MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
+    if (error) {
+      console.log(error)
+      return console.log("Connection failed for some reason");
+    }
+    console.log("Connection established - All well");
+    const db = client.db(databaseName);
+  }); */
+  //onSubscriptionSampleDemoComplete(result);
+  // Call your backend to grant access to your service based on
+  // the product your customer subscribed to.
+  // Get the product by using result.subscription.price.product
 }
 
 function createSubscription(_ref4) {
@@ -94374,7 +94353,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52780" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51593" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -7,6 +7,7 @@ require("regenerator-runtime/runtime");
 require("regenerator-runtime/path").path;
 
 
+
 let stripe, customer, price, card;
 
 let priceInfo = {
@@ -406,7 +407,13 @@ function onSubscriptionComplete(result) {
   //window.location.href = 'app.html';
   //main().catch(console.error);
 
-  const { MongoClient } = require("mongodb");
+  window.location.href = 'mongo.html';
+
+
+
+
+
+  /* const { MongoClient } = require("mongodb");
 
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
   const databaseName = "test";
@@ -418,7 +425,7 @@ function onSubscriptionComplete(result) {
     }
     console.log("Connection established - All well");
     const db = client.db(databaseName);
-  });
+  }); */
 
 
 

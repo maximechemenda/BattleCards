@@ -67,7 +67,7 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.m
 
 //app.use(express.static(__dirname + process.env.STATIC_DIR));
 //app.use(express.static(__dirname + '/../../dist'))
-app.use(express.static(__dirname + '/../client'))
+app.use(express.static(__dirname + '/../../dist'))
 // Use JSON parser for all non-webhook routes.
 app.use((req, res, next) => {
   if (req.originalUrl === '/stripe-webhook') {
@@ -88,7 +88,7 @@ app.get('/liveTesting', (req, res) => {
 
 app.get('/', (req, res) => {
   console.log(__dirname)
-  const path = resolve( __dirname + '/index.html');
+  const path = resolve( __dirname + '/MO.html');
   res.sendFile(path);
 });
 

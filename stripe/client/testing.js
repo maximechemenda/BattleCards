@@ -1,21 +1,18 @@
-const regeneratorRuntime = require("regenerator-runtime");
-require("regenerator-runtime/runtime");
-require("regenerator-runtime/path").path;
+//import 'regenerator-runtime/runtime'
+const mongoose = require('mongoose');
 
-async function main() {
+
+
+//async function main() {
   const { MongoClient } = require('mongodb');
-  
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
-    /**
-     * The Mongo Client you will use to interact with your database
-     * See https://mongodb.github.io/node-mongodb-native/3.3/api/MongoClient.html for more details
-     */
-    const client = new MongoClient(uri);
+    mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
+
+  .then(() => console.log('MongoDB connected'))
+  .catch(e => console.log('MongoDB could not be connected due to ', e)); 
+
+/*     const client = new MongoClient(uri);
 
     try {
         // Connect to the MongoDB cluster
@@ -29,8 +26,8 @@ async function main() {
     } finally {
         // Close the connection to the MongoDB cluster
         await client.close();
-    }
-}
+    } */
+//}
 
   /**
    * Print the names of all available databases
