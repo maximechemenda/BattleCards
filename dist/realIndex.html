@@ -1,4 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sending to Mongo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A demo of Stripe Billing">
+    <script src="/testing.3e442874.js" defer=""></script>
+  </head>
 
+  <body>
+  </body>
+</html>
+
+
+
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en" style="height: 100%; width: 100%; margin: 5px">
 <head>
@@ -7,33 +25,35 @@
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
  <meta name="google-signin-client_id" content="237509704363-e8p2dds1319kknlnb8l9ulsmc7pl1fa0.apps.googleusercontent.com">
- <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
- <script src="https://unpkg.com/axios/dist/axios.min.js"> </script> 
- <script src="/src.e31bb0bc.js"></script>
+ <script src="https://apis.google.com/js/platform.js" async defer></script>
+ <script src = "https://unpkg.com/axios/dist/axios.min.js"> </script> 
 
 
  <title>Akpitchtank</title>
-<link rel="stylesheet" href="/src.e31bb0bc.css"></head>
+</head>
 
 <body>
- <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
- <button id="helloId">hello</button>
+ <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
- <script>console.log('entering script');
+ <script>
+   console.log('entering script')
+   function onSignIn(googleUser) {
+      
+    console.log('entering onSignIn')
+    var profile = googleUser.getBasicProfile();
+    var email = profile.getEmail();
 
-function onSignIn(googleUser) {
-  console.log('entering onSignIn');
-  var profile = googleUser.getBasicProfile();
-  var email = profile.getEmail();
-
-  if (email.includes("chemenda") || email.includes("adikteev")) {
-    console.log('email correct');
-    location.href = "app.html";
-  } else {
-    console.log('not correct');
+    if (email.includes("chemenda") || email.includes("adikteev")) {
+      console.log('email correct');
+     
+      location.href = "app.html";
+       
+    } else {
+      console.log('not correct')
+    }
   }
-}</script>
+ </script>
 
  
 </body>
-</html> 
+</html>  -->

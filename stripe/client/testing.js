@@ -1,18 +1,14 @@
-//import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime'
 const mongoose = require('mongoose');
 
 
 
-//async function main() {
+async function main() {
   const { MongoClient } = require('mongodb');
+
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
-    mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority`, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true })
-
-  .then(() => console.log('MongoDB connected'))
-  .catch(e => console.log('MongoDB could not be connected due to ', e)); 
-
-/*     const client = new MongoClient(uri);
+    const client = new MongoClient(uri);
 
     try {
         // Connect to the MongoDB cluster
@@ -26,8 +22,8 @@ const mongoose = require('mongoose');
     } finally {
         // Close the connection to the MongoDB cluster
         await client.close();
-    } */
-//}
+    }
+}
 
   /**
    * Print the names of all available databases

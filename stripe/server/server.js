@@ -11,24 +11,17 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 async function main() {
   const { MongoClient } = require('mongodb');
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
-    /**
-     * The Mongo Client you will use to interact with your database
-     * See https://mongodb.github.io/node-mongodb-native/3.3/api/MongoClient.html for more details
-     */
     const client = new MongoClient(uri);
 
     try {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        // Make the appropriate DB calls
-        await listDatabases(client);
+        databasesList =  await client.db().admin().listDatabases();
+        console.log("Databases:");
+        databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 
     } catch (e) {
         console.error(e);
@@ -37,19 +30,6 @@ async function main() {
         await client.close();
     }
 }
-
-/**
- * Print the names of all available databases
- * @param {MongoClient} client A MongoClient that is connected to a cluster
- */
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
-
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-
-   
-};
 
 
 
@@ -75,6 +55,12 @@ app.use((req, res, next) => {
   } else {
     bodyParser.json()(req, res, next);
   }
+});
+
+app.get('/emailToMongo', (req, res) => {
+
+  main().catch(console.error);
+  
 });
 
 app.get('/liveTesting', (req, res) => {
