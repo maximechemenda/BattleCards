@@ -7,6 +7,24 @@ const bodyParser = require('body-parser');
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+async function updateDocument(client, updatedEmails) {
+    result = await client.db("test").collection("battlecards")
+                        .updateOne({ id: "emailData" }, { $set: updatedEmails });
+
+    console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+    console.log(`${result.modifiedCount} document(s) was/were updated.`);
+}
+
+
+async function findDocument(client) {
+    result = await client.db("test").collection("battlecards")
+                        .findOne({id: "emailData"});
+
+    var emails = result.emails;
+
+    await updateDocument(client, {emails: ["abc.def@gmail.com"]})
+}
+
 
 
 async function main() {
@@ -19,16 +37,28 @@ async function main() {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        databasesList =  await client.db().admin().listDatabases();
-        console.log("Databases:");
-        databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+        await findDocument(client);
 
+       
+
+
+
+
+        /* const result = await client.db("test").collection("battleCards").findOne({id: 'emailData'});
+
+        if (result) {
+            console.log('email: ')
+            console.log(result);
+        } else {
+          console.log('no email were found')
+        } */
     } catch (e) {
         console.error(e);
     } finally {
         // Close the connection to the MongoDB cluster
         await client.close();
     }
+
 }
 
 
@@ -60,7 +90,7 @@ app.use((req, res, next) => {
 app.get('/emailToMongo', (req, res) => {
 
   main().catch(console.error);
-  
+
 });
 
 app.get('/liveTesting', (req, res) => {
