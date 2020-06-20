@@ -1,10 +1,12 @@
 /* import './css/global.css';
 import './css/index.css';
 import './css/normalize.css'; */
+import axios from 'axios';
 
 const regeneratorRuntime = require("regenerator-runtime");
 require("regenerator-runtime/runtime");
 require("regenerator-runtime/path").path;
+
 
 
 
@@ -356,14 +358,24 @@ function onSubscriptionComplete(result) {
   console.log('completing subscription')
   console.log(result.subscription.latest_invoice.customer_email);
 
+  var newEmail = result.subscription.latest_invoice.customer_email;
+
+  var emailArray = newEmail.split('@')
+  var newEmail = emailArray[1]
+
   // Payment was successful. Provision access to your service.
   // Remove invoice from localstorage because payment is now complete.
   clearCache();
   // Change your UI to show a success message to your customer.
-  //window.location.href = 'app.html';
-  //main().catch(console.error);
+ 
 
-  window.location.href = '/emailToMongo';
+  //axios.put(`/emailToMongo/${newEmail}`).then(()=>{
+    axios.put('/emailToMongo', {newEmail: newEmail}).then(()=>{
+    console.log('updated mongo successfully');
+  }).catch(e => console.log('Updation failed, Error ',e));
+
+  
+
 
 
 
