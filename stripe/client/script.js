@@ -367,12 +367,27 @@ function onSubscriptionComplete(result) {
   // Remove invoice from localstorage because payment is now complete.
   clearCache();
   // Change your UI to show a success message to your customer.
- 
 
-  //axios.put(`/emailToMongo/${newEmail}`).then(()=>{
-    axios.put('/emailToMongo', {newEmail: newEmail}).then(()=>{
+  axios.put('/emailToMongo', {newEmail: newEmail})
+  .then(()=>{console.log('updated mongo successfully');})
+  .catch(e => console.log('Updation failed, Error ',e));
+
+  /* const Http = new XMLHttpRequest();
+  const url=`/emailToMongo`;
+  const body = {newEmail: newEmail}
+  Http.open("PUT", url, body);
+  Http.send();
+
+  Http.onreadystatechange = (e) => {
+    console.log(Http.responseText)
+  } */
+
+  window.location.href = 'prices.html'
+  console.log('all done bro')
+
+  /* axios.get(`/emailToMongo/${newEmail}`).then(()=>{
     console.log('updated mongo successfully');
-  }).catch(e => console.log('Updation failed, Error ',e));
+  }).catch(e => console.log('Updation failed, Error ',e)); */
 
   
 

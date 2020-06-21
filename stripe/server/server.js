@@ -78,15 +78,20 @@ app.use((req, res, next) => {
 });
 
 app.put('/emailToMongo', (req, res) => {
+  //console.log(req)
   console.log(req.body.newEmail)
   const newEmail = req.body.newEmail;
   main(newEmail).catch(console.error);
+
+  /* const path = resolve( __dirname + '/../client/account.html')
+  
+ res.sendFile(path) */
 });
 
 
 app.get('/', (req, res) => {
   console.log(__dirname)
-  const path = resolve( __dirname + '/MO.html');
+  const path = resolve( __dirname + '/index.html');
   res.sendFile(path);
 });
 

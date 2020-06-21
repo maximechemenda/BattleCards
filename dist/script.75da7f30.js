@@ -3271,7 +3271,6 @@ function onSubscriptionComplete(result) {
   // Remove invoice from localstorage because payment is now complete.
 
   clearCache(); // Change your UI to show a success message to your customer.
-  //axios.put(`/emailToMongo/${newEmail}`).then(()=>{
 
   _axios.default.put('/emailToMongo', {
     newEmail: newEmail
@@ -3280,6 +3279,22 @@ function onSubscriptionComplete(result) {
   }).catch(function (e) {
     return console.log('Updation failed, Error ', e);
   });
+  /* const Http = new XMLHttpRequest();
+  const url=`/emailToMongo`;
+  const body = {newEmail: newEmail}
+  Http.open("PUT", url, body);
+  Http.send();
+   Http.onreadystatechange = (e) => {
+    console.log(Http.responseText)
+  } */
+
+
+  window.location.href = 'prices.html';
+  console.log('all done bro');
+  /* axios.get(`/emailToMongo/${newEmail}`).then(()=>{
+    console.log('updated mongo successfully');
+  }).catch(e => console.log('Updation failed, Error ',e)); */
+
   /* const { MongoClient } = require("mongodb");
    const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
   const databaseName = "test";
@@ -3295,7 +3310,6 @@ function onSubscriptionComplete(result) {
   // Call your backend to grant access to your service based on
   // the product your customer subscribed to.
   // Get the product by using result.subscription.price.product
-
 }
 
 function createSubscription(_ref4) {
@@ -3688,7 +3702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56302" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49580" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
