@@ -8,20 +8,10 @@ const bodyParser = require('body-parser');
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+
 async function updateDocument(client, updatedEmails) {
     result = await client.db("test").collection("battlecards").updateOne({ id: "emailData" }, { $set: updatedEmails });
 }
-
-
-/* async function findDocument(client) {
-    result = await client.db("test").collection("battlecards").findOne({id: "emailData"});
-
-    var emails = result.emails;
-
-    await updateDocument(client, {emails: ["abc.def@gmail.com"]})
-} */
-
-
 
 async function main(newEmail) {
   const { MongoClient } = require('mongodb');
@@ -53,8 +43,6 @@ async function main(newEmail) {
 
 async function checkEmail(userEmail) {
 
-  console.log('entering function checkEmail')
-
   const { MongoClient } = require('mongodb');
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -74,8 +62,6 @@ async function checkEmail(userEmail) {
         }
       })
 
-      console.log('isRegistered: ' + isRegistered)
-
       return isRegistered;
 
   } catch (e) {
@@ -87,7 +73,6 @@ async function checkEmail(userEmail) {
   } */
 
 }
-
 
 
 //connect to mongodb atlas
@@ -115,27 +100,9 @@ app.use((req, res, next) => {
 });
 
 app.put('/emailToMongo', (req, res) => {
-  //console.log(req)
-  console.log(req.body.newEmail)
   const newEmail = req.body.newEmail;
   main(newEmail).catch(console.error);
-
-  /* const path = resolve( __dirname + '/../client/account.html')
-  
- res.sendFile(path) */
 });
-
-app.get('/sendApp', (req, res) => {
-  const path = resolve( __dirname + '/../client/app.html');
-  res.sendFile(path);
-});
-
-app.get('/sendStripe', (req, res) => {
-  const path = resolve( __dirname + '/../client/stirpe.html');
-  res.sendFile(path);
-});
-
-
 
 app.put('/checkingEmail', (req, res) => {
 
@@ -150,24 +117,10 @@ app.put('/checkingEmail', (req, res) => {
   } else {
     res.send('false')
   }
-
-  //res.send(isRegistered)
-
-  /* if (isRegistered) {
-    axios.get('/sendApp')
-    .then(response => {console.log(response)})
-    .catch(e => {console.log(e)});
-
-  } else {
-    axios.get('/sendStripe')
-    .then(() => {console.log()})
-    .catch(e => console.log(e))
-  } */
 });
 
 app.get('/', (req, res) => {
   console.log(__dirname)
-  /* const path = resolve( __dirname + '/index.html'); */
   const path = resolve( __dirname + '/../client/index.html');
   res.sendFile(path);
 });

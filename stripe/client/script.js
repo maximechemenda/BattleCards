@@ -25,7 +25,6 @@ let priceInfo = {
 };
 
 function stripeElements(publishableKey) {
-  console.log('striping elements')
   stripe = Stripe(publishableKey);
 
   if (document.getElementById('card-element')) {
@@ -107,8 +106,6 @@ function stripeElements(publishableKey) {
 }
 
 function displayError(event) {
-  console.log('displaying error')
-  console.log(event)
   changeLoadingStatePrices(false);
   let displayError = document.getElementById('card-element-errors');
   if (event.error) {
@@ -225,7 +222,6 @@ function switchPrices(newPriceIdSelected) {
         'new-price-start-date'
       ).innerHTML = nextPaymentAttemptDateToDisplay;
 
-      console.log('switching prices')
       changeLoadingStatePrices(false);
     }
   );
@@ -352,9 +348,6 @@ function handlePaymentMethodRequired({
 }
 
 function onSubscriptionComplete(result) {
-  console.log('completing subscription')
-  console.log(result.subscription.latest_invoice.customer_email);
-
   var newEmail = result.subscription.latest_invoice.customer_email;
 
   var emailArray = newEmail.split('@')
@@ -474,8 +467,6 @@ function retryInvoiceWithNewPaymentMethod({
       .catch((error) => {
         // An error has happened. Display the failure to the user here.
         // We utilize the HTML element we created.
-        console.log('there is an error')
-        console.log(error)
         displayError(error);
       })
   );
@@ -502,7 +493,6 @@ function retrieveUpcomingInvoice(customerId, subscriptionId, newPriceId) {
 }
 
 function cancelSubscription() {
-  console.log('canceling subscription')
   changeLoadingStatePrices(true);
   const params = new URLSearchParams(document.location.search.substring(1));
   const subscriptionId = params.get('subscriptionId');
@@ -736,7 +726,6 @@ function changeLoadingState(isLoading) {
 
 // Show a spinner on subscription submission
 function changeLoadingStatePrices(isLoading) {
-  console.log('changing loading state prices')
   console.log(isLoading);
   if (isLoading) {
     document.querySelector('#button-text').classList.add('hidden');

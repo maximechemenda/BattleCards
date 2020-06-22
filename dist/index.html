@@ -17,11 +17,7 @@
 <body>
  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
- <script>/*   window.location.href = `/checkingEmail/${state.data.id}`
- */
-console.log('entering script');
-
-function onSignIn(googleUser) {
+ <script>function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   var email = profile.getEmail();
   axios.put('/checkingEmail', {
@@ -35,22 +31,6 @@ function onSignIn(googleUser) {
   }).catch(function (e) {
     console.log(e);
   });
-  /* const Http = new XMLHttpRequest();
-  const url='/checkingEmail';
-  Http.open("PUT", url);
-  Http.send(JSON.stringify({"email": "hello"}));
-   Http.onreadystatechange = (e) => {
-    console.log(Http.responseText)
-  } */
-
-  /* if (email.includes("chemenda") || email.includes("adikteev")) {
-    console.log('email correct');
-   
-    location.href = "app.html";
-     
-  } else {
-    console.log('not correct')
-  } */
 }</script>
 
  

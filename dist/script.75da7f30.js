@@ -2967,7 +2967,6 @@ var priceInfo = {
 };
 
 function stripeElements(publishableKey) {
-  console.log('striping elements');
   stripe = Stripe(publishableKey);
 
   if (document.getElementById('card-element')) {
@@ -3044,8 +3043,6 @@ function stripeElements(publishableKey) {
 }
 
 function displayError(event) {
-  console.log('displaying error');
-  console.log(event);
   changeLoadingStatePrices(false);
   var displayError = document.getElementById('card-element-errors');
 
@@ -3136,7 +3133,6 @@ function switchPrices(newPriceIdSelected) {
     document.getElementById('new-price-price-selected').innerText = '$' + upcomingInvoice.amount_due / 100;
     var nextPaymentAttemptDateToDisplay = getDateStringFromUnixTimestamp(upcomingInvoice.next_payment_attempt);
     document.getElementById('new-price-start-date').innerHTML = nextPaymentAttemptDateToDisplay;
-    console.log('switching prices');
     changeLoadingStatePrices(false);
   });
 
@@ -3263,8 +3259,6 @@ function handlePaymentMethodRequired(_ref3) {
 }
 
 function onSubscriptionComplete(result) {
-  console.log('completing subscription');
-  console.log(result.subscription.latest_invoice.customer_email);
   var newEmail = result.subscription.latest_invoice.customer_email;
   var emailArray = newEmail.split('@');
   var newEmail = emailArray[1]; // Payment was successful. Provision access to your service.
@@ -3372,8 +3366,6 @@ function retryInvoiceWithNewPaymentMethod(_ref5) {
   .then(onSubscriptionComplete).catch(function (error) {
     // An error has happened. Display the failure to the user here.
     // We utilize the HTML element we created.
-    console.log('there is an error');
-    console.log(error);
     displayError(error);
   });
 }
@@ -3397,7 +3389,6 @@ function retrieveUpcomingInvoice(customerId, subscriptionId, newPriceId) {
 }
 
 function cancelSubscription() {
-  console.log('canceling subscription');
   changeLoadingStatePrices(true);
   var params = new URLSearchParams(document.location.search.substring(1));
   var subscriptionId = params.get('subscriptionId');
@@ -3610,7 +3601,6 @@ function changeLoadingState(isLoading) {
 
 
 function changeLoadingStatePrices(isLoading) {
-  console.log('changing loading state prices');
   console.log(isLoading);
 
   if (isLoading) {
@@ -3671,7 +3661,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65433" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50469" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

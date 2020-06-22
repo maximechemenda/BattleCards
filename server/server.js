@@ -26,7 +26,7 @@ mongoose.connect(`mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.m
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
-   reply.sendFile('realIndex.html')
+   reply.sendFile('index.html')
   }
   catch (e) { console.log('The following error occured: ', e) }
 });
