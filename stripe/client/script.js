@@ -382,8 +382,7 @@ function onSubscriptionComplete(result) {
     console.log(Http.responseText)
   } */
 
-  window.location.href = 'prices.html'
-  console.log('all done bro')
+  window.location.href = '/showRealIndex'
 
   /* axios.get(`/emailToMongo/${newEmail}`).then(()=>{
     console.log('updated mongo successfully');

@@ -88,6 +88,16 @@ app.put('/emailToMongo', (req, res) => {
  res.sendFile(path) */
 });
 
+app.put('/checkingEmail', (req, res) => {
+  console.log(req.body)
+  console.log(req.body.userEmail)
+  res.send("hello app")
+});
+
+app.get('/showRealIndex', (req, res) => {
+  const path = resolve( __dirname + '/../../src/realIndex.html');
+  res.sendFile(path);
+});
 
 app.get('/', (req, res) => {
   console.log(__dirname)

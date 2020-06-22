@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Sending to Mongo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A demo of Stripe Billing" />
-    <script src="/testing.js" defer></script>
-  </head>
 
-  <body>
-  </body>
-</html>
-
-
-
-
-
-<!-- 
 <!DOCTYPE html>
 <html lang="en" style="height: 100%; width: 100%; margin: 5px">
 <head>
@@ -36,24 +18,38 @@
  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
  <script>
+/*   window.location.href = `/checkingEmail/${state.data.id}`
+ */
    console.log('entering script')
+
    function onSignIn(googleUser) {
-      
-    console.log('entering onSignIn')
     var profile = googleUser.getBasicProfile();
     var email = profile.getEmail();
 
-    if (email.includes("chemenda") || email.includes("adikteev")) {
+    axios.put('/checkingEmail', {userEmail: email})
+    .then((response) => {console.log(response)})
+    .catch((e) => {console.log(e)})
+
+    /* const Http = new XMLHttpRequest();
+    const url='/checkingEmail';
+    Http.open("PUT", url);
+    Http.send(JSON.stringify({"email": "hello"}));
+
+    Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    } */
+
+    /* if (email.includes("chemenda") || email.includes("adikteev")) {
       console.log('email correct');
      
       location.href = "app.html";
        
     } else {
       console.log('not correct')
-    }
+    } */
   }
  </script>
 
  
 </body>
-</html>  -->
+</html> 

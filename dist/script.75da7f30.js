@@ -3289,8 +3289,7 @@ function onSubscriptionComplete(result) {
   } */
 
 
-  window.location.href = 'prices.html';
-  console.log('all done bro');
+  window.location.href = '/showRealIndex';
   /* axios.get(`/emailToMongo/${newEmail}`).then(()=>{
     console.log('updated mongo successfully');
   }).catch(e => console.log('Updation failed, Error ',e)); */
@@ -3702,7 +3701,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49580" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62935" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
