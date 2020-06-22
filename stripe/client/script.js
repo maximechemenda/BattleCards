@@ -1,6 +1,3 @@
-/* import './css/global.css';
-import './css/index.css';
-import './css/normalize.css'; */
 import axios from 'axios';
 
 const regeneratorRuntime = require("regenerator-runtime");
@@ -371,54 +368,6 @@ function onSubscriptionComplete(result) {
   axios.put('/emailToMongo', {newEmail: newEmail})
   .then(()=>{console.log('updated mongo successfully');})
   .catch(e => console.log('Updation failed, Error ',e));
-
-  /* const Http = new XMLHttpRequest();
-  const url=`/emailToMongo`;
-  const body = {newEmail: newEmail}
-  Http.open("PUT", url, body);
-  Http.send();
-
-  Http.onreadystatechange = (e) => {
-    console.log(Http.responseText)
-  } */
-
-  window.location.href = '/showRealIndex'
-
-  /* axios.get(`/emailToMongo/${newEmail}`).then(()=>{
-    console.log('updated mongo successfully');
-  }).catch(e => console.log('Updation failed, Error ',e)); */
-
-  
-
-
-
-
-
-
-  /* const { MongoClient } = require("mongodb");
-
-  const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
-  const databaseName = "test";
-
-  MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
-    if (error) {
-      console.log(error)
-      return console.log("Connection failed for some reason");
-    }
-    console.log("Connection established - All well");
-    const db = client.db(databaseName);
-  }); */
-
-
-
-  //onSubscriptionSampleDemoComplete(result);
-
-
-
-  // Call your backend to grant access to your service based on
-  // the product your customer subscribed to.
-  // Get the product by using result.subscription.price.product
-
   
 }
 
