@@ -68,8 +68,8 @@ export const readItems = () => {
       return axios.get('/api/battleCards')       // req data from server
         .then(({data}) => {
             {console.log('data')} 
-            {console.log(data[0])}
-          dispatch(fetchItemsSuccess(data[0]));   // success 
+            {console.log(data)}
+          dispatch(fetchItemsSuccess(data));   // success 
         })
         .catch(error => dispatch(fetchItemsFailure(error))); //errors
     }

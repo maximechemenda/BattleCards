@@ -36422,9 +36422,9 @@ var readItems = function readItems() {
         console.log('data');
       }
       {
-        console.log(data[0]);
+        console.log(data);
       }
-      dispatch(fetchItemsSuccess(data[0])); // success 
+      dispatch(fetchItemsSuccess(data)); // success 
     }).catch(function (error) {
       return dispatch(fetchItemsFailure(error));
     }); //errors
@@ -38960,20 +38960,36 @@ var App = /*#__PURE__*/function (_Component) {
 
       _axios.default.get('./api/battleCards').then(function (response) {
         if (response.data.length === 0) {
-          _axios.default.post('/api/battleCards', _objectSpread({}, _this.props.data)).then(_this.props.readItems()).catch(function (e) {
+          console.log('data equal to 1');
+
+          _axios.default.post('/api/battleCards', {
+            data: _objectSpread({}, _this.props.data)
+          }).then(_this.props.readItems()).catch(function (e) {
             return console.log("Addition failed , Error ", e);
           });
         } else {
+          console.log('didnt enter it');
+
           _this.props.readItems();
         }
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
       });
-    }
-    /* componentDidMount() {
-      this.props.clearSelectedBattleCards()
-    } */
+      /* axios.get('./api/battleCards')
+      .then(response => { 
+       if (response.data.length === 0) {
+         console.log('data equal to 1')
+         axios.post('/api/battleCards',{...this.props.data})
+         .then(this.props.readItems())
+         .catch(e => console.log("Addition failed , Error ", e));
+       } else {
+         console.log('didnt enter it')
+         this.props.readItems();
+       }
+      })
+      .catch(e => console.log("fetching failed , Error ", e)); */
 
+    }
   }, {
     key: "render",
     value: function render() {
@@ -39087,7 +39103,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50469" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59143" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

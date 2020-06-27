@@ -7,6 +7,22 @@ const bodyParser = require('body-parser');
 // Replace if using a different env file or config
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { BattleCards } = require( __dirname + '/../../server/models/battleCards.js');
+
+
+
+async function createBattleCards(client, battleCards){
+    const result = await client.db("test").collection("battlecards").insertOne(battleCards);
+
+    if (result) {
+      console.log('yes result')
+    } else {
+      console.log('no result')
+    }
+
+    console.log('battleCards added')
+
+}
 
 
 async function updateDocument(client, updatedEmails) {
@@ -14,7 +30,7 @@ async function updateDocument(client, updatedEmails) {
 }
 
 async function main(newEmail) {
-  const { MongoClient } = require('mongodb');
+    const { MongoClient } = require('mongodb');
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
     const client = new MongoClient(uri, { useUnifiedTopology: true });
@@ -33,11 +49,11 @@ async function main(newEmail) {
 
     } catch (e) {
         console.error(e);
-    } /* finally {
+    } finally {
       console.log('closing client')
         // Close the connection to the MongoDB cluster
         await client.close();
-    } */
+    }
 
 }
 
@@ -98,6 +114,93 @@ app.use((req, res, next) => {
     bodyParser.json()(req, res, next);
   }
 });
+
+app.get('/api/battleCards', async (req, res) => {
+  console.log('getting it')
+
+  const { MongoClient } = require('mongodb');
+    const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+
+        battleCards = await client.db("test").collection("battlecards").findOne({id: "380d1cd6-4b36-4623-a516-c89d2a8f81c5"});
+        
+        res.send(battleCards)
+
+    } catch (e) {
+        console.error(e);
+    } finally {
+      console.log('closing client')
+        // Close the connection to the MongoDB cluster
+        await client.close();
+    }
+  
+});
+
+/* app.post('/api/battleCards', async (req, res) => {
+  try {
+      const newBattleCard = new BattleCards({ ...req.body });
+      return newBattleCard.save()
+    }
+    catch (err) { console.log(err) }
+}); */
+
+app.post('/api/battleCards', async (req, res) => {
+  console.log('entering posting area')
+  const { MongoClient } = require('mongodb');
+  const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+  try {
+      // Connect to the MongoDB cluster
+      await client.connect();
+
+      await createBattleCards(client, {...req.body});
+
+  } catch (e) {
+      console.error(e);
+  } finally {
+    console.log('closing client')
+      // Close the connection to the MongoDB cluster
+      await client.close();
+  }
+});
+
+
+
+
+
+app.put('/api/battleCards/:id', async (req, res) => {
+  const { MongoClient } = require('mongodb');
+  const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+
+  try {
+    await client.connect();
+    console.log(req.body.id)
+    console.log(req.body._id)
+
+    result = await client.db("test").collection("battlecards").updateOne({ id: req.body.id }, { $set: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards} });
+    return result;
+
+  }
+  catch (e) {
+      console.error(e);
+  } finally {
+    console.log('closing client')
+      // Close the connection to the MongoDB cluster
+      await client.close();
+  }
+});
+
+
 
 app.put('/emailToMongo', (req, res) => {
   const newEmail = req.body.newEmail;
@@ -318,5 +421,6 @@ app.post(
     res.sendStatus(200);
   }
 );
+
 
 app.listen(4343, () => console.log(`Node server listening on port ${4343}!`));
