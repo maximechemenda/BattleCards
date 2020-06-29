@@ -20,7 +20,7 @@ async function createBattleCards(client, battleCards){
       console.log('no result')
     }
 
-    console.log('battleCards added')
+      console.log('battleCards added')
 
 }
 
