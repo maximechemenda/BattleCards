@@ -38993,9 +38993,10 @@ var App = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var mapState = function mapState(state) {
-  _axios.default.put("/api/battleCards/".concat(state.data.id), state.data).then(function (_ref) {
-    var data = _ref.data;
-    console.log('');
+  console.log('mashallah'); //axios.put(`/api/battleCards/${state.data.id}`,state.data)
+
+  _axios.default.put("/api/battleCards", state.data).then(function (response) {
+    console.log('updated all of this');
   }).catch(function (e) {
     return console.log('Updation failed, Error ', e);
   });
@@ -39095,7 +39096,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60869" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58091" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

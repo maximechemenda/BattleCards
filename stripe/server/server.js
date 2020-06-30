@@ -178,7 +178,8 @@ app.post('/api/battleCards', async (req, res) => {
 
 
 
-app.put('/api/battleCards/:id', async (req, res) => {
+//app.put('/api/battleCards/:id', async (req, res) => {
+  app.put('/api/battleCards', async (req, res) => {
   const { MongoClient } = require('mongodb');
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -187,11 +188,16 @@ app.put('/api/battleCards/:id', async (req, res) => {
 
   try {
     await client.connect();
-    console.log(req.body.id)
-    console.log(req.body._id)
+    console.log('body')
+    console.log(req.body)
 
-    result = await client.db("test").collection("battlecards").updateOne({ id: req.body.id }, { $set: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards} });
-    return result;
+    var random = Math.random();
+
+    result = await client.db("test").collection("battlecards").updateOne({ id: "emailData" }, { $set: {emails: [random]} });
+    res.send(result)
+
+    //result = await client.db("test").collection("battlecards").updateOne({ id: "battleCardsData" }, { $set: { data:{id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}} });
+    //return result;
 
   }
   catch (e) {

@@ -60,8 +60,11 @@ class App extends Component {
 
 const mapState = (state) => {
 
-  axios.put(`/api/battleCards/${state.data.id}`,state.data)
-  .then(({data})=> {console.log('');})
+  console.log('mashallah')
+
+  //axios.put(`/api/battleCards/${state.data.id}`,state.data)
+  axios.put(`/api/battleCards`,state.data)
+  .then((response)=> {console.log('updated all of this');})
   .catch(e => console.log('Updation failed, Error ',e));
 
   return ({
