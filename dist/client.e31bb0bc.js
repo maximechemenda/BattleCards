@@ -36417,14 +36417,14 @@ var readItems = function readItems() {
 
     return _axios.default.get('/api/battleCards') // req data from server
     .then(function (_ref) {
-      var data = _ref.data;
+      var response = _ref.response;
       {
-        console.log('data');
+        console.log('response');
       }
       {
-        console.log(data);
+        console.log(response.data);
       }
-      dispatch(fetchItemsSuccess(data)); // success 
+      dispatch(fetchItemsSuccess(response.data)); // success 
     }).catch(function (error) {
       return dispatch(fetchItemsFailure(error));
     }); //errors
@@ -38916,12 +38916,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -38960,13 +38954,11 @@ var App = /*#__PURE__*/function (_Component) {
 
       _axios.default.get('./api/battleCards').then(function (response) {
         if (response.data.length === 0) {
-          console.log('data equal to 1');
-
-          _axios.default.post('/api/battleCards', {
-            data: _objectSpread({}, _this.props.data)
-          }).then(_this.props.readItems()).catch(function (e) {
-            return console.log("Addition failed , Error ", e);
-          });
+          console.log(response);
+          console.log(response.data);
+          console.log('data equal to 1'); //axios.post('/api/battleCards',{ data: {...this.props.data}})
+          //.then(this.props.readItems())
+          //.catch(e => console.log("Addition failed , Error ", e));
         } else {
           console.log('didnt enter it');
 
@@ -39103,7 +39095,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60869" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -127,8 +127,11 @@ app.get('/api/battleCards', async (req, res) => {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        battleCards = await client.db("test").collection("battlecards").findOne({id: "380d1cd6-4b36-4623-a516-c89d2a8f81c5"});
+        battleCards = await client.db("test").collection("battlecards").findOne({id: "battleCardsData"});
         
+        console.log('battlecards: ')
+        console.log(battleCards)
+
         res.send(battleCards)
 
     } catch (e) {

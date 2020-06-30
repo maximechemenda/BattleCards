@@ -18,10 +18,12 @@ class App extends Component {
     axios.get('./api/battleCards')
     .then(response => { 
       if (response.data.length === 0) {
+        console.log(response)
+        console.log(response.data)
         console.log('data equal to 1')
-        axios.post('/api/battleCards',{ data: {...this.props.data}})
-        .then(this.props.readItems())
-        .catch(e => console.log("Addition failed , Error ", e));
+        //axios.post('/api/battleCards',{ data: {...this.props.data}})
+        //.then(this.props.readItems())
+        //.catch(e => console.log("Addition failed , Error ", e));
       } else {
         console.log('didnt enter it')
         this.props.readItems();
@@ -58,9 +60,9 @@ class App extends Component {
 
 const mapState = (state) => {
 
-  axios.put(`/api/battleCards/${state.data.id}`,state.data).then(({data})=>{
-    console.log('');
-  }).catch(e => console.log('Updation failed, Error ',e));
+  axios.put(`/api/battleCards/${state.data.id}`,state.data)
+  .then(({data})=> {console.log('');})
+  .catch(e => console.log('Updation failed, Error ',e));
 
   return ({
       data: state.data
