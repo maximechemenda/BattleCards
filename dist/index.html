@@ -18,19 +18,18 @@
  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
  <script>function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
+  window.location.href = 'stripe.html';
+  /* var profile = googleUser.getBasicProfile();
   var email = profile.getEmail();
-  axios.put('/checkingEmail', {
-    userEmail: email
-  }).then(function (response) {
+   axios.put('/checkingEmail', {userEmail: email})
+  .then((response) => {
     if (response.data == true) {
       window.location.href = 'app.html';
     } else {
-      window.location.href = 'stripe.html';
+      window.location.href = 'stripe.html'
     }
-  }).catch(function (e) {
-    console.log(e);
-  });
+  })
+  .catch((e) => {console.log(e)}); */
 }</script>
 
  

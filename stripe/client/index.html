@@ -19,7 +19,8 @@
 
  <script>
    function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
+     window.location.href = 'stripe.html'
+    /* var profile = googleUser.getBasicProfile();
     var email = profile.getEmail();
 
     axios.put('/checkingEmail', {userEmail: email})
@@ -30,7 +31,7 @@
         window.location.href = 'stripe.html'
       }
     })
-    .catch((e) => {console.log(e)});
+    .catch((e) => {console.log(e)}); */
   }
  </script>
 
