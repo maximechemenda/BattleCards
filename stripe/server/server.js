@@ -111,6 +111,7 @@ app.get('/api/battleCards', async (req, res) => {
 
     const client = new MongoClient(uri, { useUnifiedTopology: true });
 
+    console.log(req.params)
     try {
         // Connect to the MongoDB cluster
         await client.connect();
@@ -154,6 +155,10 @@ app.post('/api/battleCards', async (req, res) => {
 
   const client = new MongoClient(uri, { useUnifiedTopology: true });
 
+  //var clientId = req.originalUrl;
+  //console.log(clientId)
+
+  
 
   try {
     await client.connect();

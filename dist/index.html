@@ -20,11 +20,13 @@
  <script>function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   var email = profile.getEmail();
+  var arrayEmail = email.split('@');
+  var companyIdentifier = arrayEmail[1];
   axios.put('/checkingEmail', {
     userEmail: email
   }).then(function (response) {
     if (response.data == true) {
-      window.location.href = 'app.html';
+      window.location.href = 'app.html?companyIdentifier=' + companyIdentifier;
     } else {
       window.location.href = 'stripe.html';
     }

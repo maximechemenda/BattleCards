@@ -38977,7 +38977,12 @@ var App = /*#__PURE__*/function (_Component) {
           this.props.getMongoState(response.data.data)
         }
       }) */
-      _axios.default.get('./api/battleCards').then(function (response) {
+      var url = window.location.href;
+      var arrayUrl = url.split('companyIdentifier=');
+      var companyIdentifier = arrayUrl[1];
+      console.log(companyIdentifier);
+
+      _axios.default.put('./api/battleCards?companyIdentifier=' + companyIdentifier).then(function (response) {
         _this.props.getMongoState(response.data.data);
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
@@ -38994,7 +38999,7 @@ var App = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var mapState = function mapState(state) {
-  console.log('mashallah'); //axios.put(`/api/battleCards/${state.data.id}`,state.data)
+  console.log('mashallah');
 
   _axios.default.put("/api/battleCards", state.data).then(function (response) {
     console.log('updated all of this');
@@ -39098,7 +39103,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54818" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
