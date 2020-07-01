@@ -3259,6 +3259,7 @@ function handlePaymentMethodRequired(_ref3) {
 }
 
 function onSubscriptionComplete(result) {
+  console.log('completing subscription');
   var newEmail = result.subscription.latest_invoice.customer_email;
   var emailArray = newEmail.split('@');
   var newEmail = emailArray[1]; // Payment was successful. Provision access to your service.
@@ -3661,7 +3662,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53444" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63001" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

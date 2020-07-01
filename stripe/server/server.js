@@ -173,16 +173,20 @@ app.post('/api/battleCards', async (req, res) => {
 
 app.put('/emailToMongo', (req, res) => {
   const newEmail = req.body.newEmail;
-  main(newEmail).catch(console.error);
+  const response = main(newEmail).catch(console.error);
+  res.send(response)
+  window.location.href = 'index.html'
 });
 
-app.put('/checkingEmail', (req, res) => {
+app.put('/checkingEmail', async (req, res) => {
 
   const userEmail = req.body.userEmail;
   const arrayEmail = userEmail.split('@');
   const lastEmailPart = arrayEmail[1]
 
-  isRegistered = checkEmail(lastEmailPart);
+  var isRegistered = await checkEmail(lastEmailPart);
+
+  console.log(isRegistered)
 
   if (isRegistered) {
     res.send('true')

@@ -348,6 +348,7 @@ function handlePaymentMethodRequired({
 }
 
 function onSubscriptionComplete(result) {
+  console.log('completing subscription')
   var newEmail = result.subscription.latest_invoice.customer_email;
 
   var emailArray = newEmail.split('@')

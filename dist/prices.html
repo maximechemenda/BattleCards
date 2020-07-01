@@ -13,16 +13,6 @@
   <script src="/normalize.1114379f.js"></script><script src="/global.99a46257.js"></script></head>
 
   <body class="antialiased p-6">
-    <nav class="flex items-center justify-between flex-wrap">
-      <svg width="79px" height="24px" viewBox="0 0 79 24">
-        <image onclick="resetDemo()" xlink:href="https://storage.googleapis.com/stripe-sample-images/logo-pasha.svg"></image>
-      </svg>
-      <div>
-        <button class="bg-white hover:bg-white hover:shadow-outline hover:text-pasha hover:border hover:border-black focus:shadow-outline text-pasha focus:bg-white focus:text-pasha font-light py-2 px-4 rounded" type="button" onclick="resetDemo()">
-          Sign out
-        </button>
-      </div>
-    </nav>
     <div id="prices-and-payment" class="flex flex-wrap justify-center">
       <div id="prices-form" class="md:w-1/3 w-full mr-4 md:mb-8">
         <div class="text-center text-pasha font-bold text-2xl mt-4 mb-6">
@@ -36,7 +26,7 @@
                 Basic
               </div>
               <p class="text-pasha text-2xl font-extrabold">
-                $1.00
+                £29.99
               </p>
               <div class="flex-wrap">
                 <div class="leading-none text-gray-500 text-xs font-medium">
@@ -101,7 +91,7 @@
               Enter your card details. <br>Your subscription will start now.
             </div>
             <p class="text-gray-700 text-base">
-              → Total due now <span id="total-due-now">$0.00</span>
+              → Total due now <span id="total-due-now">£29.99</span>
             </p>
             <p id="price-selected" class="text-gray-700 text-base mb-4"></p>
 
@@ -148,40 +138,6 @@
             →
           </span>
         </a>
-        <div class="hidden sm:block max-w-8xl mx-auto px-4 lg:px-6">
-          <div class="py-3 pl-6 pr-3 rounded-lg bg-white shadow-lg">
-            <div class="flex items-center justify-between flex-wrap">
-              <div class="w-full flex-1 flex items-center sm:w-0">
-                <p class="text-white truncate">
-                  <strong class="font-medium text-pasha md:hidden">
-                    This is a Stripe Sample
-                  </strong>
-                  <strong class="hidden md:inline font-medium text-pasha">
-                    This is a Stripe Sample
-                  </strong>
-                  <span class="lg:hidden text-pasha">
-                    with Fixed Price Subscriptions with Cards. View code on
-                    GitHub.
-                  </span>
-                  <!-- <span class="hidden md:inline lg:hidden">
-                    to all of the components in Tailwind UI
-                  </span> -->
-                  <span class="hidden lg:inline text-pasha">
-                    with Fixed Price Subscriptions with Cards. View code on
-                    GitHub.
-                  </span>
-                </p>
-              </div>
-              <div class="flex-shrink-0">
-                <div class="rounded-md shadow-sm">
-                  <a href="https://stripe.com/docs/billing" class="flex items-center justify-center px-4 py-2 border text-sm leading-5 font-medium rounded text-pasha bg-white hover:text-gray-600 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
-                    View the guide →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <script>function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
