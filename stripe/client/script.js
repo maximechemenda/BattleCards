@@ -362,6 +362,8 @@ function onSubscriptionComplete(result) {
   axios.put('/emailToMongo', {newEmail: newEmail})
   .then(()=>{console.log('updated mongo successfully');})
   .catch(e => console.log('Updation failed, Error ',e));
+
+  window.location.href = 'app.html'
   
 }
 

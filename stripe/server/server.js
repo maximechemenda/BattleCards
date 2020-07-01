@@ -175,7 +175,6 @@ app.put('/emailToMongo', (req, res) => {
   const newEmail = req.body.newEmail;
   const response = main(newEmail).catch(console.error);
   res.send(response)
-  window.location.href = 'index.html'
 });
 
 app.put('/checkingEmail', async (req, res) => {
