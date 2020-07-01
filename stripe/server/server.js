@@ -7,26 +7,18 @@ const bodyParser = require('body-parser');
 // Replace if using a different env file or config
 require('dotenv').config({ path: __dirname + '/.env' });
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { BattleCards } = require( __dirname + '/../../server/models/battleCards.js');
+const { BattleCards } = require( __dirname + '/battleCardModel.js');
+
 
 
 
 async function createBattleCards(client, battleCards){
     const result = await client.db("test").collection("battlecards").insertOne(battleCards);
-
-    if (result) {
-      console.log('yes result')
-    } else {
-      console.log('no result')
-    }
-
-      console.log('battleCards added')
-
 }
 
 
 async function updateDocument(client, updatedEmails) {
-    result = await client.db("test").collection("battlecards").updateOne({ id: "emailData" }, { $set: updatedEmails });
+    result = await client.db("test").collection("emails").updateOne({ id: "emailData" }, { $set: updatedEmails });
 }
 
 async function main(newEmail) {
@@ -39,7 +31,7 @@ async function main(newEmail) {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        result = await client.db("test").collection("battlecards").findOne({id: "emailData"});
+        result = await client.db("test").collection("emails").findOne({id: "emailData"});
         var emailsContent = result.emails;
         emailsContent.push(newEmail);
 
@@ -50,7 +42,6 @@ async function main(newEmail) {
     } catch (e) {
         console.error(e);
     } finally {
-      console.log('closing client')
         // Close the connection to the MongoDB cluster
         await client.close();
     }
@@ -68,7 +59,7 @@ async function checkEmail(userEmail) {
       // Connect to the MongoDB cluster
       await client.connect();
 
-      result = await client.db("test").collection("battlecards").findOne({id: "emailData"});
+      result = await client.db("test").collection("emails").findOne({id: "emailData"});
       const emailsContent = result.emails;
       var isRegistered = false;
 
@@ -116,7 +107,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/battleCards', async (req, res) => {
-  console.log('getting it')
 
   const { MongoClient } = require('mongodb');
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
@@ -127,17 +117,18 @@ app.get('/api/battleCards', async (req, res) => {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        battleCards = await client.db("test").collection("battlecards").findOne({id: "battleCardsData"});
+        const battleCards = await BattleCards.findOne();
+
+        //battleCards = await client.db("test").collection("battlecards").findOne({id: "battleCardsData"});
         
         console.log('battlecards: ')
-        console.log(battleCards)
+        console.log(battleCards.data.caseStudies.caseStudiesBattleCards[0].cards[0])
 
         res.send(battleCards)
 
     } catch (e) {
         console.error(e);
     } finally {
-      console.log('closing client')
         // Close the connection to the MongoDB cluster
         await client.close();
     }
@@ -153,7 +144,6 @@ app.get('/api/battleCards', async (req, res) => {
 }); */
 
 app.post('/api/battleCards', async (req, res) => {
-  console.log('entering posting area')
   const { MongoClient } = require('mongodb');
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -168,14 +158,10 @@ app.post('/api/battleCards', async (req, res) => {
   } catch (e) {
       console.error(e);
   } finally {
-    console.log('closing client')
       // Close the connection to the MongoDB cluster
       await client.close();
   }
 });
-
-
-
 
 
 //app.put('/api/battleCards/:id', async (req, res) => {
@@ -188,22 +174,16 @@ app.post('/api/battleCards', async (req, res) => {
 
   try {
     await client.connect();
-    console.log('body')
-    console.log(req.body)
 
-    var random = Math.random();
-
-    result = await client.db("test").collection("battlecards").updateOne({ id: "emailData" }, { $set: {emails: [random]} });
-    res.send(result)
+    const result = await BattleCards.findOneAndUpdate("battleCardsData", { data: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}}, {new: true})
 
     //result = await client.db("test").collection("battlecards").updateOne({ id: "battleCardsData" }, { $set: { data:{id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}} });
-    //return result;
+    res.send(result)
 
   }
   catch (e) {
       console.error(e);
   } finally {
-    console.log('closing client')
       // Close the connection to the MongoDB cluster
       await client.close();
   }
@@ -232,7 +212,6 @@ app.put('/checkingEmail', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  console.log(__dirname)
   const path = resolve( __dirname + '/../client/index.html');
   res.sendFile(path);
 });

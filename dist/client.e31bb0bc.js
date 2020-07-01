@@ -32460,7 +32460,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.EDIT_SEARCH_BOX_VALUE = exports.EDIT_BLUE_HEADER_VALUE = exports.ADD_BLUE_HEADER_VALUE = exports.CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS = exports.TRIGGER_BIG_SECTION_STATE = exports.UPDATE_CARD_HEIGHT = exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
+exports.GET_MONGO_STATE = exports.EDIT_SEARCH_BOX_VALUE = exports.EDIT_BLUE_HEADER_VALUE = exports.ADD_BLUE_HEADER_VALUE = exports.CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS = exports.TRIGGER_BIG_SECTION_STATE = exports.UPDATE_CARD_HEIGHT = exports.FETCH_ITEMS_FAILURE = exports.FETCH_ITEMS_SUCCESS = exports.FETCH_ITEMS_BEGIN = exports.READ = exports.ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS = exports.CLEAR_SELECTED_BATTLECARDS = exports.CHANGE_SELECTED_BATTLECARDS = exports.MODIFY_BATTLECARD_TITLE = exports.TRIGGER_SECTION_STATE = exports.DELETE_BATTLECARD = exports.ADD_BATTLECARD = exports.TRIGGER_ADD_CARD_STATE = exports.EDIT_CARD = exports.ACTIVATE_CARD_EDIT = exports.DELETE_CARD = exports.ADD_CARD = void 0;
 var ADD_CARD = 'ADD_CARD';
 exports.ADD_CARD = ADD_CARD;
 var DELETE_CARD = 'DELETE_CARD';
@@ -32504,14 +32504,9 @@ exports.ADD_BLUE_HEADER_VALUE = ADD_BLUE_HEADER_VALUE;
 var EDIT_BLUE_HEADER_VALUE = 'EDIT_BLUE_HEADER_VALUE';
 exports.EDIT_BLUE_HEADER_VALUE = EDIT_BLUE_HEADER_VALUE;
 var EDIT_SEARCH_BOX_VALUE = 'EDIT_SEARCH_BOX_VALUE';
-/* export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const SET_FILTER = 'SET_FILTER'
-export const FILTER_ALL = 'all'
-export const FILTER_COMPLETED = 'completed'
-export const FILTER_INCOMPLETE = 'incomplete'
-export const Filters = [FILTER_ALL, FILTER_COMPLETED, FILTER_INCOMPLETE] */
-
 exports.EDIT_SEARCH_BOX_VALUE = EDIT_SEARCH_BOX_VALUE;
+var GET_MONGO_STATE = 'GET_MONGO_STATE';
+exports.GET_MONGO_STATE = GET_MONGO_STATE;
 },{}],"../../src/redux/reducers.js":[function(require,module,exports) {
 "use strict";
 
@@ -32653,6 +32648,11 @@ var battleCards = function battleCards() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actionTypes.GET_MONGO_STATE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        data: action.state
+      });
+
     case _actionTypes.EDIT_SEARCH_BOX_VALUE:
       console.log('entering function');
       return _objectSpread(_objectSpread({}, state), {}, {
@@ -36308,7 +36308,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = exports.updateCardHeight = exports.triggerBigSectionState = exports.clearSelectedCaseStudiesBattleCards = exports.addBlueHeaderValue = exports.editBlueHeaderValue = exports.editSearchBoxValue = void 0;
+exports.deleteBattleCard = exports.addBattleCard = exports.editCard = exports.activateCardEdit = exports.deleteCard = exports.triggerAddCardState = exports.addCard = exports.triggerSectionState = exports.modifyBattleCardTitle = exports.changeSelectedBattleCards = exports.clearSelectedBattleCards = exports.addBattleCardToSectionAndSelectedBattleCards = exports.readItems = exports.fetchItemsFailure = exports.fetchItemsSuccess = exports.fetchItemsBegin = exports.updateCardHeight = exports.triggerBigSectionState = exports.clearSelectedCaseStudiesBattleCards = exports.addBlueHeaderValue = exports.editBlueHeaderValue = exports.editSearchBoxValue = exports.getMongoState = void 0;
 
 var _uuid = require("uuid");
 
@@ -36319,6 +36319,15 @@ var _actionTypes = require("./actionTypes");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import uuid from 'uuid';
+var getMongoState = function getMongoState(state) {
+  return {
+    type: _actionTypes.GET_MONGO_STATE,
+    state: state
+  };
+};
+
+exports.getMongoState = getMongoState;
+
 var editSearchBoxValue = function editSearchBoxValue(text) {
   return {
     type: _actionTypes.EDIT_SEARCH_BOX_VALUE,
@@ -36415,16 +36424,15 @@ var readItems = function readItems() {
     // function starts
     dispatch(fetchItemsBegin()); // fetching begins
 
-    return _axios.default.get('/api/battleCards') // req data from server
-    .then(function (_ref) {
-      var response = _ref.response;
+    return _axios.default.get('./api/battleCards') // req data from server
+    .then(function (response) {
       {
         console.log('response');
       }
       {
-        console.log(response.data);
+        console.log(response);
       }
-      dispatch(fetchItemsSuccess(response.data)); // success 
+      dispatch(fetchItemsSuccess(response.data.data)); // success 
     }).catch(function (error) {
       return dispatch(fetchItemsFailure(error));
     }); //errors
@@ -38952,35 +38960,28 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this = this;
 
-      _axios.default.get('./api/battleCards').then(function (response) {
+      /* axios.get('./api/battleCards')
+      .then(response => { 
         if (response.data.length === 0) {
-          console.log(response);
-          console.log(response.data);
-          console.log('data equal to 1'); //axios.post('/api/battleCards',{ data: {...this.props.data}})
+          console.log(response)
+          console.log(response.data)
+          console.log('data equal to 1')
+          //axios.post('/api/battleCards',{ data: {...this.props.data}})
           //.then(this.props.readItems())
           //.catch(e => console.log("Addition failed , Error ", e));
         } else {
-          console.log('didnt enter it');
-
-          _this.props.readItems();
+          console.log('didnt enter it')
+          console.log(response.data.data.caseStudies.caseStudiesBattleCards[0].cards[0])
+          //console.log(response)
+          //this.props.readItems();
+          this.props.getMongoState(response.data.data)
         }
+      }) */
+      _axios.default.get('./api/battleCards').then(function (response) {
+        _this.props.getMongoState(response.data.data);
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
       });
-      /* axios.get('./api/battleCards')
-      .then(response => { 
-       if (response.data.length === 0) {
-         console.log('data equal to 1')
-         axios.post('/api/battleCards',{...this.props.data})
-         .then(this.props.readItems())
-         .catch(e => console.log("Addition failed , Error ", e));
-       } else {
-         console.log('didnt enter it')
-         this.props.readItems();
-       }
-      })
-      .catch(e => console.log("fetching failed , Error ", e)); */
-
     }
   }, {
     key: "render",
@@ -39009,7 +39010,8 @@ var mapState = function mapState(state) {
 var _default = (0, _reactRedux.connect)(mapState, {
   readItems: _actions.readItems,
   updateCardHeight: _actions.updateCardHeight,
-  clearSelectedBattleCards: _actions.clearSelectedBattleCards
+  clearSelectedBattleCards: _actions.clearSelectedBattleCards,
+  getMongoState: _actions.getMongoState
 })(App);
 
 exports.default = _default;
@@ -39096,7 +39098,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58091" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59547" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

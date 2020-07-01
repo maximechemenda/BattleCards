@@ -3,7 +3,7 @@ import './App.css';
 //import {Provider} from 'react-redux'
 //import store from './redux/store'
 import BattleCardsMenu from './components/BattleCards'
-import { readItems, updateCardHeight, clearSelectedBattleCards } from './redux/actions'
+import { readItems, updateCardHeight, clearSelectedBattleCards, getMongoState } from './redux/actions'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -15,7 +15,7 @@ class App extends Component {
 
   componentDidMount() {
 
-    axios.get('./api/battleCards')
+    /* axios.get('./api/battleCards')
     .then(response => { 
       if (response.data.length === 0) {
         console.log(response)
@@ -26,26 +26,17 @@ class App extends Component {
         //.catch(e => console.log("Addition failed , Error ", e));
       } else {
         console.log('didnt enter it')
-        this.props.readItems();
+        console.log(response.data.data.caseStudies.caseStudiesBattleCards[0].cards[0])
+        //console.log(response)
+        //this.props.readItems();
+        this.props.getMongoState(response.data.data)
       }
+  }) */
+  axios.get('./api/battleCards')
+    .then(response => { 
+      this.props.getMongoState(response.data.data)
   })
   .catch(e => console.log("fetching failed , Error ", e));
-
-
-
-     /* axios.get('./api/battleCards')
-    .then(response => { 
-      if (response.data.length === 0) {
-        console.log('data equal to 1')
-        axios.post('/api/battleCards',{...this.props.data})
-        .then(this.props.readItems())
-        .catch(e => console.log("Addition failed , Error ", e));
-      } else {
-        console.log('didnt enter it')
-        this.props.readItems();
-      }
-  })
-  .catch(e => console.log("fetching failed , Error ", e)); */
   } 
 
   render() {
@@ -72,4 +63,4 @@ const mapState = (state) => {
   })
 }
 
-export default connect(mapState, { readItems, updateCardHeight, clearSelectedBattleCards })(App)
+export default connect(mapState, { readItems, updateCardHeight, clearSelectedBattleCards, getMongoState })(App)

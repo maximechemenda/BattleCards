@@ -8,8 +8,14 @@ import { ADD_CARD, DELETE_CARD, TRIGGER_ADD_CARD_STATE, ACTIVATE_CARD_EDIT, EDIT
     ADD_BATTLECARD_TO_SECTION_AND_SELECTED_BATTLECARDS, READ,
     FETCH_ITEMS_BEGIN, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILURE, UPDATE_CARD_HEIGHT,
     TRIGGER_BIG_SECTION_STATE, CLEAR_SELECTED_CASE_STUDIES_BATTLECARDS, ADD_BLUE_HEADER_VALUE,
-    EDIT_BLUE_HEADER_VALUE, EDIT_SEARCH_BOX_VALUE} from './actionTypes';
+    EDIT_BLUE_HEADER_VALUE, EDIT_SEARCH_BOX_VALUE,
+    GET_MONGO_STATE} from './actionTypes';
 
+
+export const getMongoState = (state) => ({
+    type: GET_MONGO_STATE,
+    state
+})
 
 
 export const editSearchBoxValue = (text) => ({
@@ -65,11 +71,11 @@ export const fetchItemsFailure = errors => ({
 export const readItems = () => {
     return (dispatch) => {                     // function starts
       dispatch(fetchItemsBegin());             // fetching begins
-      return axios.get('/api/battleCards')       // req data from server
-        .then(({response}) => {
+      return axios.get('./api/battleCards')       // req data from server
+        .then((response) => {
             {console.log('response')} 
-            {console.log(response.data)}
-          dispatch(fetchItemsSuccess(response.data));   // success 
+            {console.log(response)}
+          dispatch(fetchItemsSuccess(response.data.data));   // success 
         })
         .catch(error => dispatch(fetchItemsFailure(error))); //errors
     }
