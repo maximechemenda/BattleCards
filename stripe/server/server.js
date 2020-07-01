@@ -11,7 +11,6 @@ const { BattleCards } = require( __dirname + '/battleCardModel.js');
 
 
 
-
 async function createBattleCards(client, battleCards){
     const result = await client.db("test").collection("battlecards").insertOne(battleCards);
 }
@@ -73,11 +72,10 @@ async function checkEmail(userEmail) {
 
   } catch (e) {
       console.error(e);
-  } /* finally {
-    console.log('closing client')
+  } finally {
       // Close the connection to the MongoDB cluster
       await client.close();
-  } */
+  } 
 
 }
 
@@ -119,11 +117,6 @@ app.get('/api/battleCards', async (req, res) => {
 
         const battleCards = await BattleCards.findOne();
 
-        //battleCards = await client.db("test").collection("battlecards").findOne({id: "battleCardsData"});
-        
-        console.log('battlecards: ')
-        console.log(battleCards.data.caseStudies.caseStudiesBattleCards[0].cards[0])
-
         res.send(battleCards)
 
     } catch (e) {
@@ -134,14 +127,6 @@ app.get('/api/battleCards', async (req, res) => {
     }
   
 });
-
-/* app.post('/api/battleCards', async (req, res) => {
-  try {
-      const newBattleCard = new BattleCards({ ...req.body });
-      return newBattleCard.save()
-    }
-    catch (err) { console.log(err) }
-}); */
 
 app.post('/api/battleCards', async (req, res) => {
   const { MongoClient } = require('mongodb');
@@ -163,8 +148,6 @@ app.post('/api/battleCards', async (req, res) => {
   }
 });
 
-
-//app.put('/api/battleCards/:id', async (req, res) => {
   app.put('/api/battleCards', async (req, res) => {
   const { MongoClient } = require('mongodb');
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
@@ -177,7 +160,6 @@ app.post('/api/battleCards', async (req, res) => {
 
     const result = await BattleCards.findOneAndUpdate("battleCardsData", { data: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}}, {new: true})
 
-    //result = await client.db("test").collection("battlecards").updateOne({ id: "battleCardsData" }, { $set: { data:{id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}} });
     res.send(result)
 
   }
@@ -188,8 +170,6 @@ app.post('/api/battleCards', async (req, res) => {
       await client.close();
   }
 });
-
-
 
 app.put('/emailToMongo', (req, res) => {
   const newEmail = req.body.newEmail;
