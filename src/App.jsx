@@ -39,7 +39,7 @@ class App extends Component {
 
   console.log(companyIdentifier)
 
-  axios.get('./api/battleCards?companyIdentifier='+ companyIdentifier)
+  axios.get(`./api/battleCards/${companyIdentifier}`)
     .then(response => { 
       this.props.getMongoState(response.data.data)
   })
@@ -60,7 +60,11 @@ const mapState = (state) => {
 
   console.log('mashallah')
 
-  axios.put(`/api/battleCards`,state.data)
+  var url = window.location.href;
+  var arrayUrl = url.split('companyIdentifier=')
+  var companyIdentifier = arrayUrl[1]
+
+  axios.put(`/api/battleCards/${companyIdentifier}`,state.data)
   .then((response)=> {console.log('updated all of this');})
   .catch(e => console.log('Updation failed, Error ',e));
 

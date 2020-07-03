@@ -104,19 +104,20 @@ app.use((req, res, next) => {
   }
 });
 
-app.get('/api/battleCards', async (req, res) => {
+app.get('/api/battleCards/:companyIdentifier', async (req, res) => {
 
   const { MongoClient } = require('mongodb');
     const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
     const client = new MongoClient(uri, { useUnifiedTopology: true });
 
-    console.log(req.params)
+    const companyIdentifier = req.params.companyIdentifier;
+
     try {
         // Connect to the MongoDB cluster
         await client.connect();
 
-        const battleCards = await BattleCards.findOne();
+        const battleCards = await BattleCards.findOne({id: companyIdentifier});
 
         res.send(battleCards)
 
@@ -149,24 +150,26 @@ app.post('/api/battleCards', async (req, res) => {
   }
 });
 
-  app.put('/api/battleCards', async (req, res) => {
+  app.put('/api/battleCards/:companyIdentifier', async (req, res) => {
   const { MongoClient } = require('mongodb');
   const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
 
   const client = new MongoClient(uri, { useUnifiedTopology: true });
 
-  //var clientId = req.originalUrl;
-  //console.log(clientId)
-
+  const companyIdentifier = req.params.companyIdentifier;
   
 
   try {
     await client.connect();
 
-    const result = await BattleCards.findOneAndUpdate("battleCardsData", { data: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}}, {new: true})
-
+    const result = await BattleCards.findOneAndUpdate(companyIdentifier, { data: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}}, {new: true})
+    console.log(result)
+    
     res.send(result)
 
+
+
+  
   }
   catch (e) {
       console.error(e);

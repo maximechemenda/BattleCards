@@ -38982,7 +38982,7 @@ var App = /*#__PURE__*/function (_Component) {
       var companyIdentifier = arrayUrl[1];
       console.log(companyIdentifier);
 
-      _axios.default.put('./api/battleCards?companyIdentifier=' + companyIdentifier).then(function (response) {
+      _axios.default.get("./api/battleCards/".concat(companyIdentifier)).then(function (response) {
         _this.props.getMongoState(response.data.data);
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
@@ -39000,8 +39000,11 @@ var App = /*#__PURE__*/function (_Component) {
 
 var mapState = function mapState(state) {
   console.log('mashallah');
+  var url = window.location.href;
+  var arrayUrl = url.split('companyIdentifier=');
+  var companyIdentifier = arrayUrl[1];
 
-  _axios.default.put("/api/battleCards", state.data).then(function (response) {
+  _axios.default.put("/api/battleCards/".concat(companyIdentifier), state.data).then(function (response) {
     console.log('updated all of this');
   }).catch(function (e) {
     return console.log('Updation failed, Error ', e);
@@ -39103,7 +39106,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54818" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55118" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
