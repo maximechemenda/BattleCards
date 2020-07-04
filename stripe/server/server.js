@@ -79,7 +79,6 @@ async function checkEmail(userEmail) {
 
 }
 
-
 //connect to mongodb atlas
 
 //PRODUCTION MODE
