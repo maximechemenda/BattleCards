@@ -15,24 +15,6 @@ class App extends Component {
 
   componentDidMount() {
 
-    /* axios.get('./api/battleCards')
-    .then(response => { 
-      if (response.data.length === 0) {
-        console.log(response)
-        console.log(response.data)
-        console.log('data equal to 1')
-        //axios.post('/api/battleCards',{ data: {...this.props.data}})
-        //.then(this.props.readItems())
-        //.catch(e => console.log("Addition failed , Error ", e));
-      } else {
-        console.log('didnt enter it')
-        console.log(response.data.data.caseStudies.caseStudiesBattleCards[0].cards[0])
-        //console.log(response)
-        //this.props.readItems();
-        this.props.getMongoState(response.data.data)
-      }
-  }) */
-
   var url = window.location.href;
   var arrayUrl = url.split('companyIdentifier=')
   var companyIdentifier = arrayUrl[1]
