@@ -15,6 +15,9 @@ class App extends Component {
 
   componentDidMount() {
 
+    console.log(this)
+    console.log(this.props)
+
   var url = window.location.href;
   var arrayUrl = url.split('companyIdentifier=')
   var companyIdentifier = arrayUrl[1]
@@ -28,6 +31,17 @@ class App extends Component {
   .catch(e => console.log("fetching failed , Error ", e));
   } 
 
+  componentDidUpdate() {
+
+    var url = window.location.href;
+    var arrayUrl = url.split('companyIdentifier=')
+    var companyIdentifier = arrayUrl[1]
+
+   axios.put(`/api/battleCards/${companyIdentifier}`,this.props.data)
+  .then((response)=> {console.log('updated all of this');})
+  .catch(e => console.log('Updation failed, Error ',e));
+  }
+
   render() {
     return (
       <div >
@@ -40,15 +54,17 @@ class App extends Component {
 
 const mapState = (state) => {
 
+  console.log(state.data)
+
   console.log('mashallah')
 
-  var url = window.location.href;
+  /* var url = window.location.href;
   var arrayUrl = url.split('companyIdentifier=')
   var companyIdentifier = arrayUrl[1]
 
   axios.put(`/api/battleCards/${companyIdentifier}`,state.data)
   .then((response)=> {console.log('updated all of this');})
-  .catch(e => console.log('Updation failed, Error ',e));
+  .catch(e => console.log('Updation failed, Error ',e)); */
 
   return ({
       data: state.data

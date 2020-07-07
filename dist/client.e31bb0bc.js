@@ -38960,23 +38960,8 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this = this;
 
-      /* axios.get('./api/battleCards')
-      .then(response => { 
-        if (response.data.length === 0) {
-          console.log(response)
-          console.log(response.data)
-          console.log('data equal to 1')
-          //axios.post('/api/battleCards',{ data: {...this.props.data}})
-          //.then(this.props.readItems())
-          //.catch(e => console.log("Addition failed , Error ", e));
-        } else {
-          console.log('didnt enter it')
-          console.log(response.data.data.caseStudies.caseStudiesBattleCards[0].cards[0])
-          //console.log(response)
-          //this.props.readItems();
-          this.props.getMongoState(response.data.data)
-        }
-      }) */
+      console.log(this);
+      console.log(this.props);
       var url = window.location.href;
       var arrayUrl = url.split('companyIdentifier=');
       var companyIdentifier = arrayUrl[1];
@@ -38986,6 +38971,19 @@ var App = /*#__PURE__*/function (_Component) {
         _this.props.getMongoState(response.data.data);
       }).catch(function (e) {
         return console.log("fetching failed , Error ", e);
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var url = window.location.href;
+      var arrayUrl = url.split('companyIdentifier=');
+      var companyIdentifier = arrayUrl[1];
+
+      _axios.default.put("/api/battleCards/".concat(companyIdentifier), this.props.data).then(function (response) {
+        console.log('updated all of this');
+      }).catch(function (e) {
+        return console.log('Updation failed, Error ', e);
       });
     }
   }, {
@@ -38999,16 +38997,14 @@ var App = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var mapState = function mapState(state) {
+  console.log(state.data);
   console.log('mashallah');
-  var url = window.location.href;
-  var arrayUrl = url.split('companyIdentifier=');
-  var companyIdentifier = arrayUrl[1];
-
-  _axios.default.put("/api/battleCards/".concat(companyIdentifier), state.data).then(function (response) {
-    console.log('updated all of this');
-  }).catch(function (e) {
-    return console.log('Updation failed, Error ', e);
-  });
+  /* var url = window.location.href;
+  var arrayUrl = url.split('companyIdentifier=')
+  var companyIdentifier = arrayUrl[1]
+   axios.put(`/api/battleCards/${companyIdentifier}`,state.data)
+  .then((response)=> {console.log('updated all of this');})
+  .catch(e => console.log('Updation failed, Error ',e)); */
 
   return {
     data: state.data
@@ -39106,7 +39102,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55118" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64143" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
