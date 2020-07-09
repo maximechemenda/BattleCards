@@ -27,7 +27,6 @@ async function main(newEmail) {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
 
     try {
-        // Connect to the MongoDB cluster
         await client.connect();
 
         result = await client.db("test").collection("emails").findOne({id: "emailData"});
@@ -40,10 +39,7 @@ async function main(newEmail) {
 
     } catch (e) {
         console.error(e);
-    } /* finally {
-        // Close the connection to the MongoDB cluster
-        await client.close();
-    } */
+    } 
 
 }
 
@@ -55,7 +51,6 @@ async function checkEmail(userEmail) {
   const client = new MongoClient(uri, { useUnifiedTopology: true });
 
   try {
-      // Connect to the MongoDB cluster
       await client.connect();
 
       result = await client.db("test").collection("emails").findOne({id: "emailData"});
@@ -72,10 +67,7 @@ async function checkEmail(userEmail) {
 
   } catch (e) {
       console.error(e);
-  } /* finally {
-      // Close the connection to the MongoDB cluster
-      await client.close();
-  }  */
+  } 
 
 }
 
@@ -105,61 +97,35 @@ app.use((req, res, next) => {
 
 app.get('/api/battleCards/:companyIdentifier', async (req, res) => {
 
-  //const { MongoClient } = require('mongodb');
-    //const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
-
-    //const client = new MongoClient(uri, { useUnifiedTopology: true });
-
     const companyIdentifier = req.params.companyIdentifier;
 
     try {
-        // Connect to the MongoDB cluster
-        //await client.connect();
-
         const battleCards = await BattleCards.findOne({id: companyIdentifier});
 
         res.send(battleCards)
 
     } catch (e) {
         console.error(e);
-    } /* finally {
-        // Close the connection to the MongoDB cluster
-        await client.close();
-    } */
-  
+    } 
 });
 
-app.post('/api/battleCards', async (req, res) => {
-  const { MongoClient } = require('mongodb');
-  const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
-
-  const client = new MongoClient(uri, { useUnifiedTopology: true });
-
+app.post('/api/battleCards/:companyIdentifier', async (req, res) => {
+  
   try {
-      // Connect to the MongoDB cluster
-      await client.connect();
 
       await createBattleCards(client, {...req.body});
 
   } catch (e) {
       console.error(e);
-  } /* finally {
-      // Close the connection to the MongoDB cluster
-      await client.close();
-  } */
+  } 
 });
 
   app.put('/api/battleCards/:companyIdentifier', async (req, res) => {
-  //const { MongoClient } = require('mongodb');
-  //const uri = "mongodb+srv://maxime:maxime2312@battlecardsdevelopment-sixjc.mongodb.net/test?retryWrites=true&w=majority";
-
-  //const client = new MongoClient(uri, { useUnifiedTopology: true });
-
+  
   const companyIdentifier = req.params.companyIdentifier;
   
 
   try {
-    //await client.connect();
 
     const result = await BattleCards.findOneAndUpdate(companyIdentifier, { data: {id: req.body.id, caseStudies: req.body.caseStudies, battleCards: req.body.battleCards, isEmptyBattleCardsState: req.body.isEmptyBattleCardsState, isEmptyCaseStudiesState: req.body.isEmptyCaseStudiesState}}, {new: true})
     console.log(result)
@@ -169,10 +135,7 @@ app.post('/api/battleCards', async (req, res) => {
   }
   catch (e) {
       console.error(e);
-  } /* finally {
-      // Close the connection to the MongoDB cluster
-      await client.close();
-  } */
+  } 
 });
 
 app.put('/emailToMongo', (req, res) => {
@@ -188,8 +151,6 @@ app.put('/checkingEmail', async (req, res) => {
   const lastEmailPart = arrayEmail[1]
 
   var isRegistered = await checkEmail(lastEmailPart);
-
-  console.log(isRegistered)
 
   if (isRegistered) {
     res.send('true')
