@@ -1,25 +1,5 @@
 const { BattleCards } = require('./models/battleCards');
 
-/* const redirectUser = async (req, reply) => {
-  try {
-    console.log('other route')
-    //reply.send({ hello: 'world' })
-    //reply.sendFile(__dirname + '/../src/app.html')
-    reply.sendFile("app.html")
-  }
-  catch (e) { console.log('The following error occured: ', e) }
-} */
-
-/*
-const showApp = async (req, reply) => {
-  try {
-    console.log('other route')
-    //reply.send({ hello: 'world' })
-    reply.sendFile('app.html')
-  }
-  catch (e) { console.log('The following error occured: ', e) }
-} */
-
 // Reads all the items present in database
 const fetchItems = async (req, reply) => {
     try {
@@ -29,7 +9,6 @@ const fetchItems = async (req, reply) => {
     catch (err) { console.log(err) }
   }
 
-
 // Adds an item to database
 const addItem = async (req, reply) => {
     try {
@@ -38,8 +17,6 @@ const addItem = async (req, reply) => {
     }
     catch (err) { console.log(err) }
   }
-
-
 
 // Updates the item present in database
 const updateItem = async (req, reply) => {
@@ -52,6 +29,5 @@ const updateItem = async (req, reply) => {
     console.log(err);
   }
 }
-
 
 module.exports = { fetchItems, addItem, updateItem };

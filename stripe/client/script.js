@@ -1,8 +1,134 @@
 import axios from 'axios';
+import {v4 as uuid} from 'uuid'
 
 const regeneratorRuntime = require("regenerator-runtime");
 require("regenerator-runtime/runtime");
 require("regenerator-runtime/path").path;
+
+const cleanState = {
+  data: {
+    id: uuid(),
+    caseStudies: {
+        caseStudiesBattleCards: [
+            {
+                cards: [{
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false,
+                    height: '50px'
+                }],
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                titleHeight: '43px',
+                section: 'caseStudies',
+                blueHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }],
+                redHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }]
+            }
+        ]
+    },    
+    battleCards: {
+        objectionsBattleCards: [
+            {
+                cards: [{
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false,
+                    height: '50px'
+                }],
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                titleHeight: '43px',
+                section: 'objections',
+                blueHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }],
+                redHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }]
+            }
+        ],
+        competitorsBattleCards: [
+            {
+                cards: [{
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false,
+                    height: '50px'
+                }],
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                titleHeight: '43px',
+                section: 'competitors',
+                blueHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }],
+                redHeaderValues: [{
+                    headerId: uuid(),
+                    headerText: '',
+                    height: '30px'
+                }]
+            }
+        ],
+        profilesBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false,
+                    height: '50px'
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'profiles'
+            }
+        ],
+        discoveriesBattleCards: [
+            {
+                cards: {
+                    cardId: uuid(),
+                    text: '',
+                    cardType: 'warning',
+                    editing: false,
+                    height: '50px'
+                },
+                battleCardId: uuid(),
+                isEmptyAddButtonState: true,
+                titleValue: '',
+                section: 'discoveries'
+            }
+        ],
+        //selectedBattleCards: [],
+        isEmptyObjectionsState: true,
+        isEmptyCompetitorsState: true,
+        isEmptyProfilesState: true,
+        isEmptyDiscoveriesState: true
+    },
+    isEmptyBattleCardsState: true,
+    isEmptyCaseStudiesState: false
+}
+}
 
 
 
@@ -363,9 +489,15 @@ function onSubscriptionComplete(result) {
   .then(()=>{console.log('updated mongo successfully');})
   .catch(e => console.log('Updation failed, Error ',e));
 
+  axios.post('/api/battleCards', {id: newEmail, data: cleanState.data })
+  .then(()=>console.log('Battlecards added succesfully'))
+  .catch(e => console.log('Adding failed, Error ',e));
+
   window.location.href = 'app.html'
   
 }
+
+
 
 function createSubscription({ customerId, paymentMethodId, priceId }) {
   return (

@@ -11,9 +11,9 @@ const { BattleCards } = require( __dirname + '/battleCardModel.js');
 
 
 
-async function createBattleCards(client, battleCards){
+/* async function createBattleCards(client, battleCards){
     const result = await client.db("test").collection("battlecards").insertOne(battleCards);
-}
+} */
 
 
 async function updateDocument(client, updatedEmails) {
@@ -101,7 +101,6 @@ app.get('/api/battleCards/:companyIdentifier', async (req, res) => {
 
     try {
         const battleCards = await BattleCards.findOne({id: companyIdentifier});
-
         res.send(battleCards)
 
     } catch (e) {
@@ -109,11 +108,12 @@ app.get('/api/battleCards/:companyIdentifier', async (req, res) => {
     } 
 });
 
-app.post('/api/battleCards/:companyIdentifier', async (req, res) => {
+app.post('/api/battleCards', async (req, res) => {
   
   try {
 
-      await createBattleCards(client, {...req.body});
+      const newBattleCard = new BattleCards({ ...req.body });
+      res.send(newBattleCard.save())
 
   } catch (e) {
       console.error(e);
@@ -123,7 +123,6 @@ app.post('/api/battleCards/:companyIdentifier', async (req, res) => {
   app.put('/api/battleCards/:companyIdentifier', async (req, res) => {
   
   const companyIdentifier = req.params.companyIdentifier;
-  
 
   try {
 
@@ -149,15 +148,29 @@ app.put('/checkingEmail', async (req, res) => {
   const userEmail = req.body.userEmail;
   const arrayEmail = userEmail.split('@');
   const lastEmailPart = arrayEmail[1]
+  console.log(lastEmailPart)
 
   var isRegistered = await checkEmail(lastEmailPart);
+  console.log(isRegistered)
 
   if (isRegistered) {
+    console.log('this is true')
     res.send('true')
   } else {
+    console.log('this is false')
     res.send('false')
   }
 });
+
+
+
+
+
+
+
+
+
+
 
 app.get('/', (req, res) => {
   const path = resolve( __dirname + '/../client/index.html');
